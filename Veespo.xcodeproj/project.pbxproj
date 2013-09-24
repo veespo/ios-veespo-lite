@@ -16,8 +16,6 @@
 		BE1ECC2217F1B4BF006CCD56 /* FSWebLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC1917F1B4BF006CCD56 /* FSWebLogin.xib */; };
 		BE1ECC2917F1B4CE006CCD56 /* FSOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC2817F1B4CE006CCD56 /* FSOAuth.m */; };
 		BE1ECC2A17F1B50E006CCD56 /* VEFSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECBB617F1960A006CCD56 /* VEFSViewController.m */; };
-		BE1ECC2F17F1B592006CCD56 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC2C17F1B592006CCD56 /* FSConverter.m */; };
-		BE1ECC3017F1B592006CCD56 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC2E17F1B592006CCD56 /* FSVenue.m */; };
 		BE1ECC3517F1CC00006CCD56 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC3117F1CC00006CCD56 /* pin.png */; };
 		BE1ECC3617F1CC00006CCD56 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC3217F1CC00006CCD56 /* pin@2x.png */; };
 		BE1ECC3717F1CC00006CCD56 /* poweredByFoursquare_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC3317F1CC00006CCD56 /* poweredByFoursquare_gray.png */; };
@@ -33,6 +31,10 @@
 		BE1ECC5A17F1E724006CCD56 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC4F17F1E724006CCD56 /* AFURLConnectionOperation.m */; };
 		BE1ECC5B17F1E724006CCD56 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC5117F1E724006CCD56 /* AFXMLRequestOperation.m */; };
 		BE1ECC5C17F1E724006CCD56 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC5317F1E724006CCD56 /* UIImageView+AFNetworking.m */; };
+		BE1ECC5E17F22DE9006CCD56 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */; };
+		BE1ECC6017F22DF8006CCD56 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */; };
+		BE1ECC6B17F22E6F006CCD56 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC6817F22E6F006CCD56 /* FSConverter.m */; };
+		BE1ECC6C17F22E6F006CCD56 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC6A17F22E6F006CCD56 /* FSVenue.m */; };
 		BE79E55817EF9F41006F60F6 /* VEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BE79E55717EF9F41006F60F6 /* VEUser.m */; };
 		BEA0DFF517EDE6A300102645 /* VERootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFF417EDE6A300102645 /* VERootViewController.m */; };
 		BEA0DFF817EDE9AD00102645 /* VEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFF717EDE9AD00102645 /* VEMenuViewController.m */; };
@@ -85,10 +87,6 @@
 		BE1ECC1917F1B4BF006CCD56 /* FSWebLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSWebLogin.xib; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/FSWebLogin.xib"; sourceTree = "<group>"; };
 		BE1ECC2717F1B4CE006CCD56 /* FSOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSOAuth.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/submodule/foursquare-ios-oauth/FSOAuth.h"; sourceTree = "<group>"; };
 		BE1ECC2817F1B4CE006CCD56 /* FSOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSOAuth.m; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/submodule/foursquare-ios-oauth/FSOAuth.m"; sourceTree = "<group>"; };
-		BE1ECC2B17F1B592006CCD56 /* FSConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSConverter.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2-iOS/Classes/FSConverter.h"; sourceTree = "<group>"; };
-		BE1ECC2C17F1B592006CCD56 /* FSConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSConverter.m; path = "../../../Progetti/Foursquare-API-v2/Foursquare2-iOS/Classes/FSConverter.m"; sourceTree = "<group>"; };
-		BE1ECC2D17F1B592006CCD56 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSVenue.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2-iOS/Classes/FSVenue.h"; sourceTree = "<group>"; };
-		BE1ECC2E17F1B592006CCD56 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSVenue.m; path = "../../../Progetti/Foursquare-API-v2/Foursquare2-iOS/Classes/FSVenue.m"; sourceTree = "<group>"; };
 		BE1ECC3117F1CC00006CCD56 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		BE1ECC3217F1CC00006CCD56 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
 		BE1ECC3317F1CC00006CCD56 /* poweredByFoursquare_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poweredByFoursquare_gray.png; sourceTree = "<group>"; };
@@ -115,6 +113,12 @@
 		BE1ECC5117F1E724006CCD56 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = ../../../Progetti/AFNetworking/AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		BE1ECC5217F1E724006CCD56 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "../../../Progetti/AFNetworking/AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		BE1ECC5317F1E724006CCD56 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "../../../Progetti/AFNetworking/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BE1ECC6717F22E6F006CCD56 /* FSConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSConverter.h; path = Classes/Foursquare/FSConverter.h; sourceTree = "<group>"; };
+		BE1ECC6817F22E6F006CCD56 /* FSConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSConverter.m; path = Classes/Foursquare/FSConverter.m; sourceTree = "<group>"; };
+		BE1ECC6917F22E6F006CCD56 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSVenue.h; path = Classes/Foursquare/FSVenue.h; sourceTree = "<group>"; };
+		BE1ECC6A17F22E6F006CCD56 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSVenue.m; path = Classes/Foursquare/FSVenue.m; sourceTree = "<group>"; };
 		BE79E55617EF9F41006F60F6 /* VEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEUser.h; path = Classes/VEUser.h; sourceTree = "<group>"; };
 		BE79E55717EF9F41006F60F6 /* VEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEUser.m; path = Classes/VEUser.m; sourceTree = "<group>"; };
 		BEA0DFF317EDE6A200102645 /* VERootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VERootViewController.h; path = Classes/VERootViewController.h; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE1ECC6017F22DF8006CCD56 /* MobileCoreServices.framework in Frameworks */,
+				BE1ECC5E17F22DE9006CCD56 /* SystemConfiguration.framework in Frameworks */,
 				BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */,
 				BE1ECBB917F1962C006CCD56 /* CoreLocation.framework in Frameworks */,
 				BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */,
@@ -187,10 +193,10 @@
 		BE1ECB6C17F194A9006CCD56 /* Foursquare */ = {
 			isa = PBXGroup;
 			children = (
-				BE1ECC2B17F1B592006CCD56 /* FSConverter.h */,
-				BE1ECC2C17F1B592006CCD56 /* FSConverter.m */,
-				BE1ECC2D17F1B592006CCD56 /* FSVenue.h */,
-				BE1ECC2E17F1B592006CCD56 /* FSVenue.m */,
+				BE1ECC6717F22E6F006CCD56 /* FSConverter.h */,
+				BE1ECC6817F22E6F006CCD56 /* FSConverter.m */,
+				BE1ECC6917F22E6F006CCD56 /* FSVenue.h */,
+				BE1ECC6A17F22E6F006CCD56 /* FSVenue.m */,
 				BE1ECBB517F1960A006CCD56 /* VEFSViewController.h */,
 				BE1ECBB617F1960A006CCD56 /* VEFSViewController.m */,
 				BE1ECC3917F1D470006CCD56 /* VEVenueCell.h */,
@@ -270,6 +276,8 @@
 		BEEB671517EC9A1A00F394E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */,
+				BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */,
 				BE1ECBBA17F19632006CCD56 /* MapKit.framework */,
 				BE1ECBB817F1962C006CCD56 /* CoreLocation.framework */,
 				BEEB671617EC9A1A00F394E9 /* Foundation.framework */,
@@ -493,20 +501,20 @@
 				BE1ECC5C17F1E724006CCD56 /* UIImageView+AFNetworking.m in Sources */,
 				BE1ECC5417F1E724006CCD56 /* AFHTTPClient.m in Sources */,
 				BEEB672317EC9A1A00F394E9 /* main.m in Sources */,
+				BE1ECC6C17F22E6F006CCD56 /* FSVenue.m in Sources */,
 				BE1ECC3B17F1D470006CCD56 /* VEVenueCell.m in Sources */,
 				BEEB672D17EC9A1A00F394E9 /* VEViewController.m in Sources */,
-				BE1ECC2F17F1B592006CCD56 /* FSConverter.m in Sources */,
 				BE1ECC5517F1E724006CCD56 /* AFHTTPRequestOperation.m in Sources */,
 				BE79E55817EF9F41006F60F6 /* VEUser.m in Sources */,
 				BE1ECC5917F1E724006CCD56 /* AFPropertyListRequestOperation.m in Sources */,
 				BE1ECC5617F1E724006CCD56 /* AFImageRequestOperation.m in Sources */,
-				BE1ECC3017F1B592006CCD56 /* FSVenue.m in Sources */,
 				BE1ECC5717F1E724006CCD56 /* AFJSONRequestOperation.m in Sources */,
 				BE1ECC2917F1B4CE006CCD56 /* FSOAuth.m in Sources */,
 				BE1ECC2017F1B4BF006CCD56 /* FSTargetCallback.m in Sources */,
 				BEA0E00217EF694800102645 /* VEVeespoViewController.m in Sources */,
 				BE1ECC5B17F1E724006CCD56 /* AFXMLRequestOperation.m in Sources */,
 				BE1ECC2117F1B4BF006CCD56 /* FSWebLogin.m in Sources */,
+				BE1ECC6B17F22E6F006CCD56 /* FSConverter.m in Sources */,
 				BEA0DFFB17EF1D8F00102645 /* VEMenuCell.m in Sources */,
 				BE1ECC2A17F1B50E006CCD56 /* VEFSViewController.m in Sources */,
 				BEEB675917ECAB3000F394E9 /* GHRevealViewController.m in Sources */,
