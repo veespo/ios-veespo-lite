@@ -7,16 +7,18 @@
 //
 
 #import "VERootViewController.h"
+#import "MBProgressHUD.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
 @class FSVenue;
 
-@interface VEFSViewController : VERootViewController <MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
+@interface VEFSViewController : VERootViewController <MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MBProgressHUDDelegate> {
     CLLocationManager *_locationManager;
     MKMapView* mapView;
     UICollectionView *venuesCollection;
     UIView *footer;
+    MBProgressHUD *HUD;
     
     FSVenue* selected;
     NSArray* nearbyVenues;

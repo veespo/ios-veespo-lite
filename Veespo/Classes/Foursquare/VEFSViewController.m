@@ -10,6 +10,8 @@
 #import "Foursquare2.h"
 #import "FSConverter.h"
 #import "FSVenue.h"
+#import "VEVenueCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface VEFSViewController ()
 
@@ -34,13 +36,6 @@
     [mapView setRotateEnabled:YES];
     mapView.delegate = self;
     
-    // Footer
-    footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 64)];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:footer.frame];
-    imageView.image = [UIImage imageNamed:@"poweredByFoursquare_gray.png"];
-    [imageView setContentMode:UIViewContentModeCenter];
-    [footer addSubview:imageView];
-    
     // TableView
     CGRect appBounds = [UIScreen mainScreen].bounds;
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -50,19 +45,29 @@
 //    layout.minimumLineSpacing = 64;
 //    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 //    layout.sectionInset = UIEdgeInsetsMake(32, 32, 32, 32);
-    venuesCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 192, appBounds.size.width, appBounds.size.height - 192) collectionViewLayout:layout];
+    venuesCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 192, appBounds.size.width, appBounds.size.height - 222) collectionViewLayout:layout];
     venuesCollection.delegate = self;
     venuesCollection.dataSource = self;
     venuesCollection.backgroundColor = [UIColor blueColor];
-    [venuesCollection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"FlickrCell"];
+    [venuesCollection registerClass:[VEVenueCell class] forCellWithReuseIdentifier:@"FoursquareCell"];
+    
+    // Footer
+    footer = [[UIView alloc] initWithFrame:CGRectMake(0, venuesCollection.frame.origin.y + venuesCollection.frame.size.height, 320, 30)];
+    [footer setBackgroundColor:[UIColor whiteColor]];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    imageView.image = [UIImage imageNamed:@"poweredByFoursquare_gray.png"];
+    [imageView setContentMode:UIViewContentModeScaleAspectFill];
+    [footer addSubview:imageView];
     
     // LocationManager
 	_locationManager = [[CLLocationManager alloc]init];
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.distanceFilter = 50;
     _locationManager.delegate = self;
     [_locationManager startUpdatingLocation];
     [self.view addSubview:mapView];
     [self.view addSubview:venuesCollection];
+    [self.view addSubview:footer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,7 +98,7 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
-    [_locationManager stopUpdatingLocation];
+//    [_locationManager stopUpdatingLocation];
     [self getVenuesForLocation:newLocation];
     [self setupMapForLocatoion:newLocation];
 }
@@ -149,6 +154,10 @@
 #pragma mark - Foursquare2
 
 -(void)getVenuesForLocation:(CLLocation*)location{
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.delegate = self;
+    [HUD show:YES];
     [Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
 								  longitude:@(location.coordinate.longitude)
 								 accuracyLL:nil
@@ -165,9 +174,9 @@
 										   NSArray* venues = [dic valueForKeyPath:@"response.venues"];
                                            FSConverter *converter = [[FSConverter alloc]init];
                                            nearbyVenues = [converter convertToObjects:venues];
-                                           [venuesCollection reloadData];
                                            [self proccessAnnotations];
-                                           
+                                           [venuesCollection reloadData];
+                                           [HUD hide:YES afterDelay:1.5];
 									   }
 								   }];
 }
@@ -183,8 +192,12 @@
 }
 // 3
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FlickrCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    VEVenueCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FoursquareCell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor whiteColor];
+    cell.venueNameLbl.text = [nearbyVenues[indexPath.row] name];
+    FSVenue *venue = nearbyVenues[indexPath.row];
+    cell.venueDistanceLbl.text = [NSString stringWithFormat:@"%@m", venue.location.distance];
+    [cell.venueIcon setImageWithURL:venue.imageURL];
     return cell;
 }
 
@@ -192,14 +205,14 @@
 
 // 1
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGSize retval = CGSizeMake(100, 100);
-    retval.height += 35; retval.width += 35; return retval;
+    CGSize retval = CGSizeMake(130, 130);
+    return retval;
 }
 
 // 3
 - (UIEdgeInsets)collectionView:
 (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(50, 20, 50, 20);
+    return UIEdgeInsetsMake(10, 20, 50, 20);
 }
 
 #pragma mark - UICollectionViewDelegate
