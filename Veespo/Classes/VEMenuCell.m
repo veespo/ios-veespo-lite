@@ -1,0 +1,59 @@
+//
+//  VEMenuCell.m
+//  Veespo
+//
+//  Created by Alessio Roberto on 22/09/13.
+//  Copyright (c) 2013 Veespo Ltd. All rights reserved.
+//
+
+#import "VEMenuCell.h"
+
+@implementation VEMenuCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        mainColor = [UIColor colorWithRed:47.0/255 green:168.0/255 blue:228.0/255 alpha:1.0f];
+        darkColor = [UIColor colorWithRed:10.0/255 green:78.0/255 blue:108.0/255 alpha:1.0f];
+    }
+    return self;
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+    
+    if(selected)
+        bgView.backgroundColor = mainColor;
+    else
+        bgView.backgroundColor = darkColor;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    UIView *myContentView = self.contentView;
+    [[myContentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    bgView.backgroundColor = darkColor;
+    [myContentView addSubview:bgView];
+    
+    topSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 42, 320, 1)];
+    topSeparator.backgroundColor = [UIColor clearColor];
+    bottomSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 320, 1)];
+    bottomSeparator.backgroundColor = [UIColor colorWithWhite:0.9f alpha:0.2f];
+    [myContentView addSubview:topSeparator];
+    [myContentView addSubview:bottomSeparator];
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(46, 12, 251, 21)];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.text = self.title;
+    [myContentView addSubview:titleLabel];
+}
+
+#pragma mark - Constants
+NSString const *kSidebarCellTextKey = @"CellText";
+NSString const *kSidebarCellImageKey = @"CellImage";
+
+@end
