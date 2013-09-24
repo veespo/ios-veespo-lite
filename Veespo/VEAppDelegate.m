@@ -12,6 +12,8 @@
 #import "VERootViewController.h"
 #import "VEMenuCell.h"
 #import "VEVeespoViewController.h"
+#import "VEFSViewController.h"
+#import "Foursquare2.h"
 
 #pragma mark - Private Interface
 @interface VEAppDelegate ()
@@ -24,7 +26,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+    [Foursquare2 setupFoursquareWithClientId:@"AXC1A3NOVLLF4UL3SPJHXNEMXADRG3Z1OJRSCRQL0C0I5ZOV"
+                                      secret:@"QQFISLPK5YXPHURAGKJTWI2DT1KQHM2CGVYBXMRKPAU1VKEJ"
+                                 callbackURL:@"testapp123://foursquare"];
 	self.revealController = [[GHRevealViewController alloc] initWithNibName:nil bundle:nil];
     RevealBlock revealBlock = ^(){
 		[self.revealController toggleSidebar:!self.revealController.sidebarShowing
@@ -40,7 +44,7 @@
                                  [[UINavigationController alloc] initWithRootViewController:[[VEVeespoViewController alloc] initWithTitle:@"Veespo" withRevealBlock:revealBlock]]
                                  ],
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VERootViewController alloc] initWithTitle:@"FourSquare" withRevealBlock:revealBlock]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:@"FourSquare" withRevealBlock:revealBlock]]
                                  ]
     ];
     NSArray *cellInfos = @[

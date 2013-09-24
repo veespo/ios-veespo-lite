@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		BE1ECBB917F1962C006CCD56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECBB817F1962C006CCD56 /* CoreLocation.framework */; };
 		BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECBBA17F19632006CCD56 /* MapKit.framework */; };
+		BE1ECC1E17F1B4BF006CCD56 /* Foursquare2.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC1217F1B4BF006CCD56 /* Foursquare2.m */; };
+		BE1ECC1F17F1B4BF006CCD56 /* FSRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC1417F1B4BF006CCD56 /* FSRequester.m */; };
+		BE1ECC2017F1B4BF006CCD56 /* FSTargetCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC1617F1B4BF006CCD56 /* FSTargetCallback.m */; };
+		BE1ECC2117F1B4BF006CCD56 /* FSWebLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC1817F1B4BF006CCD56 /* FSWebLogin.m */; };
+		BE1ECC2217F1B4BF006CCD56 /* FSWebLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC1917F1B4BF006CCD56 /* FSWebLogin.xib */; };
+		BE1ECC2317F1B4BF006CCD56 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC1A17F1B4BF006CCD56 /* pin.png */; };
+		BE1ECC2417F1B4BF006CCD56 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC1B17F1B4BF006CCD56 /* pin@2x.png */; };
+		BE1ECC2517F1B4BF006CCD56 /* poweredByFoursquare_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC1C17F1B4BF006CCD56 /* poweredByFoursquare_gray.png */; };
+		BE1ECC2617F1B4BF006CCD56 /* poweredByFoursquare_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC1D17F1B4BF006CCD56 /* poweredByFoursquare_gray@2x.png */; };
+		BE1ECC2917F1B4CE006CCD56 /* FSOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC2817F1B4CE006CCD56 /* FSOAuth.m */; };
+		BE1ECC2A17F1B50E006CCD56 /* VEFSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECBB617F1960A006CCD56 /* VEFSViewController.m */; };
+		BE1ECC2F17F1B592006CCD56 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC2C17F1B592006CCD56 /* FSConverter.m */; };
+		BE1ECC3017F1B592006CCD56 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC2E17F1B592006CCD56 /* FSVenue.m */; };
 		BE79E55817EF9F41006F60F6 /* VEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BE79E55717EF9F41006F60F6 /* VEUser.m */; };
 		BEA0DFF517EDE6A300102645 /* VERootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFF417EDE6A300102645 /* VERootViewController.m */; };
 		BEA0DFF817EDE9AD00102645 /* VEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFF717EDE9AD00102645 /* VEMenuViewController.m */; };
@@ -50,6 +63,25 @@
 		BE1ECBB617F1960A006CCD56 /* VEFSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEFSViewController.m; path = Classes/Foursquare/VEFSViewController.m; sourceTree = "<group>"; };
 		BE1ECBB817F1962C006CCD56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BE1ECBBA17F19632006CCD56 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BE1ECC1117F1B4BF006CCD56 /* Foursquare2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Foursquare2.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/Foursquare2.h"; sourceTree = "<group>"; };
+		BE1ECC1217F1B4BF006CCD56 /* Foursquare2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Foursquare2.m; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/Foursquare2.m"; sourceTree = "<group>"; };
+		BE1ECC1317F1B4BF006CCD56 /* FSRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSRequester.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/FSRequester.h"; sourceTree = "<group>"; };
+		BE1ECC1417F1B4BF006CCD56 /* FSRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSRequester.m; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/FSRequester.m"; sourceTree = "<group>"; };
+		BE1ECC1517F1B4BF006CCD56 /* FSTargetCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSTargetCallback.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/FSTargetCallback.h"; sourceTree = "<group>"; };
+		BE1ECC1617F1B4BF006CCD56 /* FSTargetCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSTargetCallback.m; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/FSTargetCallback.m"; sourceTree = "<group>"; };
+		BE1ECC1717F1B4BF006CCD56 /* FSWebLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSWebLogin.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/FSWebLogin.h"; sourceTree = "<group>"; };
+		BE1ECC1817F1B4BF006CCD56 /* FSWebLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSWebLogin.m; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/FSWebLogin.m"; sourceTree = "<group>"; };
+		BE1ECC1917F1B4BF006CCD56 /* FSWebLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSWebLogin.xib; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/FSWebLogin.xib"; sourceTree = "<group>"; };
+		BE1ECC1A17F1B4BF006CCD56 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pin.png; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/pin.png"; sourceTree = "<group>"; };
+		BE1ECC1B17F1B4BF006CCD56 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pin@2x.png"; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/pin@2x.png"; sourceTree = "<group>"; };
+		BE1ECC1C17F1B4BF006CCD56 /* poweredByFoursquare_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = poweredByFoursquare_gray.png; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/poweredByFoursquare_gray.png"; sourceTree = "<group>"; };
+		BE1ECC1D17F1B4BF006CCD56 /* poweredByFoursquare_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "poweredByFoursquare_gray@2x.png"; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/poweredByFoursquare_gray@2x.png"; sourceTree = "<group>"; };
+		BE1ECC2717F1B4CE006CCD56 /* FSOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSOAuth.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/submodule/foursquare-ios-oauth/FSOAuth.h"; sourceTree = "<group>"; };
+		BE1ECC2817F1B4CE006CCD56 /* FSOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSOAuth.m; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/submodule/foursquare-ios-oauth/FSOAuth.m"; sourceTree = "<group>"; };
+		BE1ECC2B17F1B592006CCD56 /* FSConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSConverter.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2-iOS/Classes/FSConverter.h"; sourceTree = "<group>"; };
+		BE1ECC2C17F1B592006CCD56 /* FSConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSConverter.m; path = "../../../Progetti/Foursquare-API-v2/Foursquare2-iOS/Classes/FSConverter.m"; sourceTree = "<group>"; };
+		BE1ECC2D17F1B592006CCD56 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSVenue.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2-iOS/Classes/FSVenue.h"; sourceTree = "<group>"; };
+		BE1ECC2E17F1B592006CCD56 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSVenue.m; path = "../../../Progetti/Foursquare-API-v2/Foursquare2-iOS/Classes/FSVenue.m"; sourceTree = "<group>"; };
 		BE79E55617EF9F41006F60F6 /* VEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEUser.h; path = Classes/VEUser.h; sourceTree = "<group>"; };
 		BE79E55717EF9F41006F60F6 /* VEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEUser.m; path = Classes/VEUser.m; sourceTree = "<group>"; };
 		BEA0DFF317EDE6A200102645 /* VERootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VERootViewController.h; path = Classes/VERootViewController.h; sourceTree = "<group>"; };
@@ -122,6 +154,10 @@
 		BE1ECB6C17F194A9006CCD56 /* Foursquare */ = {
 			isa = PBXGroup;
 			children = (
+				BE1ECC2B17F1B592006CCD56 /* FSConverter.h */,
+				BE1ECC2C17F1B592006CCD56 /* FSConverter.m */,
+				BE1ECC2D17F1B592006CCD56 /* FSVenue.h */,
+				BE1ECC2E17F1B592006CCD56 /* FSVenue.m */,
 				BE1ECBB517F1960A006CCD56 /* VEFSViewController.h */,
 				BE1ECBB617F1960A006CCD56 /* VEFSViewController.m */,
 			);
@@ -131,6 +167,21 @@
 		BE1ECB6D17F1955F006CCD56 /* Foursquare2 */ = {
 			isa = PBXGroup;
 			children = (
+				BE1ECC2717F1B4CE006CCD56 /* FSOAuth.h */,
+				BE1ECC2817F1B4CE006CCD56 /* FSOAuth.m */,
+				BE1ECC1117F1B4BF006CCD56 /* Foursquare2.h */,
+				BE1ECC1217F1B4BF006CCD56 /* Foursquare2.m */,
+				BE1ECC1317F1B4BF006CCD56 /* FSRequester.h */,
+				BE1ECC1417F1B4BF006CCD56 /* FSRequester.m */,
+				BE1ECC1517F1B4BF006CCD56 /* FSTargetCallback.h */,
+				BE1ECC1617F1B4BF006CCD56 /* FSTargetCallback.m */,
+				BE1ECC1717F1B4BF006CCD56 /* FSWebLogin.h */,
+				BE1ECC1817F1B4BF006CCD56 /* FSWebLogin.m */,
+				BE1ECC1917F1B4BF006CCD56 /* FSWebLogin.xib */,
+				BE1ECC1A17F1B4BF006CCD56 /* pin.png */,
+				BE1ECC1B17F1B4BF006CCD56 /* pin@2x.png */,
+				BE1ECC1C17F1B4BF006CCD56 /* poweredByFoursquare_gray.png */,
+				BE1ECC1D17F1B4BF006CCD56 /* poweredByFoursquare_gray@2x.png */,
 			);
 			name = Foursquare2;
 			sourceTree = "<group>";
@@ -344,7 +395,12 @@
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
 				BEA0DFFF17EF311C00102645 /* user.png in Resources */,
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
+				BE1ECC2317F1B4BF006CCD56 /* pin.png in Resources */,
+				BE1ECC2617F1B4BF006CCD56 /* poweredByFoursquare_gray@2x.png in Resources */,
+				BE1ECC2217F1B4BF006CCD56 /* FSWebLogin.xib in Resources */,
+				BE1ECC2517F1B4BF006CCD56 /* poweredByFoursquare_gray.png in Resources */,
 				BEEB672A17EC9A1A00F394E9 /* Main.storyboard in Resources */,
+				BE1ECC2417F1B4BF006CCD56 /* pin@2x.png in Resources */,
 				BEA0E00417EF7FE700102645 /* VEVeespoNib.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,12 +422,20 @@
 			files = (
 				BEA0DFF817EDE9AD00102645 /* VEMenuViewController.m in Sources */,
 				BEEB675A17ECAB3000F394E9 /* GHSidebarSearchViewController.m in Sources */,
+				BE1ECC1F17F1B4BF006CCD56 /* FSRequester.m in Sources */,
 				BEA0DFF517EDE6A300102645 /* VERootViewController.m in Sources */,
+				BE1ECC1E17F1B4BF006CCD56 /* Foursquare2.m in Sources */,
 				BEEB672317EC9A1A00F394E9 /* main.m in Sources */,
 				BEEB672D17EC9A1A00F394E9 /* VEViewController.m in Sources */,
+				BE1ECC2F17F1B592006CCD56 /* FSConverter.m in Sources */,
 				BE79E55817EF9F41006F60F6 /* VEUser.m in Sources */,
+				BE1ECC3017F1B592006CCD56 /* FSVenue.m in Sources */,
+				BE1ECC2917F1B4CE006CCD56 /* FSOAuth.m in Sources */,
+				BE1ECC2017F1B4BF006CCD56 /* FSTargetCallback.m in Sources */,
 				BEA0E00217EF694800102645 /* VEVeespoViewController.m in Sources */,
+				BE1ECC2117F1B4BF006CCD56 /* FSWebLogin.m in Sources */,
 				BEA0DFFB17EF1D8F00102645 /* VEMenuCell.m in Sources */,
+				BE1ECC2A17F1B50E006CCD56 /* VEFSViewController.m in Sources */,
 				BEEB675917ECAB3000F394E9 /* GHRevealViewController.m in Sources */,
 				BEEB672717EC9A1A00F394E9 /* VEAppDelegate.m in Sources */,
 				BEEB675217ECAAB200F394E9 /* MBProgressHUD.m in Sources */,
@@ -460,7 +524,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -493,7 +557,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -507,7 +571,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
 				INFOPLIST_FILE = "Veespo/Veespo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -521,7 +585,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
 				INFOPLIST_FILE = "Veespo/Veespo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

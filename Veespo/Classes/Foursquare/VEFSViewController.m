@@ -37,11 +37,11 @@
     
     // TableView
     CGRect appBounds = [UIScreen mainScreen].bounds;
-    venuesTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, appBounds.size.width, appBounds.size.height - 64) style:UITableViewStylePlain];
-    venuesTableView.delegate = self;
-    venuesTableView.dataSource = self;
-    venuesTableView.tableHeaderView = mapView;
-    venuesTableView.tableFooterView = footer;
+//    venuesTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, appBounds.size.width, appBounds.size.height - 64) style:UITableViewStylePlain];
+//    venuesTableView.delegate = self;
+//    venuesTableView.dataSource = self;
+//    venuesTableView.tableHeaderView = mapView;
+//    venuesTableView.tableFooterView = footer;
     
     // LocationManager
 	_locationManager = [[CLLocationManager alloc]init];
@@ -49,7 +49,7 @@
     _locationManager.delegate = self;
     [_locationManager startUpdatingLocation];
     
-    [self.view addSubview:venuesTableView];
+//    [self.view addSubview:venuesTableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,7 +100,7 @@
 										   NSArray* venues = [dic valueForKeyPath:@"response.venues"];
                                            FSConverter *converter = [[FSConverter alloc]init];
                                            nearbyVenues = [converter convertToObjects:venues];
-                                           [venuesTableView reloadData];
+//                                           [venuesTableView reloadData];
 //                                           [self proccessAnnotations];
                                            
 									   }

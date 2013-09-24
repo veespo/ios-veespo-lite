@@ -12,10 +12,10 @@
 
 @class FSVenue;
 
-@interface VEFSViewController : VERootViewController <CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface VEFSViewController : VERootViewController <CLLocationManagerDelegate> {
     CLLocationManager *_locationManager;
     MKMapView* mapView;
-    UITableView* venuesTableView;
+//    UITableView* venuesTableView;
     UIView *footer;
     
     FSVenue* selected;
