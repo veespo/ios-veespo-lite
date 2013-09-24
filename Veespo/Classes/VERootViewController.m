@@ -16,11 +16,10 @@
 
 - (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock {
     if (self = [super initWithNibName:nil bundle:nil]) {
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont
-                                                                               fontWithName:@"Avenir-Black" size:15], NSFontAttributeName,
-                                    [UIColor blueColor], NSForegroundColorAttributeName, nil];
-        
-        [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+        UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.navigationController.navigationBar.frame), 64)];
+        backgroundView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1 alpha:.8];
+        backgroundView.opaque = NO;
+        [self.navigationController.view insertSubview:backgroundView belowSubview:self.navigationController.navigationBar];
 		self.title = title;
 		_revealBlock = [revealBlock copy];
 		self.navigationItem.leftBarButtonItem =

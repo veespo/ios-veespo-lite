@@ -35,6 +35,13 @@
 									duration:kGHRevealSidebarDefaultAnimationDuration];
 	};
     
+//    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont
+//                                                                           fontWithName:@"Avenir-Black" size:15], NSFontAttributeName,
+//                                [UIColor blackColor], NSForegroundColorAttributeName, nil];
+//    
+//    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+
     NSArray *headers = @[
                          @"VEESPO",
                          @"OTHER"
