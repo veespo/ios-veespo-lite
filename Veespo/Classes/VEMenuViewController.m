@@ -38,7 +38,7 @@
     [super viewDidLoad];
     self.view.frame = CGRectMake(0.0f, 0.0f, kGHRevealSidebarWidth, CGRectGetHeight(self.view.bounds));
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    UIColor* darkColor = [UIColor colorWithRed:10.0/255 green:78.0/255 blue:108.0/255 alpha:1.0f];
+    UIColor* darkColor = UIColorFromRGB(0x1D7800);
     self.view.backgroundColor = darkColor;
     _menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 20.0f, kGHRevealSidebarWidth, CGRectGetHeight(self.view.bounds))
 												  style:UITableViewStylePlain];

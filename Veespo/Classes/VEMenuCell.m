@@ -14,8 +14,8 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        mainColor = [UIColor colorWithRed:47.0/255 green:168.0/255 blue:228.0/255 alpha:1.0f];
-        darkColor = [UIColor colorWithRed:10.0/255 green:78.0/255 blue:108.0/255 alpha:1.0f];
+        mainColor = [UIColor colorWithRed:47.0/255 green:168.0/255 blue:228.0/255 alpha:.8f];
+        darkColor = UIColorFromRGB(0x1D7800);
     }
     return self;
 }
@@ -43,7 +43,7 @@
     topSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 42, 320, 1)];
     topSeparator.backgroundColor = [UIColor clearColor];
     bottomSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 320, 1)];
-    bottomSeparator.backgroundColor = [UIColor colorWithWhite:0.9f alpha:0.2f];
+    bottomSeparator.backgroundColor = UIColorFromRGB(0x6E6E6E);
     [myContentView addSubview:topSeparator];
     [myContentView addSubview:bottomSeparator];
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(46, 12, 251, 21)];

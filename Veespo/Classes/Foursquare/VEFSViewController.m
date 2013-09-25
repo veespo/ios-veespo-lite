@@ -23,10 +23,10 @@
 {
     [super viewDidLoad];
 
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.navigationController.navigationBar.frame), 64)];
-    backgroundView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1 alpha:.8];
-    backgroundView.opaque = NO;
-    [self.navigationController.view insertSubview:backgroundView belowSubview:self.navigationController.navigationBar];
+//    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.navigationController.navigationBar.frame), 64)];
+//    backgroundView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1 alpha:.8];
+//    backgroundView.opaque = NO;
+//    [self.navigationController.view insertSubview:backgroundView belowSubview:self.navigationController.navigationBar];
     
     // MAKMapView
     mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 64, 320, 128)];
@@ -48,8 +48,9 @@
     venuesCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 192, appBounds.size.width, appBounds.size.height - 222) collectionViewLayout:layout];
     venuesCollection.delegate = self;
     venuesCollection.dataSource = self;
-    venuesCollection.backgroundColor = [UIColor blueColor];
+    venuesCollection.backgroundColor = UIColorFromRGB(0x1D7800);
     [venuesCollection registerClass:[VEVenueCell class] forCellWithReuseIdentifier:@"FoursquareCell"];
+    [venuesCollection reloadData];
     
     // Footer
     footer = [[UIView alloc] initWithFrame:CGRectMake(0, venuesCollection.frame.origin.y + venuesCollection.frame.size.height, 320, 30)];
@@ -61,8 +62,8 @@
     
     // LocationManager
 	_locationManager = [[CLLocationManager alloc]init];
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    _locationManager.distanceFilter = 50;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    _locationManager.distanceFilter = 100;
     _locationManager.delegate = self;
     [_locationManager startUpdatingLocation];
     [self.view addSubview:mapView];
@@ -166,7 +167,7 @@
 									  query:nil
 									  limit:nil
 									 intent:intentCheckin
-                                     radius:@(500)
+                                     radius:@(700)
                                  categoryId:nil
 								   callback:^(BOOL success, id result){
 									   if (success) {
