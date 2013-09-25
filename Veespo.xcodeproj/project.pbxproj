@@ -35,6 +35,11 @@
 		BE1ECC6017F22DF8006CCD56 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */; };
 		BE1ECC6B17F22E6F006CCD56 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC6817F22E6F006CCD56 /* FSConverter.m */; };
 		BE1ECC6C17F22E6F006CCD56 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC6A17F22E6F006CCD56 /* FSVenue.m */; };
+		BE1ECC7017F22FE0006CCD56 /* VERSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC6F17F22FE0006CCD56 /* VERSSViewController.m */; };
+		BE1ECC7317F23485006CCD56 /* VERSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC7217F23485006CCD56 /* VERSSParser.m */; };
+		BE1ECC7617F237D0006CCD56 /* RassegnaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC7517F237D0006CCD56 /* RassegnaCell.m */; };
+		BE1ECC7A17F23B4F006CCD56 /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC7817F23B4F006CCD56 /* WebVC.m */; };
+		BE1ECC7B17F23B4F006CCD56 /* WebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC7917F23B4F006CCD56 /* WebVC.xib */; };
 		BE79E55817EF9F41006F60F6 /* VEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BE79E55717EF9F41006F60F6 /* VEUser.m */; };
 		BEA0DFF517EDE6A300102645 /* VERootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFF417EDE6A300102645 /* VERootViewController.m */; };
 		BEA0DFF817EDE9AD00102645 /* VEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFF717EDE9AD00102645 /* VEMenuViewController.m */; };
@@ -119,6 +124,15 @@
 		BE1ECC6817F22E6F006CCD56 /* FSConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSConverter.m; path = Classes/Foursquare/FSConverter.m; sourceTree = "<group>"; };
 		BE1ECC6917F22E6F006CCD56 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSVenue.h; path = Classes/Foursquare/FSVenue.h; sourceTree = "<group>"; };
 		BE1ECC6A17F22E6F006CCD56 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSVenue.m; path = Classes/Foursquare/FSVenue.m; sourceTree = "<group>"; };
+		BE1ECC6E17F22FE0006CCD56 /* VERSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VERSSViewController.h; path = Classes/RSS/VERSSViewController.h; sourceTree = "<group>"; };
+		BE1ECC6F17F22FE0006CCD56 /* VERSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VERSSViewController.m; path = Classes/RSS/VERSSViewController.m; sourceTree = "<group>"; };
+		BE1ECC7117F23485006CCD56 /* VERSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VERSSParser.h; path = Classes/RSS/VERSSParser.h; sourceTree = "<group>"; };
+		BE1ECC7217F23485006CCD56 /* VERSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VERSSParser.m; path = Classes/RSS/VERSSParser.m; sourceTree = "<group>"; };
+		BE1ECC7417F237D0006CCD56 /* RassegnaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RassegnaCell.h; sourceTree = "<group>"; };
+		BE1ECC7517F237D0006CCD56 /* RassegnaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RassegnaCell.m; sourceTree = "<group>"; };
+		BE1ECC7717F23B4F006CCD56 /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
+		BE1ECC7817F23B4F006CCD56 /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
+		BE1ECC7917F23B4F006CCD56 /* WebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebVC.xib; sourceTree = "<group>"; };
 		BE79E55617EF9F41006F60F6 /* VEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEUser.h; path = Classes/VEUser.h; sourceTree = "<group>"; };
 		BE79E55717EF9F41006F60F6 /* VEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEUser.m; path = Classes/VEUser.m; sourceTree = "<group>"; };
 		BEA0DFF317EDE6A200102645 /* VERootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VERootViewController.h; path = Classes/VERootViewController.h; sourceTree = "<group>"; };
@@ -254,6 +268,22 @@
 			name = AFNetworking;
 			sourceTree = "<group>";
 		};
+		BE1ECC6D17F22EFD006CCD56 /* RSS */ = {
+			isa = PBXGroup;
+			children = (
+				BE1ECC7717F23B4F006CCD56 /* WebVC.h */,
+				BE1ECC7817F23B4F006CCD56 /* WebVC.m */,
+				BE1ECC7917F23B4F006CCD56 /* WebVC.xib */,
+				BE1ECC7417F237D0006CCD56 /* RassegnaCell.h */,
+				BE1ECC7517F237D0006CCD56 /* RassegnaCell.m */,
+				BE1ECC6E17F22FE0006CCD56 /* VERSSViewController.h */,
+				BE1ECC6F17F22FE0006CCD56 /* VERSSViewController.m */,
+				BE1ECC7117F23485006CCD56 /* VERSSParser.h */,
+				BE1ECC7217F23485006CCD56 /* VERSSParser.m */,
+			);
+			name = RSS;
+			sourceTree = "<group>";
+		};
 		BEEB670A17EC9A1A00F394E9 = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +366,7 @@
 		BEEB674E17ECAA7F00F394E9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BE1ECC6D17F22EFD006CCD56 /* RSS */,
 				BE1ECB6C17F194A9006CCD56 /* Foursquare */,
 				BEEB674F17ECAA8600F394E9 /* Library */,
 				BEA0DFF317EDE6A200102645 /* VERootViewController.h */,
@@ -472,6 +503,7 @@
 				BE1ECC3717F1CC00006CCD56 /* poweredByFoursquare_gray.png in Resources */,
 				BEEB672A17EC9A1A00F394E9 /* Main.storyboard in Resources */,
 				BE1ECC3617F1CC00006CCD56 /* pin@2x.png in Resources */,
+				BE1ECC7B17F23B4F006CCD56 /* WebVC.xib in Resources */,
 				BE1ECC3D17F1D51F006CCD56 /* Empty.xib in Resources */,
 				BEA0E00417EF7FE700102645 /* VEVeespoNib.xib in Resources */,
 			);
@@ -502,6 +534,7 @@
 				BE1ECC5417F1E724006CCD56 /* AFHTTPClient.m in Sources */,
 				BEEB672317EC9A1A00F394E9 /* main.m in Sources */,
 				BE1ECC6C17F22E6F006CCD56 /* FSVenue.m in Sources */,
+				BE1ECC7017F22FE0006CCD56 /* VERSSViewController.m in Sources */,
 				BE1ECC3B17F1D470006CCD56 /* VEVenueCell.m in Sources */,
 				BEEB672D17EC9A1A00F394E9 /* VEViewController.m in Sources */,
 				BE1ECC5517F1E724006CCD56 /* AFHTTPRequestOperation.m in Sources */,
@@ -515,12 +548,15 @@
 				BE1ECC5B17F1E724006CCD56 /* AFXMLRequestOperation.m in Sources */,
 				BE1ECC2117F1B4BF006CCD56 /* FSWebLogin.m in Sources */,
 				BE1ECC6B17F22E6F006CCD56 /* FSConverter.m in Sources */,
+				BE1ECC7A17F23B4F006CCD56 /* WebVC.m in Sources */,
 				BEA0DFFB17EF1D8F00102645 /* VEMenuCell.m in Sources */,
 				BE1ECC2A17F1B50E006CCD56 /* VEFSViewController.m in Sources */,
 				BEEB675917ECAB3000F394E9 /* GHRevealViewController.m in Sources */,
 				BEEB672717EC9A1A00F394E9 /* VEAppDelegate.m in Sources */,
 				BEEB675217ECAAB200F394E9 /* MBProgressHUD.m in Sources */,
+				BE1ECC7617F237D0006CCD56 /* RassegnaCell.m in Sources */,
 				BE1ECC5817F1E724006CCD56 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				BE1ECC7317F23485006CCD56 /* VERSSParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
