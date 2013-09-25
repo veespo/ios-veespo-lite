@@ -14,6 +14,7 @@
 #import "VEVeespoViewController.h"
 #import "VEFSViewController.h"
 #import "VERSSViewController.h"
+#import "VEEspnViewController.h"
 #import "Foursquare2.h"
 
 #pragma mark - Private Interface
@@ -53,16 +54,18 @@
                                  ],
                              @[
                                  [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:@"FourSquare" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] initWithTitle:@"News" withRevealBlock:revealBlock]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] initWithTitle:@"News: Tecnologia" withRevealBlock:revealBlock]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] initWithTitle:@"ESPN Top News" withRevealBlock:revealBlock]]
                                  ]
     ];
     NSArray *cellInfos = @[
                            @[
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"Veespo"},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"Home"},
                                ],
                            @[
                                @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"FourSquare"},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"News"},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"News: Tecnologia"},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"News: Sport"},
                             ]
     ];
     

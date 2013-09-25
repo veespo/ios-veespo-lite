@@ -40,6 +40,7 @@
 		BE1ECC7617F237D0006CCD56 /* RassegnaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC7517F237D0006CCD56 /* RassegnaCell.m */; };
 		BE1ECC7A17F23B4F006CCD56 /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC7817F23B4F006CCD56 /* WebVC.m */; };
 		BE1ECC7B17F23B4F006CCD56 /* WebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC7917F23B4F006CCD56 /* WebVC.xib */; };
+		BE1ECC7F17F310D1006CCD56 /* VEEspnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC7E17F310D1006CCD56 /* VEEspnViewController.m */; };
 		BE79E55817EF9F41006F60F6 /* VEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BE79E55717EF9F41006F60F6 /* VEUser.m */; };
 		BEA0DFF517EDE6A300102645 /* VERootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFF417EDE6A300102645 /* VERootViewController.m */; };
 		BEA0DFF817EDE9AD00102645 /* VEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFF717EDE9AD00102645 /* VEMenuViewController.m */; };
@@ -133,6 +134,8 @@
 		BE1ECC7717F23B4F006CCD56 /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
 		BE1ECC7817F23B4F006CCD56 /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
 		BE1ECC7917F23B4F006CCD56 /* WebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebVC.xib; sourceTree = "<group>"; };
+		BE1ECC7D17F310D1006CCD56 /* VEEspnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEEspnViewController.h; path = Classes/ESPN/VEEspnViewController.h; sourceTree = "<group>"; };
+		BE1ECC7E17F310D1006CCD56 /* VEEspnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEEspnViewController.m; path = Classes/ESPN/VEEspnViewController.m; sourceTree = "<group>"; };
 		BE79E55617EF9F41006F60F6 /* VEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEUser.h; path = Classes/VEUser.h; sourceTree = "<group>"; };
 		BE79E55717EF9F41006F60F6 /* VEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEUser.m; path = Classes/VEUser.m; sourceTree = "<group>"; };
 		BEA0DFF317EDE6A200102645 /* VERootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VERootViewController.h; path = Classes/VERootViewController.h; sourceTree = "<group>"; };
@@ -284,6 +287,15 @@
 			name = RSS;
 			sourceTree = "<group>";
 		};
+		BE1ECC7C17F31088006CCD56 /* ESPN */ = {
+			isa = PBXGroup;
+			children = (
+				BE1ECC7D17F310D1006CCD56 /* VEEspnViewController.h */,
+				BE1ECC7E17F310D1006CCD56 /* VEEspnViewController.m */,
+			);
+			name = ESPN;
+			sourceTree = "<group>";
+		};
 		BEEB670A17EC9A1A00F394E9 = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +378,7 @@
 		BEEB674E17ECAA7F00F394E9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BE1ECC7C17F31088006CCD56 /* ESPN */,
 				BE1ECC6D17F22EFD006CCD56 /* RSS */,
 				BE1ECB6C17F194A9006CCD56 /* Foursquare */,
 				BEEB674F17ECAA8600F394E9 /* Library */,
@@ -533,6 +546,7 @@
 				BE1ECC5C17F1E724006CCD56 /* UIImageView+AFNetworking.m in Sources */,
 				BE1ECC5417F1E724006CCD56 /* AFHTTPClient.m in Sources */,
 				BEEB672317EC9A1A00F394E9 /* main.m in Sources */,
+				BE1ECC7F17F310D1006CCD56 /* VEEspnViewController.m in Sources */,
 				BE1ECC6C17F22E6F006CCD56 /* FSVenue.m in Sources */,
 				BE1ECC7017F22FE0006CCD56 /* VERSSViewController.m in Sources */,
 				BE1ECC3B17F1D470006CCD56 /* VEVenueCell.m in Sources */,

@@ -20,15 +20,19 @@
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-    
-    if(selected)
-        bgView.backgroundColor = mainColor;
-    else
-        bgView.backgroundColor = darkColor;
-}
+//- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+//{
+//    [super setSelected:selected animated:animated];
+//    
+//    if(selected) {
+//        bgView.backgroundColor = mainColor;
+//        titleLabel.textColor = [UIColor blackColor];
+//    }
+//    else {
+//        bgView.backgroundColor = darkColor;
+//        titleLabel.textColor = [UIColor whiteColor];
+//    }
+//}
 
 - (void)layoutSubviews
 {

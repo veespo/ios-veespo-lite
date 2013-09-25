@@ -13,7 +13,10 @@
 #import "VEVenueCell.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface VEFSViewController ()
+@interface VEFSViewController (){
+    int locationUpdateCnt;
+    CLLocation *lastLocation;
+}
 
 @end
 
@@ -22,7 +25,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    locationUpdateCnt = 0;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(updateVenuesCollection)];
+    
 //    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.navigationController.navigationBar.frame), 64)];
 //    backgroundView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1 alpha:.8];
 //    backgroundView.opaque = NO;
@@ -62,19 +68,35 @@
     
     // LocationManager
 	_locationManager = [[CLLocationManager alloc]init];
-    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.distanceFilter = 100;
     _locationManager.delegate = self;
-    [_locationManager startUpdatingLocation];
+    
     [self.view addSubview:mapView];
     [self.view addSubview:venuesCollection];
     [self.view addSubview:footer];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [_locationManager startUpdatingLocation];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    locationUpdateCnt = 0;
+    [_locationManager stopUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    nearbyVenues = nil;
+    locationUpdateCnt = 0;
+    [_locationManager stopUpdatingLocation];
 }
 
 -(void)userDidSelectVenue{
@@ -99,8 +121,9 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
-//    [_locationManager stopUpdatingLocation];
-    [self getVenuesForLocation:newLocation];
+    lastLocation = newLocation;
+    if (locationUpdateCnt++ < 3)
+        [self getVenuesForLocation:newLocation];
     [self setupMapForLocatoion:newLocation];
 }
 
@@ -154,7 +177,17 @@
 
 #pragma mark - Foursquare2
 
--(void)getVenuesForLocation:(CLLocation*)location{
+- (void)updateVenuesCollection
+{
+    [self getVenuesForLocation:lastLocation];
+}
+
+- (void)getVenuesForLocation:(CLLocation*)location
+{
+    if (HUD) {
+        [HUD hide:NO];
+        HUD = nil;
+    }
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.delegate = self;
@@ -178,7 +211,8 @@
                                            [self proccessAnnotations];
                                            [venuesCollection reloadData];
                                            [HUD hide:YES afterDelay:1.5];
-									   }
+									   } else
+                                           [HUD hide:YES];
 								   }];
 }
 
@@ -206,7 +240,7 @@
 
 // 1
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGSize retval = CGSizeMake(130, 130);
+    CGSize retval = CGSizeMake(135, 135);
     return retval;
 }
 
