@@ -24,6 +24,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Valuta" style:UIBarButtonItemStylePlain target:self action:nil];
+    
     CGRect appBounds = [UIScreen mainScreen].bounds;
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, appBounds.size.height)];
     
