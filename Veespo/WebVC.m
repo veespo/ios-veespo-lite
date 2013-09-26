@@ -34,7 +34,7 @@
     [webScroll setBounces:NO];
     [webView setScalesPageToFit:YES];
     webView.delegate = self;
-    //webView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    webView.autoresizingMask=UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
     //URL Requst Object
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:_url];
