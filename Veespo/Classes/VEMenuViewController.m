@@ -39,7 +39,7 @@
     self.view.frame = CGRectMake(0.0f, 0.0f, kGHRevealSidebarWidth, CGRectGetHeight(self.view.bounds));
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     UIColor* darkColor = UIColorFromRGB(0x1D7800);
-    self.view.backgroundColor = UIColorFromRGB(0x6E6E6E);
+    self.view.backgroundColor = UIColorFromRGB(0xDBDBDB);
     _menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 20.0f, kGHRevealSidebarWidth, CGRectGetHeight(self.view.bounds))
 												  style:UITableViewStylePlain];
 	_menuTableView.delegate = self;
@@ -77,13 +77,14 @@
 	UIView *headerView = nil;
 	if (headerText != [NSNull null]) {
 		headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.height, 21.0f)];
-		CAGradientLayer *gradient = [CAGradientLayer layer];
-		gradient.frame = headerView.bounds;
-		gradient.colors = @[
-                            (id)[UIColor colorWithRed:(67.0f/255.0f) green:(74.0f/255.0f) blue:(94.0f/255.0f) alpha:1.0f].CGColor,
-                            (id)[UIColor colorWithRed:(57.0f/255.0f) green:(64.0f/255.0f) blue:(82.0f/255.0f) alpha:1.0f].CGColor,
-                            ];
-		[headerView.layer insertSublayer:gradient atIndex:0];
+        headerView.backgroundColor = UIColorFromRGB(0xDBDBDB);
+//		CAGradientLayer *gradient = [CAGradientLayer layer];
+//		gradient.frame = headerView.bounds;
+//		gradient.colors = @[
+//                            (id)[UIColor colorWithRed:(97.0f/255.0f) green:(104.0f/255.0f) blue:(124.0f/255.0f) alpha:1.0f].CGColor,
+//                            (id)[UIColor colorWithRed:(57.0f/255.0f) green:(64.0f/255.0f) blue:(82.0f/255.0f) alpha:1.0f].CGColor,
+//                            ];
+//		[headerView.layer insertSublayer:gradient atIndex:0];
 		
 		UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
 		textLabel.text = (NSString *) headerText;

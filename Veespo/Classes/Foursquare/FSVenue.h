@@ -25,6 +25,7 @@
 
 @property (nonatomic,strong)NSString*name;
 @property (nonatomic,strong)NSString*venueId;
+@property (nonatomic,strong)NSString*category;
 @property (nonatomic,strong)FSLocation*location;
 @property (nonatomic,strong)NSURL *imageURL;
 

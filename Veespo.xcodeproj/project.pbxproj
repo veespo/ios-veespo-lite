@@ -48,6 +48,7 @@
 		BEA0DFFF17EF311C00102645 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = BEA0DFFE17EF311C00102645 /* user.png */; };
 		BEA0E00217EF694800102645 /* VEVeespoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0E00117EF694800102645 /* VEVeespoViewController.m */; };
 		BEA0E00417EF7FE700102645 /* VEVeespoNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA0E00317EF7FE700102645 /* VEVeespoNib.xib */; };
+		BEE2FBFB17F4322300DD0FBD /* VEFSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE2FBFA17F4322300DD0FBD /* VEFSHeaderView.m */; };
 		BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671617EC9A1A00F394E9 /* Foundation.framework */; };
 		BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671817EC9A1A00F394E9 /* CoreGraphics.framework */; };
 		BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671A17EC9A1A00F394E9 /* UIKit.framework */; };
@@ -148,6 +149,8 @@
 		BEA0E00017EF694800102645 /* VEVeespoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEVeespoViewController.h; path = Classes/VEVeespoViewController.h; sourceTree = "<group>"; };
 		BEA0E00117EF694800102645 /* VEVeespoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEVeespoViewController.m; path = Classes/VEVeespoViewController.m; sourceTree = "<group>"; };
 		BEA0E00317EF7FE700102645 /* VEVeespoNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VEVeespoNib.xib; path = Classes/VEVeespoNib.xib; sourceTree = "<group>"; };
+		BEE2FBF917F4322300DD0FBD /* VEFSHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEFSHeaderView.h; path = Classes/Foursquare/VEFSHeaderView.h; sourceTree = "<group>"; };
+		BEE2FBFA17F4322300DD0FBD /* VEFSHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEFSHeaderView.m; path = Classes/Foursquare/VEFSHeaderView.m; sourceTree = "<group>"; };
 		BEEB671317EC9A1A00F394E9 /* Veespo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veespo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEB671617EC9A1A00F394E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BEEB671817EC9A1A00F394E9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -219,6 +222,8 @@
 				BE1ECC3917F1D470006CCD56 /* VEVenueCell.h */,
 				BE1ECC3A17F1D470006CCD56 /* VEVenueCell.m */,
 				BE1ECC3C17F1D51F006CCD56 /* Empty.xib */,
+				BEE2FBF917F4322300DD0FBD /* VEFSHeaderView.h */,
+				BEE2FBFA17F4322300DD0FBD /* VEFSHeaderView.m */,
 			);
 			name = Foursquare;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				BEEB675917ECAB3000F394E9 /* GHRevealViewController.m in Sources */,
 				BEEB672717EC9A1A00F394E9 /* VEAppDelegate.m in Sources */,
 				BEEB675217ECAAB200F394E9 /* MBProgressHUD.m in Sources */,
+				BEE2FBFB17F4322300DD0FBD /* VEFSHeaderView.m in Sources */,
 				BE1ECC7617F237D0006CCD56 /* RassegnaCell.m in Sources */,
 				BE1ECC5817F1E724006CCD56 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				BE1ECC7317F23485006CCD56 /* VERSSParser.m in Sources */,

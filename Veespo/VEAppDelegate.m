@@ -31,6 +31,7 @@
     [Foursquare2 setupFoursquareWithClientId:@"AXC1A3NOVLLF4UL3SPJHXNEMXADRG3Z1OJRSCRQL0C0I5ZOV"
                                       secret:@"QQFISLPK5YXPHURAGKJTWI2DT1KQHM2CGVYBXMRKPAU1VKEJ"
                                  callbackURL:@"testapp123://foursquare"];
+    
 	self.revealController = [[GHRevealViewController alloc] initWithNibName:nil bundle:nil];
     RevealBlock revealBlock = ^(){
 		[self.revealController toggleSidebar:!self.revealController.sidebarShowing

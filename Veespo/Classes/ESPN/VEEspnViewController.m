@@ -24,7 +24,7 @@
     _dataSource = [[NSMutableArray alloc] init];
     CGRect appBounds = [UIScreen mainScreen].bounds;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-    [headerView setBackgroundColor:[UIColor clearColor]];
+    [headerView setBackgroundColor:UIColorFromRGB(0x1D7800)];
     UILabel *newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 300, 25)];
     newsTitleLbl.font = [UIFont fontWithName:UIFontTextStyleHeadline size:20];
     newsTitleLbl.textColor = [UIColor whiteColor];
@@ -36,7 +36,7 @@
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    [_tableView setBackgroundColor:[UIColor clearColor]];
+    [_tableView setBackgroundColor:[UIColor whiteColor]];
     [_tableView setShowsVerticalScrollIndicator:YES];
     _tableView.tableHeaderView = headerView;
     [_tableView reloadData];

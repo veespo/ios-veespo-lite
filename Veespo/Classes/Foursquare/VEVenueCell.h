@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UIImageView *venueIcon;
 @property (nonatomic, strong) UILabel *venueNameLbl;
-@property (nonatomic, strong) UILabel *venueDistanceLbl;
+@property (nonatomic, strong) UILabel *venueAddressLbl;
+@property (nonatomic, strong) UILabel *venueCategoryLbl;
 
 @end

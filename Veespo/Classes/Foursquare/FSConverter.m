@@ -12,7 +12,8 @@
 
 @implementation FSConverter
 
--(NSArray*)convertToObjects:(NSArray*)venues{
+- (NSArray*)convertToObjects:(NSArray*)venues
+{
     NSMutableArray *objects = [NSMutableArray arrayWithCapacity:venues.count];
     for (NSDictionary *v  in venues) {
         FSVenue *ann = [[FSVenue alloc]init];
@@ -24,13 +25,18 @@
         
         [ann.location setCoordinate:CLLocationCoordinate2DMake([v[@"location"][@"lat"] doubleValue],
                                                       [v[@"location"][@"lng"] doubleValue])];
+        
         NSArray *cats = [NSArray arrayWithObject:v[@"categories"]];
         NSDictionary *dic = [[cats firstObject] firstObject];
         NSString *prefix;
+        
+        ann.category = dic[@"shortName"];
+        
         if ( [dic[@"icon"][@"prefix"] length] > 0)
-            prefix = [dic[@"icon"][@"prefix"] substringToIndex:[dic[@"icon"][@"prefix"] length] - 1];
+            prefix = [NSString stringWithFormat:@"%@44", dic[@"icon"][@"prefix"]];
         NSString *imageString = [NSString stringWithFormat:@"%@%@", prefix, dic[@"icon"][@"suffix"]];
         [ann setImageURL:[NSURL URLWithString:imageString]];
+        
         [objects addObject:ann];
     }
     return objects;

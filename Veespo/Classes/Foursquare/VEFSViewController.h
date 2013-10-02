@@ -17,7 +17,6 @@
     CLLocationManager *_locationManager;
     MKMapView* mapView;
     UICollectionView *venuesCollection;
-    UIView *footer;
     MBProgressHUD *HUD;
     
     FSVenue* selected;

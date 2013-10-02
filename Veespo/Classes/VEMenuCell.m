@@ -47,7 +47,7 @@
     topSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 42, 320, 1)];
     topSeparator.backgroundColor = [UIColor clearColor];
     bottomSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 320, 1)];
-    bottomSeparator.backgroundColor = UIColorFromRGB(0x6E6E6E);
+    bottomSeparator.backgroundColor = UIColorFromRGB(0xBABABA);
     [myContentView addSubview:topSeparator];
     [myContentView addSubview:bottomSeparator];
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(46, 12, 251, 21)];
