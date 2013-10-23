@@ -20,7 +20,7 @@
     MBProgressHUD *HUD;
     
     FSVenue* selected;
-    NSArray* nearbyVenues;
+    NSMutableArray* nearbyVenues;
 }
 
 @end

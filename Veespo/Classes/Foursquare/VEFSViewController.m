@@ -13,10 +13,16 @@
 #import "VEVenueCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "VEFSHeaderView.h"
+#import "VEDetailVenue.h"
+#import <AdSupport/AdSupport.h>
+#import <VeespoFramework/Veespo.h>
+#import <VeespoFramework/VEVeespoViewController.h>
 
 @interface VEFSViewController (){
     int locationUpdateCnt;
     CLLocation *lastLocation;
+    
+    NSArray *tokens;
 }
 
 @end
@@ -71,12 +77,32 @@
     [self.view addSubview:div];
     [self.view addSubview:mapView];
     [self.view addSubview:venuesCollection];
+    
+    [_locationManager startUpdatingLocation];
+    
+    NSDictionary *categories = @{
+                                 @"categories":@[
+                                         @{@"cat": @"ios"}
+                                         ]
+                                 };
+    
+    [Veespo initVeespo:@"apk-fa190130-501e-4a82-973d-2cd0143c6f66"
+                userId:[NSString stringWithFormat:@"VeespoApp-%@",
+                        [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]
+                        ]
+              userName:nil
+              language:@"it"
+            categories:categories
+               testUrl:YES
+                tokens:^(id responseData, BOOL error) {
+                    tokens = [[NSArray alloc] initWithArray:[responseData objectForKey:@"tokens"]];
+                }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [_locationManager startUpdatingLocation];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -95,8 +121,13 @@
     [_locationManager stopUpdatingLocation];
 }
 
--(void)userDidSelectVenue{
-    // TODO: Open Veespo Vidget
+-(void)userDidSelectVenue:(NSIndexPath *)indexPath
+{
+    VEDetailVenue *detail = [[VEDetailVenue alloc] init];
+    detail.token = [tokens objectAtIndex:0][@"token"];
+    detail.venue = [nearbyVenues objectAtIndex:indexPath.row];
+    detail.title = detail.venue.title;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 #pragma mark - Location and Map
@@ -170,7 +201,10 @@
 
 -(void)checkinButton{
     selected = mapView.selectedAnnotations.lastObject;
-    [self userDidSelectVenue];
+    VEDetailVenue *detail = [[VEDetailVenue alloc] init];
+    detail.venue = selected;
+    detail.title = detail.venue.title;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 #pragma mark - Foursquare2
@@ -198,17 +232,37 @@
 									  query:nil
 									  limit:nil
 									 intent:intentBrowse
-                                     radius:@(700)
+                                     radius:@(500)
                                  categoryId:catCibi
 								   callback:^(BOOL success, id result){
 									   if (success) {
 										   NSDictionary *dic = result;
 										   NSArray* venues = [dic valueForKeyPath:@"response.venues"];
                                            FSConverter *converter = [[FSConverter alloc]init];
-                                           nearbyVenues = [converter convertToObjects:venues];
-                                           [self proccessAnnotations];
-                                           [venuesCollection reloadData];
-                                           [HUD hide:YES afterDelay:1.5];
+                                           nearbyVenues = (NSMutableArray *)[converter convertToObjects:venues withCategory:catCibi];
+                                           [Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
+                                                                         longitude:@(location.coordinate.longitude)
+                                                                        accuracyLL:nil
+                                                                          altitude:nil
+                                                                       accuracyAlt:nil
+                                                                             query:nil
+                                                                             limit:nil
+                                                                            intent:intentBrowse
+                                                                            radius:@(500)
+                                                                        categoryId:catLocaliNotturni
+                                                                          callback:^(BOOL success, id result){
+                                                                              if (success) {
+                                                                                  NSDictionary *dic = result;
+                                                                                  NSArray* venues = [dic valueForKeyPath:@"response.venues"];
+                                                                                  FSConverter *converter = [[FSConverter alloc]init];
+                                                                                  NSArray *tmp = [converter convertToObjects:venues withCategory:catLocaliNotturni];
+                                                                                  [nearbyVenues addObjectsFromArray:tmp];
+                                                                                  [self proccessAnnotations];
+                                                                                  [venuesCollection reloadData];
+                                                                                  [HUD hide:YES afterDelay:1.5];
+                                                                              } else
+                                                                                  [HUD hide:YES];
+                                                                          }];
 									   } else
                                            [HUD hide:YES];
 								   }];
@@ -270,7 +324,7 @@
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self userDidSelectVenue];
+    [self userDidSelectVenue:indexPath];
 }
 
 @end

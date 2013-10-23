@@ -7,6 +7,9 @@
 //
 
 #import "VEVeespoViewController.h"
+#import "UIControl+VEControl.h"
+#import "VEConnection.h"
+#import "VETargetViewController.h"
 
 #define DEMOCODETEXT_WIDTH 44.0
 #define DEMOCODETEXT_HEIGHT 44.0
@@ -78,6 +81,15 @@
     logVeespoBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     logVeespoBtn.frame = CGRectMake(216, historyDemoCodeBtn.frame.origin.y, 71, 35);
     [logVeespoBtn setTitle:@"Accedi" forState:UIControlStateNormal];
+    [logVeespoBtn touchUpInside:^(UIEvent *event) {
+        VEConnection *connection = [[VEConnection alloc] init];
+        NSString *demoCode = [[NSString stringWithFormat:@"%@%@%@%@", textOneTf.text, textTwoTf.text, textThreeTf.text, textFourTf.text] uppercaseString];
+        [connection requestTargetList:[NSDictionary dictionaryWithObjectsAndKeys:demoCode, @"democode", userNameTf.text, @"userid", nil] withBlock:^(id responseData) {
+            VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
+            targetVC.targetList = responseData;
+            [self.navigationController pushViewController:targetVC animated:YES];
+        }];
+    }];
     
     [self.view addSubview:textOneTf];
     [self.view addSubview:textTwoTf];
@@ -92,6 +104,30 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - TextField
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if ([string isEqualToString:@""])
+        return YES;
+    if(textField == textOneTf) {
+        textOneTf.text = string;
+        [textTwoTf becomeFirstResponder];
+    } else if (textField == textTwoTf) {
+        textTwoTf.text = string;
+        [textThreeTf becomeFirstResponder];
+    } else if (textField == textThreeTf) {
+        textThreeTf.text = string;
+        [textFourTf becomeFirstResponder];
+    } else if (textField == textFourTf) {
+        textFourTf.text = string;
+        [userNameTf becomeFirstResponder];
+    } else
+        return YES;
+    
+    return NO;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {

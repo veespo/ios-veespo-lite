@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VERootViewController.h"
 
-@interface VEViewController : UIViewController
+@interface VEViewController : VERootViewController <UITextFieldDelegate>
 
 @end

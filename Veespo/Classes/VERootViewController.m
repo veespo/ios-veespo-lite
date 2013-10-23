@@ -22,10 +22,7 @@
 //        [self.navigationController.view insertSubview:backgroundView belowSubview:self.navigationController.navigationBar];
 		self.title = title;
 		_revealBlock = [revealBlock copy];
-		self.navigationItem.leftBarButtonItem =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
-                                                      target:self
-                                                      action:@selector(revealSidebar)];
+		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"259-list.png"] style:UIBarButtonItemStylePlain target:self action:@selector(revealSidebar)];
 	}
 	return self;
 }

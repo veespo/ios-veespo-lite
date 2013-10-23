@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface FSConverter : NSObject
--(NSArray*)convertToObjects:(NSArray*)venues;
+
+- (NSArray*)convertToObjects:(NSArray*)venues;
+- (NSArray*)convertToObjects:(NSArray*)venues withCategory:(NSString *)cat;
+
 @end

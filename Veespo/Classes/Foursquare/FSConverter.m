@@ -42,4 +42,34 @@
     return objects;
 }
 
+- (NSArray*)convertToObjects:(NSArray*)venues withCategory:(NSString *)cat
+{
+    NSMutableArray *objects = [NSMutableArray arrayWithCapacity:venues.count];
+    for (NSDictionary *v  in venues) {
+        FSVenue *ann = [[FSVenue alloc]init];
+        ann.name = v[@"name"];
+        ann.venueId = v[@"id"];
+        [ann setCategoryId:[cat copy]];
+        
+        ann.location.address = v[@"location"][@"address"];
+        ann.location.distance = v[@"location"][@"distance"];
+        
+        [ann.location setCoordinate:CLLocationCoordinate2DMake([v[@"location"][@"lat"] doubleValue],
+                                                               [v[@"location"][@"lng"] doubleValue])];
+        
+        NSArray *cats = [NSArray arrayWithObject:v[@"categories"]];
+        NSDictionary *dic = [[cats firstObject] firstObject];
+        NSString *prefix;
+        
+        ann.category = dic[@"shortName"];
+        
+        if ( [dic[@"icon"][@"prefix"] length] > 0)
+            prefix = [NSString stringWithFormat:@"%@44", dic[@"icon"][@"prefix"]];
+        NSString *imageString = [NSString stringWithFormat:@"%@%@", prefix, dic[@"icon"][@"suffix"]];
+        [ann setImageURL:[NSURL URLWithString:imageString]];
+        
+        [objects addObject:ann];
+    }
+    return objects;
+}
 @end

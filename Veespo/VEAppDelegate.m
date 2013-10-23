@@ -11,7 +11,7 @@
 #import "VEMenuViewController.h"
 #import "VERootViewController.h"
 #import "VEMenuCell.h"
-#import "VEVeespoViewController.h"
+#import "VEViewController.h"
 #import "VEFSViewController.h"
 #import "VERSSViewController.h"
 #import "VEEspnViewController.h"
@@ -32,7 +32,8 @@
                                       secret:@"QQFISLPK5YXPHURAGKJTWI2DT1KQHM2CGVYBXMRKPAU1VKEJ"
                                  callbackURL:@"testapp123://foursquare"];
     
-	self.revealController = [[GHRevealViewController alloc] initWithNibName:nil bundle:nil];
+//	self.revealController = [[GHRevealViewController alloc] initWithNibName:nil bundle:nil];
+    self.revealController = [[GHRevealViewController alloc] init];
     RevealBlock revealBlock = ^(){
 		[self.revealController toggleSidebar:!self.revealController.sidebarShowing
 									duration:kGHRevealSidebarDefaultAnimationDuration];
@@ -51,10 +52,10 @@
     ];
 	NSArray *controllers = @[
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEVeespoViewController alloc] initWithTitle:@"Veespo" withRevealBlock:revealBlock]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] initWithTitle:@"Home" withRevealBlock:revealBlock]]
                                  ],
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:@"FourSquare" withRevealBlock:revealBlock]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:@"Locali" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] initWithTitle:@"News: Tecnologia" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] initWithTitle:@"ESPN Top News" withRevealBlock:revealBlock]]
                                  ]
@@ -64,7 +65,7 @@
                                @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"Home"},
                                ],
                            @[
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"FourSquare"},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"Locali"},
                                @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"News: Tecnologia"},
                                @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"News: Sport"},
                             ]
@@ -76,7 +77,7 @@
 																		withCellInfos:cellInfos];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     if SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")
-        self.window.tintColor = [UIColor greenColor];
+        self.window.tintColor = UIColorFromRGB(0x1D7800);
     self.window.rootViewController = self.revealController;
     [self.window makeKeyAndVisible];
     return YES;
