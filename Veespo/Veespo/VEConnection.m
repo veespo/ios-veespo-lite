@@ -16,22 +16,30 @@
     [request setTimeoutInterval:10];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        // Richiesta user token
-        NSString *urlStr = [NSString stringWithFormat:@"http://sandbox.veespo.com/v1/user-token/demo-code/%@?user=%@", demoCode, userId];
-        NSURL *url = [NSURL URLWithString:urlStr];
-        NSMutableURLRequest *brequest = [NSMutableURLRequest requestWithURL:url];
-        [brequest setHTTPMethod:@"GET"];
-        [brequest setTimeoutInterval:10];
-        __block NSString *catId = JSON[@"data"][@"category"];
-        AFJSONRequestOperation *boperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:brequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-            // Richiesta target
-            [self getTarget:catId userToken:JSON[@"data"][@"reply"] withBlock:^(id responseData) {
-                block(responseData[@"data"], JSON[@"data"][@"reply"]);
+        
+        NSDictionary *error = JSON[@"error"];
+        
+        if (error != nil) {
+            block([NSDictionary dictionaryWithObject:@"Il codice demo è errato" forKey:@"error"], nil);
+        } else {
+            // Richiesta user token
+            NSString *urlStr = [NSString stringWithFormat:@"http://sandbox.veespo.com/v1/user-token/demo-code/%@?user=%@", demoCode, userId];
+            NSURL *url = [NSURL URLWithString:urlStr];
+            NSMutableURLRequest *brequest = [NSMutableURLRequest requestWithURL:url];
+            [brequest setHTTPMethod:@"GET"];
+            [brequest setTimeoutInterval:10];
+            __block NSString *catId = JSON[@"data"][@"category"];
+            AFJSONRequestOperation *boperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:brequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                // Richiesta target
+                [self getTarget:catId userToken:JSON[@"data"][@"reply"] withBlock:^(id responseData) {
+                    NSDictionary *resp = [NSDictionary dictionaryWithObjectsAndKeys:catId, @"category",  responseData[@"data"], @"targets", nil];
+                    block(resp, JSON[@"data"][@"reply"]);
+                }];
+            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                block([NSDictionary dictionaryWithObject:@"Errore di connessione" forKey:@"error"], nil);
             }];
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-            block([NSDictionary dictionaryWithObject:@"Errore di connessione" forKey:@"error"], nil);
-        }];
-        [boperation start];
+            [boperation start];
+        }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         block([NSDictionary dictionaryWithObject:@"Errore di connessione" forKey:@"error"], nil);
     }];
