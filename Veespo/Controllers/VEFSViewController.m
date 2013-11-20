@@ -16,6 +16,9 @@
 #import "VEDetailVenue.h"
 #import <AdSupport/AdSupport.h>
 
+static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
+static NSString * const kVEKeysFileName = @"Veespo-Keys";
+
 @interface VEFSViewController (){
     int locationUpdateCnt;
     CLLocation *lastLocation;
@@ -72,37 +75,8 @@
     [self.view addSubview:venuesCollection];
     
     [_locationManager startUpdatingLocation];
-#if VEESPO
-    NSDictionary *categories = @{
-                                 @"categories":@[
-                                         @{@"cat": @"cibi"},
-                                         @{@"cat": @"localinotturni"}
-                                         ]
-                                 };
-    NSString *userId = nil;
     
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
-    } else {
-        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]];
-    }
-    
-    [Veespo initVeespo:@"apk-ea0a36a0-c520-4338-84b5-b0d7a5dba1f5" userId:userId partnerId:@"apple" language:[[NSLocale preferredLanguages] objectAtIndex:0] categories:categories testUrl:YES tokens:^(id responseData, BOOL error) {
-        if (error == NO) {
-            tokens = [[NSDictionary alloc] initWithDictionary:responseData];
-        for (NSString *familyName in [UIFont familyNames]) {
-            for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
-                if ([fontName isEqualToString:@"LED"]) NSLog(@"%@", fontName);
-            }
-        }
-        }
-        else {
-            NSLog(@"%@", responseData);
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug" message:[NSString stringWithFormat:@"Error %@", responseData] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        }
-    }];
-#endif
+    [self setUpVeespo];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -138,6 +112,55 @@
     }
     detail.title = detail.venue.title;
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+#pragma mark - API
+
+- (void)setUpVeespo
+{
+    NSString *keysPath = [[NSBundle mainBundle] pathForResource:kVEKeysFileName ofType:@"plist"];
+    if (!keysPath) {
+        NSLog(@"To use Veespo make sure you have a Veespo-Keys.plist with the Identifier in your project");
+        return;
+    }
+    
+    NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
+    
+    NSDictionary *categories = @{
+                                 @"categories":@[
+                                         @{@"cat": @"cibi"},
+                                         @{@"cat": @"localinotturni"}
+                                         ]
+                                 };
+    NSString *userId = nil;
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
+    } else {
+        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]];
+    }
+    
+    [Veespo initVeespo:keys[kVEVeespoApiKey]
+                userId:userId
+             partnerId:@"apple"
+              language:[[NSLocale preferredLanguages] objectAtIndex:0]
+            categories:categories
+               testUrl:YES
+                tokens:^(id responseData, BOOL error) {
+                    if (error == NO) {
+                        tokens = [[NSDictionary alloc] initWithDictionary:responseData];
+                        for (NSString *familyName in [UIFont familyNames]) {
+                            for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
+                                if ([fontName isEqualToString:@"LED"]) NSLog(@"%@", fontName);
+                            }
+                        }
+                    } else {
+                        NSLog(@"%@", responseData);
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug" message:[NSString stringWithFormat:@"Error %@", responseData] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                }
+     ];
 }
 
 #pragma mark - Location and Map

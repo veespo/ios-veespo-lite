@@ -15,7 +15,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-//#define VEESPO
+#define VEESPO
 #ifdef VEESPO
 #import <VeespoFramework/Veespo.h>
 #import <VeespoFramework/VEVeespoViewController.h>
