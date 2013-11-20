@@ -1,14 +1,7 @@
-//
-//  WebVC.m
-//  DemoLumIt
-//
-//  Created by Alessio Roberto on 13/02/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
 
-#import "WebVC.h"
+#import "WebViewController.h"
 
-@implementation WebVC
+@implementation WebViewController
 @synthesize url = _url;
 
 - (void)didReceiveMemoryWarning

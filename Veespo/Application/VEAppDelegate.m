@@ -32,19 +32,11 @@
                                       secret:@"QQFISLPK5YXPHURAGKJTWI2DT1KQHM2CGVYBXMRKPAU1VKEJ"
                                  callbackURL:@"testapp123://foursquare"];
     
-//	self.revealController = [[GHRevealViewController alloc] initWithNibName:nil bundle:nil];
     self.revealController = [[GHRevealViewController alloc] init];
     RevealBlock revealBlock = ^(){
 		[self.revealController toggleSidebar:!self.revealController.sidebarShowing
 									duration:kGHRevealSidebarDefaultAnimationDuration];
 	};
-    
-//    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont
-//                                                                           fontWithName:@"Avenir-Black" size:15], NSFontAttributeName,
-//                                [UIColor blackColor], NSForegroundColorAttributeName, nil];
-//    
-//    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
-//    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
     if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
         [NSUserDefaults resetStandardUserDefaults];

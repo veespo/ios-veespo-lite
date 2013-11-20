@@ -16,12 +16,10 @@
 		BE1ECC2117F1B4BF006CCD56 /* FSWebLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC1817F1B4BF006CCD56 /* FSWebLogin.m */; };
 		BE1ECC2217F1B4BF006CCD56 /* FSWebLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC1917F1B4BF006CCD56 /* FSWebLogin.xib */; };
 		BE1ECC2917F1B4CE006CCD56 /* FSOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC2817F1B4CE006CCD56 /* FSOAuth.m */; };
-		BE1ECC2A17F1B50E006CCD56 /* VEFSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECBB617F1960A006CCD56 /* VEFSViewController.m */; };
 		BE1ECC3517F1CC00006CCD56 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC3117F1CC00006CCD56 /* pin.png */; };
 		BE1ECC3617F1CC00006CCD56 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC3217F1CC00006CCD56 /* pin@2x.png */; };
 		BE1ECC3717F1CC00006CCD56 /* poweredByFoursquare_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC3317F1CC00006CCD56 /* poweredByFoursquare_gray.png */; };
 		BE1ECC3817F1CC00006CCD56 /* poweredByFoursquare_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC3417F1CC00006CCD56 /* poweredByFoursquare_gray@2x.png */; };
-		BE1ECC3B17F1D470006CCD56 /* VEVenueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC3A17F1D470006CCD56 /* VEVenueCell.m */; };
 		BE1ECC5417F1E724006CCD56 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC4217F1E724006CCD56 /* AFHTTPClient.m */; };
 		BE1ECC5517F1E724006CCD56 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC4417F1E724006CCD56 /* AFHTTPRequestOperation.m */; };
 		BE1ECC5617F1E724006CCD56 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC4617F1E724006CCD56 /* AFImageRequestOperation.m */; };
@@ -33,33 +31,42 @@
 		BE1ECC5C17F1E724006CCD56 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC5317F1E724006CCD56 /* UIImageView+AFNetworking.m */; };
 		BE1ECC5E17F22DE9006CCD56 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */; };
 		BE1ECC6017F22DF8006CCD56 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */; };
-		BE1ECC6B17F22E6F006CCD56 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC6817F22E6F006CCD56 /* FSConverter.m */; };
-		BE1ECC6C17F22E6F006CCD56 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC6A17F22E6F006CCD56 /* FSVenue.m */; };
-		BE1ECC7017F22FE0006CCD56 /* VERSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC6F17F22FE0006CCD56 /* VERSSViewController.m */; };
-		BE1ECC7317F23485006CCD56 /* VERSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC7217F23485006CCD56 /* VERSSParser.m */; };
-		BE1ECC7617F237D0006CCD56 /* RassegnaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC7517F237D0006CCD56 /* RassegnaCell.m */; };
-		BE1ECC7A17F23B4F006CCD56 /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC7817F23B4F006CCD56 /* WebVC.m */; };
-		BE1ECC7B17F23B4F006CCD56 /* WebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC7917F23B4F006CCD56 /* WebVC.xib */; };
-		BE1ECC7F17F310D1006CCD56 /* VEEspnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC7E17F310D1006CCD56 /* VEEspnViewController.m */; };
-		BE255B1318084A3700AB007A /* VETargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE255B1218084A3700AB007A /* VETargetViewController.m */; };
-		BE255B1618084AE300AB007A /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BE255B1518084AE300AB007A /* VEConnection.m */; };
-		BE255B1A18084F2E00AB007A /* UIControl+VEControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BE255B1918084F2E00AB007A /* UIControl+VEControl.m */; };
-		BE361F7217FC806700E3EAA7 /* VEDetailVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = BE361F7117FC806700E3EAA7 /* VEDetailVenue.m */; };
-		BE74E1051836822800F7542E /* VEDetailVenue.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE74E1041836822800F7542E /* VEDetailVenue.xib */; };
 		BE7516EE1818192500C2717B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7516ED1818192500C2717B /* AdSupport.framework */; };
-		BE79E55817EF9F41006F60F6 /* VEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BE79E55717EF9F41006F60F6 /* VEUser.m */; };
-		BEA0DFF517EDE6A300102645 /* VERootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFF417EDE6A300102645 /* VERootViewController.m */; };
-		BEA0DFF817EDE9AD00102645 /* VEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFF717EDE9AD00102645 /* VEMenuViewController.m */; };
-		BEA0DFFB17EF1D8F00102645 /* VEMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFFA17EF1D8F00102645 /* VEMenuCell.m */; };
-		BEA0DFFF17EF311C00102645 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = BEA0DFFE17EF311C00102645 /* user.png */; };
-		BEE2FBFB17F4322300DD0FBD /* VEFSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE2FBFA17F4322300DD0FBD /* VEFSHeaderView.m */; };
+		BEC63F16183CC62E001C82B6 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F15183CC62E001C82B6 /* Supporting Files */; };
+		BEC63F52183CC6BD001C82B6 /* VEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */; };
+		BEC63F53183CC6BD001C82B6 /* RassegnaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1C183CC6BD001C82B6 /* RassegnaCell.m */; };
+		BEC63F54183CC6BD001C82B6 /* VEMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1E183CC6BD001C82B6 /* VEMenuCell.m */; };
+		BEC63F55183CC6BD001C82B6 /* VEFSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F21183CC6BD001C82B6 /* VEFSHeaderView.m */; };
+		BEC63F56183CC6BD001C82B6 /* VEVenueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F23183CC6BD001C82B6 /* VEVenueCell.m */; };
+		BEC63F57183CC6BD001C82B6 /* VEDetailVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F26183CC6BD001C82B6 /* VEDetailVenue.m */; };
+		BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F27183CC6BD001C82B6 /* VEDetailVenue.xib */; };
+		BEC63F59183CC6BD001C82B6 /* VEEspnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F29183CC6BD001C82B6 /* VEEspnViewController.m */; };
+		BEC63F5A183CC6BD001C82B6 /* VEFSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F2B183CC6BD001C82B6 /* VEFSViewController.m */; };
+		BEC63F5B183CC6BD001C82B6 /* VEMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F2D183CC6BD001C82B6 /* VEMenuViewController.m */; };
+		BEC63F5C183CC6BD001C82B6 /* VERootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F2F183CC6BD001C82B6 /* VERootViewController.m */; };
+		BEC63F5D183CC6BD001C82B6 /* VERSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F31183CC6BD001C82B6 /* VERSSViewController.m */; };
+		BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F33183CC6BD001C82B6 /* VETargetDetailViewController.m */; };
+		BEC63F5F183CC6BD001C82B6 /* VETargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F35183CC6BD001C82B6 /* VETargetViewController.m */; };
+		BEC63F61183CC6BD001C82B6 /* VEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F39183CC6BD001C82B6 /* VEViewController.m */; };
+		BEC63F62183CC6BD001C82B6 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F3B183CC6BD001C82B6 /* WebViewController.m */; };
+		BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F3C183CC6BD001C82B6 /* WebViewController.xib */; };
+		BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F40183CC6BD001C82B6 /* FSConverter.m */; };
+		BEC63F66183CC6BD001C82B6 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F43183CC6BD001C82B6 /* FSVenue.m */; };
+		BEC63F67183CC6BD001C82B6 /* VEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F45183CC6BD001C82B6 /* VEUser.m */; };
+		BEC63F68183CC6BD001C82B6 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F47183CC6BD001C82B6 /* pin.png */; };
+		BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F48183CC6BD001C82B6 /* pin@2x.png */; };
+		BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F49183CC6BD001C82B6 /* poweredByFoursquare_gray.png */; };
+		BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F4A183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png */; };
+		BEC63F6C183CC6BD001C82B6 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F4B183CC6BD001C82B6 /* user.png */; };
+		BEC63F6D183CC6BD001C82B6 /* VERSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F4E183CC6BD001C82B6 /* VERSSParser.m */; };
+		BEC63F6E183CC6BD001C82B6 /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F51183CC6BD001C82B6 /* VEConnection.m */; };
+		BEC63F70183CC790001C82B6 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F6F183CC790001C82B6 /* Empty.xib */; };
+		BEC63F77183CC7BC001C82B6 /* UIControl+VEControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F74183CC7BC001C82B6 /* UIControl+VEControl.m */; };
+		BEC63F78183CC7BC001C82B6 /* Veespo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F75183CC7BC001C82B6 /* Veespo-Info.plist */; };
 		BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671617EC9A1A00F394E9 /* Foundation.framework */; };
 		BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671817EC9A1A00F394E9 /* CoreGraphics.framework */; };
 		BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671A17EC9A1A00F394E9 /* UIKit.framework */; };
 		BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEEB671F17EC9A1A00F394E9 /* InfoPlist.strings */; };
-		BEEB672317EC9A1A00F394E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB672217EC9A1A00F394E9 /* main.m */; };
-		BEEB672717EC9A1A00F394E9 /* VEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB672617EC9A1A00F394E9 /* VEAppDelegate.m */; };
-		BEEB672D17EC9A1A00F394E9 /* VEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB672C17EC9A1A00F394E9 /* VEViewController.m */; };
 		BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEEB672E17EC9A1A00F394E9 /* Images.xcassets */; };
 		BEEB673617EC9A1A00F394E9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB673517EC9A1A00F394E9 /* XCTest.framework */; };
 		BEEB673717EC9A1A00F394E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671617EC9A1A00F394E9 /* Foundation.framework */; };
@@ -83,8 +90,6 @@
 
 /* Begin PBXFileReference section */
 		BE010A96180AEF0E0012817F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BE1ECBB517F1960A006CCD56 /* VEFSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEFSViewController.h; path = Classes/Foursquare/VEFSViewController.h; sourceTree = "<group>"; };
-		BE1ECBB617F1960A006CCD56 /* VEFSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEFSViewController.m; path = Classes/Foursquare/VEFSViewController.m; sourceTree = "<group>"; };
 		BE1ECBB817F1962C006CCD56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BE1ECBBA17F19632006CCD56 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BE1ECC1117F1B4BF006CCD56 /* Foursquare2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Foursquare2.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/Foursquare2.h"; sourceTree = "<group>"; };
@@ -102,8 +107,6 @@
 		BE1ECC3217F1CC00006CCD56 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
 		BE1ECC3317F1CC00006CCD56 /* poweredByFoursquare_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poweredByFoursquare_gray.png; sourceTree = "<group>"; };
 		BE1ECC3417F1CC00006CCD56 /* poweredByFoursquare_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poweredByFoursquare_gray@2x.png"; sourceTree = "<group>"; };
-		BE1ECC3917F1D470006CCD56 /* VEVenueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEVenueCell.h; path = Classes/Foursquare/VEVenueCell.h; sourceTree = "<group>"; };
-		BE1ECC3A17F1D470006CCD56 /* VEVenueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEVenueCell.m; path = Classes/Foursquare/VEVenueCell.m; sourceTree = "<group>"; };
 		BE1ECC4117F1E724006CCD56 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = ../../../Progetti/AFNetworking/AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
 		BE1ECC4217F1E724006CCD56 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = ../../../Progetti/AFNetworking/AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
 		BE1ECC4317F1E724006CCD56 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = ../../../Progetti/AFNetworking/AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -125,55 +128,66 @@
 		BE1ECC5317F1E724006CCD56 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "../../../Progetti/AFNetworking/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		BE1ECC6717F22E6F006CCD56 /* FSConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSConverter.h; path = Classes/Foursquare/FSConverter.h; sourceTree = "<group>"; };
-		BE1ECC6817F22E6F006CCD56 /* FSConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSConverter.m; path = Classes/Foursquare/FSConverter.m; sourceTree = "<group>"; };
-		BE1ECC6917F22E6F006CCD56 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSVenue.h; path = Classes/Foursquare/FSVenue.h; sourceTree = "<group>"; };
-		BE1ECC6A17F22E6F006CCD56 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSVenue.m; path = Classes/Foursquare/FSVenue.m; sourceTree = "<group>"; };
-		BE1ECC6E17F22FE0006CCD56 /* VERSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VERSSViewController.h; path = Classes/RSS/VERSSViewController.h; sourceTree = "<group>"; };
-		BE1ECC6F17F22FE0006CCD56 /* VERSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VERSSViewController.m; path = Classes/RSS/VERSSViewController.m; sourceTree = "<group>"; };
-		BE1ECC7117F23485006CCD56 /* VERSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VERSSParser.h; path = Classes/RSS/VERSSParser.h; sourceTree = "<group>"; };
-		BE1ECC7217F23485006CCD56 /* VERSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VERSSParser.m; path = Classes/RSS/VERSSParser.m; sourceTree = "<group>"; };
-		BE1ECC7417F237D0006CCD56 /* RassegnaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RassegnaCell.h; sourceTree = "<group>"; };
-		BE1ECC7517F237D0006CCD56 /* RassegnaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RassegnaCell.m; sourceTree = "<group>"; };
-		BE1ECC7717F23B4F006CCD56 /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
-		BE1ECC7817F23B4F006CCD56 /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
-		BE1ECC7917F23B4F006CCD56 /* WebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebVC.xib; sourceTree = "<group>"; };
-		BE1ECC7D17F310D1006CCD56 /* VEEspnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEEspnViewController.h; path = Classes/ESPN/VEEspnViewController.h; sourceTree = "<group>"; };
-		BE1ECC7E17F310D1006CCD56 /* VEEspnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEEspnViewController.m; path = Classes/ESPN/VEEspnViewController.m; sourceTree = "<group>"; };
-		BE255B1118084A3700AB007A /* VETargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VETargetViewController.h; path = Classes/Veespo/VETargetViewController.h; sourceTree = "<group>"; };
-		BE255B1218084A3700AB007A /* VETargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VETargetViewController.m; path = Classes/Veespo/VETargetViewController.m; sourceTree = "<group>"; };
-		BE255B1418084AE300AB007A /* VEConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEConnection.h; path = Classes/Veespo/VEConnection.h; sourceTree = "<group>"; };
-		BE255B1518084AE300AB007A /* VEConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEConnection.m; path = Classes/Veespo/VEConnection.m; sourceTree = "<group>"; };
-		BE255B1818084F2E00AB007A /* UIControl+VEControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+VEControl.h"; sourceTree = "<group>"; };
-		BE255B1918084F2E00AB007A /* UIControl+VEControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+VEControl.m"; sourceTree = "<group>"; };
-		BE361F7017FC806700E3EAA7 /* VEDetailVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEDetailVenue.h; path = Classes/Foursquare/VEDetailVenue.h; sourceTree = "<group>"; };
-		BE361F7117FC806700E3EAA7 /* VEDetailVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEDetailVenue.m; path = Classes/Foursquare/VEDetailVenue.m; sourceTree = "<group>"; };
-		BE74E1041836822800F7542E /* VEDetailVenue.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VEDetailVenue.xib; path = Classes/Foursquare/VEDetailVenue.xib; sourceTree = "<group>"; };
 		BE7516ED1818192500C2717B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		BE79E55617EF9F41006F60F6 /* VEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEUser.h; path = Classes/VEUser.h; sourceTree = "<group>"; };
-		BE79E55717EF9F41006F60F6 /* VEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEUser.m; path = Classes/VEUser.m; sourceTree = "<group>"; };
-		BEA0DFF317EDE6A200102645 /* VERootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VERootViewController.h; path = Classes/VERootViewController.h; sourceTree = "<group>"; };
-		BEA0DFF417EDE6A300102645 /* VERootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VERootViewController.m; path = Classes/VERootViewController.m; sourceTree = "<group>"; };
-		BEA0DFF617EDE9AD00102645 /* VEMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEMenuViewController.h; path = Classes/VEMenuViewController.h; sourceTree = "<group>"; };
-		BEA0DFF717EDE9AD00102645 /* VEMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEMenuViewController.m; path = Classes/VEMenuViewController.m; sourceTree = "<group>"; };
-		BEA0DFF917EF1D8F00102645 /* VEMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEMenuCell.h; path = Classes/VEMenuCell.h; sourceTree = "<group>"; };
-		BEA0DFFA17EF1D8F00102645 /* VEMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEMenuCell.m; path = Classes/VEMenuCell.m; sourceTree = "<group>"; };
-		BEA0DFFE17EF311C00102645 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
-		BEE2FBF917F4322300DD0FBD /* VEFSHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEFSHeaderView.h; path = Classes/Foursquare/VEFSHeaderView.h; sourceTree = "<group>"; };
-		BEE2FBFA17F4322300DD0FBD /* VEFSHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEFSHeaderView.m; path = Classes/Foursquare/VEFSHeaderView.m; sourceTree = "<group>"; };
+		BEC63F15183CC62E001C82B6 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
+		BEC63F18183CC6BD001C82B6 /* VEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEAppDelegate.h; sourceTree = "<group>"; };
+		BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEAppDelegate.m; sourceTree = "<group>"; };
+		BEC63F1B183CC6BD001C82B6 /* RassegnaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RassegnaCell.h; sourceTree = "<group>"; };
+		BEC63F1C183CC6BD001C82B6 /* RassegnaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RassegnaCell.m; sourceTree = "<group>"; };
+		BEC63F1D183CC6BD001C82B6 /* VEMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEMenuCell.h; sourceTree = "<group>"; };
+		BEC63F1E183CC6BD001C82B6 /* VEMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEMenuCell.m; sourceTree = "<group>"; };
+		BEC63F20183CC6BD001C82B6 /* VEFSHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFSHeaderView.h; sourceTree = "<group>"; };
+		BEC63F21183CC6BD001C82B6 /* VEFSHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFSHeaderView.m; sourceTree = "<group>"; };
+		BEC63F22183CC6BD001C82B6 /* VEVenueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEVenueCell.h; sourceTree = "<group>"; };
+		BEC63F23183CC6BD001C82B6 /* VEVenueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEVenueCell.m; sourceTree = "<group>"; };
+		BEC63F25183CC6BD001C82B6 /* VEDetailVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEDetailVenue.h; sourceTree = "<group>"; };
+		BEC63F26183CC6BD001C82B6 /* VEDetailVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEDetailVenue.m; sourceTree = "<group>"; };
+		BEC63F27183CC6BD001C82B6 /* VEDetailVenue.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEDetailVenue.xib; sourceTree = "<group>"; };
+		BEC63F28183CC6BD001C82B6 /* VEEspnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEEspnViewController.h; sourceTree = "<group>"; };
+		BEC63F29183CC6BD001C82B6 /* VEEspnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEEspnViewController.m; sourceTree = "<group>"; };
+		BEC63F2A183CC6BD001C82B6 /* VEFSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFSViewController.h; sourceTree = "<group>"; };
+		BEC63F2B183CC6BD001C82B6 /* VEFSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFSViewController.m; sourceTree = "<group>"; };
+		BEC63F2C183CC6BD001C82B6 /* VEMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEMenuViewController.h; sourceTree = "<group>"; };
+		BEC63F2D183CC6BD001C82B6 /* VEMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEMenuViewController.m; sourceTree = "<group>"; };
+		BEC63F2E183CC6BD001C82B6 /* VERootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERootViewController.h; sourceTree = "<group>"; };
+		BEC63F2F183CC6BD001C82B6 /* VERootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VERootViewController.m; sourceTree = "<group>"; };
+		BEC63F30183CC6BD001C82B6 /* VERSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERSSViewController.h; sourceTree = "<group>"; };
+		BEC63F31183CC6BD001C82B6 /* VERSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VERSSViewController.m; sourceTree = "<group>"; };
+		BEC63F32183CC6BD001C82B6 /* VETargetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETargetDetailViewController.h; sourceTree = "<group>"; };
+		BEC63F33183CC6BD001C82B6 /* VETargetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETargetDetailViewController.m; sourceTree = "<group>"; };
+		BEC63F34183CC6BD001C82B6 /* VETargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETargetViewController.h; sourceTree = "<group>"; };
+		BEC63F35183CC6BD001C82B6 /* VETargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETargetViewController.m; sourceTree = "<group>"; };
+		BEC63F38183CC6BD001C82B6 /* VEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEViewController.h; sourceTree = "<group>"; };
+		BEC63F39183CC6BD001C82B6 /* VEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEViewController.m; sourceTree = "<group>"; };
+		BEC63F3A183CC6BD001C82B6 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		BEC63F3B183CC6BD001C82B6 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		BEC63F3C183CC6BD001C82B6 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		BEC63F3F183CC6BD001C82B6 /* FSConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConverter.h; sourceTree = "<group>"; };
+		BEC63F40183CC6BD001C82B6 /* FSConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConverter.m; sourceTree = "<group>"; };
+		BEC63F42183CC6BD001C82B6 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenue.h; sourceTree = "<group>"; };
+		BEC63F43183CC6BD001C82B6 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVenue.m; sourceTree = "<group>"; };
+		BEC63F44183CC6BD001C82B6 /* VEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEUser.h; sourceTree = "<group>"; };
+		BEC63F45183CC6BD001C82B6 /* VEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEUser.m; sourceTree = "<group>"; };
+		BEC63F47183CC6BD001C82B6 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		BEC63F48183CC6BD001C82B6 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
+		BEC63F49183CC6BD001C82B6 /* poweredByFoursquare_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poweredByFoursquare_gray.png; sourceTree = "<group>"; };
+		BEC63F4A183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poweredByFoursquare_gray@2x.png"; sourceTree = "<group>"; };
+		BEC63F4B183CC6BD001C82B6 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		BEC63F4D183CC6BD001C82B6 /* VERSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERSSParser.h; sourceTree = "<group>"; };
+		BEC63F4E183CC6BD001C82B6 /* VERSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VERSSParser.m; sourceTree = "<group>"; };
+		BEC63F50183CC6BD001C82B6 /* VEConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEConnection.h; sourceTree = "<group>"; };
+		BEC63F51183CC6BD001C82B6 /* VEConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEConnection.m; sourceTree = "<group>"; };
+		BEC63F6F183CC790001C82B6 /* Empty.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
+		BEC63F73183CC7BC001C82B6 /* UIControl+VEControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+VEControl.h"; sourceTree = "<group>"; };
+		BEC63F74183CC7BC001C82B6 /* UIControl+VEControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+VEControl.m"; sourceTree = "<group>"; };
+		BEC63F75183CC7BC001C82B6 /* Veespo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Veespo-Info.plist"; sourceTree = "<group>"; };
+		BEC63F76183CC7BC001C82B6 /* Veespo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Veespo-Prefix.pch"; sourceTree = "<group>"; };
 		BEEB671317EC9A1A00F394E9 /* Veespo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veespo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEB671617EC9A1A00F394E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BEEB671817EC9A1A00F394E9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BEEB671A17EC9A1A00F394E9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		BEEB671E17EC9A1A00F394E9 /* Veespo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Veespo-Info.plist"; sourceTree = "<group>"; };
 		BEEB672017EC9A1A00F394E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BEEB672217EC9A1A00F394E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BEEB672417EC9A1A00F394E9 /* Veespo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Veespo-Prefix.pch"; sourceTree = "<group>"; };
-		BEEB672517EC9A1A00F394E9 /* VEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VEAppDelegate.h; sourceTree = "<group>"; };
-		BEEB672617EC9A1A00F394E9 /* VEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VEAppDelegate.m; sourceTree = "<group>"; };
-		BEEB672B17EC9A1A00F394E9 /* VEViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VEViewController.h; sourceTree = "<group>"; };
-		BEEB672C17EC9A1A00F394E9 /* VEViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VEViewController.m; sourceTree = "<group>"; };
-		BEEB672E17EC9A1A00F394E9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BEEB672E17EC9A1A00F394E9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		BEEB673417EC9A1A00F394E9 /* VeespoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VeespoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEB673517EC9A1A00F394E9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BEEB673D17EC9A1A00F394E9 /* VeespoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VeespoTests-Info.plist"; sourceTree = "<group>"; };
@@ -219,26 +233,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BE1ECB6C17F194A9006CCD56 /* Foursquare */ = {
-			isa = PBXGroup;
-			children = (
-				BE1ECC6717F22E6F006CCD56 /* FSConverter.h */,
-				BE1ECC6817F22E6F006CCD56 /* FSConverter.m */,
-				BE1ECC6917F22E6F006CCD56 /* FSVenue.h */,
-				BE1ECC6A17F22E6F006CCD56 /* FSVenue.m */,
-				BE1ECBB517F1960A006CCD56 /* VEFSViewController.h */,
-				BE1ECBB617F1960A006CCD56 /* VEFSViewController.m */,
-				BE1ECC3917F1D470006CCD56 /* VEVenueCell.h */,
-				BE1ECC3A17F1D470006CCD56 /* VEVenueCell.m */,
-				BEE2FBF917F4322300DD0FBD /* VEFSHeaderView.h */,
-				BEE2FBFA17F4322300DD0FBD /* VEFSHeaderView.m */,
-				BE361F7017FC806700E3EAA7 /* VEDetailVenue.h */,
-				BE361F7117FC806700E3EAA7 /* VEDetailVenue.m */,
-				BE74E1041836822800F7542E /* VEDetailVenue.xib */,
-			);
-			name = Foursquare;
-			sourceTree = "<group>";
-		};
 		BE1ECB6D17F1955F006CCD56 /* Foursquare2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,50 +281,136 @@
 			name = AFNetworking;
 			sourceTree = "<group>";
 		};
-		BE1ECC6D17F22EFD006CCD56 /* RSS */ = {
+		BEC63F17183CC6BD001C82B6 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				BE1ECC7717F23B4F006CCD56 /* WebVC.h */,
-				BE1ECC7817F23B4F006CCD56 /* WebVC.m */,
-				BE1ECC7917F23B4F006CCD56 /* WebVC.xib */,
-				BE1ECC7417F237D0006CCD56 /* RassegnaCell.h */,
-				BE1ECC7517F237D0006CCD56 /* RassegnaCell.m */,
-				BE1ECC6E17F22FE0006CCD56 /* VERSSViewController.h */,
-				BE1ECC6F17F22FE0006CCD56 /* VERSSViewController.m */,
-				BE1ECC7117F23485006CCD56 /* VERSSParser.h */,
-				BE1ECC7217F23485006CCD56 /* VERSSParser.m */,
+				BEEB672E17EC9A1A00F394E9 /* Images.xcassets */,
+				BE010A95180AEF0E0012817F /* Main.storyboard */,
+				BEC63F18183CC6BD001C82B6 /* VEAppDelegate.h */,
+				BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */,
 			);
-			name = RSS;
+			path = Application;
 			sourceTree = "<group>";
 		};
-		BE1ECC7C17F31088006CCD56 /* ESPN */ = {
+		BEC63F1A183CC6BD001C82B6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				BE1ECC7D17F310D1006CCD56 /* VEEspnViewController.h */,
-				BE1ECC7E17F310D1006CCD56 /* VEEspnViewController.m */,
+				BEC63F1B183CC6BD001C82B6 /* RassegnaCell.h */,
+				BEC63F1C183CC6BD001C82B6 /* RassegnaCell.m */,
+				BEC63F1D183CC6BD001C82B6 /* VEMenuCell.h */,
+				BEC63F1E183CC6BD001C82B6 /* VEMenuCell.m */,
 			);
-			name = ESPN;
+			path = Cells;
 			sourceTree = "<group>";
 		};
-		BE255B10180849BC00AB007A /* Veespo */ = {
+		BEC63F1F183CC6BD001C82B6 /* Collections */ = {
 			isa = PBXGroup;
 			children = (
-				BE255B1118084A3700AB007A /* VETargetViewController.h */,
-				BE255B1218084A3700AB007A /* VETargetViewController.m */,
-				BE255B1418084AE300AB007A /* VEConnection.h */,
-				BE255B1518084AE300AB007A /* VEConnection.m */,
+				BEC63F6F183CC790001C82B6 /* Empty.xib */,
+				BEC63F20183CC6BD001C82B6 /* VEFSHeaderView.h */,
+				BEC63F21183CC6BD001C82B6 /* VEFSHeaderView.m */,
+				BEC63F22183CC6BD001C82B6 /* VEVenueCell.h */,
+				BEC63F23183CC6BD001C82B6 /* VEVenueCell.m */,
 			);
-			name = Veespo;
+			path = Collections;
 			sourceTree = "<group>";
 		};
-		BE255B1718084F2E00AB007A /* UIControl+VEControl */ = {
+		BEC63F24183CC6BD001C82B6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BE255B1818084F2E00AB007A /* UIControl+VEControl.h */,
-				BE255B1918084F2E00AB007A /* UIControl+VEControl.m */,
+				BEC63F25183CC6BD001C82B6 /* VEDetailVenue.h */,
+				BEC63F26183CC6BD001C82B6 /* VEDetailVenue.m */,
+				BEC63F27183CC6BD001C82B6 /* VEDetailVenue.xib */,
+				BEC63F28183CC6BD001C82B6 /* VEEspnViewController.h */,
+				BEC63F29183CC6BD001C82B6 /* VEEspnViewController.m */,
+				BEC63F2A183CC6BD001C82B6 /* VEFSViewController.h */,
+				BEC63F2B183CC6BD001C82B6 /* VEFSViewController.m */,
+				BEC63F2C183CC6BD001C82B6 /* VEMenuViewController.h */,
+				BEC63F2D183CC6BD001C82B6 /* VEMenuViewController.m */,
+				BEC63F2E183CC6BD001C82B6 /* VERootViewController.h */,
+				BEC63F2F183CC6BD001C82B6 /* VERootViewController.m */,
+				BEC63F30183CC6BD001C82B6 /* VERSSViewController.h */,
+				BEC63F31183CC6BD001C82B6 /* VERSSViewController.m */,
+				BEC63F32183CC6BD001C82B6 /* VETargetDetailViewController.h */,
+				BEC63F33183CC6BD001C82B6 /* VETargetDetailViewController.m */,
+				BEC63F34183CC6BD001C82B6 /* VETargetViewController.h */,
+				BEC63F35183CC6BD001C82B6 /* VETargetViewController.m */,
+				BEC63F38183CC6BD001C82B6 /* VEViewController.h */,
+				BEC63F39183CC6BD001C82B6 /* VEViewController.m */,
+				BEC63F3A183CC6BD001C82B6 /* WebViewController.h */,
+				BEC63F3B183CC6BD001C82B6 /* WebViewController.m */,
+				BEC63F3C183CC6BD001C82B6 /* WebViewController.xib */,
 			);
-			name = "UIControl+VEControl";
-			path = "Classes/UIControl+VEControl";
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BEC63F3D183CC6BD001C82B6 /* Foursquare */ = {
+			isa = PBXGroup;
+			children = (
+				BEC63F3F183CC6BD001C82B6 /* FSConverter.h */,
+				BEC63F40183CC6BD001C82B6 /* FSConverter.m */,
+			);
+			path = Foursquare;
+			sourceTree = "<group>";
+		};
+		BEC63F41183CC6BD001C82B6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BEC63F42183CC6BD001C82B6 /* FSVenue.h */,
+				BEC63F43183CC6BD001C82B6 /* FSVenue.m */,
+				BEC63F44183CC6BD001C82B6 /* VEUser.h */,
+				BEC63F45183CC6BD001C82B6 /* VEUser.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BEC63F46183CC6BD001C82B6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BEC63F47183CC6BD001C82B6 /* pin.png */,
+				BEC63F48183CC6BD001C82B6 /* pin@2x.png */,
+				BEC63F49183CC6BD001C82B6 /* poweredByFoursquare_gray.png */,
+				BEC63F4A183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png */,
+				BEC63F4B183CC6BD001C82B6 /* user.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BEC63F4C183CC6BD001C82B6 /* RSS */ = {
+			isa = PBXGroup;
+			children = (
+				BEC63F4D183CC6BD001C82B6 /* VERSSParser.h */,
+				BEC63F4E183CC6BD001C82B6 /* VERSSParser.m */,
+			);
+			path = RSS;
+			sourceTree = "<group>";
+		};
+		BEC63F4F183CC6BD001C82B6 /* Veespo */ = {
+			isa = PBXGroup;
+			children = (
+				BEC63F50183CC6BD001C82B6 /* VEConnection.h */,
+				BEC63F51183CC6BD001C82B6 /* VEConnection.m */,
+			);
+			path = Veespo;
+			sourceTree = "<group>";
+		};
+		BEC63F71183CC7BC001C82B6 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				BEC63F72183CC7BC001C82B6 /* UIControl+VEControl */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		BEC63F72183CC7BC001C82B6 /* UIControl+VEControl */ = {
+			isa = PBXGroup;
+			children = (
+				BEC63F73183CC7BC001C82B6 /* UIControl+VEControl.h */,
+				BEC63F74183CC7BC001C82B6 /* UIControl+VEControl.m */,
+				BEC63F75183CC7BC001C82B6 /* Veespo-Info.plist */,
+				BEC63F76183CC7BC001C82B6 /* Veespo-Prefix.pch */,
+			);
+			path = "UIControl+VEControl";
 			sourceTree = "<group>";
 		};
 		BEEB670A17EC9A1A00F394E9 = {
@@ -371,14 +451,17 @@
 		BEEB671C17EC9A1A00F394E9 /* Veespo */ = {
 			isa = PBXGroup;
 			children = (
-				BE010A95180AEF0E0012817F /* Main.storyboard */,
-				BEA0DFFE17EF311C00102645 /* user.png */,
+				BEC63F17183CC6BD001C82B6 /* Application */,
+				BEC63F1A183CC6BD001C82B6 /* Cells */,
+				BEC63F1F183CC6BD001C82B6 /* Collections */,
+				BEC63F24183CC6BD001C82B6 /* Controllers */,
+				BEC63F3D183CC6BD001C82B6 /* Foursquare */,
+				BEC63F41183CC6BD001C82B6 /* Models */,
+				BEC63F46183CC6BD001C82B6 /* Resources */,
+				BEC63F4C183CC6BD001C82B6 /* RSS */,
+				BEC63F71183CC7BC001C82B6 /* Tools */,
+				BEC63F4F183CC6BD001C82B6 /* Veespo */,
 				BEEB674E17ECAA7F00F394E9 /* Classes */,
-				BEEB672517EC9A1A00F394E9 /* VEAppDelegate.h */,
-				BEEB672617EC9A1A00F394E9 /* VEAppDelegate.m */,
-				BEEB672B17EC9A1A00F394E9 /* VEViewController.h */,
-				BEEB672C17EC9A1A00F394E9 /* VEViewController.m */,
-				BEEB672E17EC9A1A00F394E9 /* Images.xcassets */,
 				BEEB671D17EC9A1A00F394E9 /* Supporting Files */,
 			);
 			path = Veespo;
@@ -387,10 +470,8 @@
 		BEEB671D17EC9A1A00F394E9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BEEB671E17EC9A1A00F394E9 /* Veespo-Info.plist */,
+				BEC63F15183CC62E001C82B6 /* Supporting Files */,
 				BEEB671F17EC9A1A00F394E9 /* InfoPlist.strings */,
-				BEEB672217EC9A1A00F394E9 /* main.m */,
-				BEEB672417EC9A1A00F394E9 /* Veespo-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -416,19 +497,7 @@
 		BEEB674E17ECAA7F00F394E9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				BE255B10180849BC00AB007A /* Veespo */,
-				BE1ECC7C17F31088006CCD56 /* ESPN */,
-				BE1ECC6D17F22EFD006CCD56 /* RSS */,
-				BE1ECB6C17F194A9006CCD56 /* Foursquare */,
 				BEEB674F17ECAA8600F394E9 /* Library */,
-				BEA0DFF317EDE6A200102645 /* VERootViewController.h */,
-				BEA0DFF417EDE6A300102645 /* VERootViewController.m */,
-				BEA0DFF617EDE9AD00102645 /* VEMenuViewController.h */,
-				BEA0DFF717EDE9AD00102645 /* VEMenuViewController.m */,
-				BEA0DFF917EF1D8F00102645 /* VEMenuCell.h */,
-				BEA0DFFA17EF1D8F00102645 /* VEMenuCell.m */,
-				BE79E55617EF9F41006F60F6 /* VEUser.h */,
-				BE79E55717EF9F41006F60F6 /* VEUser.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -436,7 +505,6 @@
 		BEEB674F17ECAA8600F394E9 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				BE255B1718084F2E00AB007A /* UIControl+VEControl */,
 				BE1ECC4017F1E704006CCD56 /* AFNetworking */,
 				BE1ECB6D17F1955F006CCD56 /* Foursquare2 */,
 				BEEB675B17ECAB3600F394E9 /* GHSidebarNav */,
@@ -544,17 +612,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
-				BEA0DFFF17EF311C00102645 /* user.png in Resources */,
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
 				BE1ECC3517F1CC00006CCD56 /* pin.png in Resources */,
+				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
+				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
 				BE1ECC3817F1CC00006CCD56 /* poweredByFoursquare_gray@2x.png in Resources */,
 				BE010A97180AEF0E0012817F /* Main.storyboard in Resources */,
+				BEC63F78183CC7BC001C82B6 /* Veespo-Info.plist in Resources */,
+				BEC63F16183CC62E001C82B6 /* Supporting Files in Resources */,
+				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
 				BE1ECC2217F1B4BF006CCD56 /* FSWebLogin.xib in Resources */,
+				BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */,
+				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
 				BE1ECC3717F1CC00006CCD56 /* poweredByFoursquare_gray.png in Resources */,
+				BEC63F6C183CC6BD001C82B6 /* user.png in Resources */,
 				BE1ECC3617F1CC00006CCD56 /* pin@2x.png in Resources */,
-				BE74E1051836822800F7542E /* VEDetailVenue.xib in Resources */,
-				BE1ECC7B17F23B4F006CCD56 /* WebVC.xib in Resources */,
+				BEC63F68183CC6BD001C82B6 /* pin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,44 +648,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEA0DFF817EDE9AD00102645 /* VEMenuViewController.m in Sources */,
+				BEC63F5B183CC6BD001C82B6 /* VEMenuViewController.m in Sources */,
+				BEC63F5A183CC6BD001C82B6 /* VEFSViewController.m in Sources */,
+				BEC63F52183CC6BD001C82B6 /* VEAppDelegate.m in Sources */,
+				BEC63F56183CC6BD001C82B6 /* VEVenueCell.m in Sources */,
+				BEC63F77183CC7BC001C82B6 /* UIControl+VEControl.m in Sources */,
 				BEEB675A17ECAB3000F394E9 /* GHSidebarSearchViewController.m in Sources */,
 				BE1ECC1F17F1B4BF006CCD56 /* FSRequester.m in Sources */,
-				BEA0DFF517EDE6A300102645 /* VERootViewController.m in Sources */,
+				BEC63F5C183CC6BD001C82B6 /* VERootViewController.m in Sources */,
+				BEC63F61183CC6BD001C82B6 /* VEViewController.m in Sources */,
 				BE1ECC5A17F1E724006CCD56 /* AFURLConnectionOperation.m in Sources */,
-				BE255B1A18084F2E00AB007A /* UIControl+VEControl.m in Sources */,
 				BE1ECC1E17F1B4BF006CCD56 /* Foursquare2.m in Sources */,
+				BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */,
 				BE1ECC5C17F1E724006CCD56 /* UIImageView+AFNetworking.m in Sources */,
 				BE1ECC5417F1E724006CCD56 /* AFHTTPClient.m in Sources */,
-				BEEB672317EC9A1A00F394E9 /* main.m in Sources */,
-				BE1ECC7F17F310D1006CCD56 /* VEEspnViewController.m in Sources */,
-				BE255B1318084A3700AB007A /* VETargetViewController.m in Sources */,
-				BE1ECC6C17F22E6F006CCD56 /* FSVenue.m in Sources */,
-				BE1ECC7017F22FE0006CCD56 /* VERSSViewController.m in Sources */,
-				BE1ECC3B17F1D470006CCD56 /* VEVenueCell.m in Sources */,
-				BEEB672D17EC9A1A00F394E9 /* VEViewController.m in Sources */,
+				BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */,
+				BEC63F66183CC6BD001C82B6 /* FSVenue.m in Sources */,
+				BEC63F6E183CC6BD001C82B6 /* VEConnection.m in Sources */,
+				BEC63F55183CC6BD001C82B6 /* VEFSHeaderView.m in Sources */,
+				BEC63F62183CC6BD001C82B6 /* WebViewController.m in Sources */,
+				BEC63F59183CC6BD001C82B6 /* VEEspnViewController.m in Sources */,
 				BE1ECC5517F1E724006CCD56 /* AFHTTPRequestOperation.m in Sources */,
-				BE79E55817EF9F41006F60F6 /* VEUser.m in Sources */,
+				BEC63F5F183CC6BD001C82B6 /* VETargetViewController.m in Sources */,
+				BEC63F6D183CC6BD001C82B6 /* VERSSParser.m in Sources */,
 				BE1ECC5917F1E724006CCD56 /* AFPropertyListRequestOperation.m in Sources */,
-				BE255B1618084AE300AB007A /* VEConnection.m in Sources */,
 				BE1ECC5617F1E724006CCD56 /* AFImageRequestOperation.m in Sources */,
 				BE1ECC5717F1E724006CCD56 /* AFJSONRequestOperation.m in Sources */,
+				BEC63F5D183CC6BD001C82B6 /* VERSSViewController.m in Sources */,
 				BE1ECC2917F1B4CE006CCD56 /* FSOAuth.m in Sources */,
+				BEC63F67183CC6BD001C82B6 /* VEUser.m in Sources */,
 				BE1ECC2017F1B4BF006CCD56 /* FSTargetCallback.m in Sources */,
 				BE1ECC5B17F1E724006CCD56 /* AFXMLRequestOperation.m in Sources */,
+				BEC63F54183CC6BD001C82B6 /* VEMenuCell.m in Sources */,
 				BE1ECC2117F1B4BF006CCD56 /* FSWebLogin.m in Sources */,
-				BE1ECC6B17F22E6F006CCD56 /* FSConverter.m in Sources */,
-				BE1ECC7A17F23B4F006CCD56 /* WebVC.m in Sources */,
-				BEA0DFFB17EF1D8F00102645 /* VEMenuCell.m in Sources */,
-				BE1ECC2A17F1B50E006CCD56 /* VEFSViewController.m in Sources */,
 				BEEB675917ECAB3000F394E9 /* GHRevealViewController.m in Sources */,
-				BEEB672717EC9A1A00F394E9 /* VEAppDelegate.m in Sources */,
 				BEEB675217ECAAB200F394E9 /* MBProgressHUD.m in Sources */,
-				BE361F7217FC806700E3EAA7 /* VEDetailVenue.m in Sources */,
-				BEE2FBFB17F4322300DD0FBD /* VEFSHeaderView.m in Sources */,
-				BE1ECC7617F237D0006CCD56 /* RassegnaCell.m in Sources */,
+				BEC63F53183CC6BD001C82B6 /* RassegnaCell.m in Sources */,
+				BEC63F57183CC6BD001C82B6 /* VEDetailVenue.m in Sources */,
 				BE1ECC5817F1E724006CCD56 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				BE1ECC7317F23485006CCD56 /* VERSSParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +714,7 @@
 				BE010A96180AEF0E0012817F /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		BEEB671F17EC9A1A00F394E9 /* InfoPlist.strings */ = {
