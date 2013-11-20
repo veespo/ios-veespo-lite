@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Veespo
+
+  Created by Alessio Roberto on 20/11/13.
+  Copyright (c) 2013 Veespo Ltd. All rights reserved.
+*/
+
+"User Name" = "User Name";
+
+"Categories voted" = "Categories voted";
+
+"Start" = "Start";
+
+"Alert" = "Attention";
+
+"Fill Form" = "Enter a demo code (or select an existing category rated) and enter the user name";
+
+"Veespo Question" = "What is your opinion about %@?";
+
+"Wrong Code" = "Wrong demo code";
+
+"Network error" = "Network error";
+
+"Venues" = "Venues";
+
+"Tech News" = "Tech News";
+
+"Sport News" = "Sport News";
+
+"ESPN Top News" = "ESPN Top News";

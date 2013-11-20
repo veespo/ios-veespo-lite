@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Yashesh Chauhan. All rights reserved.
 //
 
-#import "VEPickerView.h"
+#import "PickerView.h"
 
-@implementation VEPickerView
+@implementation PickerView
 @synthesize arrRecords,delegate;
 
 

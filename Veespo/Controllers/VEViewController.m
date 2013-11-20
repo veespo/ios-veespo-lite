@@ -27,7 +27,6 @@
     UIButton *logVeespoBtn;
     UILabel *disclaimerLbl;
     NSMutableDictionary *_history;
-    NSString *_demoCode;
 }
 
 @end
@@ -38,81 +37,74 @@
 {
     [super viewDidLoad];
     
-    _demoCode = nil;
-	
-    textOneTf = [[UITextField alloc] initWithFrame:CGRectMake(60, 107, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
+    textOneTf = [[UITextField alloc] initWithFrame:CGRectMake(60, 127, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
     textOneTf.delegate = self;
     [textOneTf setReturnKeyType:UIReturnKeyNext];
     [textOneTf setTextAlignment:NSTextAlignmentCenter];
     [textOneTf setAutocorrectionType:UITextAutocorrectionTypeNo];
-    //    [textOneTf setBackgroundColor:[UIColor whiteColor]];
     [textOneTf setBorderStyle:UITextBorderStyleRoundedRect];
     
-    textTwoTf = [[UITextField alloc] initWithFrame:CGRectMake(textOneTf.frame.origin.x + DEMOCODETEXT_WIDTH + 8, 107, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
+    textTwoTf = [[UITextField alloc] initWithFrame:CGRectMake(textOneTf.frame.origin.x + DEMOCODETEXT_WIDTH + 8, 127, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
     textTwoTf.delegate = self;
     [textTwoTf setReturnKeyType:UIReturnKeyNext];
     [textTwoTf setTextAlignment:NSTextAlignmentCenter];
     [textTwoTf setAutocorrectionType:UITextAutocorrectionTypeNo];
-    //    [textTwoTf setBackgroundColor:[UIColor whiteColor]];
     [textTwoTf setBorderStyle:UITextBorderStyleRoundedRect];
     
-    textThreeTf = [[UITextField alloc] initWithFrame:CGRectMake(textTwoTf.frame.origin.x + DEMOCODETEXT_WIDTH + 8, 107, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
+    textThreeTf = [[UITextField alloc] initWithFrame:CGRectMake(textTwoTf.frame.origin.x + DEMOCODETEXT_WIDTH + 8, 127, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
     textThreeTf.delegate = self;
     [textThreeTf setReturnKeyType:UIReturnKeyNext];
     [textThreeTf setTextAlignment:NSTextAlignmentCenter];
     [textThreeTf setAutocorrectionType:UITextAutocorrectionTypeNo];
-    //    [textThreeTf setBackgroundColor:[UIColor whiteColor]];
     [textThreeTf setBorderStyle:UITextBorderStyleRoundedRect];
     
-    textFourTf = [[UITextField alloc] initWithFrame:CGRectMake(textThreeTf.frame.origin.x + DEMOCODETEXT_WIDTH + 8, 107, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
+    textFourTf = [[UITextField alloc] initWithFrame:CGRectMake(textThreeTf.frame.origin.x + DEMOCODETEXT_WIDTH + 8, 127, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
     textFourTf.delegate = self;
     [textFourTf setReturnKeyType:UIReturnKeyNext];
     [textFourTf setTextAlignment:NSTextAlignmentCenter];
     [textFourTf setAutocorrectionType:UITextAutocorrectionTypeNo];
-    //    [textFourTf setBackgroundColor:[UIColor whiteColor]];
     [textFourTf setBorderStyle:UITextBorderStyleRoundedRect];
     
-    userNameTf = [[UITextField alloc] initWithFrame:CGRectMake(60, textOneTf.frame.origin.y + DEMOCODETEXT_HEIGHT + 44, 200, 27)];
+    userNameTf = [[UITextField alloc] initWithFrame:CGRectMake(60, textOneTf.frame.origin.y + DEMOCODETEXT_HEIGHT + 24, 200, 27)];
     [userNameTf setReturnKeyType:UIReturnKeyGo];
     [userNameTf setAutocorrectionType:UITextAutocorrectionTypeNo];
-    [userNameTf setPlaceholder:@"Nome dell'utente"];
-    //    [userNameTf setBackgroundColor:[UIColor whiteColor]];
+    [userNameTf setPlaceholder:NSLocalizedString(@"User Name", nil)];
     [userNameTf setBorderStyle:UITextBorderStyleRoundedRect];
     userNameTf.delegate = self;
     
     historyDemoCodeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     historyDemoCodeBtn.frame = CGRectMake(20, userNameTf.frame.origin.y + userNameTf.frame.size.height + 10, 130, 35);
-    [historyDemoCodeBtn setTitle:@"Storico Accessi" forState:UIControlStateNormal];
+    [historyDemoCodeBtn setTitle:NSLocalizedString(@"Categories voted", nil) forState:UIControlStateNormal];
     [historyDemoCodeBtn touchUpInside:^(UIEvent *event) {
         _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
-
-        NSArray *keys = [_history allKeys];
-        NSMutableArray *categories = [[NSMutableArray alloc] init];
-        for (id key in keys) {
-            [categories addObject:[_history objectForKey:key]];
+        if (_history) {
+            NSArray *keys = [_history allKeys];
+            NSMutableArray *categories = [[NSMutableArray alloc] init];
+            for (id key in keys) {
+                [categories addObject:[_history objectForKey:key]];
+            }
+            
+            [userNameTf resignFirstResponder];
+            CGRect pickerFrame;
+            ([UIScreen mainScreen].bounds.size.height == 568.0f)?(pickerFrame = CGRectMake(0, 0, 320, 568)):(pickerFrame = CGRectMake(0, 0, 320, 480));
+            PickerView *historyDemoCodePicker = [[PickerView alloc] initWithFrame:pickerFrame withNSArray:categories];
+            
+            historyDemoCodePicker.delegate = self;
+            [self.view addSubview:historyDemoCodePicker];
+            [historyDemoCodePicker showPicker];
         }
-        
-        [userNameTf resignFirstResponder];
-        CGRect pickerFrame;
-        ([UIScreen mainScreen].bounds.size.height == 568.0f)?(pickerFrame = CGRectMake(0, 0, 320, 568)):(pickerFrame = CGRectMake(0, 0, 320, 480));
-        VEPickerView *historyDemoCodePicker = [[VEPickerView alloc] initWithFrame:pickerFrame withNSArray:categories];
-        
-        historyDemoCodePicker.delegate = self;
-        [self.view addSubview:historyDemoCodePicker];
-        [historyDemoCodePicker showPicker];
     }];
     
     logVeespoBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     logVeespoBtn.frame = CGRectMake(216, userNameTf.frame.origin.y + userNameTf.frame.size.height + 10, 71, 35);
-    [logVeespoBtn setTitle:@"Accedi" forState:UIControlStateNormal];
+    [logVeespoBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
     [logVeespoBtn touchUpInside:^(UIEvent *event) {
         if (![userNameTf.text isEqualToString:@""]) {
             VEConnection *connection = [[VEConnection alloc] init];
             
-            if (_demoCode == nil)
-                _demoCode = [[NSString stringWithFormat:@"%@%@%@%@", textOneTf.text, textTwoTf.text, textThreeTf.text, textFourTf.text] uppercaseString];
+            NSString *demoCode = [[NSString stringWithFormat:@"%@%@%@%@", textOneTf.text, textTwoTf.text, textThreeTf.text, textFourTf.text] uppercaseString];
             
-            [connection requestTargetList:[NSDictionary dictionaryWithObjectsAndKeys:_demoCode, @"democode", userNameTf.text, @"userid", nil]
+            [connection requestTargetList:[NSDictionary dictionaryWithObjectsAndKeys:demoCode, @"democode", userNameTf.text, @"userid", nil]
                                 withBlock:^(id responseData, NSString *token) {
                                     if (token != nil) {
                                         VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -131,17 +123,18 @@
                                             targetVC.token = token;
                                         }
                                         targetVC.targetList = responseData[@"targets"];
+                                        targetVC.title = responseData[@"category"];
                                         
                                         // Creo o aggiorno storico utente
                                         
                                         NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
                                         
                                         if (history == nil) {
-                                            history = @{_demoCode: responseData[@"category"]};
+                                            history = @{demoCode: responseData[@"category"]};
                                             [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
                                         } else {
                                             NSMutableDictionary *tmp = [[NSMutableDictionary alloc] initWithDictionary:history];
-                                            [tmp setObject:responseData[@"category"] forKey:_demoCode];
+                                            [tmp setObject:responseData[@"category"] forKey:demoCode];
                                             [[NSUserDefaults standardUserDefaults] setObject:tmp forKey:@"history"];
                                         }
                                         
@@ -153,7 +146,7 @@
                                 }
              ];
         } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Attenzione" message:@"Inserire un nome utente" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Fill Form", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         }
     }];
@@ -170,7 +163,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    _demoCode = nil;
+    textOneTf.text = @"";
+    textTwoTf.text = @"";
+    textThreeTf.text = @"";
+    textFourTf.text = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -183,6 +179,8 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    textField.backgroundColor = [UIColor clearColor];
+    
     if ([string isEqualToString:@""])
         return YES;
     if(textField == textOneTf) {
@@ -217,6 +215,15 @@
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+//    UITextPosition *beginning = [textField beginningOfDocument];
+//    [textField setSelectedTextRange:[textField textRangeFromPosition:beginning
+//                                                          toPosition:beginning]];
+    if (textField != userNameTf) textField.text = nil;
+    
+}
+
 #pragma mark - Piker Delegate
 
 - (void)pickerClosed
@@ -229,7 +236,10 @@
     NSArray *keys = [_history allKeys];
     for (id key in keys) {
         if ([[_history objectForKey:key] isEqualToString:text]) {
-            _demoCode = key;
+            textOneTf.text = [NSString stringWithFormat:@"%c",[key characterAtIndex:0]];
+            textTwoTf.text = [NSString stringWithFormat:@"%c",[key characterAtIndex:1]];
+            textThreeTf.text = [NSString stringWithFormat:@"%c",[key characterAtIndex:2]];
+            textFourTf.text = [NSString stringWithFormat:@"%c",[key characterAtIndex:3]];
             break;
         }
     }

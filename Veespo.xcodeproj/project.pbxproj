@@ -26,6 +26,10 @@
 		BE1ECC5C17F1E724006CCD56 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC5317F1E724006CCD56 /* UIImageView+AFNetworking.m */; };
 		BE1ECC5E17F22DE9006CCD56 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */; };
 		BE1ECC6017F22DF8006CCD56 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */; };
+		BE644B16183D5DF6007AEE9F /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE644B14183D5DF6007AEE9F /* Resources.bundle */; };
+		BE644B17183D5DF6007AEE9F /* VeespoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE644B15183D5DF6007AEE9F /* VeespoFramework.framework */; };
+		BE644B1B183D5EDA007AEE9F /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE644B1A183D5EDA007AEE9F /* PickerView.m */; };
+		BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE644B20183D6D7A007AEE9F /* Localizable.strings */; };
 		BE7516EE1818192500C2717B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7516ED1818192500C2717B /* AdSupport.framework */; };
 		BEC63F52183CC6BD001C82B6 /* VEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */; };
 		BEC63F53183CC6BD001C82B6 /* RassegnaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1C183CC6BD001C82B6 /* RassegnaCell.m */; };
@@ -60,9 +64,6 @@
 		BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */; };
 		BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE010A95180AEF0E0012817F /* Main.storyboard */; };
 		BEC63F80183CD528001C82B6 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F7F183CD528001C82B6 /* Supporting Files */; };
-		BEC63F82183CD550001C82B6 /* Veespo-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F81183CD550001C82B6 /* Veespo-Keys.plist */; };
-		BEC63F87183CF2F3001C82B6 /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F85183CF2F3001C82B6 /* Resources.bundle */; };
-		BEC63F88183CF2F3001C82B6 /* VeespoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC63F86183CF2F3001C82B6 /* VeespoFramework.framework */; };
 		BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671617EC9A1A00F394E9 /* Foundation.framework */; };
 		BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671817EC9A1A00F394E9 /* CoreGraphics.framework */; };
 		BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671A17EC9A1A00F394E9 /* UIKit.framework */; };
@@ -76,7 +77,6 @@
 		BEEB675217ECAAB200F394E9 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB675117ECAAB200F394E9 /* MBProgressHUD.m */; };
 		BEEB675917ECAB3000F394E9 /* GHRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB675517ECAB3000F394E9 /* GHRevealViewController.m */; };
 		BEEB675A17ECAB3000F394E9 /* GHSidebarSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB675717ECAB3000F394E9 /* GHSidebarSearchViewController.m */; };
-		BEF08A29183D18C100BFBE6A /* VEPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF08A28183D18C100BFBE6A /* VEPickerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +125,13 @@
 		BE1ECC5317F1E724006CCD56 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "../../../Progetti/AFNetworking/AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BE644B14183D5DF6007AEE9F /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
+		BE644B15183D5DF6007AEE9F /* VeespoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VeespoFramework.framework; sourceTree = "<group>"; };
+		BE644B19183D5EDA007AEE9F /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
+		BE644B1A183D5EDA007AEE9F /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
+		BE644B1F183D6D7A007AEE9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BE644B21183D6D7F007AEE9F /* it */ = {isa = PBXFileReference; lastKnownFileType = file; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BE644B22183D6D89007AEE9F /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BE7516ED1818192500C2717B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		BEC63F18183CC6BD001C82B6 /* VEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEAppDelegate.h; sourceTree = "<group>"; };
 		BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEAppDelegate.m; sourceTree = "<group>"; };
@@ -181,9 +188,6 @@
 		BEC63F7A183CD0B3001C82B6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Veespo-Info.plist"; sourceTree = "<group>"; };
 		BEC63F7F183CD528001C82B6 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
-		BEC63F81183CD550001C82B6 /* Veespo-Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Veespo-Keys.plist"; path = "Veespo/Supporting Files/Veespo-Keys.plist"; sourceTree = "<group>"; };
-		BEC63F85183CF2F3001C82B6 /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
-		BEC63F86183CF2F3001C82B6 /* VeespoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VeespoFramework.framework; sourceTree = "<group>"; };
 		BEEB671317EC9A1A00F394E9 /* Veespo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veespo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEB671617EC9A1A00F394E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BEEB671817EC9A1A00F394E9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -204,8 +208,6 @@
 		BEEB675617ECAB3000F394E9 /* GHSidebarSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHSidebarSearchViewController.h; path = ../../../Progetti/GHSidebarNav/GHSidebarNav/GHSidebarSearchViewController.h; sourceTree = "<group>"; };
 		BEEB675717ECAB3000F394E9 /* GHSidebarSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHSidebarSearchViewController.m; path = ../../../Progetti/GHSidebarNav/GHSidebarNav/GHSidebarSearchViewController.m; sourceTree = "<group>"; };
 		BEEB675817ECAB3000F394E9 /* GHSidebarSearchViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHSidebarSearchViewControllerDelegate.h; path = ../../../Progetti/GHSidebarNav/GHSidebarNav/GHSidebarSearchViewControllerDelegate.h; sourceTree = "<group>"; };
-		BEF08A27183D18C100BFBE6A /* VEPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEPickerView.h; sourceTree = "<group>"; };
-		BEF08A28183D18C100BFBE6A /* VEPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEPickerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,7 +223,7 @@
 				BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */,
 				BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */,
 				BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */,
-				BEC63F88183CF2F3001C82B6 /* VeespoFramework.framework in Frameworks */,
+				BE644B17183D5DF6007AEE9F /* VeespoFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +282,32 @@
 				BE1ECC5317F1E724006CCD56 /* UIImageView+AFNetworking.m */,
 			);
 			name = AFNetworking;
+			sourceTree = "<group>";
+		};
+		BE644B12183D5DF6007AEE9F /* VeespoFramework.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				BE644B13183D5DF6007AEE9F /* Resources */,
+				BE644B15183D5DF6007AEE9F /* VeespoFramework.framework */,
+			);
+			path = VeespoFramework.embeddedframework;
+			sourceTree = "<group>";
+		};
+		BE644B13183D5DF6007AEE9F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BE644B14183D5DF6007AEE9F /* Resources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BE644B18183D5EDA007AEE9F /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				BE644B19183D5EDA007AEE9F /* PickerView.h */,
+				BE644B1A183D5EDA007AEE9F /* PickerView.m */,
+			);
+			path = PickerView;
 			sourceTree = "<group>";
 		};
 		BEC63F17183CC6BD001C82B6 /* Application */ = {
@@ -413,27 +441,9 @@
 			path = "UIControl+VEControl";
 			sourceTree = "<group>";
 		};
-		BEC63F83183CF2F3001C82B6 /* VeespoFramework.embeddedframework */ = {
-			isa = PBXGroup;
-			children = (
-				BEC63F84183CF2F3001C82B6 /* Resources */,
-				BEC63F86183CF2F3001C82B6 /* VeespoFramework.framework */,
-			);
-			path = VeespoFramework.embeddedframework;
-			sourceTree = "<group>";
-		};
-		BEC63F84183CF2F3001C82B6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				BEC63F85183CF2F3001C82B6 /* Resources.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		BEEB670A17EC9A1A00F394E9 = {
 			isa = PBXGroup;
 			children = (
-				BEC63F81183CD550001C82B6 /* Veespo-Keys.plist */,
 				BEEB671C17EC9A1A00F394E9 /* Veespo */,
 				BEEB673B17EC9A1A00F394E9 /* VeespoTests */,
 				BEEB671517EC9A1A00F394E9 /* Frameworks */,
@@ -453,7 +463,7 @@
 		BEEB671517EC9A1A00F394E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BEC63F83183CF2F3001C82B6 /* VeespoFramework.embeddedframework */,
+				BE644B12183D5DF6007AEE9F /* VeespoFramework.embeddedframework */,
 				BE7516ED1818192500C2717B /* AdSupport.framework */,
 				BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */,
 				BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */,
@@ -476,11 +486,11 @@
 				BEC63F24183CC6BD001C82B6 /* Controllers */,
 				BEC63F3D183CC6BD001C82B6 /* Foursquare */,
 				BEC63F41183CC6BD001C82B6 /* Models */,
+				BE644B18183D5EDA007AEE9F /* PickerView */,
 				BEC63F46183CC6BD001C82B6 /* Resources */,
 				BEC63F4C183CC6BD001C82B6 /* RSS */,
 				BEC63F71183CC7BC001C82B6 /* Tools */,
 				BEC63F4F183CC6BD001C82B6 /* Veespo */,
-				BEF08A26183D18C100BFBE6A /* VEPickerView */,
 				BEEB674E17ECAA7F00F394E9 /* Classes */,
 				BEEB671D17EC9A1A00F394E9 /* Supporting Files */,
 			);
@@ -495,6 +505,7 @@
 				BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */,
 				BEC63F79183CD00D001C82B6 /* Veespo-Prefix.pch */,
 				BEEB671F17EC9A1A00F394E9 /* InfoPlist.strings */,
+				BE644B20183D6D7A007AEE9F /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -555,15 +566,6 @@
 				BEEB675817ECAB3000F394E9 /* GHSidebarSearchViewControllerDelegate.h */,
 			);
 			name = GHSidebarNav;
-			sourceTree = "<group>";
-		};
-		BEF08A26183D18C100BFBE6A /* VEPickerView */ = {
-			isa = PBXGroup;
-			children = (
-				BEF08A27183D18C100BFBE6A /* VEPickerView.h */,
-				BEF08A28183D18C100BFBE6A /* VEPickerView.m */,
-			);
-			path = VEPickerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -647,17 +649,17 @@
 				BEC63F80183CD528001C82B6 /* Supporting Files in Resources */,
 				BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */,
 				BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */,
-				BEC63F87183CF2F3001C82B6 /* Resources.bundle in Resources */,
+				BE644B16183D5DF6007AEE9F /* Resources.bundle in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
 				BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
-				BEC63F82183CD550001C82B6 /* Veespo-Keys.plist in Resources */,
 				BE1ECC2217F1B4BF006CCD56 /* FSWebLogin.xib in Resources */,
 				BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */,
 				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
+				BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */,
 				BEC63F6C183CC6BD001C82B6 /* user.png in Resources */,
 				BEC63F68183CC6BD001C82B6 /* pin.png in Resources */,
 			);
@@ -691,7 +693,6 @@
 				BE1ECC1E17F1B4BF006CCD56 /* Foursquare2.m in Sources */,
 				BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */,
 				BE1ECC5C17F1E724006CCD56 /* UIImageView+AFNetworking.m in Sources */,
-				BEF08A29183D18C100BFBE6A /* VEPickerView.m in Sources */,
 				BEC63F7C183CD0B3001C82B6 /* main.m in Sources */,
 				BE1ECC5417F1E724006CCD56 /* AFHTTPClient.m in Sources */,
 				BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */,
@@ -703,6 +704,7 @@
 				BE1ECC5517F1E724006CCD56 /* AFHTTPRequestOperation.m in Sources */,
 				BEC63F5F183CC6BD001C82B6 /* VETargetViewController.m in Sources */,
 				BEC63F6D183CC6BD001C82B6 /* VERSSParser.m in Sources */,
+				BE644B1B183D5EDA007AEE9F /* PickerView.m in Sources */,
 				BE1ECC5917F1E724006CCD56 /* AFPropertyListRequestOperation.m in Sources */,
 				BE1ECC5617F1E724006CCD56 /* AFImageRequestOperation.m in Sources */,
 				BE1ECC5717F1E724006CCD56 /* AFJSONRequestOperation.m in Sources */,
@@ -747,6 +749,17 @@
 			);
 			name = Main.storyboard;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		BE644B20183D6D7A007AEE9F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE644B1F183D6D7A007AEE9F /* Base */,
+				BE644B21183D6D7F007AEE9F /* it */,
+				BE644B22183D6D89007AEE9F /* en */,
+			);
+			name = Localizable.strings;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		BEEB671F17EC9A1A00F394E9 /* InfoPlist.strings */ = {
@@ -849,7 +862,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = /Users/darth/Dropbox/veespo/Veespo/VeespoFramework.embeddedframework;
+				FRAMEWORK_SEARCH_PATHS = /Volumes/MyPassport/Dropbox/veespo/Veespo/VeespoFramework.embeddedframework;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
 				INFOPLIST_FILE = "Veespo/Veespo-Info.plist";
@@ -868,7 +881,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alessio Roberto";
-				FRAMEWORK_SEARCH_PATHS = /Users/darth/Dropbox/veespo/Veespo/VeespoFramework.embeddedframework;
+				FRAMEWORK_SEARCH_PATHS = /Volumes/MyPassport/Dropbox/veespo/Veespo/VeespoFramework.embeddedframework;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
 				INFOPLIST_FILE = "Veespo/Veespo-Info.plist";

@@ -80,7 +80,7 @@
     NSDictionary *dict = [target objectAtIndex:indexPath.row];
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token
                                                                                                 target:dict[@"target"]
-                                                                                          withQuestion:[NSString stringWithFormat:@"Cosa ne pensi di %@?", dict[@"desc1"]]
+                                                                                          withQuestion:[NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), dict[@"desc1"]]
                                                                                            detailsView:nil
                                                     ];
     
@@ -90,12 +90,13 @@
     };
     
     [veespoViewController showWidget:^(NSDictionary *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil)
                                                         message:[NSString stringWithFormat:@"Error %@", error]
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
 #endif
 

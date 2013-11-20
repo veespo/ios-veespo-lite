@@ -80,9 +80,9 @@ static NSString * const kVEKeysFileName = @"Veespo-Keys";
                                  [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] initWithTitle:@"Home" withRevealBlock:revealBlock]]
                                  ],
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:@"Locali" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] initWithTitle:@"News: Tecnologia" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] initWithTitle:@"ESPN Top News" withRevealBlock:revealBlock]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:NSLocalizedString(@"Venues", nil) withRevealBlock:revealBlock]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] initWithTitle:NSLocalizedString(@"Tech News", nil) withRevealBlock:revealBlock]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] initWithTitle:NSLocalizedString(@"ESPN Top News", nil) withRevealBlock:revealBlock]]
                                  ]
                              ];
     NSArray *cellInfos = @[
@@ -90,9 +90,9 @@ static NSString * const kVEKeysFileName = @"Veespo-Keys";
                                @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"Home"},
                                ],
                            @[
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"Locali"},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"News: Tecnologia"},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"News: Sport"},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:NSLocalizedString(@"Venues", nil)},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:NSLocalizedString(@"Tech News", nil)},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:NSLocalizedString(@"Sport News", nil)},
                                ]
                            ];
     

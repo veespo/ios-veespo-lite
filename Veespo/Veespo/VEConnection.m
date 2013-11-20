@@ -20,7 +20,7 @@
         NSDictionary *error = JSON[@"error"];
         
         if (error != nil) {
-            block([NSDictionary dictionaryWithObject:@"Il codice demo è errato" forKey:@"error"], nil);
+            block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Wrong Code", nil) forKey:@"error"], nil);
         } else {
             // Richiesta user token
             NSString *urlStr = [NSString stringWithFormat:@"http://sandbox.veespo.com/v1/user-token/demo-code/%@?user=%@", demoCode, userId];
@@ -36,12 +36,12 @@
                     block(resp, JSON[@"data"][@"reply"]);
                 }];
             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                block([NSDictionary dictionaryWithObject:@"Errore di connessione" forKey:@"error"], nil);
+                block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"], nil);
             }];
             [boperation start];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        block([NSDictionary dictionaryWithObject:@"Errore di connessione" forKey:@"error"], nil);
+        block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"], nil);
     }];
     
     [operation start];
@@ -60,7 +60,7 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         block(JSON);
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        block([NSDictionary dictionaryWithObject:@"Errore di connessione" forKey:@"error"]);
+        block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"]);
     }];
     
     [operation start];
