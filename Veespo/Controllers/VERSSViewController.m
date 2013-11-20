@@ -9,7 +9,7 @@
 #import "VERSSViewController.h"
 #import "VERSSParser.h"
 #import "RassegnaCell.h"
-#import "WebVC.h"
+#import "WebViewController.h"
 
 @interface VERSSViewController ()
 
@@ -131,7 +131,7 @@
     
     //NSLog(@"link: %@", storyLink);
     
-    WebVC *wvc = [[WebVC alloc] init];
+    WebViewController *wvc = [[WebViewController alloc] init];
     [wvc setUrl:[NSURL URLWithString:storyLink]];
     [self.navigationController pushViewController:wvc animated:YES];
     // open in Safari

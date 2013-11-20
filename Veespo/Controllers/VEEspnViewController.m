@@ -8,7 +8,7 @@
 
 #import "VEEspnViewController.h"
 #import "RassegnaCell.h"
-#import "WebVC.h"
+#import "WebViewController.h"
 #import "AFNetworking.h"
 
 @interface VEEspnViewController ()
@@ -120,7 +120,7 @@
     
     //NSLog(@"link: %@", storyLink);
     
-    WebVC *wvc = [[WebVC alloc] init];
+    WebViewController *wvc = [[WebViewController alloc] init];
     [wvc setUrl:[NSURL URLWithString:storyLink]];
     [self.navigationController pushViewController:wvc animated:YES];
     // open in Safari

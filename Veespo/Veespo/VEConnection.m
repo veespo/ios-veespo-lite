@@ -1,11 +1,3 @@
-//
-//  VEConnection.m
-//  Veespo
-//
-//  Created by Alessio Roberto on 11/10/13.
-//  Copyright (c) 2013 Veespo Ltd. All rights reserved.
-//
-
 #import "VEConnection.h"
 #import "AFNetworking.h"
 

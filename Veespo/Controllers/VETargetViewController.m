@@ -7,8 +7,6 @@
 //
 
 #import "VETargetViewController.h"
-#import <VeespoFramework/Veespo.h>
-#import <VeespoFramework/VEVeespoViewController.h>
 
 @interface VETargetViewController () {
     NSMutableArray *target;
@@ -74,6 +72,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+#ifdef VEESPO
     NSDictionary *dict = [target objectAtIndex:indexPath.row];
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token target:dict[@"target"] withQuestion:[NSString stringWithFormat:@"Cosa ne pensi di %@", dict[@"desc1"]] detailsView:nil];
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
@@ -89,6 +88,7 @@
                                               otherButtonTitles:nil];
         [alert show];
     }];
+#endif
 }
 
 /*
