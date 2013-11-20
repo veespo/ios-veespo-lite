@@ -59,6 +59,8 @@
 		BEC63F7C183CD0B3001C82B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F7A183CD0B3001C82B6 /* main.m */; };
 		BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */; };
 		BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE010A95180AEF0E0012817F /* Main.storyboard */; };
+		BEC63F80183CD528001C82B6 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F7F183CD528001C82B6 /* Supporting Files */; };
+		BEC63F82183CD550001C82B6 /* Veespo-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F81183CD550001C82B6 /* Veespo-Keys.plist */; };
 		BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671617EC9A1A00F394E9 /* Foundation.framework */; };
 		BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671817EC9A1A00F394E9 /* CoreGraphics.framework */; };
 		BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671A17EC9A1A00F394E9 /* UIKit.framework */; };
@@ -175,6 +177,8 @@
 		BEC63F79183CD00D001C82B6 /* Veespo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Veespo-Prefix.pch"; sourceTree = "<group>"; };
 		BEC63F7A183CD0B3001C82B6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Veespo-Info.plist"; sourceTree = "<group>"; };
+		BEC63F7F183CD528001C82B6 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Supporting Files"; sourceTree = "<group>"; };
+		BEC63F81183CD550001C82B6 /* Veespo-Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Veespo-Keys.plist"; path = "Veespo/Supporting Files/Veespo-Keys.plist"; sourceTree = "<group>"; };
 		BEEB671317EC9A1A00F394E9 /* Veespo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veespo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEB671617EC9A1A00F394E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BEEB671817EC9A1A00F394E9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -404,6 +408,7 @@
 		BEEB670A17EC9A1A00F394E9 = {
 			isa = PBXGroup;
 			children = (
+				BEC63F81183CD550001C82B6 /* Veespo-Keys.plist */,
 				BEEB671C17EC9A1A00F394E9 /* Veespo */,
 				BEEB673B17EC9A1A00F394E9 /* VeespoTests */,
 				BEEB671517EC9A1A00F394E9 /* Frameworks */,
@@ -458,6 +463,7 @@
 		BEEB671D17EC9A1A00F394E9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BEC63F7F183CD528001C82B6 /* Supporting Files */,
 				BEC63F7A183CD0B3001C82B6 /* main.m */,
 				BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */,
 				BEC63F79183CD00D001C82B6 /* Veespo-Prefix.pch */,
@@ -602,6 +608,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEC63F80183CD528001C82B6 /* Supporting Files in Resources */,
 				BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */,
 				BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
@@ -610,6 +617,7 @@
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
 				BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
+				BEC63F82183CD550001C82B6 /* Veespo-Keys.plist in Resources */,
 				BE1ECC2217F1B4BF006CCD56 /* FSWebLogin.xib in Resources */,
 				BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */,
 				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
