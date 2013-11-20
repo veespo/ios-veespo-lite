@@ -76,6 +76,7 @@
 		BEEB675217ECAAB200F394E9 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB675117ECAAB200F394E9 /* MBProgressHUD.m */; };
 		BEEB675917ECAB3000F394E9 /* GHRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB675517ECAB3000F394E9 /* GHRevealViewController.m */; };
 		BEEB675A17ECAB3000F394E9 /* GHSidebarSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB675717ECAB3000F394E9 /* GHSidebarSearchViewController.m */; };
+		BEF08A29183D18C100BFBE6A /* VEPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF08A28183D18C100BFBE6A /* VEPickerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +204,8 @@
 		BEEB675617ECAB3000F394E9 /* GHSidebarSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHSidebarSearchViewController.h; path = ../../../Progetti/GHSidebarNav/GHSidebarNav/GHSidebarSearchViewController.h; sourceTree = "<group>"; };
 		BEEB675717ECAB3000F394E9 /* GHSidebarSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHSidebarSearchViewController.m; path = ../../../Progetti/GHSidebarNav/GHSidebarNav/GHSidebarSearchViewController.m; sourceTree = "<group>"; };
 		BEEB675817ECAB3000F394E9 /* GHSidebarSearchViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GHSidebarSearchViewControllerDelegate.h; path = ../../../Progetti/GHSidebarNav/GHSidebarNav/GHSidebarSearchViewControllerDelegate.h; sourceTree = "<group>"; };
+		BEF08A27183D18C100BFBE6A /* VEPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEPickerView.h; sourceTree = "<group>"; };
+		BEF08A28183D18C100BFBE6A /* VEPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEPickerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -477,6 +480,7 @@
 				BEC63F4C183CC6BD001C82B6 /* RSS */,
 				BEC63F71183CC7BC001C82B6 /* Tools */,
 				BEC63F4F183CC6BD001C82B6 /* Veespo */,
+				BEF08A26183D18C100BFBE6A /* VEPickerView */,
 				BEEB674E17ECAA7F00F394E9 /* Classes */,
 				BEEB671D17EC9A1A00F394E9 /* Supporting Files */,
 			);
@@ -551,6 +555,15 @@
 				BEEB675817ECAB3000F394E9 /* GHSidebarSearchViewControllerDelegate.h */,
 			);
 			name = GHSidebarNav;
+			sourceTree = "<group>";
+		};
+		BEF08A26183D18C100BFBE6A /* VEPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				BEF08A27183D18C100BFBE6A /* VEPickerView.h */,
+				BEF08A28183D18C100BFBE6A /* VEPickerView.m */,
+			);
+			path = VEPickerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -678,6 +691,7 @@
 				BE1ECC1E17F1B4BF006CCD56 /* Foursquare2.m in Sources */,
 				BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */,
 				BE1ECC5C17F1E724006CCD56 /* UIImageView+AFNetworking.m in Sources */,
+				BEF08A29183D18C100BFBE6A /* VEPickerView.m in Sources */,
 				BEC63F7C183CD0B3001C82B6 /* main.m in Sources */,
 				BE1ECC5417F1E724006CCD56 /* AFHTTPClient.m in Sources */,
 				BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */,

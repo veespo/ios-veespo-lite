@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "VERootViewController.h"
+#import "VEPickerView.h"
 
-@interface VEViewController : VERootViewController <UITextFieldDelegate>
+@interface VEViewController : VERootViewController <UITextFieldDelegate, VEPickerViewDelegate>
 
 @end
