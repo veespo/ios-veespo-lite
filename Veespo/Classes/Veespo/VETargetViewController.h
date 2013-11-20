@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSDictionary *targetList;
 @property (nonatomic, strong) NSString *userid;
+@property (nonatomic, strong) NSString *token;
 
 @end

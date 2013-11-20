@@ -15,14 +15,12 @@
 #import "VEFSHeaderView.h"
 #import "VEDetailVenue.h"
 #import <AdSupport/AdSupport.h>
-#import <VeespoFramework/Veespo.h>
-#import <VeespoFramework/VEVeespoViewController.h>
 
 @interface VEFSViewController (){
     int locationUpdateCnt;
     CLLocation *lastLocation;
     
-    NSArray *tokens;
+    NSDictionary *tokens;
 }
 
 @end
@@ -82,21 +80,33 @@
     
     NSDictionary *categories = @{
                                  @"categories":@[
-                                         @{@"cat": @"ios"}
+                                         @{@"cat": @"cibi"},
+                                         @{@"cat": @"localinotturni"}
                                          ]
                                  };
+    NSString *userId = nil;
     
-    [Veespo initVeespo:@"apk-fa190130-501e-4a82-973d-2cd0143c6f66"
-                userId:[NSString stringWithFormat:@"VeespoApp-%@",
-                        [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]
-                        ]
-              userName:nil
-              language:@"it"
-            categories:categories
-               testUrl:YES
-                tokens:^(id responseData, BOOL error) {
-                    tokens = [[NSArray alloc] initWithArray:[responseData objectForKey:@"tokens"]];
-                }];
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
+    } else {
+        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]];
+    }
+    
+    [Veespo initVeespo:@"apk-ea0a36a0-c520-4338-84b5-b0d7a5dba1f5" userId:userId partnerId:@"apple" language:[[NSLocale preferredLanguages] objectAtIndex:0] categories:categories testUrl:YES tokens:^(id responseData, BOOL error) {
+        if (error == NO) {
+            tokens = [[NSDictionary alloc] initWithDictionary:responseData];
+        for (NSString *familyName in [UIFont familyNames]) {
+            for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
+                if ([fontName isEqualToString:@"LED"]) NSLog(@"%@", fontName);
+            }
+        }
+        }
+        else {
+            NSLog(@"%@", responseData);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug" message:[NSString stringWithFormat:@"Error %@", responseData] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -123,9 +133,13 @@
 
 -(void)userDidSelectVenue:(NSIndexPath *)indexPath
 {
-    VEDetailVenue *detail = [[VEDetailVenue alloc] init];
-    detail.token = [tokens objectAtIndex:0][@"token"];
+    VEDetailVenue *detail = [[VEDetailVenue alloc] initWithNibName:@"VEDetailVenue" bundle:nil];
     detail.venue = [nearbyVenues objectAtIndex:indexPath.row];
+    if ([detail.venue.categoryId isEqualToString:catCibi]) {
+        detail.token = [tokens objectForKey:@"cibi"];
+    } else {
+        detail.token = [tokens objectForKey:@"localinotturni"];
+    }
     detail.title = detail.venue.title;
     [self.navigationController pushViewController:detail animated:YES];
 }
@@ -199,7 +213,8 @@
     return pin;
 }
 
--(void)checkinButton{
+-(void)checkinButton
+{
     selected = mapView.selectedAnnotations.lastObject;
     VEDetailVenue *detail = [[VEDetailVenue alloc] init];
     detail.venue = selected;

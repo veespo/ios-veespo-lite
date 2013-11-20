@@ -87,17 +87,26 @@
     [logVeespoBtn setTitle:@"Accedi" forState:UIControlStateNormal];
     [logVeespoBtn touchUpInside:^(UIEvent *event) {
         if (![userNameTf.text isEqualToString:@""]) {
-        VEConnection *connection = [[VEConnection alloc] init];
-        NSString *demoCode = [[NSString stringWithFormat:@"%@%@%@%@", textOneTf.text, textTwoTf.text, textThreeTf.text, textFourTf.text] uppercaseString];
-        [connection requestTargetList:[NSDictionary dictionaryWithObjectsAndKeys:demoCode, @"democode", userNameTf.text, @"userid", nil] withBlock:^(id responseData) {
-            VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
-            targetVC.userid = [NSString stringWithFormat:@"%@-%@",
-                               userNameTf.text,
-                               [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]
-                               ];
-            targetVC.targetList = responseData;
-            [self.navigationController pushViewController:targetVC animated:YES];
-        }];
+            VEConnection *connection = [[VEConnection alloc] init];
+            NSString *demoCode = [[NSString stringWithFormat:@"%@%@%@%@", textOneTf.text, textTwoTf.text, textThreeTf.text, textFourTf.text] uppercaseString];
+            [connection requestTargetList:[NSDictionary dictionaryWithObjectsAndKeys:demoCode, @"democode", userNameTf.text, @"userid", nil] withBlock:^(id responseData, NSString *token) {
+                VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
+                if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+                    targetVC.userid = [NSString stringWithFormat:@"%@-%@",
+                                       userNameTf.text,
+                                       [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]
+                                       ];
+                    targetVC.token = token;
+                } else {
+                    targetVC.userid = [NSString stringWithFormat:@"%@-%@",
+                                       userNameTf.text,
+                                       [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"]
+                                       ];
+                    targetVC.token = token;
+                }
+                targetVC.targetList = responseData;
+                [self.navigationController pushViewController:targetVC animated:YES];
+            }];
         } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Attenzione" message:@"Inserire un nome utente" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];

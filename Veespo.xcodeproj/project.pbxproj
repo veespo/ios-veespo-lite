@@ -45,8 +45,7 @@
 		BE255B1618084AE300AB007A /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BE255B1518084AE300AB007A /* VEConnection.m */; };
 		BE255B1A18084F2E00AB007A /* UIControl+VEControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BE255B1918084F2E00AB007A /* UIControl+VEControl.m */; };
 		BE361F7217FC806700E3EAA7 /* VEDetailVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = BE361F7117FC806700E3EAA7 /* VEDetailVenue.m */; };
-		BE7516EB1818186900C2717B /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE7516E91818186900C2717B /* Resources.bundle */; };
-		BE7516EC1818186900C2717B /* VeespoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7516EA1818186900C2717B /* VeespoFramework.framework */; };
+		BE74E1051836822800F7542E /* VEDetailVenue.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE74E1041836822800F7542E /* VEDetailVenue.xib */; };
 		BE7516EE1818192500C2717B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7516ED1818192500C2717B /* AdSupport.framework */; };
 		BE79E55817EF9F41006F60F6 /* VEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BE79E55717EF9F41006F60F6 /* VEUser.m */; };
 		BEA0DFF517EDE6A300102645 /* VERootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA0DFF417EDE6A300102645 /* VERootViewController.m */; };
@@ -149,8 +148,7 @@
 		BE255B1918084F2E00AB007A /* UIControl+VEControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+VEControl.m"; sourceTree = "<group>"; };
 		BE361F7017FC806700E3EAA7 /* VEDetailVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEDetailVenue.h; path = Classes/Foursquare/VEDetailVenue.h; sourceTree = "<group>"; };
 		BE361F7117FC806700E3EAA7 /* VEDetailVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEDetailVenue.m; path = Classes/Foursquare/VEDetailVenue.m; sourceTree = "<group>"; };
-		BE7516E91818186900C2717B /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
-		BE7516EA1818186900C2717B /* VeespoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VeespoFramework.framework; sourceTree = "<group>"; };
+		BE74E1041836822800F7542E /* VEDetailVenue.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VEDetailVenue.xib; path = Classes/Foursquare/VEDetailVenue.xib; sourceTree = "<group>"; };
 		BE7516ED1818192500C2717B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		BE79E55617EF9F41006F60F6 /* VEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEUser.h; path = Classes/VEUser.h; sourceTree = "<group>"; };
 		BE79E55717EF9F41006F60F6 /* VEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEUser.m; path = Classes/VEUser.m; sourceTree = "<group>"; };
@@ -203,7 +201,6 @@
 				BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */,
 				BE1ECBB917F1962C006CCD56 /* CoreLocation.framework in Frameworks */,
 				BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */,
-				BE7516EC1818186900C2717B /* VeespoFramework.framework in Frameworks */,
 				BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */,
 				BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */,
 			);
@@ -237,6 +234,7 @@
 				BEE2FBFA17F4322300DD0FBD /* VEFSHeaderView.m */,
 				BE361F7017FC806700E3EAA7 /* VEDetailVenue.h */,
 				BE361F7117FC806700E3EAA7 /* VEDetailVenue.m */,
+				BE74E1041836822800F7542E /* VEDetailVenue.xib */,
 			);
 			name = Foursquare;
 			sourceTree = "<group>";
@@ -335,24 +333,6 @@
 			path = "Classes/UIControl+VEControl";
 			sourceTree = "<group>";
 		};
-		BE7516E71818186900C2717B /* VeespoFramework.embeddedframework */ = {
-			isa = PBXGroup;
-			children = (
-				BE7516E81818186900C2717B /* Resources */,
-				BE7516EA1818186900C2717B /* VeespoFramework.framework */,
-			);
-			name = VeespoFramework.embeddedframework;
-			path = "../../../Library/Developer/Xcode/DerivedData/VeespoFramework-eldtvhdwpsteoudgvebpfjvbcvhm/Build/Products/Debug-iphoneos/VeespoFramework.embeddedframework";
-			sourceTree = "<group>";
-		};
-		BE7516E81818186900C2717B /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				BE7516E91818186900C2717B /* Resources.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		BEEB670A17EC9A1A00F394E9 = {
 			isa = PBXGroup;
 			children = (
@@ -376,7 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				BE7516ED1818192500C2717B /* AdSupport.framework */,
-				BE7516E71818186900C2717B /* VeespoFramework.embeddedframework */,
 				BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */,
 				BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */,
 				BE1ECBBA17F19632006CCD56 /* MapKit.framework */,
@@ -567,7 +546,6 @@
 			files = (
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
 				BEA0DFFF17EF311C00102645 /* user.png in Resources */,
-				BE7516EB1818186900C2717B /* Resources.bundle in Resources */,
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
 				BE1ECC3517F1CC00006CCD56 /* pin.png in Resources */,
 				BE1ECC3817F1CC00006CCD56 /* poweredByFoursquare_gray@2x.png in Resources */,
@@ -575,6 +553,7 @@
 				BE1ECC2217F1B4BF006CCD56 /* FSWebLogin.xib in Resources */,
 				BE1ECC3717F1CC00006CCD56 /* poweredByFoursquare_gray.png in Resources */,
 				BE1ECC3617F1CC00006CCD56 /* pin@2x.png in Resources */,
+				BE74E1051836822800F7542E /* VEDetailVenue.xib in Resources */,
 				BE1ECC7B17F23B4F006CCD56 /* WebVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -766,6 +745,8 @@
 					"$(inherited)",
 					/Users/darth/Dropbox/veespo/Veespo/VeespoFramework.embeddedframework,
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/VeespoFramework-eldtvhdwpsteoudgvebpfjvbcvhm/Build/Products/Debug-iphoneos/VeespoFramework.embeddedframework",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/VeespoFramework-eldtvhdwpsteoudgvebpfjvbcvhm/Build/Products/Release-iphoneos/VeespoFramework.embeddedframework",
+					/Volumes/MyPassport/Dropbox/veespo/Veespo/VeespoFramework.embeddedframework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
@@ -789,6 +770,8 @@
 					"$(inherited)",
 					/Users/darth/Dropbox/veespo/Veespo/VeespoFramework.embeddedframework,
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/VeespoFramework-eldtvhdwpsteoudgvebpfjvbcvhm/Build/Products/Debug-iphoneos/VeespoFramework.embeddedframework",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/VeespoFramework-eldtvhdwpsteoudgvebpfjvbcvhm/Build/Products/Release-iphoneos/VeespoFramework.embeddedframework",
+					/Volumes/MyPassport/Dropbox/veespo/Veespo/VeespoFramework.embeddedframework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";

@@ -15,19 +15,19 @@
 }
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
-@property (nonatomic,strong)NSNumber*distance;
-@property (nonatomic,strong)NSString*address;
+@property (nonatomic,strong) NSNumber*distance;
+@property (nonatomic,strong) NSString*address;
 
 @end
 
 
 @interface FSVenue : NSObject<MKAnnotation>
 
-@property (nonatomic,strong)NSString*name;
-@property (nonatomic,strong)NSString*venueId;
-@property (nonatomic,strong)NSString*category;
-@property (nonatomic,strong)FSLocation*location;
-@property (nonatomic,strong)NSURL *imageURL;
-@property (nonatomic,strong)NSString *categoryId;
+@property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NSString *venueId;
+@property (nonatomic,strong) NSString *category;
+@property (nonatomic,strong) FSLocation *location;
+@property (nonatomic,strong) NSURL *imageURL;
+@property (nonatomic,strong) NSString *categoryId;
 
 @end

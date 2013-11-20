@@ -36,6 +36,9 @@
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }
     
+    self.categoryLabel.text = self.venue.category;
+    self.adressLabel.text = self.venue.location.address;
+    
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     [Foursquare2 getDetailForVenue:self.venue.venueId callback:^(BOOL success, id result) {
@@ -54,7 +57,7 @@
     VEVeespoViewController *veespoViewController = nil;
     
     NSDictionary *d = @{
-                        @"local_id": self.venue.venueId, @"desc1": self.venue.name, @"desc2": self.venue.location.address, @"lang": @"it"
+                        @"local_id": self.venue.venueId, @"desc1": self.venue.name, @"desc2": self.venue.category, @"lang": @"it"
                         };
     
     veespoViewController = [[VEVeespoViewController alloc]
@@ -62,7 +65,6 @@
                             targetInfo:d
                             withQuestion:[NSString stringWithFormat:@"Cosa ne pensi di %@", self.venue.name]
                             detailsView:nil
-                            background:(SYSTEM_VERSION_LESS_THAN(@"7.0"))?nil:[self.view snapshotViewAfterScreenUpdates:NO]
                             ];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
@@ -70,14 +72,14 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     
-    [veespoViewController setSkins:8];
-    
-    if (veespoViewController)
-        [self presentViewController:veespoViewController animated:YES completion:nil];
-    else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Attenzione" message:@"Errore di login con Veespo (messagio di debug)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [veespoViewController showWidget:^(NSDictionary *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug"
+                                                        message:[NSString stringWithFormat:@"Error %@", error]
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
         [alert show];
-    }
+    }];
 }
 
 @end

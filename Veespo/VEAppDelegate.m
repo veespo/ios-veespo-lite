@@ -45,6 +45,21 @@
 //    
 //    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
 //    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+        [NSUserDefaults resetStandardUserDefaults];
+        NSString *dateKey = @"Data Key";
+        NSDate *lastRead = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:dateKey];
+        if (!lastRead) {
+            NSDictionary *appDefaults  = [NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], dateKey, nil];
+            // sync the defaults to disk
+            [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:[VEAppDelegate uuid] forKey:@"uuid"];
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:dateKey];
+    }
 
     NSArray *headers = @[
                          @"VEESPO",
@@ -108,6 +123,14 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
++ (NSString *)uuid
+{
+    CFUUIDRef uuidRef = CFUUIDCreate(NULL);
+    CFStringRef uuidStringRef = CFUUIDCreateString(NULL, uuidRef);
+    CFRelease(uuidRef);
+    return (__bridge NSString *)uuidStringRef;
 }
 
 @end

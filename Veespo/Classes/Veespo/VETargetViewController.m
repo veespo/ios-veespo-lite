@@ -32,12 +32,10 @@
     [super viewDidLoad];
 
     target = [[NSMutableArray alloc] init];
-    NSArray *keys = [_targetList allKeys];
-    for (int i = 0; i < keys.count; i++) {
-        NSDictionary *dict = [_targetList objectForKey:[keys objectAtIndex:i]];
-        [target addObject:[NSDictionary dictionaryWithObjectsAndKeys:[keys objectAtIndex:i], @"targetid", dict, @"desc", nil]];
+    
+    for (NSDictionary *tar in _targetList) {
+       [target addObject:tar];
     }
-//    [Veespo initUser:_userid apiKey:@"" userName:nil language:@"it" veespoGroup:nil fileConfig:nil urlConfig:nil test:NO sandBox:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,24 +67,28 @@
     }
     
     NSDictionary *dict = [target objectAtIndex:indexPath.row];
-    cell.textLabel.text = dict[@"desc"][@"desc1"];
+    cell.textLabel.text = dict[@"desc1"];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSDictionary *dict = [target objectAtIndex:indexPath.row];
-//    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWithDetailsView:nil background:(SYSTEM_VERSION_LESS_THAN(@"7.0"))?nil:[self.view snapshotViewAfterScreenUpdates:NO]];
-//    veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-//        [self dismissViewControllerAnimated:YES completion:nil];
-//    };
-//    [veespoViewController setSkins:8];
-//    
-//    [self presentViewController:veespoViewController animated:YES completion:^{
-//        [veespoViewController loadDataFor:[dict objectForKey:@"targetid"]
-//                                    title:@"Cosa ne pensi?"];
-//    }];
+    NSDictionary *dict = [target objectAtIndex:indexPath.row];
+    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token target:dict[@"target"] withQuestion:[NSString stringWithFormat:@"Cosa ne pensi di %@", dict[@"desc1"]] detailsView:nil];
+    veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
+        NSLog(@"%@", data);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
+    
+    [veespoViewController showWidget:^(NSDictionary *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug"
+                                                        message:[NSString stringWithFormat:@"Error %@", error]
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
 }
 
 /*
