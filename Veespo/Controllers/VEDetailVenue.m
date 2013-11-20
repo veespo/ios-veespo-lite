@@ -9,8 +9,6 @@
 #import "VEDetailVenue.h"
 #import "Foursquare2.h"
 
-#import <VeespoFramework/VEVeespoViewController.h>
-
 @interface VEDetailVenue ()
 
 @end
@@ -54,6 +52,7 @@
 
 - (IBAction)openVeespo:(id)sender
 {
+#ifdef VEESPO
     VEVeespoViewController *veespoViewController = nil;
     
     NSDictionary *d = @{
@@ -80,6 +79,7 @@
                                               otherButtonTitles:nil];
         [alert show];
     }];
+#endif
 }
 
 @end

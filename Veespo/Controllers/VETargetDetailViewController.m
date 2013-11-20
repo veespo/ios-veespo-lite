@@ -8,9 +8,6 @@
 
 #import "VETargetDetailViewController.h"
 
-#import <VeespoFramework/Veespo.h>
-#import <VeespoFramework/VEVeespoViewController.h>
-
 @interface VETargetDetailViewController ()
 
 @end
@@ -33,8 +30,9 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Valuta" style:UIBarButtonItemStylePlain target:self action:@selector(openVeespo)];
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    
+#ifdef VEESPO
     [Veespo initUser:_userid apiKey:@"" userName:@"" language:@"it" veespoGroup:@"" fileConfig:@"" urlConfig:@"" test:NO sandBox:NO];
+#endif
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +43,7 @@
 
 - (void)openVeespo
 {
+#ifdef VEESPO
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWithDetailsView:nil background:(SYSTEM_VERSION_LESS_THAN(@"7.0"))?nil:[self.view snapshotViewAfterScreenUpdates:NO]];
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -55,6 +54,7 @@
         [veespoViewController loadDataFor:[_target objectForKey:@"targetid"]
                                     title:@"Cosa ne pensi?"];
     }];
+#endif
 }
 
 @end

@@ -77,7 +77,7 @@
     [self.view addSubview:venuesCollection];
     
     [_locationManager startUpdatingLocation];
-    
+#if VEESPO
     NSDictionary *categories = @{
                                  @"categories":@[
                                          @{@"cat": @"cibi"},
@@ -107,6 +107,7 @@
             [alert show];
         }
     }];
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
