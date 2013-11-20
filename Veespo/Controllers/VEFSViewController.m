@@ -34,11 +34,6 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(updateVenuesCollection)];
     
-//    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.navigationController.navigationBar.frame), 64)];
-//    backgroundView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1 alpha:.8];
-//    backgroundView.opaque = NO;
-//    [self.navigationController.view insertSubview:backgroundView belowSubview:self.navigationController.navigationBar];
-    
     // MAKMapView
     mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 64, 320, 128)];
     [mapView setShowsUserLocation:YES];
