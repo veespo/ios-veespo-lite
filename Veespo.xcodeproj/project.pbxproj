@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE010A97180AEF0E0012817F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE010A95180AEF0E0012817F /* Main.storyboard */; };
 		BE1ECBB917F1962C006CCD56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECBB817F1962C006CCD56 /* CoreLocation.framework */; };
 		BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECBBA17F19632006CCD56 /* MapKit.framework */; };
 		BE1ECC1E17F1B4BF006CCD56 /* Foursquare2.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC1217F1B4BF006CCD56 /* Foursquare2.m */; };
@@ -16,10 +15,6 @@
 		BE1ECC2117F1B4BF006CCD56 /* FSWebLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC1817F1B4BF006CCD56 /* FSWebLogin.m */; };
 		BE1ECC2217F1B4BF006CCD56 /* FSWebLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC1917F1B4BF006CCD56 /* FSWebLogin.xib */; };
 		BE1ECC2917F1B4CE006CCD56 /* FSOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC2817F1B4CE006CCD56 /* FSOAuth.m */; };
-		BE1ECC3517F1CC00006CCD56 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC3117F1CC00006CCD56 /* pin.png */; };
-		BE1ECC3617F1CC00006CCD56 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC3217F1CC00006CCD56 /* pin@2x.png */; };
-		BE1ECC3717F1CC00006CCD56 /* poweredByFoursquare_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC3317F1CC00006CCD56 /* poweredByFoursquare_gray.png */; };
-		BE1ECC3817F1CC00006CCD56 /* poweredByFoursquare_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE1ECC3417F1CC00006CCD56 /* poweredByFoursquare_gray@2x.png */; };
 		BE1ECC5417F1E724006CCD56 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC4217F1E724006CCD56 /* AFHTTPClient.m */; };
 		BE1ECC5517F1E724006CCD56 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC4417F1E724006CCD56 /* AFHTTPRequestOperation.m */; };
 		BE1ECC5617F1E724006CCD56 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECC4617F1E724006CCD56 /* AFImageRequestOperation.m */; };
@@ -61,9 +56,9 @@
 		BEC63F6E183CC6BD001C82B6 /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F51183CC6BD001C82B6 /* VEConnection.m */; };
 		BEC63F70183CC790001C82B6 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F6F183CC790001C82B6 /* Empty.xib */; };
 		BEC63F77183CC7BC001C82B6 /* UIControl+VEControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F74183CC7BC001C82B6 /* UIControl+VEControl.m */; };
-		BEC63F78183CC7BC001C82B6 /* Veespo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F75183CC7BC001C82B6 /* Veespo-Info.plist */; };
 		BEC63F7C183CD0B3001C82B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F7A183CD0B3001C82B6 /* main.m */; };
 		BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */; };
+		BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE010A95180AEF0E0012817F /* Main.storyboard */; };
 		BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671617EC9A1A00F394E9 /* Foundation.framework */; };
 		BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671817EC9A1A00F394E9 /* CoreGraphics.framework */; };
 		BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671A17EC9A1A00F394E9 /* UIKit.framework */; };
@@ -104,10 +99,6 @@
 		BE1ECC1917F1B4BF006CCD56 /* FSWebLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSWebLogin.xib; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/FSWebLogin.xib"; sourceTree = "<group>"; };
 		BE1ECC2717F1B4CE006CCD56 /* FSOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSOAuth.h; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/submodule/foursquare-ios-oauth/FSOAuth.h"; sourceTree = "<group>"; };
 		BE1ECC2817F1B4CE006CCD56 /* FSOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSOAuth.m; path = "../../../Progetti/Foursquare-API-v2/Foursquare2/submodule/foursquare-ios-oauth/FSOAuth.m"; sourceTree = "<group>"; };
-		BE1ECC3117F1CC00006CCD56 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
-		BE1ECC3217F1CC00006CCD56 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
-		BE1ECC3317F1CC00006CCD56 /* poweredByFoursquare_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poweredByFoursquare_gray.png; sourceTree = "<group>"; };
-		BE1ECC3417F1CC00006CCD56 /* poweredByFoursquare_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poweredByFoursquare_gray@2x.png"; sourceTree = "<group>"; };
 		BE1ECC4117F1E724006CCD56 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = ../../../Progetti/AFNetworking/AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
 		BE1ECC4217F1E724006CCD56 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = ../../../Progetti/AFNetworking/AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
 		BE1ECC4317F1E724006CCD56 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = ../../../Progetti/AFNetworking/AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -180,7 +171,6 @@
 		BEC63F6F183CC790001C82B6 /* Empty.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
 		BEC63F73183CC7BC001C82B6 /* UIControl+VEControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+VEControl.h"; sourceTree = "<group>"; };
 		BEC63F74183CC7BC001C82B6 /* UIControl+VEControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+VEControl.m"; sourceTree = "<group>"; };
-		BEC63F75183CC7BC001C82B6 /* Veespo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Veespo-Info.plist"; sourceTree = "<group>"; };
 		BEC63F76183CC7BC001C82B6 /* Veespo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Veespo-Prefix.pch"; sourceTree = "<group>"; };
 		BEC63F79183CD00D001C82B6 /* Veespo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Veespo-Prefix.pch"; sourceTree = "<group>"; };
 		BEC63F7A183CD0B3001C82B6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -239,10 +229,6 @@
 		BE1ECB6D17F1955F006CCD56 /* Foursquare2 */ = {
 			isa = PBXGroup;
 			children = (
-				BE1ECC3117F1CC00006CCD56 /* pin.png */,
-				BE1ECC3217F1CC00006CCD56 /* pin@2x.png */,
-				BE1ECC3317F1CC00006CCD56 /* poweredByFoursquare_gray.png */,
-				BE1ECC3417F1CC00006CCD56 /* poweredByFoursquare_gray@2x.png */,
 				BE1ECC2717F1B4CE006CCD56 /* FSOAuth.h */,
 				BE1ECC2817F1B4CE006CCD56 /* FSOAuth.m */,
 				BE1ECC1117F1B4BF006CCD56 /* Foursquare2.h */,
@@ -410,7 +396,6 @@
 			children = (
 				BEC63F73183CC7BC001C82B6 /* UIControl+VEControl.h */,
 				BEC63F74183CC7BC001C82B6 /* UIControl+VEControl.m */,
-				BEC63F75183CC7BC001C82B6 /* Veespo-Info.plist */,
 				BEC63F76183CC7BC001C82B6 /* Veespo-Prefix.pch */,
 			);
 			path = "UIControl+VEControl";
@@ -617,23 +602,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */,
 				BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
-				BE1ECC3517F1CC00006CCD56 /* pin.png in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
-				BE1ECC3817F1CC00006CCD56 /* poweredByFoursquare_gray@2x.png in Resources */,
-				BE010A97180AEF0E0012817F /* Main.storyboard in Resources */,
 				BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */,
-				BEC63F78183CC7BC001C82B6 /* Veespo-Info.plist in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
 				BE1ECC2217F1B4BF006CCD56 /* FSWebLogin.xib in Resources */,
 				BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */,
 				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
-				BE1ECC3717F1CC00006CCD56 /* poweredByFoursquare_gray.png in Resources */,
 				BEC63F6C183CC6BD001C82B6 /* user.png in Resources */,
-				BE1ECC3617F1CC00006CCD56 /* pin@2x.png in Resources */,
 				BEC63F68183CC6BD001C82B6 /* pin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
