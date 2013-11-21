@@ -149,11 +149,6 @@ static NSString * const kVEKeysFileName = @"Veespo-Keys";
                 tokens:^(id responseData, BOOL error) {
                     if (error == NO) {
                         tokens = [[NSDictionary alloc] initWithDictionary:responseData];
-                        for (NSString *familyName in [UIFont familyNames]) {
-                            for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
-                                if ([fontName isEqualToString:@"LED"]) NSLog(@"%@", fontName);
-                            }
-                        }
                     } else {
                         NSLog(@"%@", responseData);
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug" message:[NSString stringWithFormat:@"Error %@", responseData] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
