@@ -18,7 +18,13 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Valuta" style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Feedback", nil)
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(openVeespo:)
+                                              ];
+    if (self.token == nil)
+        self.navigationItem.rightBarButtonItem.enabled = NO;
     
     CGRect appBounds = [UIScreen mainScreen].bounds;
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, appBounds.size.height)];
@@ -57,6 +63,38 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [HUD hide:YES];
+}
+
+- (IBAction)openVeespo:(id)sender
+{
+#ifdef VEESPO
+    VEVeespoViewController *veespoViewController = nil;
+    
+    NSDictionary *d = @{
+                        @"local_id": self.local_id, @"desc1": self.headline, @"desc2": self.title, @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
+                        };
+    
+    veespoViewController = [[VEVeespoViewController alloc]
+                            initWidgetWithToken:_token
+                            targetInfo:d
+                            withQuestion:[NSString stringWithFormat:NSLocalizedString(@"Veespo News Question", nil), self.headline]
+                            detailsView:nil
+                            ];
+    
+    veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
+        NSLog(@"%@", data);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
+    
+    [veespoViewController showWidget:^(NSDictionary *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug"
+                                                        message:[NSString stringWithFormat:@"Error %@", error]
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
+#endif
 }
 
 @end

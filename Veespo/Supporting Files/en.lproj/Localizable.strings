@@ -6,6 +6,8 @@
   Copyright (c) 2013 Veespo Ltd. All rights reserved.
 */
 
+"Feedback" = "Feedback";
+
 "DemoCode Title" = "Insert Demo Code and Name";
 
 "User Name" = "User Name";
@@ -19,6 +21,8 @@
 "Fill Form" = "Enter a demo code (or select an existing category rated) and enter the user name";
 
 "Veespo Question" = "What is your opinion about %@?";
+
+"Veespo News Question" = "What is your opinion about the news '%@'?";
 
 "Wrong Code" = "Wrong demo code";
 

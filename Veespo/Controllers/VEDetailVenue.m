@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
 	
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Valuta" style:UIBarButtonItemStylePlain target:self action:@selector(openVeespo:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Feedback", nil) style:UIBarButtonItemStylePlain target:self action:@selector(openVeespo:)];
     
     if ([_token isEqualToString:@""] || _token == nil) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -56,7 +56,7 @@
     VEVeespoViewController *veespoViewController = nil;
     
     NSDictionary *d = @{
-                        @"local_id": self.venue.venueId, @"desc1": self.venue.name, @"desc2": self.venue.category, @"lang": @"it"
+                        @"local_id": self.venue.venueId, @"desc1": self.venue.name, @"desc2": self.venue.category, @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
                         };
     
     veespoViewController = [[VEVeespoViewController alloc]

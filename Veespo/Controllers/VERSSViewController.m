@@ -48,7 +48,7 @@
         newsTitleLbl.backgroundColor = [UIColor clearColor];
     }
     newsTitleLbl.textAlignment = NSTextAlignmentCenter;
-    newsTitleLbl.text = @"Engadget";
+    newsTitleLbl.text = @"TechCrunch - Startups";
     [headerView addSubview:newsTitleLbl];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
@@ -82,7 +82,7 @@
             NSLog(@"%d", results.count);
             [wSelf reloadTableView:results];
         };
-        [rssParser parseXMLFileAtURL:@"http://feeds.feedburner.com/engadget"];
+        [rssParser parseXMLFileAtURL:@"http://feeds.feedburner.com/TechCrunch/startups"];
     }
 }
 
@@ -127,15 +127,14 @@
 	
 	// Set up the cell
 	int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1];
-    cell.events.text = [[_dataSource objectAtIndex: storyIndex] objectForKey: @"date"];
-    cell.data.text = [[_dataSource objectAtIndex:storyIndex] objectForKey:@"title"];
+    cell.data.text = [[_dataSource objectAtIndex: storyIndex] objectForKey: @"date"];
+    cell.events.text = [[_dataSource objectAtIndex:storyIndex] objectForKey:@"title"];
 	
 	return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic
     
     int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1];
     
@@ -146,13 +145,12 @@
     storyLink = [storyLink stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     storyLink = [storyLink stringByReplacingOccurrencesOfString:@"	" withString:@""];
     
-    //NSLog(@"link: %@", storyLink);
+//    VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     WebViewController *wvc = [[WebViewController alloc] init];
     [wvc setUrl:[NSURL URLWithString:storyLink]];
     [self.navigationController pushViewController:wvc animated:YES];
-    // open in Safari
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:storyLink]];
+    
 }
 
 

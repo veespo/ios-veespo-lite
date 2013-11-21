@@ -121,7 +121,7 @@
 	}
 	
 	// Set up the cell
-    cell.events.text = [[_dataSource objectAtIndex:indexPath.row] objectForKey: @"linkText"];
+    cell.events.text = [[_dataSource objectAtIndex:indexPath.row] objectForKey: @"headline"];
     cell.data.text = [[_dataSource objectAtIndex:indexPath.row] objectForKey:@"title"];
 	
 	return cell;
@@ -129,7 +129,6 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic
     
     NSDictionary *links = [[_dataSource objectAtIndex:indexPath.row] valueForKey:@"links"];
     links = [links valueForKey:@"mobile"];
@@ -140,13 +139,16 @@
     storyLink = [storyLink stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     storyLink = [storyLink stringByReplacingOccurrencesOfString:@"	" withString:@""];
     
-    //NSLog(@"link: %@", storyLink);
+    VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     WebViewController *wvc = [[WebViewController alloc] init];
     [wvc setUrl:[NSURL URLWithString:storyLink]];
+    [wvc setHeadline:[[_dataSource objectAtIndex:indexPath.row] valueForKey:@"headline"]];
+    [wvc setTitle:[[_dataSource objectAtIndex:indexPath.row] valueForKey:@"title"]];
+    [wvc setLocal_id:[NSString stringWithFormat:@"ESPN_SERIEA_%@",[[_dataSource objectAtIndex:indexPath.row] valueForKey:@"id"]]];
+    [wvc setToken:[appDelegate.tokens objectForKey:@"news"]];
     [self.navigationController pushViewController:wvc animated:YES];
-    // open in Safari
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:storyLink]];
+
 }
 
 

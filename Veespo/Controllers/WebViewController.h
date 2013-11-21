@@ -6,6 +6,10 @@
     MBProgressHUD *HUD;
 }
 
-@property (nonatomic, retain) NSURL *url;
+@property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSURL *url;
+@property (nonatomic, strong) NSString *headline;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *local_id;
 
 @end

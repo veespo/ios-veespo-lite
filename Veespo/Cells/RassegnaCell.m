@@ -18,16 +18,14 @@
         
 		_data = [[UILabel alloc] init];
 		_data.backgroundColor = [UIColor clearColor];
-        _data.textAlignment = NSTextAlignmentLeft;
-		_data.font = [UIFont fontWithName:@"Avenir-Black" size:15];
-        _data.adjustsFontSizeToFitWidth = NO;
-        _data.numberOfLines = 2;
+		_data.font = [UIFont fontWithName:@"Avenir" size:12];
+        _data.adjustsFontSizeToFitWidth = YES;
         
 		_events = [[UILabel alloc] init];
 		_events.backgroundColor = [UIColor clearColor];
-        _events.textAlignment = NSTextAlignmentLeft;
-		_events.font = [UIFont fontWithName:@"Avenir" size:12];
-        _data.adjustsFontSizeToFitWidth = YES;
+		_events.font = [UIFont fontWithName:@"Avenir-Black" size:15];
+        _events.adjustsFontSizeToFitWidth = NO;
+        _events.numberOfLines = 2;
 
         [self.contentView addSubview: _data];
         [self.contentView addSubview: _events];
@@ -45,10 +43,10 @@
     
     CGRect frame; //x, y, w, h
     
-    frame = CGRectMake(25, 20, 270, 30);
+    frame = CGRectMake(25, 51, 270, 18);
     _data.frame = frame;
     
-    frame = CGRectMake(25, 51, 270, 18);
+    frame = CGRectMake(25, 5, 270, 50);
     _events.frame = frame;
     
 }
