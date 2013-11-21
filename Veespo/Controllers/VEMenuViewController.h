@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Veespo Ltd. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 @class GHRevealViewController;
 
 @interface VEMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
@@ -22,8 +21,8 @@
 					withControllers:(NSArray *)controllers
 					  withCellInfos:(NSArray *)cellInfos;
 
-- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath
-					animated:(BOOL)animated
-			  scrollPosition:(UITableViewScrollPosition)scrollPosition;
+//- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath
+//					animated:(BOOL)animated
+//			  scrollPosition:(UITableViewScrollPosition)scrollPosition;
 
 @end

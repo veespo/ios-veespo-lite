@@ -18,6 +18,8 @@
 
 static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 static NSString * const kVEKeysFileName = @"Veespo-Keys";
+static NSString * const catCibi = @"4d4b7105d754a06374d81259";
+static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
 
 @interface VEFSViewController (){
     int locationUpdateCnt;
@@ -33,34 +35,37 @@ static NSString * const kVEKeysFileName = @"Veespo-Keys";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     locationUpdateCnt = 0;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(updateVenuesCollection)];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+    }
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                           target:self
+                                                                                           action:@selector(updateVenuesCollection)
+                                              ];
     
     // MAKMapView
-    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 64, 320, 128)];
+    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, (SYSTEM_VERSION_LESS_THAN(@"7.0"))?0:64, 320, 128)];
     [mapView setShowsUserLocation:YES];
     [mapView setZoomEnabled:YES];
     [mapView setScrollEnabled:YES];
-    [mapView setRotateEnabled:YES];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        [mapView setRotateEnabled:YES];
+    }
     mapView.delegate = self;
     
-    UIView *div = [[UIView alloc] initWithFrame:CGRectMake(0, 192, 320, 1)];
+    UIView *div = [[UIView alloc] initWithFrame:CGRectMake(0, (SYSTEM_VERSION_LESS_THAN(@"7.0"))?128:192, 320, 1)];
     div.backgroundColor = [UIColor lightGrayColor];
     
     // TableView
     CGRect appBounds = [UIScreen mainScreen].bounds;
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    // setting cell attributes globally via layout properties ///////////////
-//    layout.itemSize = CGSizeMake(128, 128);
-//    layout.minimumInteritemSpacing = 64;
-//    layout.minimumLineSpacing = 64;
-//    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-//    layout.sectionInset = UIEdgeInsetsMake(32, 32, 32, 32);
     venuesCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, mapView.frame.origin.y + mapView.frame.size.height + 1, appBounds.size.width, appBounds.size.height - 191) collectionViewLayout:layout];
     venuesCollection.delegate = self;
     venuesCollection.dataSource = self;
-    venuesCollection.backgroundColor = [UIColor whiteColor];
+    venuesCollection.backgroundColor = (SYSTEM_VERSION_LESS_THAN(@"7.0"))?UIColorFromRGB(0x1D7800):[UIColor whiteColor];
     [venuesCollection registerClass:[VEVenueCell class] forCellWithReuseIdentifier:@"FoursquareCell"];
     [venuesCollection registerClass:[VEFSHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FoursquareFooterView"];
     [venuesCollection reloadData];

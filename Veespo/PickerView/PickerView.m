@@ -50,9 +50,10 @@
     
     UIBarButtonItem *btnClose = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(btnCloseClick)];
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        btnClose.tintColor = [UIColor blueColor];
-        btnDone.tintColor = [UIColor blueColor];
+        btnClose.tintColor = UIColorFromRGB(0x1D7800);
+        btnDone.tintColor = UIColorFromRGB(0x1D7800);
     }
+    
     NSArray *arrBarButtoniTems = [[NSArray alloc] initWithObjects:btnClose,flexible,btnDone, nil];
     [picketToolbar setItems:arrBarButtoniTems];
     [self addSubview:pickerView];

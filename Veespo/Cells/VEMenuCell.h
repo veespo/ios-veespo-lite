@@ -12,8 +12,6 @@ extern NSString const *kSidebarCellTextKey;
 extern NSString const *kSidebarCellImageKey;
 
 @interface VEMenuCell : UITableViewCell {
-    UIColor* mainColor;
-    UIColor* darkColor;
     UILabel* titleLabel;
     UIView* bgView;
     UIView* topSeparator;

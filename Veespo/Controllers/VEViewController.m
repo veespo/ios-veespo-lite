@@ -14,8 +14,8 @@
 #import "VETargetViewController.h"
 #import "MBProgressHUD.h"
 
-#define DEMOCODETEXT_WIDTH 44.0
-#define DEMOCODETEXT_HEIGHT 44.0
+#define DEMOCODETEXT_ISO7 44.0
+#define DEMOCODETEXT_IOS6 30.0
 
 @interface VEViewController () {
     UIButton *historyDemoCodeBtn;
@@ -38,9 +38,14 @@
 {
     [super viewDidLoad];
     
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+    }
+    
     [self initDemoCodeTextField];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 300, 60)];
+    CGFloat titleLabelY = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ?  60.0 : 18;
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, titleLabelY, 300, 60)];
     titleLabel.text = NSLocalizedString(@"DemoCode Title", nil);
     titleLabel.numberOfLines = 2;
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -110,35 +115,38 @@
 
 - (void)initDemoCodeTextField
 {
-    textOneTf = [[UITextField alloc] initWithFrame:CGRectMake(60, 127, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
+    CGFloat dimension = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ? DEMOCODETEXT_ISO7 : DEMOCODETEXT_IOS6;
+    CGFloat textFieldY = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ? 127.0 : 83.0;
+    
+    textOneTf = [[UITextField alloc] initWithFrame:CGRectMake(60, textFieldY, dimension, dimension)];
     textOneTf.delegate = self;
     [textOneTf setReturnKeyType:UIReturnKeyNext];
     [textOneTf setTextAlignment:NSTextAlignmentCenter];
     [textOneTf setAutocorrectionType:UITextAutocorrectionTypeNo];
     [textOneTf setBorderStyle:UITextBorderStyleRoundedRect];
     
-    textTwoTf = [[UITextField alloc] initWithFrame:CGRectMake(textOneTf.frame.origin.x + DEMOCODETEXT_WIDTH + 8, 127, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
+    textTwoTf = [[UITextField alloc] initWithFrame:CGRectMake(textOneTf.frame.origin.x + dimension + 8, textFieldY, dimension, dimension)];
     textTwoTf.delegate = self;
     [textTwoTf setReturnKeyType:UIReturnKeyNext];
     [textTwoTf setTextAlignment:NSTextAlignmentCenter];
     [textTwoTf setAutocorrectionType:UITextAutocorrectionTypeNo];
     [textTwoTf setBorderStyle:UITextBorderStyleRoundedRect];
     
-    textThreeTf = [[UITextField alloc] initWithFrame:CGRectMake(textTwoTf.frame.origin.x + DEMOCODETEXT_WIDTH + 8, 127, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
+    textThreeTf = [[UITextField alloc] initWithFrame:CGRectMake(textTwoTf.frame.origin.x + dimension + 8, textFieldY, dimension, dimension)];
     textThreeTf.delegate = self;
     [textThreeTf setReturnKeyType:UIReturnKeyNext];
     [textThreeTf setTextAlignment:NSTextAlignmentCenter];
     [textThreeTf setAutocorrectionType:UITextAutocorrectionTypeNo];
     [textThreeTf setBorderStyle:UITextBorderStyleRoundedRect];
     
-    textFourTf = [[UITextField alloc] initWithFrame:CGRectMake(textThreeTf.frame.origin.x + DEMOCODETEXT_WIDTH + 8, 127, DEMOCODETEXT_WIDTH, DEMOCODETEXT_HEIGHT)];
+    textFourTf = [[UITextField alloc] initWithFrame:CGRectMake(textThreeTf.frame.origin.x + dimension + 8, textFieldY, dimension, dimension)];
     textFourTf.delegate = self;
     [textFourTf setReturnKeyType:UIReturnKeyNext];
     [textFourTf setTextAlignment:NSTextAlignmentCenter];
     [textFourTf setAutocorrectionType:UITextAutocorrectionTypeNo];
     [textFourTf setBorderStyle:UITextBorderStyleRoundedRect];
     
-    userNameTf = [[UITextField alloc] initWithFrame:CGRectMake(60, textOneTf.frame.origin.y + DEMOCODETEXT_HEIGHT + 24, 200, 27)];
+    userNameTf = [[UITextField alloc] initWithFrame:CGRectMake(60, textOneTf.frame.origin.y + dimension + 24, 200, 27)];
     [userNameTf setReturnKeyType:UIReturnKeyGo];
     [userNameTf setAutocorrectionType:UITextAutocorrectionTypeNo];
     [userNameTf setPlaceholder:NSLocalizedString(@"User Name", nil)];

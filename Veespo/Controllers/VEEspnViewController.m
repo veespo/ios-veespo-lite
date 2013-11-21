@@ -20,19 +20,41 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+    }
 	
     _dataSource = [[NSMutableArray alloc] init];
     CGRect appBounds = [UIScreen mainScreen].bounds;
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    
+    UIView *headerView;
+    UILabel *newsTitleLbl;
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
+        newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 300, 25)];
+    } else {
+        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+        newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 300, 25)];
+    }
     [headerView setBackgroundColor:UIColorFromRGB(0x1D7800)];
-    UILabel *newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 300, 25)];
-    newsTitleLbl.font = [UIFont fontWithName:UIFontTextStyleHeadline size:20];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        newsTitleLbl.font = [UIFont fontWithName:UIFontTextStyleHeadline size:20];
+    }
     newsTitleLbl.textColor = [UIColor whiteColor];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        newsTitleLbl.backgroundColor = [UIColor clearColor];
+    }
     newsTitleLbl.textAlignment = NSTextAlignmentCenter;
     newsTitleLbl.text = @"Serie A";
     [headerView addSubview:newsTitleLbl];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, 320, appBounds.size.height + 64) style:UITableViewStylePlain];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, appBounds.size.height - 20) style:UITableViewStylePlain];
+    } else {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, 320, appBounds.size.height + 64) style:UITableViewStylePlain];
+    }
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _tableView.delegate = self;
     _tableView.dataSource = self;
