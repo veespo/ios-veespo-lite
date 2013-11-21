@@ -14,18 +14,13 @@
 #import "UIImageView+AFNetworking.h"
 #import "VEFSHeaderView.h"
 #import "VEDetailVenue.h"
-#import <AdSupport/AdSupport.h>
 
-static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
-static NSString * const kVEKeysFileName = @"Veespo-Keys";
 static NSString * const catCibi = @"4d4b7105d754a06374d81259";
 static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
 
 @interface VEFSViewController (){
     int locationUpdateCnt;
     CLLocation *lastLocation;
-    
-    NSDictionary *tokens;
 }
 
 @end
@@ -80,8 +75,7 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
     [self.view addSubview:venuesCollection];
     
     [_locationManager startUpdatingLocation];
-    
-    [self setUpVeespo];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -108,59 +102,18 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
 
 -(void)userDidSelectVenue:(NSIndexPath *)indexPath
 {
+    VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     VEDetailVenue *detail = [[VEDetailVenue alloc] initWithNibName:@"VEDetailVenue" bundle:nil];
     detail.venue = [nearbyVenues objectAtIndex:indexPath.row];
+
     if ([detail.venue.categoryId isEqualToString:catCibi]) {
-        detail.token = [tokens objectForKey:@"cibi"];
+        detail.token = [appDelegate.tokens objectForKey:@"cibi"];
     } else {
-        detail.token = [tokens objectForKey:@"localinotturni"];
+        detail.token = [appDelegate.tokens objectForKey:@"localinotturni"];
     }
     detail.title = detail.venue.title;
     [self.navigationController pushViewController:detail animated:YES];
-}
-
-#pragma mark - API
-
-- (void)setUpVeespo
-{
-    NSString *keysPath = [[NSBundle mainBundle] pathForResource:kVEKeysFileName ofType:@"plist"];
-    if (!keysPath) {
-        NSLog(@"To use Veespo make sure you have a Veespo-Keys.plist with the Identifier in your project");
-        return;
-    }
-    
-    NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
-    
-    NSDictionary *categories = @{
-                                 @"categories":@[
-                                         @{@"cat": @"cibi"},
-                                         @{@"cat": @"localinotturni"}
-                                         ]
-                                 };
-    NSString *userId = nil;
-    
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
-    } else {
-        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]];
-    }
-    
-    [Veespo initVeespo:keys[kVEVeespoApiKey]
-                userId:userId
-             partnerId:@"apple"
-              language:[[NSLocale preferredLanguages] objectAtIndex:0]
-            categories:categories
-               testUrl:YES
-                tokens:^(id responseData, BOOL error) {
-                    if (error == NO) {
-                        tokens = [[NSDictionary alloc] initWithDictionary:responseData];
-                    } else {
-                        NSLog(@"%@", responseData);
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug" message:[NSString stringWithFormat:@"Error %@", responseData] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                        [alert show];
-                    }
-                }
-     ];
 }
 
 #pragma mark - Location and Map
