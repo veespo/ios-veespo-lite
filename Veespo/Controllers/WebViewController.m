@@ -71,7 +71,7 @@
     VEVeespoViewController *veespoViewController = nil;
     
     NSDictionary *d = @{
-                        @"local_id": self.local_id, @"desc1": self.headline, @"desc2": self.title, @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
+                        @"local_id": self.local_id, @"desc1": self.headline, @"desc2": self.newsTitle, @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
                         };
     
     veespoViewController = [[VEVeespoViewController alloc]

@@ -42,13 +42,19 @@
         self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
     }
     
+    [self.view setBackgroundColor:UIColorFromRGB(0xDBDBDB)];
+    
     [self initDemoCodeTextField];
     
-    CGFloat titleLabelY = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ?  60.0 : 18;
+    CGFloat titleLabelY = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ?  60.0 : 8;
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, titleLabelY, 300, 60)];
     titleLabel.text = NSLocalizedString(@"DemoCode Title", nil);
     titleLabel.numberOfLines = 2;
     titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.shadowColor = [UIColor whiteColor];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        titleLabel.backgroundColor = [UIColor clearColor];
+    }
     
     historyDemoCodeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     historyDemoCodeBtn.frame = CGRectMake(10, userNameTf.frame.origin.y + userNameTf.frame.size.height + 40, 130, 35);
@@ -117,13 +123,18 @@
 {
     CGFloat dimension = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ? DEMOCODETEXT_ISO7 : DEMOCODETEXT_IOS6;
     CGFloat textFieldY = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ? 127.0 : 83.0;
+    CGFloat textFieldX = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ? 60.0 : 88.0;
     
-    textOneTf = [[UITextField alloc] initWithFrame:CGRectMake(60, textFieldY, dimension, dimension)];
+    textOneTf = [[UITextField alloc] initWithFrame:CGRectMake(textFieldX, textFieldY, dimension, dimension)];
     textOneTf.delegate = self;
     [textOneTf setReturnKeyType:UIReturnKeyNext];
     [textOneTf setTextAlignment:NSTextAlignmentCenter];
     [textOneTf setAutocorrectionType:UITextAutocorrectionTypeNo];
     [textOneTf setBorderStyle:UITextBorderStyleRoundedRect];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        [textOneTf setBorderStyle:UITextBorderStyleLine];
+        [textOneTf setBackgroundColor:[UIColor whiteColor]];
+    }
     
     textTwoTf = [[UITextField alloc] initWithFrame:CGRectMake(textOneTf.frame.origin.x + dimension + 8, textFieldY, dimension, dimension)];
     textTwoTf.delegate = self;
@@ -131,6 +142,10 @@
     [textTwoTf setTextAlignment:NSTextAlignmentCenter];
     [textTwoTf setAutocorrectionType:UITextAutocorrectionTypeNo];
     [textTwoTf setBorderStyle:UITextBorderStyleRoundedRect];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        [textTwoTf setBorderStyle:UITextBorderStyleLine];
+        [textTwoTf setBackgroundColor:[UIColor whiteColor]];
+    }
     
     textThreeTf = [[UITextField alloc] initWithFrame:CGRectMake(textTwoTf.frame.origin.x + dimension + 8, textFieldY, dimension, dimension)];
     textThreeTf.delegate = self;
@@ -138,6 +153,10 @@
     [textThreeTf setTextAlignment:NSTextAlignmentCenter];
     [textThreeTf setAutocorrectionType:UITextAutocorrectionTypeNo];
     [textThreeTf setBorderStyle:UITextBorderStyleRoundedRect];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        [textThreeTf setBorderStyle:UITextBorderStyleLine];
+        [textThreeTf setBackgroundColor:[UIColor whiteColor]];
+    }
     
     textFourTf = [[UITextField alloc] initWithFrame:CGRectMake(textThreeTf.frame.origin.x + dimension + 8, textFieldY, dimension, dimension)];
     textFourTf.delegate = self;
@@ -145,12 +164,20 @@
     [textFourTf setTextAlignment:NSTextAlignmentCenter];
     [textFourTf setAutocorrectionType:UITextAutocorrectionTypeNo];
     [textFourTf setBorderStyle:UITextBorderStyleRoundedRect];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        [textFourTf setBorderStyle:UITextBorderStyleLine];
+        [textFourTf setBackgroundColor:[UIColor whiteColor]];
+    }
     
     userNameTf = [[UITextField alloc] initWithFrame:CGRectMake(60, textOneTf.frame.origin.y + dimension + 24, 200, 27)];
     [userNameTf setReturnKeyType:UIReturnKeyGo];
     [userNameTf setAutocorrectionType:UITextAutocorrectionTypeNo];
     [userNameTf setPlaceholder:NSLocalizedString(@"User Name", nil)];
     [userNameTf setBorderStyle:UITextBorderStyleRoundedRect];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        [userNameTf setBorderStyle:UITextBorderStyleLine];
+        [userNameTf setBackgroundColor:[UIColor whiteColor]];
+    }
     userNameTf.delegate = self;
     
     [self.view addSubview:textOneTf];
@@ -216,8 +243,6 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    textField.backgroundColor = [UIColor clearColor];
-    
     if ([string isEqualToString:@""])
         return YES;
     if(textField == textOneTf) {
@@ -272,6 +297,16 @@
 //                                                          toPosition:beginning]];
     if (textField != userNameTf) textField.text = nil;
     
+}
+
+#pragma mark - Touch
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    for (UIView * txt in self.view.subviews){
+        if ([txt isKindOfClass:[UITextField class]]) {
+            [txt resignFirstResponder];
+        }
+    }
 }
 
 #pragma mark - Piker Delegate

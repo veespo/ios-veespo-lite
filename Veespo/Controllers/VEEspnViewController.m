@@ -144,7 +144,7 @@
     WebViewController *wvc = [[WebViewController alloc] init];
     [wvc setUrl:[NSURL URLWithString:storyLink]];
     [wvc setHeadline:[[_dataSource objectAtIndex:indexPath.row] valueForKey:@"headline"]];
-    [wvc setTitle:[[_dataSource objectAtIndex:indexPath.row] valueForKey:@"title"]];
+    [wvc setNewsTitle:[[_dataSource objectAtIndex:indexPath.row] valueForKey:@"title"]];
     [wvc setLocal_id:[NSString stringWithFormat:@"ESPN_SERIEA_%@",[[_dataSource objectAtIndex:indexPath.row] valueForKey:@"id"]]];
     [wvc setToken:[appDelegate.tokens objectForKey:@"news"]];
     [self.navigationController pushViewController:wvc animated:YES];
