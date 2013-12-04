@@ -13,14 +13,6 @@
 
 @class FSVenue;
 
-@interface VEFSViewController : VERootViewController <MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MBProgressHUDDelegate> {
-    CLLocationManager *_locationManager;
-    MKMapView* mapView;
-    UICollectionView *venuesCollection;
-    MBProgressHUD *HUD;
-    
-    FSVenue* selected;
-    NSMutableArray* nearbyVenues;
-}
+@interface VEFSViewController : VERootViewController <MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MBProgressHUDDelegate>
 
 @end

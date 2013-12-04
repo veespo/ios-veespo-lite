@@ -17,11 +17,22 @@
 
 static NSString * const catCibi = @"4d4b7105d754a06374d81259";
 static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
+static int const maxLocationUpdate = 3;
 
-@interface VEFSViewController (){
-    int locationUpdateCnt;
+@interface VEFSViewController () {
+    UICollectionView *venuesCollection;
+    MBProgressHUD *HUD;
+    
+    FSVenue* selected;
+    NSMutableArray* nearbyVenues;
+    
     CLLocation *lastLocation;
+    
+    int locationUpdateCnt;
 }
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) MKMapView *mapView;
 
 @end
 
@@ -41,23 +52,17 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
                                                                                            action:@selector(updateVenuesCollection)
                                               ];
     
-    // MAKMapView
-    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, (SYSTEM_VERSION_LESS_THAN(@"7.0"))?0:64, 320, 128)];
-    [mapView setShowsUserLocation:YES];
-    [mapView setZoomEnabled:YES];
-    [mapView setScrollEnabled:YES];
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        [mapView setRotateEnabled:YES];
-    }
-    mapView.delegate = self;
+    [self.locationManager startUpdatingLocation];
+    [self.view addSubview:self.mapView];
     
-    UIView *div = [[UIView alloc] initWithFrame:CGRectMake(0, (SYSTEM_VERSION_LESS_THAN(@"7.0"))?128:192, 320, 1)];
+    UIView *div = [[UIView alloc] initWithFrame:CGRectMake(0, self.mapView.frame.origin.y + self.mapView.frame.size.height, 320, 1)];
     div.backgroundColor = [UIColor lightGrayColor];
+    [self.view addSubview:div];
     
-    // TableView
+    // CollectionView
     CGRect appBounds = [UIScreen mainScreen].bounds;
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    venuesCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, mapView.frame.origin.y + mapView.frame.size.height + 1, appBounds.size.width, appBounds.size.height - 191) collectionViewLayout:layout];
+    venuesCollection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, self.mapView.frame.origin.y + self.mapView.frame.size.height + 1, appBounds.size.width, appBounds.size.height - 191) collectionViewLayout:layout];
     venuesCollection.delegate = self;
     venuesCollection.dataSource = self;
     venuesCollection.backgroundColor = (SYSTEM_VERSION_LESS_THAN(@"7.0"))?UIColorFromRGB(0x1D7800):[UIColor whiteColor];
@@ -65,16 +70,7 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
     [venuesCollection registerClass:[VEFSHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FoursquareFooterView"];
     [venuesCollection reloadData];
     
-    // LocationManager
-	_locationManager = [[CLLocationManager alloc]init];
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    _locationManager.delegate = self;
-    
-    [self.view addSubview:div];
-    [self.view addSubview:mapView];
     [self.view addSubview:venuesCollection];
-    
-    [_locationManager startUpdatingLocation];
 
 }
 
@@ -88,7 +84,7 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
 {
     [super viewWillDisappear:animated];
     locationUpdateCnt = 0;
-    [_locationManager stopUpdatingLocation];
+    [self.locationManager stopUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,10 +93,59 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
     // Dispose of any resources that can be recreated.
     nearbyVenues = nil;
     locationUpdateCnt = 0;
-    [_locationManager stopUpdatingLocation];
+    [self.locationManager stopUpdatingLocation];
 }
 
--(void)userDidSelectVenue:(NSIndexPath *)indexPath
+#pragma mark Properties
+
+- (CLLocationManager *)locationManager
+{
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.delegate = self;
+    }
+    return _locationManager;
+}
+
+- (MKMapView *)mapView
+{
+    if (!_mapView) {
+        CGFloat mapViewHeight = ([UIScreen mainScreen].bounds.size.height == 568.0f) ? 168 : 128;
+        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, (SYSTEM_VERSION_LESS_THAN(@"7.0"))?0:64, 320, (SYSTEM_VERSION_LESS_THAN(@"7.0"))?mapViewHeight+64:mapViewHeight)];
+        _mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        [_mapView setShowsUserLocation:YES];
+        _mapView.delegate = self;
+    }
+    return _mapView;
+}
+
+#pragma mark Methods
+
+- (void)updateVenuesCollection
+{
+//    locationUpdateCnt = 0;
+//    self.locationManager.distanceFilter = 0;
+    [self getVenuesForLocation:lastLocation];
+    [self setupMapForLocation:lastLocation];
+}
+
+- (void)checkinButton
+{
+    VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    selected = self.mapView.selectedAnnotations.lastObject;
+    VEDetailVenue *detail = [[VEDetailVenue alloc] init];
+    detail.venue = selected;
+    if ([detail.venue.categoryId isEqualToString:catCibi]) {
+        detail.token = [appDelegate.tokens objectForKey:@"cibi"];
+    } else {
+        detail.token = [appDelegate.tokens objectForKey:@"localinotturni"];
+    }
+    detail.title = detail.venue.title;
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void)userDidSelectVenue:(NSIndexPath *)indexPath
 {
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -118,7 +163,8 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
 
 #pragma mark - Location and Map
 
--(void)setupMapForLocatoion:(CLLocation*)newLocation{
+- (void)setupMapForLocation:(CLLocation*)newLocation
+{
     MKCoordinateRegion region;
     MKCoordinateSpan span;
     span.latitudeDelta = 0.003;
@@ -128,27 +174,31 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
     location.longitude = newLocation.coordinate.longitude;
     region.span = span;
     region.center = location;
-    [mapView setRegion:region animated:YES];
+    [self.mapView setRegion:region animated:YES];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation{
+           fromLocation:(CLLocation *)oldLocation
+{
     lastLocation = newLocation;
-    if (locationUpdateCnt++ < 3)
+    
+    if (locationUpdateCnt == maxLocationUpdate) {
+        locationUpdateCnt++;
         [self getVenuesForLocation:newLocation];
-    else
-        _locationManager.distanceFilter = 200;
-    [self setupMapForLocatoion:newLocation];
+        self.locationManager.distanceFilter = 100;
+    } else if (locationUpdateCnt < maxLocationUpdate)
+        locationUpdateCnt++;
+    [self setupMapForLocation:newLocation];
 }
 
 -(void)removeAllAnnotationExceptOfCurrentUser
 {
-    NSMutableArray *annForRemove = [[NSMutableArray alloc] initWithArray:mapView.annotations];
-    if ([mapView.annotations.lastObject isKindOfClass:[MKUserLocation class]]) {
-        [annForRemove removeObject:mapView.annotations.lastObject];
+    NSMutableArray *annForRemove = [[NSMutableArray alloc] initWithArray:self.mapView.annotations];
+    if ([self.mapView.annotations.lastObject isKindOfClass:[MKUserLocation class]]) {
+        [annForRemove removeObject:self.mapView.annotations.lastObject];
     } else {
-        for (id <MKAnnotation> annot_ in mapView.annotations)
+        for (id <MKAnnotation> annot_ in self.mapView.annotations)
         {
             if ([annot_ isKindOfClass:[MKUserLocation class]] ) {
                 [annForRemove removeObject:annot_];
@@ -157,15 +207,17 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
         }
     }
     
-    [mapView removeAnnotations:annForRemove];
+    [self.mapView removeAnnotations:annForRemove];
 }
 
--(void)proccessAnnotations{
+- (void)proccessAnnotations
+{
     [self removeAllAnnotationExceptOfCurrentUser];
-    [mapView addAnnotations:nearbyVenues];
+    [self.mapView addAnnotations:nearbyVenues];
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation{
+- (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation
+{
     if (annotation == map.userLocation)
         return nil;
     
@@ -185,21 +237,9 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
     return pin;
 }
 
--(void)checkinButton
-{
-    selected = mapView.selectedAnnotations.lastObject;
-    VEDetailVenue *detail = [[VEDetailVenue alloc] init];
-    detail.venue = selected;
-    detail.title = detail.venue.title;
-    [self.navigationController pushViewController:detail animated:YES];
-}
+
 
 #pragma mark - Foursquare2
-
-- (void)updateVenuesCollection
-{
-    [self getVenuesForLocation:lastLocation];
-}
 
 - (void)getVenuesForLocation:(CLLocation*)location
 {
@@ -207,10 +247,12 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
         [HUD hide:NO];
         HUD = nil;
     }
+    
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.delegate = self;
     [HUD show:YES];
+    
     [Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
 								  longitude:@(location.coordinate.longitude)
 								 accuracyLL:nil
@@ -226,8 +268,15 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
 										   NSDictionary *dic = result;
 										   NSArray* venues = [dic valueForKeyPath:@"response.venues"];
                                            FSConverter *converter = [[FSConverter alloc]init];
+                                           if (nearbyVenues) {
+                                               [nearbyVenues removeAllObjects];
+                                               nearbyVenues = nil;
+                                           }
                                            nearbyVenues = (NSMutableArray *)[converter convertToObjects:venues withCategory:catCibi];
-                                           [Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
+                                           [self proccessAnnotations];
+                                           [venuesCollection reloadData];
+                                           [HUD hide:YES afterDelay:1.5];
+                                           /*[Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
                                                                          longitude:@(location.coordinate.longitude)
                                                                         accuracyLL:nil
                                                                           altitude:nil
@@ -249,7 +298,7 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
                                                                                   [HUD hide:YES afterDelay:1.5];
                                                                               } else
                                                                                   [HUD hide:YES];
-                                                                          }];
+                                                                          }];*/
 									   } else
                                            [HUD hide:YES];
 								   }];
@@ -266,7 +315,11 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
 }
 // 3
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    VEVenueCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FoursquareCell" forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"FoursquareCell";
+    VEVenueCell *cell = [cv dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    if (cell == nil)
+        cell = [[VEVenueCell alloc] init];
+    
     cell.backgroundColor = UIColorFromRGB(0xDBDBDB);
     FSVenue *venue = nearbyVenues[indexPath.row];
     cell.venueNameLbl.text = [venue name];
@@ -274,12 +327,13 @@ static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
         cell.venueAddressLbl.text = [NSString stringWithFormat:@"%@m, %@",
                                      venue.location.distance,
                                      venue.location.address];
-    }else{
+    } else {
         cell.venueAddressLbl.text = [NSString stringWithFormat:@"%@m",
                                      venue.location.distance];
     }
     cell.venueCategoryLbl.text = [venue category];
     [cell.venueIcon setImageWithURL:venue.imageURL];
+    [cell layoutSubviews];
     return cell;
 }
 
