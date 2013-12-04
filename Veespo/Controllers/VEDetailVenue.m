@@ -67,7 +67,7 @@
                             ];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-        NSLog(@"%@", data);
+        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     

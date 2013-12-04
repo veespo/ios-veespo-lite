@@ -74,7 +74,7 @@
 {
 #ifdef VEESPO
     [Veespo initVeespo:@"demo" userId:@"demo" partnerId:@"demo" language:[[NSLocale preferredLanguages] objectAtIndex:0] categories:nil testUrl:YES tokens:^(id responseData, BOOL error) {
-        NSLog(@"%@", responseData);
+        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%@", responseData]];
     }];
     
     NSDictionary *dict = [target objectAtIndex:indexPath.row];
@@ -85,7 +85,7 @@
                                                     ];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-        NSLog(@"%@", data);
+        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     

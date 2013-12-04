@@ -16,10 +16,12 @@
 #import "VERSSViewController.h"
 #import "VEEspnViewController.h"
 #import "Foursquare2.h"
+
 #import <AdSupport/AdSupport.h>
 
 static NSString * const kVEFoursquareKey = @"Foursquare key";
 static NSString * const kVEFoursquareSecret = @"Foursquare secret";
+static NSString * const kVETestFlightKey = @"TestFlight Key";
 static NSString * const kVEKeysFileName = @"Veespo-Keys";
 static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 
@@ -34,8 +36,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self setUpFoursquare];
-    [self setUpVeespo];
+    [self setUpApi];
     
     if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
         [NSUserDefaults resetStandardUserDefaults];
@@ -115,31 +116,30 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 
 #pragma mark - API
 
-- (void)setUpFoursquare
+- (void)setUpApi
 {
     NSString *keysPath = [[NSBundle mainBundle] pathForResource:kVEKeysFileName ofType:@"plist"];
     if (!keysPath) {
-        NSLog(@"To use Foursquare make sure you have a Veespo-Keys.plist with the Identifier in your project");
+        NSLog(@"To use API make sure you have a Veespo-Keys.plist with the Identifier in your project");
         return;
     }
     
     NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
+    [self setUpFoursquare:keys];
+    [self setUpVeespo:keys];
+    [TestFlight takeOff:keys[kVETestFlightKey]];
+}
+
+- (void)setUpFoursquare:(NSDictionary *)keys
+{
     [Foursquare2 setupFoursquareWithClientId:keys[kVEFoursquareKey]
                                       secret:keys[kVEFoursquareSecret]
                                  callbackURL:@"testapp123://foursquare"];
 }
 
-- (void)setUpVeespo
+- (void)setUpVeespo:(NSDictionary *)keys
 {
 #ifdef VEESPO
-    NSString *keysPath = [[NSBundle mainBundle] pathForResource:kVEKeysFileName ofType:@"plist"];
-    if (!keysPath) {
-        NSLog(@"To use Veespo make sure you have a Veespo-Keys.plist with the Identifier in your project");
-        return;
-    }
-    
-    NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
-    
     NSDictionary *categories = @{
                                  @"categories":@[
                                          @{@"cat": @"cibi"},
