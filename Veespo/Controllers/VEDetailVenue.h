@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "FSVenue.h"
+#import "MBProgressHUD.h"
 
-@interface VEDetailVenue : UIViewController
+@interface VEDetailVenue : UIViewController <MBProgressHUDDelegate>
 
 @property (nonatomic, strong) FSVenue *venue;
 @property (nonatomic, strong) NSString *token;
-@property (nonatomic, weak) IBOutlet UILabel *categoryLabel;
+@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *adressLabel;
-
+@property (nonatomic, weak) IBOutlet UIImageView *venueImage;
 @end

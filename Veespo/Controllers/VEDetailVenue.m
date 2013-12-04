@@ -8,8 +8,11 @@
 
 #import "VEDetailVenue.h"
 #import "Foursquare2.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface VEDetailVenue ()
+@interface VEDetailVenue () {
+    MBProgressHUD *HUD;
+}
 
 @end
 
@@ -34,13 +37,30 @@
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }
     
-    self.categoryLabel.text = self.venue.category;
+#ifdef DEBUG
+    NSLog(@"token: %@\nlocal_id: %@", _token, self.venue.venueId);
+#endif
+    
+    self.nameLabel.text = self.venue.name;
     self.adressLabel.text = self.venue.location.address;
+    self.nameLabel.shadowColor = [UIColor lightGrayColor];
+    self.adressLabel.shadowColor = [UIColor whiteColor];
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
+    [HUD show:YES];
     [Foursquare2 getDetailForVenue:self.venue.venueId callback:^(BOOL success, id result) {
-        NSLog(@"%@", result);
+        NSDictionary *dict = [result valueForKeyPath:@"response.venue"];
+        // Get first photo in first group
+        if ([dict[@"photos"][@"groups"] count] > 0) {
+            NSDictionary *group = [dict[@"photos"][@"groups"] objectAtIndex:0];
+            NSDictionary *item = [group[@"items"] objectAtIndex:0];
+            
+            NSString *urlStr = [NSString stringWithFormat:@"%@500x500%@", item[@"prefix"], item[@"suffix"]];
+            
+            [self.venueImage setImageWithURL:[NSURL URLWithString:urlStr]];
+        }
+        [HUD hide:YES];
     }];
 }
 

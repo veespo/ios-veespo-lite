@@ -134,7 +134,7 @@ static int const maxLocationUpdate = 3;
 {
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
     selected = self.mapView.selectedAnnotations.lastObject;
-    VEDetailVenue *detail = [[VEDetailVenue alloc] init];
+    VEDetailVenue *detail = [[VEDetailVenue alloc] initWithNibName:@"VEDetailVenue" bundle:nil];
     detail.venue = selected;
     if ([detail.venue.categoryId isEqualToString:catCibi]) {
         detail.token = [appDelegate.tokens objectForKey:@"cibi"];
@@ -265,9 +265,8 @@ static int const maxLocationUpdate = 3;
                                  categoryId:catCibi
 								   callback:^(BOOL success, id result){
 									   if (success) {
-										   NSDictionary *dic = result;
-										   NSArray* venues = [dic valueForKeyPath:@"response.venues"];
-                                           FSConverter *converter = [[FSConverter alloc]init];
+										   NSArray* venues = [result valueForKeyPath:@"response.venues"];
+                                           FSConverter *converter = [[FSConverter alloc] init];
                                            if (nearbyVenues) {
                                                [nearbyVenues removeAllObjects];
                                                nearbyVenues = nil;
@@ -276,29 +275,6 @@ static int const maxLocationUpdate = 3;
                                            [self proccessAnnotations];
                                            [venuesCollection reloadData];
                                            [HUD hide:YES afterDelay:1.5];
-                                           /*[Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
-                                                                         longitude:@(location.coordinate.longitude)
-                                                                        accuracyLL:nil
-                                                                          altitude:nil
-                                                                       accuracyAlt:nil
-                                                                             query:nil
-                                                                             limit:nil
-                                                                            intent:intentBrowse
-                                                                            radius:@(500)
-                                                                        categoryId:catLocaliNotturni
-                                                                          callback:^(BOOL success, id result){
-                                                                              if (success) {
-                                                                                  NSDictionary *dic = result;
-                                                                                  NSArray* venues = [dic valueForKeyPath:@"response.venues"];
-                                                                                  FSConverter *converter = [[FSConverter alloc]init];
-                                                                                  NSArray *tmp = [converter convertToObjects:venues withCategory:catLocaliNotturni];
-                                                                                  [nearbyVenues addObjectsFromArray:tmp];
-                                                                                  [self proccessAnnotations];
-                                                                                  [venuesCollection reloadData];
-                                                                                  [HUD hide:YES afterDelay:1.5];
-                                                                              } else
-                                                                                  [HUD hide:YES];
-                                                                          }];*/
 									   } else
                                            [HUD hide:YES];
 								   }];
