@@ -9,9 +9,11 @@
 #import "VEDetailVenue.h"
 #import "Foursquare2.h"
 #import "UIImageView+AFNetworking.h"
+#import "VEConnection.h"
 
 @interface VEDetailVenue () {
     MBProgressHUD *HUD;
+    NSArray *avgTargetsList;
 }
 
 @end
@@ -37,10 +39,6 @@
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }
     
-#ifdef DEBUG
-    NSLog(@"token: %@\nlocal_id: %@", _token, self.venue.venueId);
-#endif
-    
     self.nameLabel.text = self.venue.name;
     self.adressLabel.text = self.venue.location.address;
     self.nameLabel.shadowColor = [UIColor lightGrayColor];
@@ -60,6 +58,15 @@
             
             [self.venueImage setImageWithURL:[NSURL URLWithString:urlStr]];
         }
+        
+        VEConnection *connection = [[VEConnection alloc] init];
+        
+        [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result) {
+            NSLog(@"%@", result);
+            avgTargetsList = [[NSArray alloc] initWithArray:result];
+            [self.avgTableView reloadData];
+        }];
+        
         [HUD hide:YES];
     }];
 }
@@ -100,6 +107,34 @@
         [alert show];
     }];
 #endif
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return avgTargetsList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    NSDictionary *dict = [avgTargetsList objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@: %f", dict[@"name"], [dict[@"avg"] floatValue]];
+    
+    return cell;
 }
 
 @end

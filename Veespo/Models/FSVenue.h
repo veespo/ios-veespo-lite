@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
-@interface FSLocation : NSObject{
+@interface FSLocation : NSObject {
     CLLocationCoordinate2D _coordinate;
 }
 
@@ -21,7 +21,7 @@
 @end
 
 
-@interface FSVenue : NSObject<MKAnnotation>
+@interface FSVenue : NSObject <MKAnnotation>
 
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) NSString *venueId;

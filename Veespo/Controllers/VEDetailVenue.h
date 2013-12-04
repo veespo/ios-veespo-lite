@@ -10,11 +10,13 @@
 #import "FSVenue.h"
 #import "MBProgressHUD.h"
 
-@interface VEDetailVenue : UIViewController <MBProgressHUDDelegate>
+@interface VEDetailVenue : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate>
 
 @property (nonatomic, strong) FSVenue *venue;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *adressLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *venueImage;
+@property (nonatomic, weak) IBOutlet UITableView *avgTableView;
+
 @end

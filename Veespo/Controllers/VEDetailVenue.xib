@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VEDetailVenue">
             <connections>
                 <outlet property="adressLabel" destination="0hd-Kj-BiH" id="zqB-Ky-5qJ"/>
+                <outlet property="avgTableView" destination="rAa-YM-va3" id="z7L-Wu-2X8"/>
                 <outlet property="nameLabel" destination="mEJ-gI-4Vc" id="j1Q-Y0-qwX"/>
                 <outlet property="venueImage" destination="Fb1-Rq-lu1" id="bmD-pQ-s2J"/>
                 <outlet property="view" destination="1" id="Ug1-38-zRU"/>
@@ -48,6 +49,10 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Na3-gq-mnH"/>
+                        <outlet property="delegate" destination="-1" id="sI2-sU-S9h"/>
+                    </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

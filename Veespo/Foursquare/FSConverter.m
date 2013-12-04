@@ -45,7 +45,7 @@
 - (NSArray*)convertToObjects:(NSArray*)venues withCategory:(NSString *)cat
 {
     NSMutableArray *objects = [NSMutableArray arrayWithCapacity:venues.count];
-    for (NSDictionary *v  in venues) {
+    for (NSDictionary *v in venues) {
         FSVenue *ann = [[FSVenue alloc]init];
         ann.name = v[@"name"];
         ann.venueId = v[@"id"];
