@@ -91,12 +91,12 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                              ];
     NSArray *cellInfos = @[
                            @[
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:@"Home"},
+                               @{kSidebarCellImageKey:[UIImage imageNamed:@"home.png"], kSidebarCellTextKey:@"Home"},
                                ],
                            @[
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:NSLocalizedString(@"Venues", nil)},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:NSLocalizedString(@"Tech News", nil)},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:NSLocalizedString(@"Sport News", nil)},
+                               @{kSidebarCellImageKey:[UIImage imageNamed:@"shop.png"], kSidebarCellTextKey:NSLocalizedString(@"Venues", nil)},
+                               @{kSidebarCellImageKey:[UIImage imageNamed:@"electronics.png"], kSidebarCellTextKey:NSLocalizedString(@"Tech News", nil)},
+                               @{kSidebarCellImageKey:[UIImage imageNamed:@"football.png"], kSidebarCellTextKey:NSLocalizedString(@"Sport News", nil)},
                                ]
                            ];
     
@@ -164,6 +164,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                 tokens:^(id responseData, BOOL error) {
                     if (error == NO) {
                         self.tokens = [[NSDictionary alloc] initWithDictionary:responseData];
+                        NSLog(@"%@ /n %@", userId, self.tokens);
                     }
                 }
      ];

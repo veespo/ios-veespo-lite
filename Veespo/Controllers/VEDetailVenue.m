@@ -32,21 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Feedback", nil) style:UIBarButtonItemStylePlain target:self action:@selector(openVeespo:)];
     
-    if ([_token isEqualToString:@""] || _token == nil) {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-    }
+    [self loadAverageVotes];
     
-    self.nameLabel.text = self.venue.name;
-    self.adressLabel.text = self.venue.location.address;
-    self.nameLabel.shadowColor = [UIColor lightGrayColor];
-    self.adressLabel.shadowColor = [UIColor whiteColor];
-    
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-    
-    [HUD show:YES];
     [Foursquare2 getDetailForVenue:self.venue.venueId callback:^(BOOL success, id result) {
         NSDictionary *dict = [result valueForKeyPath:@"response.venue"];
         // Get first photo in first group
@@ -58,17 +46,19 @@
             
             [self.venueImage setImageWithURL:[NSURL URLWithString:urlStr]];
         }
-        
-        VEConnection *connection = [[VEConnection alloc] init];
-        
-        [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result) {
-            NSLog(@"%@", result);
-            avgTargetsList = [[NSArray alloc] initWithArray:result];
-            [self.avgTableView reloadData];
-        }];
-        
-        [HUD hide:YES];
     }];
+	
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Feedback", nil) style:UIBarButtonItemStylePlain target:self action:@selector(openVeespo:)];
+    
+    if ([_token isEqualToString:@""] || _token == nil) {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+    
+    self.nameLabel.text = self.venue.name;
+    self.adressLabel.text = self.venue.location.address;
+    self.nameLabel.shadowColor = [UIColor lightGrayColor];
+    self.adressLabel.shadowColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,13 +67,33 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Veespo
+
+- (void)loadAverageVotes
+{
+    if (HUD) {
+        [HUD hide:NO];
+        HUD = nil;
+    }
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.delegate = self;
+    VEConnection *connection = [[VEConnection alloc] init];
+    [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result) {
+        avgTargetsList = [[NSArray alloc] initWithArray:result];
+        [self.avgTableView reloadData];
+        [HUD hide:YES afterDelay:0.4];
+    }];
+}
+
 - (IBAction)openVeespo:(id)sender
 {
 #ifdef VEESPO
     VEVeespoViewController *veespoViewController = nil;
     
     NSDictionary *d = @{
-                        @"local_id": self.venue.venueId, @"desc1": self.venue.name, @"desc2": self.venue.category, @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
+                        @"local_id": self.venue.venueId, @"desc1": self.venue.name, @"desc2": self.venue.location.address, @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
                         };
     
     veespoViewController = [[VEVeespoViewController alloc]
@@ -95,7 +105,9 @@
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
         [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self loadAverageVotes];
+        }];
     };
     
     [veespoViewController showWidget:^(NSDictionary *error) {
@@ -132,7 +144,7 @@
     }
     
     NSDictionary *dict = [avgTargetsList objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@: %f", dict[@"name"], [dict[@"avg"] floatValue]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@: %.1f", dict[@"name"], [dict[@"avg"] floatValue]];
     
     return cell;
 }

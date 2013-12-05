@@ -106,7 +106,7 @@
     }
 	NSDictionary *info = _cellInfos[indexPath.section][indexPath.row];
 	cell.title = info[kSidebarCellTextKey];
-	cell.imageView.image = info[kSidebarCellImageKey];
+	cell.iconImage = info[kSidebarCellImageKey];
     return cell;
 }
 

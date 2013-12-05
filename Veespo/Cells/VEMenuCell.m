@@ -32,6 +32,12 @@
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.text = self.title;
     [myContentView addSubview:titleLabel];
+    
+    iconButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    iconButton.frame = CGRectMake(8, 7, 30, 30);
+    [iconButton setImage:self.iconImage forState:UIControlStateDisabled];
+    iconButton.enabled = NO;
+    [myContentView addSubview:iconButton];
 }
 
 #pragma mark - Constants

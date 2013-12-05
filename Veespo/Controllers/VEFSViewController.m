@@ -14,6 +14,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "VEFSHeaderView.h"
 #import "VEDetailVenue.h"
+#import "VERatedVenuesViewController.h"
+
 
 static NSString * const catCibi = @"4d4b7105d754a06374d81259";
 static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
@@ -47,10 +49,20 @@ static int const maxLocationUpdate = 3;
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
     }
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                                           target:self
-                                                                                           action:@selector(updateVenuesCollection)
-                                              ];
+    
+    UIBarButtonItem *venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"star.png"]
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:self
+                                                                         action:@selector(openVenuesRatedView)
+                                          ];
+    
+    UIBarButtonItem *updateVenuesButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                       target:self
+                                                                                       action:@selector(updateVenuesCollection)
+                                          ];
+    
+    NSArray *tempArray= [[NSArray alloc] initWithObjects:updateVenuesButton, venuesRatedButton, nil];
+    self.navigationItem.rightBarButtonItems=tempArray;
     
     [self.locationManager startUpdatingLocation];
     [self.view addSubview:self.mapView];
@@ -72,12 +84,6 @@ static int const maxLocationUpdate = 3;
     
     [self.view addSubview:venuesCollection];
 
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -124,10 +130,10 @@ static int const maxLocationUpdate = 3;
 
 - (void)updateVenuesCollection
 {
-//    locationUpdateCnt = 0;
-//    self.locationManager.distanceFilter = 0;
-    [self getVenuesForLocation:lastLocation];
+    locationUpdateCnt = 0;
+    self.locationManager.distanceFilter = 0;
     [self setupMapForLocation:lastLocation];
+    [self getVenuesForLocation:lastLocation];
 }
 
 - (void)checkinButton
@@ -141,7 +147,6 @@ static int const maxLocationUpdate = 3;
     } else {
         detail.token = [appDelegate.tokens objectForKey:@"localinotturni"];
     }
-    detail.title = detail.venue.title;
     [self.navigationController pushViewController:detail animated:YES];
 }
 
@@ -157,8 +162,13 @@ static int const maxLocationUpdate = 3;
     } else {
         detail.token = [appDelegate.tokens objectForKey:@"localinotturni"];
     }
-    detail.title = detail.venue.title;
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (void)openVenuesRatedView
+{
+    VERatedVenuesViewController *ratedViewController = [[VERatedVenuesViewController alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:ratedViewController animated:YES];
 }
 
 #pragma mark - Location and Map
@@ -185,11 +195,11 @@ static int const maxLocationUpdate = 3;
     
     if (locationUpdateCnt == maxLocationUpdate) {
         locationUpdateCnt++;
-        [self getVenuesForLocation:newLocation];
-        self.locationManager.distanceFilter = 100;
+        [self getVenuesForLocation:lastLocation];
+        self.locationManager.distanceFilter = 50;
     } else if (locationUpdateCnt < maxLocationUpdate)
         locationUpdateCnt++;
-    [self setupMapForLocation:newLocation];
+    [self setupMapForLocation:lastLocation];
 }
 
 -(void)removeAllAnnotationExceptOfCurrentUser

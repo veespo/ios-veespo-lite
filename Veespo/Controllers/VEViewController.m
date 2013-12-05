@@ -292,11 +292,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-//    UITextPosition *beginning = [textField beginningOfDocument];
-//    [textField setSelectedTextRange:[textField textRangeFromPosition:beginning
-//                                                          toPosition:beginning]];
     if (textField != userNameTf) textField.text = nil;
-    
 }
 
 #pragma mark - Touch

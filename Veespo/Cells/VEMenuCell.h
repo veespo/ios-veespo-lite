@@ -17,8 +17,10 @@ extern NSString const *kSidebarCellImageKey;
     UIView* topSeparator;
     UIView* bottomSeparator;
     UIImageView* iconImageView;
+    UIButton *iconButton;
 }
 
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) UIImage *iconImage;
 
 @end
