@@ -8,7 +8,7 @@
 
 "Feedback" = "Valuta";
 
-"DemoCode Title" = "Inserisci il codice demo ed il tuo nome";
+"DemoCode Title" = "Inserisci il codice Veespo ed il tuo nome";
 
 "User Name" = "Nome Utente";
 
@@ -18,7 +18,7 @@
 
 "Alert" = "Attenzione";
 
-"Fill Form" = "Inserire un codice demo (oppure selezionare una categoria dallo storico) ed inserire il nome utente";
+"Fill Form" = "Inserire un codice Veespo (oppure selezionare una categoria dallo storico) ed inserire il nome utente";
 
 "Veespo Question" =  "Cosa ne pensi di %@?";
 
@@ -37,3 +37,5 @@
 "ESPN Top News" = "ESPN Top News";
 
 "No Votes" = "Non abbiamo nessun locale preferito da farti vedere perché non hai mai votato";
+
+"Favorites" = "Preferiti";

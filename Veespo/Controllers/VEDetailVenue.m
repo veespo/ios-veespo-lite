@@ -144,7 +144,7 @@
     }
     
     NSDictionary *dict = [avgTargetsList objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@: %.1f", dict[@"name"], [dict[@"avg"] floatValue]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@: %.1f", dict[@"name"], [dict[@"avg"] floatValue] * 5];
     
     return cell;
 }

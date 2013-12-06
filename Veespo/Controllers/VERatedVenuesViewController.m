@@ -34,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = NSLocalizedString(@"Favorites", nil);
 
     VEConnection *connection = [[VEConnection alloc] init];
     NSString *userId = nil;
@@ -100,6 +102,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     
     cell.textLabel.text = [targetsList objectAtIndex:indexPath.row][@"desc1"];
