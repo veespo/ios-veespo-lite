@@ -17,7 +17,8 @@
 #import "VEAppDelegate.h"
 #import "TestFlight.h"
 
-#define VEESPO
+//#define VEESPO
+
 #ifdef VEESPO
 #import <VeespoFramework/Veespo.h>
 #import <VeespoFramework/VEVeespoViewController.h>
