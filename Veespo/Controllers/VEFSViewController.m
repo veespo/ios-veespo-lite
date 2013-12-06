@@ -118,8 +118,9 @@ static int const maxLocationUpdate = 3;
 {
     if (!_mapView) {
         CGFloat mapViewHeight = ([UIScreen mainScreen].bounds.size.height == 568.0f) ? 168 : 128;
-        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, (SYSTEM_VERSION_LESS_THAN(@"7.0"))?0:64, 320, (SYSTEM_VERSION_LESS_THAN(@"7.0"))?mapViewHeight+64:mapViewHeight)];
-        _mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, (SYSTEM_VERSION_LESS_THAN(@"7.0"))?0:64, 320, mapViewHeight)];
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+            _mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         [_mapView setShowsUserLocation:YES];
         _mapView.delegate = self;
     }
