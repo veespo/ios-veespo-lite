@@ -34,13 +34,17 @@
 
 #pragma mark - Private Methods
 - (void)parserDidStartDocument:(NSXMLParser *)parser{
+#ifdef DEBUG
 	NSLog(@"found file and started parsing");
+#endif
 	
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
 	NSString * errorString = [NSString stringWithFormat:@"Unable to download story feed from web site (Error code %i )", [parseError code]];
+#ifdef DEBUG
 	NSLog(@"error parsing XML: %@", errorString);
+#endif
 	
 	UIAlertView * errorAlert = [[UIAlertView alloc] initWithTitle:@"Error loading content" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[errorAlert show];
@@ -91,8 +95,10 @@
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
+#ifdef DEBUG
 	NSLog(@"all done!");
 	NSLog(@"stories array has %d items", [stories count]);
+#endif
 	self.parseResult(stories);
 }
 
