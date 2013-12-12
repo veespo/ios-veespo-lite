@@ -51,7 +51,7 @@
 	_menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _menuTableView.scrollEnabled = NO;
 	[self.view addSubview:_menuTableView];
-//	[self selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
+	[self selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,13 +60,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-//- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition {
-//	[_menuTableView selectRowAtIndexPath:indexPath animated:animated scrollPosition:scrollPosition];
-//	if (scrollPosition == UITableViewScrollPositionNone) {
-//		[_menuTableView scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
-//	}
-////	_sidebarVC.contentViewController = _controllers[indexPath.section][indexPath.row];
-//}
+- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition {
+	[_menuTableView selectRowAtIndexPath:indexPath animated:animated scrollPosition:scrollPosition];
+	if (scrollPosition == UITableViewScrollPositionNone) {
+		[_menuTableView scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
+	}
+	_sidebarVC.contentViewController = _controllers[indexPath.section][indexPath.row];
+}
 
 #pragma mark UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

@@ -15,9 +15,10 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "VEAppDelegate.h"
-//#import "TestFlight.h"
+#import "TestFlight.h"
 
-//#define VEESPO
+#define VEESPO
+#define TESTFLIGHT
 
 #ifdef VEESPO
 #import <VeespoFramework/Veespo.h>

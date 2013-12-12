@@ -69,7 +69,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 
 - (void)configSidebarController
 {
-    self.revealController = [[GHRevealViewController alloc] init];
+    self.revealController = [[GHRevealViewController alloc] initWithNibName:nil bundle:nil];
     RevealBlock revealBlock = ^(){
 		[self.revealController toggleSidebar:!self.revealController.sidebarShowing
 									duration:kGHRevealSidebarDefaultAnimationDuration];
@@ -127,7 +127,9 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
     [self setUpFoursquare:keys];
     [self setUpVeespo:keys];
-//    [TestFlight takeOff:keys[kVETestFlightKey]];
+#ifdef TESTFLIGHT
+    [TestFlight takeOff:keys[kVETestFlightKey]];
+#endif
 }
 
 - (void)setUpFoursquare:(NSDictionary *)keys
