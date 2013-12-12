@@ -157,10 +157,10 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     
     [Veespo initVeespo:keys[kVEVeespoApiKey]
                 userId:userId
-             partnerId:@"apple"
+             partnerId:@"alessio"
               language:[[NSLocale preferredLanguages] objectAtIndex:0]
             categories:categories
-               testUrl:YES
+               testUrl:NO
                 tokens:^(id responseData, BOOL error) {
                     if (error == NO) {
                         self.tokens = [[NSDictionary alloc] initWithDictionary:responseData];

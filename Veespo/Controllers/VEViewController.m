@@ -40,13 +40,17 @@
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+    } else {
+        self.navigationController.navigationBar.translucent = NO;
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x1D7800);
     }
     
     [self.view setBackgroundColor:UIColorFromRGB(0xDBDBDB)];
     
     [self initDemoCodeTextField];
     
-    CGFloat titleLabelY = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ?  60.0 : 8;
+    CGFloat titleLabelY = 8;
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, titleLabelY, 300, 60)];
     titleLabel.text = NSLocalizedString(@"DemoCode Title", nil);
     titleLabel.numberOfLines = 2;
@@ -122,7 +126,8 @@
 - (void)initDemoCodeTextField
 {
     CGFloat dimension = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ? DEMOCODETEXT_ISO7 : DEMOCODETEXT_IOS6;
-    CGFloat textFieldY = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ? 127.0 : 83.0;
+//    CGFloat textFieldY = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ? 127.0 : 83.0;
+    CGFloat textFieldY = 83.0;
     CGFloat textFieldX = (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) ? 60.0 : 88.0;
     
     textOneTf = [[UITextField alloc] initWithFrame:CGRectMake(textFieldX, textFieldY, dimension, dimension)];

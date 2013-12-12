@@ -23,6 +23,10 @@
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+    } else {
+        self.navigationController.navigationBar.translucent = NO;
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x1D7800);
     }
     
     _dataSource = [[NSMutableArray alloc] init];
@@ -145,10 +149,14 @@
     storyLink = [storyLink stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     storyLink = [storyLink stringByReplacingOccurrencesOfString:@"	" withString:@""];
     
-//    VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     WebViewController *wvc = [[WebViewController alloc] init];
     [wvc setUrl:[NSURL URLWithString:storyLink]];
+    [wvc setLocal_id:@"rss_news_00001"];
+    [wvc setToken:[appDelegate.tokens objectForKey:@"news"]];
+    [wvc setNewsTitle:[[_dataSource objectAtIndex:indexPath.row] valueForKey:@"title"]];
+    [wvc setHeadline:@"title"];
     [self.navigationController pushViewController:wvc animated:YES];
     
 }

@@ -20,6 +20,7 @@
 
 @implementation VEDetailVenue
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -135,16 +136,48 @@
     return avgTargetsList.count;
 }
 
+- (UITableViewCell *) getCellContentView:(NSString *)cellIdentifier {
+    CGRect labelFrame = CGRectMake(10, 5, 240, 34);
+    CGRect imageFrame = CGRectMake(250, 18.5, 57, 7);
+	
+	UILabel *title;
+    UIImageView *rateImage;
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    
+    cell.backgroundView = nil;
+    cell.backgroundColor = [UIColor whiteColor];
+    
+    title = [[UILabel alloc] initWithFrame:labelFrame];
+	title.tag = 1;
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+        title.backgroundColor = [UIColor clearColor];
+    title.textColor = UIColorFromRGB(0x747474);
+	[cell.contentView addSubview:title];
+    
+    rateImage = [[UIImageView alloc] initWithFrame:imageFrame];
+    rateImage.tag = 2;
+    rateImage.backgroundColor = [UIColor clearColor];
+    [cell.contentView addSubview:rateImage];
+    
+    return  cell;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [self getCellContentView:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     NSDictionary *dict = [avgTargetsList objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@: %.1f", dict[@"name"], [dict[@"avg"] floatValue] * 5];
+    UILabel *label = (UILabel *)[cell viewWithTag:1];
+    UIImageView *icon = (UIImageView *)[cell viewWithTag:2];
+    label.text = [NSString stringWithFormat:@"%@", dict[@"name"]];
+    
+    NSString *imageFileName = [NSString stringWithFormat:@"%.f.png", roundf([dict[@"avg"] floatValue] * 5)];
+    icon.image = [UIImage imageNamed:imageFileName];
     
     return cell;
 }

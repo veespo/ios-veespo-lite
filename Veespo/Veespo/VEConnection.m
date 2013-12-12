@@ -9,7 +9,7 @@
     NSString *demoCode = [dataSet objectForKey:@"democode"];
     NSString *userId = [dataSet objectForKey:@"userid"];
 #warning STATIC URL
-    NSString *urlStr = [NSString stringWithFormat:@"http://sandbox.veespo.com/v1/category/demo-code/%@", demoCode];
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/category/demo-code/%@", demoCode];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
@@ -24,7 +24,7 @@
         } else {
             // Richiesta user token
 #warning STATIC URL
-            NSString *urlStr = [NSString stringWithFormat:@"http://sandbox.veespo.com/v1/user-token/demo-code/%@?user=%@", demoCode, userId];
+            NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/user-token/demo-code/%@?user=%@", demoCode, userId];
             NSURL *url = [NSURL URLWithString:urlStr];
             NSMutableURLRequest *brequest = [NSMutableURLRequest requestWithURL:url];
             [brequest setHTTPMethod:@"GET"];
@@ -52,7 +52,7 @@
 {
     // /v1/average/category/:cat/target/:target
 #warning STATIC URL
-    NSString *urlStr = [NSString stringWithFormat:@"http://sandbox.veespo.com/v1/average/category/%@/target/%@?token=%@", category, targertId, token];
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/average/category/%@/target/%@?token=%@", category, targertId, token];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
@@ -104,7 +104,7 @@
 - (void)requestTargetsForUser:(NSString *)user withCategory:(NSString *)category withToken:(NSString *)token blockResult:(void (^)(id))block
 {
 #warning STATIC URL
-    NSString *urlStr = [NSString stringWithFormat:@"http://sandbox.veespo.com/v1/info/category/%@/user/%@/targets?token=%@", category, user, token];
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/info/category/%@/user/%@/targets?token=%@", category, user, token];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
@@ -123,7 +123,7 @@
 - (void)getTarget:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block
 {
 #warning STATIC URL
-    NSString *urlStr = [NSString stringWithFormat:@"http://sandbox.veespo.com/v1/info/category/%@/targets?token=%@", catId, uTk];
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/info/category/%@/targets?token=%@", catId, uTk];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
@@ -143,7 +143,7 @@
     // /v1/info/category/:cat/tags
     // [[NSLocale preferredLanguages] objectAtIndex:0]
 #warning STATIC URL
-    NSString *urlStr = [NSString stringWithFormat:@"http://sandbox.veespo.com/v1/info/category/%@/tags?token=%@&lang=%@", catId, uTk, [[NSLocale preferredLanguages] objectAtIndex:0]];
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/info/category/%@/tags?token=%@&lang=%@", catId, uTk, [[NSLocale preferredLanguages] objectAtIndex:0]];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];

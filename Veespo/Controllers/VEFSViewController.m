@@ -48,6 +48,10 @@ static int const maxLocationUpdate = 3;
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+    } else {
+        self.navigationController.navigationBar.translucent = NO;
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x1D7800);
     }
     
     UIBarButtonItem *venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"star.png"]
@@ -118,9 +122,7 @@ static int const maxLocationUpdate = 3;
 {
     if (!_mapView) {
         CGFloat mapViewHeight = ([UIScreen mainScreen].bounds.size.height == 568.0f) ? 168 : 128;
-        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, (SYSTEM_VERSION_LESS_THAN(@"7.0"))?0:64, 320, mapViewHeight)];
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
-            _mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, mapViewHeight)];
         [_mapView setShowsUserLocation:YES];
         _mapView.delegate = self;
     }

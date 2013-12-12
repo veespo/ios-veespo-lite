@@ -28,6 +28,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+    } else {
+        self.navigationController.navigationBar.translucent = NO;
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x1D7800);
+    }
 
     target = [[NSMutableArray alloc] init];
     
@@ -73,7 +81,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 #ifdef VEESPO
-    [Veespo initVeespo:@"demo" userId:@"demo" partnerId:@"demo" language:[[NSLocale preferredLanguages] objectAtIndex:0] categories:nil testUrl:YES tokens:^(id responseData, BOOL error) {
+    [Veespo initVeespo:@"demo" userId:self.userid partnerId:@"demo" language:[[NSLocale preferredLanguages] objectAtIndex:0] categories:nil testUrl:NO tokens:^(id responseData, BOOL error) {
         [TestFlight passCheckpoint:[NSString stringWithFormat:@"%@", responseData]];
     }];
     

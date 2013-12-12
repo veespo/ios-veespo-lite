@@ -26,6 +26,14 @@
     if (self.token == nil)
         self.navigationItem.rightBarButtonItem.enabled = NO;
     
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+    } else {
+        self.navigationController.navigationBar.translucent = NO;
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x1D7800);
+    }
+    
     CGRect appBounds = [UIScreen mainScreen].bounds;
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, appBounds.size.height)];
     
