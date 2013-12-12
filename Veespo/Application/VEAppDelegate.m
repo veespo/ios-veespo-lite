@@ -127,7 +127,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
     [self setUpFoursquare:keys];
     [self setUpVeespo:keys];
-    [TestFlight takeOff:keys[kVETestFlightKey]];
+//    [TestFlight takeOff:keys[kVETestFlightKey]];
 }
 
 - (void)setUpFoursquare:(NSDictionary *)keys
