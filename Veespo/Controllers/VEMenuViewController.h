@@ -9,7 +9,6 @@
 @class GHRevealViewController;
 
 @interface VEMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    GHRevealViewController *_sidebarVC;
 	UITableView *_menuTableView;
 	NSArray *_headers;
 	NSArray *_controllers;

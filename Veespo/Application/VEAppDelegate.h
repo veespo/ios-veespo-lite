@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class JASidePanelController;
+
 @interface VEAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
 @property (strong, nonatomic) NSDictionary *tokens;
+
+@property (strong, nonatomic) JASidePanelController *viewController;
 
 @end

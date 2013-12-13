@@ -9,6 +9,8 @@
 #import "VEMenuViewController.h"
 #import "GHRevealViewController.h"
 #import "VEMenuCell.h"
+#import "UIViewController+JASidePanel.h"
+#import "JASidePanelController.h"
 
 @interface VEMenuViewController ()
 
@@ -21,13 +23,9 @@
 					withControllers:(NSArray *)controllers
 					  withCellInfos:(NSArray *)cellInfos {
 	if (self = [super initWithNibName:nil bundle:nil]) {
-		_sidebarVC = sidebarVC;
 		_headers = headers;
 		_controllers = controllers;
 		_cellInfos = cellInfos;
-		
-		_sidebarVC.sidebarViewController = self;
-		_sidebarVC.contentViewController = _controllers[0][0];
 	}
 	return self;
 }
@@ -65,7 +63,6 @@
 	if (scrollPosition == UITableViewScrollPositionNone) {
 		[_menuTableView scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
 	}
-	_sidebarVC.contentViewController = _controllers[indexPath.section][indexPath.row];
 }
 
 #pragma mark UITableViewDataSource
@@ -113,8 +110,10 @@
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	_sidebarVC.contentViewController = _controllers[indexPath.section][indexPath.row];
-	[_sidebarVC toggleSidebar:NO duration:kGHRevealSidebarDefaultAnimationDuration];
+//	_sidebarVC.contentViewController = _controllers[indexPath.section][indexPath.row];
+//	[_sidebarVC toggleSidebar:NO duration:kGHRevealSidebarDefaultAnimationDuration];
+    self.sidePanelController.centerPanel = _controllers[indexPath.section][indexPath.row];
+    [self.sidePanelController setCenterPanelHidden:NO animated:YES duration:0.2f];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

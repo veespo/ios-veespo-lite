@@ -72,6 +72,8 @@
 		BEE64CA3185A1CE000539E8A /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = BEE64C9D185A1CE000539E8A /* release_notes.md */; };
 		BEE64CA8185A1E2700539E8A /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEE64CA6185A1E2700539E8A /* Resources.bundle */; };
 		BEE64CA9185A1E2700539E8A /* VeespoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEE64CA7185A1E2700539E8A /* VeespoFramework.framework */; };
+		BEE64CB0185A2C4800539E8A /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64CAF185A2C4800539E8A /* JASidePanelController.m */; };
+		BEE64CB3185A331A00539E8A /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64CB2185A331A00539E8A /* UIViewController+JASidePanel.m */; };
 		BEE7F2B11850BCDA005EE0F6 /* VERatedVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE7F2B01850BCDA005EE0F6 /* VERatedVenuesViewController.m */; };
 		BEE7F2B41850C8F5005EE0F6 /* VERatedTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE7F2B31850C8F5005EE0F6 /* VERatedTarget.m */; };
 		BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB671617EC9A1A00F394E9 /* Foundation.framework */; };
@@ -210,6 +212,10 @@
 		BEE64CA0185A1CE000539E8A /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		BEE64CA6185A1E2700539E8A /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
 		BEE64CA7185A1E2700539E8A /* VeespoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VeespoFramework.framework; sourceTree = "<group>"; };
+		BEE64CAE185A2C4800539E8A /* JASidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASidePanelController.h; sourceTree = "<group>"; };
+		BEE64CAF185A2C4800539E8A /* JASidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASidePanelController.m; sourceTree = "<group>"; };
+		BEE64CB1185A331A00539E8A /* UIViewController+JASidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JASidePanel.h"; sourceTree = "<group>"; };
+		BEE64CB2185A331A00539E8A /* UIViewController+JASidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JASidePanel.m"; sourceTree = "<group>"; };
 		BEE7F2AF1850BCDA005EE0F6 /* VERatedVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERatedVenuesViewController.h; sourceTree = "<group>"; };
 		BEE7F2B01850BCDA005EE0F6 /* VERatedVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VERatedVenuesViewController.m; sourceTree = "<group>"; };
 		BEE7F2B21850C8F5005EE0F6 /* VERatedTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERatedTarget.h; sourceTree = "<group>"; };
@@ -409,6 +415,7 @@
 		BEE64C431859C62400539E8A /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				BEE64CAD185A2C4800539E8A /* JASidePanels */,
 				BEE64C7B1859C7C900539E8A /* MBProgressHUD */,
 				BEE64C731859C77D00539E8A /* GHSidebarNav */,
 				BEE64C611859C6D800539E8A /* Foursquare2 */,
@@ -515,6 +522,18 @@
 				BEE64CA6185A1E2700539E8A /* Resources.bundle */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		BEE64CAD185A2C4800539E8A /* JASidePanels */ = {
+			isa = PBXGroup;
+			children = (
+				BEE64CB1185A331A00539E8A /* UIViewController+JASidePanel.h */,
+				BEE64CB2185A331A00539E8A /* UIViewController+JASidePanel.m */,
+				BEE64CAE185A2C4800539E8A /* JASidePanelController.h */,
+				BEE64CAF185A2C4800539E8A /* JASidePanelController.m */,
+			);
+			name = JASidePanels;
+			path = Library/JASidePanels;
 			sourceTree = "<group>";
 		};
 		BEEB670A17EC9A1A00F394E9 = {
@@ -726,6 +745,7 @@
 				BEC63F5A183CC6BD001C82B6 /* VEFSViewController.m in Sources */,
 				BEC63F52183CC6BD001C82B6 /* VEAppDelegate.m in Sources */,
 				BEC63F56183CC6BD001C82B6 /* VEVenueCell.m in Sources */,
+				BEE64CB3185A331A00539E8A /* UIViewController+JASidePanel.m in Sources */,
 				BEE64C6E1859C6D800539E8A /* FSOAuth.m in Sources */,
 				BEC63F77183CC7BC001C82B6 /* UIControl+VEControl.m in Sources */,
 				BEC63F5C183CC6BD001C82B6 /* VERootViewController.m in Sources */,
@@ -736,6 +756,7 @@
 				BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */,
 				BEE64C7E1859C7C900539E8A /* MBProgressHUD.m in Sources */,
 				BEE64C791859C77D00539E8A /* GHRevealViewController.m in Sources */,
+				BEE64CB0185A2C4800539E8A /* JASidePanelController.m in Sources */,
 				BEC63F66183CC6BD001C82B6 /* FSVenue.m in Sources */,
 				BEE64C601859C63000539E8A /* UIImageView+AFNetworking.m in Sources */,
 				BEE64C591859C63000539E8A /* AFHTTPRequestOperation.m in Sources */,
