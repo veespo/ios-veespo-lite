@@ -10,7 +10,7 @@
 
 #import "JASidePanelController.h"
 
-#import "VEMenuViewController.h"
+#import "VELeftMenuViewController.h"
 #import "VERootViewController.h"
 #import "VEMenuCell.h"
 #import "VEViewController.h"
@@ -58,8 +58,8 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     self.viewController.shouldDelegateAutorotateToVisiblePanel = NO;
     
     NSArray *headers = @[
-                         @"VEESPO",
-                         @"OTHER"
+                         @"Veespo",
+                         @"Examples"
                          ];
 	NSArray *controllers = @[
                              @[
@@ -82,10 +82,9 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                                ]
                            ];
     
-    VEMenuViewController *menuController = [[VEMenuViewController alloc] initWithSidebarViewController:nil
-                                                                                           withHeaders:headers
-                                                                                       withControllers:controllers
-                                                                                         withCellInfos:cellInfos];
+    VELeftMenuViewController *menuController = [[VELeftMenuViewController alloc] init];
+    [menuController setViewControllers:controllers cellInfos:cellInfos headers:headers];
+    
     self.viewController.leftPanel = menuController;
     self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] initWithTitle:@"Home" withRevealBlock:nil]];
     self.viewController.rightPanel = nil;
@@ -163,6 +162,9 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                     if (error == NO) {
                         self.tokens = [[NSDictionary alloc] initWithDictionary:responseData];
                         NSLog(@"%@ /n %@", userId, self.tokens);
+                    } else {
+                        self.tokens = nil;
+                        NSLog(@"%@", responseData);
                     }
                 }
      ];
