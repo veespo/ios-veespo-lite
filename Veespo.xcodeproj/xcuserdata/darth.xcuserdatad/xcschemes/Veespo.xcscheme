@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BEEB671217EC9A1A00F394E9"
-               BuildableName = "Veespo.app"
+               BuildableName = "Veespo Lite.app"
                BlueprintName = "Veespo"
                ReferencedContainer = "container:Veespo.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BEEB671217EC9A1A00F394E9"
-            BuildableName = "Veespo.app"
+            BuildableName = "Veespo Lite.app"
             BlueprintName = "Veespo"
             ReferencedContainer = "container:Veespo.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BEEB671217EC9A1A00F394E9"
-            BuildableName = "Veespo.app"
+            BuildableName = "Veespo Lite.app"
             BlueprintName = "Veespo"
             ReferencedContainer = "container:Veespo.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BEEB671217EC9A1A00F394E9"
-            BuildableName = "Veespo.app"
+            BuildableName = "Veespo Lite.app"
             BlueprintName = "Veespo"
             ReferencedContainer = "container:Veespo.xcodeproj">
          </BuildableReference>
