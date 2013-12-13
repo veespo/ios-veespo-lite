@@ -82,9 +82,16 @@
     HUD.delegate = self;
     VEConnection *connection = [[VEConnection alloc] init];
     [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result) {
-        avgTargetsList = [[NSArray alloc] initWithArray:result];
-        [self.avgTableView reloadData];
-        [HUD hide:YES afterDelay:0.4];
+        NSString *alertString = [result objectForKey:@"error"];
+        if (alertString == nil) {
+            avgTargetsList = [[NSArray alloc] initWithArray:result];
+            [self.avgTableView reloadData];
+            [HUD hide:YES afterDelay:0.4];
+        } else {
+            [HUD hide:YES];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:alertString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
     }];
 }
 
