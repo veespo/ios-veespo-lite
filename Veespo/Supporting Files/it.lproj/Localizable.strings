@@ -8,7 +8,7 @@
 
 "Feedback" = "Vota";
 
-"DemoCode Title" = "Inserisci il codice Veespo ed il tuo nome";
+"DemoCode Title" = "Inserisci il Codice della Categoria ed il tuo nome";
 
 "User Name" = "Nome Utente";
 
@@ -39,3 +39,5 @@
 "No Votes" = "Non abbiamo nessun locale preferito da farti vedere perché non hai mai votato";
 
 "Favorites" = "Preferiti";
+
+"No Demo" = "Senza Codice";

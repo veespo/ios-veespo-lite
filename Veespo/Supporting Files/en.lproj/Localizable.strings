@@ -8,7 +8,7 @@
 
 "Feedback" = "Vote";
 
-"DemoCode Title" = "Insert Veespo Code and Name";
+"DemoCode Title" = "Insert Category Code and Name";
 
 "User Name" = "User Name";
 
@@ -39,3 +39,5 @@
 "No Votes" = "There aren't favorite places because you never voted";
 
 "Favorites" = "Favorites";
+
+"No Demo" = "Without Code";
