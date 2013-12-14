@@ -80,20 +80,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    static NSString *CellIdentifier = @"VEMenuCell";
-//    VEMenuCell *cell = (VEMenuCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (cell == nil) {
-//        cell = [[VEMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
-
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"VEMenuCell";
+    VEMenuCell *cell = (VEMenuCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[VEMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
+
+//    static NSString *CellIdentifier = @"Cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+    
 	NSDictionary *info = _cellInfos[indexPath.section][indexPath.row];
-	cell.textLabel.text = info[kSidebarCellTextKey];
-	cell.imageView.image = info[kSidebarCellImageKey];
+	cell.title.text = info[kSidebarCellTextKey];
+	cell.iconImage.image = info[kSidebarCellImageKey];
+    
     return cell;
 }
 

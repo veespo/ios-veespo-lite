@@ -20,7 +20,9 @@ extern NSString const *kSidebarCellImageKey;
     UIButton *iconButton;
 }
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) UIImage *iconImage;
+//@property (nonatomic, strong) NSString *title;
+//@property (nonatomic, strong) UIImage *iconImage;
+@property (nonatomic, strong) UILabel* title;
+@property (nonatomic, strong) UIImageView* iconImage;
 
 @end
