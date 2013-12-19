@@ -149,15 +149,33 @@
     storyLink = [storyLink stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     storyLink = [storyLink stringByReplacingOccurrencesOfString:@"	" withString:@""];
     
-    VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString *dateString = [[_dataSource objectAtIndex: storyIndex] objectForKey: @"date"];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"	" withString:@""];
     
-    WebViewController *wvc = [[WebViewController alloc] init];
-    [wvc setUrl:[NSURL URLWithString:storyLink]];
-    [wvc setLocal_id:@"rss_news_00001"];
-    [wvc setToken:[appDelegate.tokens objectForKey:@"news"]];
-    [wvc setNewsTitle:[[_dataSource objectAtIndex:indexPath.row] valueForKey:@"title"]];
-    [wvc setHeadline:@"title"];
-    [self.navigationController pushViewController:wvc animated:YES];
+    //Detect.
+    NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingAllTypes error:nil];
+    [detector enumerateMatchesInString:dateString
+                               options:kNilOptions
+                                 range:NSMakeRange(0, [dateString length])
+                            usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop)
+     {
+         time_t unixTime = (time_t) [result.date timeIntervalSince1970];
+         VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+         
+         WebViewController *wvc = [[WebViewController alloc] init];
+         [wvc setUrl:[NSURL URLWithString:storyLink]];
+         [wvc setLocal_id:[NSString stringWithFormat:@"rss_tech_%ld", unixTime]];
+         [wvc setToken:[appDelegate.tokens objectForKey:@"news"]];
+         NSString *title = [[_dataSource objectAtIndex:indexPath.row] valueForKey:@"title"];
+         title = [title stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+         title = [title stringByReplacingOccurrencesOfString:@"	" withString:@""];
+         [wvc setNewsTitle:title];
+         [wvc setHeadline:title];
+         [self.navigationController pushViewController:wvc animated:YES];
+     }];
+    
+    
     
 }
 

@@ -9,7 +9,6 @@
 @class GHRevealViewController;
 
 @interface VEMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    GHRevealViewController *_sidebarVC;
 	UITableView *_menuTableView;
 	NSArray *_headers;
 	NSArray *_controllers;
@@ -21,8 +20,8 @@
 					withControllers:(NSArray *)controllers
 					  withCellInfos:(NSArray *)cellInfos;
 
-//- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath
-//					animated:(BOOL)animated
-//			  scrollPosition:(UITableViewScrollPosition)scrollPosition;
+- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath
+					animated:(BOOL)animated
+			  scrollPosition:(UITableViewScrollPosition)scrollPosition;
 
 @end

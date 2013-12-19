@@ -7,8 +7,10 @@
 //
 
 #import "VEAppDelegate.h"
-#import "GHRevealViewController.h"
-#import "VEMenuViewController.h"
+
+#import "JASidePanelController.h"
+
+#import "VELeftMenuViewController.h"
 #import "VERootViewController.h"
 #import "VEMenuCell.h"
 #import "VEViewController.h"
@@ -26,13 +28,8 @@ static NSString * const kVEKeysFileName = @"Veespo-Keys";
 static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 
 #pragma mark - Private Interface
-@interface VEAppDelegate ()
-@property (nonatomic, strong) GHRevealViewController *revealController;
-@property (nonatomic, strong) VEMenuViewController *menuController;
-@end
-
 @implementation VEAppDelegate
-@synthesize revealController, menuController;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -52,41 +49,26 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
         }
         [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:dateKey];
     }
-
-    [self configSidebarController];
-    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     if SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")
         self.window.tintColor = UIColorFromRGB(0x1D7800);
     
-    self.window.rootViewController = self.revealController;
-    
-    [self.window makeKeyAndVisible];
-    
-    return YES;
-}
-
-- (void)configSidebarController
-{
-    self.revealController = [[GHRevealViewController alloc] init];
-    RevealBlock revealBlock = ^(){
-		[self.revealController toggleSidebar:!self.revealController.sidebarShowing
-									duration:kGHRevealSidebarDefaultAnimationDuration];
-	};
+    self.viewController = [[JASidePanelController alloc] init];
+    self.viewController.shouldDelegateAutorotateToVisiblePanel = NO;
     
     NSArray *headers = @[
-                         @"VEESPO",
-                         @"OTHER"
+                         @"Veespo",
+                         @"Examples"
                          ];
 	NSArray *controllers = @[
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] initWithTitle:@"Home" withRevealBlock:revealBlock]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] initWithTitle:@"Home" withRevealBlock:nil]]
                                  ],
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:NSLocalizedString(@"Venues", nil) withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] initWithTitle:NSLocalizedString(@"Tech News", nil) withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] initWithTitle:NSLocalizedString(@"ESPN Top News", nil) withRevealBlock:revealBlock]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:NSLocalizedString(@"Venues", nil) withRevealBlock:nil]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] initWithTitle:NSLocalizedString(@"Tech News", nil) withRevealBlock:nil]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] initWithTitle:NSLocalizedString(@"ESPN Top News", nil) withRevealBlock:nil]]
                                  ]
                              ];
     NSArray *cellInfos = @[
@@ -100,10 +82,23 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                                ]
                            ];
     
-    self.menuController = [[VEMenuViewController alloc] initWithSidebarViewController:self.revealController
-																		  withHeaders:headers
-																	  withControllers:controllers
-																		withCellInfos:cellInfos];
+    VELeftMenuViewController *menuController = [[VELeftMenuViewController alloc] init];
+    [menuController setViewControllers:controllers cellInfos:cellInfos headers:headers];
+    
+    self.viewController.leftPanel = menuController;
+    self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] initWithTitle:@"Home" withRevealBlock:nil]];
+    self.viewController.rightPanel = nil;
+    self.window.rootViewController = self.viewController;
+    
+    [self.window makeKeyAndVisible];
+    
+    return YES;
+}
+
+- (void)configSidebarController
+{
+    
+    
 }
 
 + (NSString *)uuid
@@ -127,7 +122,9 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
     [self setUpFoursquare:keys];
     [self setUpVeespo:keys];
-//    [TestFlight takeOff:keys[kVETestFlightKey]];
+#ifdef TESTFLIGHT
+    [TestFlight takeOff:keys[kVETestFlightKey]];
+#endif
 }
 
 - (void)setUpFoursquare:(NSDictionary *)keys
@@ -165,6 +162,9 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                     if (error == NO) {
                         self.tokens = [[NSDictionary alloc] initWithDictionary:responseData];
                         NSLog(@"%@ /n %@", userId, self.tokens);
+                    } else {
+                        self.tokens = nil;
+                        NSLog(@"%@", responseData);
                     }
                 }
      ];

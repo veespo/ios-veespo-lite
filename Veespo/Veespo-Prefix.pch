@@ -19,6 +19,7 @@
 //#import "TestFlight.h"
 
 //#define VEESPO
+//#define TESTFLIGHT
 
 #ifdef VEESPO
 #import <VeespoFramework/Veespo.h>

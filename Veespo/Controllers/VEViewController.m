@@ -17,6 +17,8 @@
 #define DEMOCODETEXT_ISO7 44.0
 #define DEMOCODETEXT_IOS6 30.0
 
+static NSString * const kVEDemoCode = @"yumx";
+
 @interface VEViewController () {
     UIButton *historyDemoCodeBtn;
     UIButton *logVeespoBtn;
@@ -62,10 +64,14 @@
     
     historyDemoCodeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     historyDemoCodeBtn.frame = CGRectMake(10, userNameTf.frame.origin.y + userNameTf.frame.size.height + 40, 130, 35);
-    [historyDemoCodeBtn setTitle:NSLocalizedString(@"Categories voted", nil) forState:UIControlStateNormal];
+    historyDemoCodeBtn.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+    
+    _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+    if (_history)
+        [historyDemoCodeBtn setTitle:NSLocalizedString(@"Categories voted", nil) forState:UIControlStateNormal];
+    else
+        [historyDemoCodeBtn setTitle:NSLocalizedString(@"No Demo", nil) forState:UIControlStateNormal];
     [historyDemoCodeBtn touchUpInside:^(UIEvent *event) {
-        _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
-        
         if (_history) {
             NSArray *keys = [_history allKeys];
             NSMutableArray *categories = [[NSMutableArray alloc] init];
@@ -81,11 +87,17 @@
             historyDemoCodePicker.delegate = self;
             [self.view addSubview:historyDemoCodePicker];
             [historyDemoCodePicker showPicker];
+        } else {
+            textOneTf.text = [NSString stringWithFormat:@"%c",[kVEDemoCode characterAtIndex:0]];
+            textTwoTf.text = [NSString stringWithFormat:@"%c",[kVEDemoCode characterAtIndex:1]];
+            textThreeTf.text = [NSString stringWithFormat:@"%c",[kVEDemoCode characterAtIndex:2]];
+            textFourTf.text = [NSString stringWithFormat:@"%c",[kVEDemoCode characterAtIndex:3]];
         }
     }];
     
     logVeespoBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     logVeespoBtn.frame = CGRectMake(230, userNameTf.frame.origin.y + userNameTf.frame.size.height + 40, 71, 35);
+    logVeespoBtn.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     [logVeespoBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
     [logVeespoBtn touchUpInside:^(UIEvent *event) {
         if (![userNameTf.text isEqualToString:@""]) {
@@ -115,6 +127,12 @@
     textTwoTf.text = @"";
     textThreeTf.text = @"";
     textFourTf.text = @"";
+    
+    _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+    if (_history)
+        [historyDemoCodeBtn setTitle:NSLocalizedString(@"Categories voted", nil) forState:UIControlStateNormal];
+    else
+        [historyDemoCodeBtn setTitle:NSLocalizedString(@"No Demo", nil) forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -184,6 +202,7 @@
         [userNameTf setBackgroundColor:[UIColor whiteColor]];
     }
     userNameTf.delegate = self;
+    userNameTf.text = @"";
     
     [self.view addSubview:textOneTf];
     [self.view addSubview:textTwoTf];

@@ -82,14 +82,13 @@
     HUD.delegate = self;
     VEConnection *connection = [[VEConnection alloc] init];
     [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result) {
-        NSString *alertString = [result objectForKey:@"error"];
-        if (alertString == nil) {
+        if ([result isKindOfClass:[NSArray class]]) {
             avgTargetsList = [[NSArray alloc] initWithArray:result];
             [self.avgTableView reloadData];
             [HUD hide:YES afterDelay:0.4];
         } else {
             [HUD hide:YES];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:alertString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[result objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         }
     }];
@@ -107,7 +106,7 @@
     veespoViewController = [[VEVeespoViewController alloc]
                             initWidgetWithToken:_token
                             targetInfo:d
-                            withQuestion:[NSString stringWithFormat:@"Cosa ne pensi di %@", self.venue.name]
+                            withQuestion:[NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), self.venue.name]
                             detailsView:nil
                             ];
     

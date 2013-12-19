@@ -1,55 +1,37 @@
 //
-//  VEMenuViewController.m
+//  VELeftMenuViewController.m
 //  Veespo
 //
-//  Created by Alessio Roberto on 21/09/13.
+//  Created by Alessio Roberto on 13/12/13.
 //  Copyright (c) 2013 Veespo Ltd. All rights reserved.
 //
 
-#import "VEMenuViewController.h"
-#import "GHRevealViewController.h"
-#import "VEMenuCell.h"
+#import "VELeftMenuViewController.h"
+
 #import "UIViewController+JASidePanel.h"
 #import "JASidePanelController.h"
+#import "VEMenuCell.h"
 
-@interface VEMenuViewController ()
+@interface VELeftMenuViewController ()
 
 @end
 
-@implementation VEMenuViewController
+@implementation VELeftMenuViewController
 
-- (id)initWithSidebarViewController:(GHRevealViewController *)sidebarVC
-						withHeaders:(NSArray *)headers
-					withControllers:(NSArray *)controllers
-					  withCellInfos:(NSArray *)cellInfos {
-	if (self = [super initWithNibName:nil bundle:nil]) {
-		_headers = headers;
-		_controllers = controllers;
-		_cellInfos = cellInfos;
-	}
-	return self;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
 }
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.frame = CGRectMake(0.0f, 0.0f, kGHRevealSidebarWidth, CGRectGetHeight(self.view.bounds));
-	self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    UIColor* darkColor = UIColorFromRGB(0x1D7800);
+	
     self.view.backgroundColor = UIColorFromRGB(0xDBDBDB);
-    
-    _menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 20.0f, kGHRevealSidebarWidth, CGRectGetHeight(self.view.bounds))
-												  style:UITableViewStylePlain];
-	_menuTableView.delegate = self;
-	_menuTableView.dataSource = self;
-	_menuTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-	_menuTableView.backgroundColor = darkColor;
-    _menuTableView.separatorColor = [UIColor clearColor];
-	_menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _menuTableView.scrollEnabled = NO;
-	[self.view addSubview:_menuTableView];
-	[self selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,11 +40,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition {
-	[_menuTableView selectRowAtIndexPath:indexPath animated:animated scrollPosition:scrollPosition];
-	if (scrollPosition == UITableViewScrollPositionNone) {
-		[_menuTableView scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
-	}
+- (void)setViewControllers:(NSArray *)controllers cellInfos:(NSArray *)cellInfos headers:(NSArray *)headers
+{
+    _controllers = controllers;
+    _cellInfos = cellInfos;
+    _headers = headers;
+    
+    [self setUpTableView];
 }
 
 #pragma mark UITableViewDataSource
@@ -100,21 +84,44 @@
     VEMenuCell *cell = (VEMenuCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[VEMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
+
+//    static NSString *CellIdentifier = @"Cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+    
 	NSDictionary *info = _cellInfos[indexPath.section][indexPath.row];
-	cell.title = info[kSidebarCellTextKey];
-	cell.iconImage = info[kSidebarCellImageKey];
+	cell.title.text = info[kSidebarCellTextKey];
+	cell.iconImage.image = info[kSidebarCellImageKey];
+    
     return cell;
 }
 
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//	_sidebarVC.contentViewController = _controllers[indexPath.section][indexPath.row];
-//	[_sidebarVC toggleSidebar:NO duration:kGHRevealSidebarDefaultAnimationDuration];
     self.sidePanelController.centerPanel = _controllers[indexPath.section][indexPath.row];
     [self.sidePanelController setCenterPanelHidden:NO animated:YES duration:0.2f];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Private Methods
+
+- (void)setUpTableView
+{
+    _menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 20.0f, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))
+												  style:UITableViewStylePlain];
+	_menuTableView.delegate = self;
+	_menuTableView.dataSource = self;
+	_menuTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+	_menuTableView.backgroundColor = UIColorFromRGB(0x1D7800);
+    _menuTableView.separatorColor = [UIColor clearColor];
+	_menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _menuTableView.scrollEnabled = NO;
+	[self.view addSubview:_menuTableView];
 }
 
 @end
