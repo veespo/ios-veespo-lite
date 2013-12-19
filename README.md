@@ -17,3 +17,19 @@ With veespo-app you can:
 This project show only the code to implement and use Veespo Framework, the framework isn't present in the prokect. To have it, you can contat me at info@veespo.com
 
 Moreover, in this project I use **Foursquare** API, so you need to regist yourself like developer to use it and put Foursquare key and secret in a file named **Veespo-Keys.plist** (this file isn't present in the project, you can *"find"* it in gitignore).
+
+## Example
+
+![Screehshots](https://raw.github.com/darthpelo/veespo-app/master/Veespo/Resources/example01.png)
+
+![Screehshots](https://raw.github.com/darthpelo/veespo-app/master/Veespo/Resources/example02.png)
+
+![Screehshots](https://raw.github.com/darthpelo/veespo-app/master/Veespo/Resources/example03.png)
+
+![Screehshots](https://raw.github.com/darthpelo/veespo-app/master/Veespo/Resources/example04.png)
+
+## Authors
+
+Alessio aka @darthpelo
+
+Andrea
