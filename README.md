@@ -3,7 +3,7 @@ veespo-app
 
 ## Introduction
 
-We create this application to show how simple is include Veespo Framework in your Xcode project.
+I create this application to show how simple is include Veespo Framework in your Xcode project.
 With this application you can now express your opinion on everything with a Veespo Category Code in seconds. 
 Insert the Veespo Category Code and your name in the app home screen and you can immediately start to give feedback. 
 
