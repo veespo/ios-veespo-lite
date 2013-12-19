@@ -18,6 +18,17 @@ This project show only the code to implement and use Veespo Framework, the frame
 
 Moreover, in this project I use **Foursquare** API, so you need to regist yourself like developer to use it and put Foursquare key and secret in a file named **Veespo-Keys.plist** (this file isn't present in the project, you can *"find"* it in gitignore).
 
+## Authors
+
+[Alessio](https://github.com/darthpelo)
+
+Andrea
+
+## Thanks
+
+- gotosleep for [JASidePanels](https://github.com/gotosleep/JASidePanels)
+- Constantine-Fry for [Foursquare-api-v2](https://github.com/Constantine-Fry/Foursquare-API-v2)
+
 ## Example
 
 ![Screehshots](https://raw.github.com/darthpelo/veespo-app/master/Veespo/Resources/example01.png)
@@ -27,9 +38,3 @@ Moreover, in this project I use **Foursquare** API, so you need to regist yourse
 ![Screehshots](https://raw.github.com/darthpelo/veespo-app/master/Veespo/Resources/example03.png)
 
 ![Screehshots](https://raw.github.com/darthpelo/veespo-app/master/Veespo/Resources/example04.png)
-
-## Authors
-
-Alessio aka @darthpelo
-
-Andrea
