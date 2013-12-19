@@ -106,7 +106,7 @@
     veespoViewController = [[VEVeespoViewController alloc]
                             initWidgetWithToken:_token
                             targetInfo:d
-                            withQuestion:[NSString stringWithFormat:@"Cosa ne pensi di %@", self.venue.name]
+                            withQuestion:[NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), self.venue.name]
                             detailsView:nil
                             ];
     

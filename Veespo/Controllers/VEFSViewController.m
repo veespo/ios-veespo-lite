@@ -54,7 +54,7 @@ static int const maxLocationUpdate = 3;
         self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x1D7800);
     }
     
-    UIBarButtonItem *venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"star.png"]
+    UIBarButtonItem *venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self
                                                                          action:@selector(openVenuesRatedView)
