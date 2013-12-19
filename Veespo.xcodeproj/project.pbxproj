@@ -19,9 +19,9 @@
 		BEB604071861D95D0086FE2D /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB604011861D95D0086FE2D /* libTestFlight.a */; };
 		BEB604081861D95D0086FE2D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BEB604021861D95D0086FE2D /* README.md */; };
 		BEB604091861D95D0086FE2D /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = BEB604031861D95D0086FE2D /* release_notes.md */; };
-		BEB6040E1861DB020086FE2D /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEB6040C1861DB020086FE2D /* Resources.bundle */; };
-		BEB6040F1861DB020086FE2D /* VeespoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB6040D1861DB020086FE2D /* VeespoFramework.framework */; };
 		BEB6A9AF185B13F40029A799 /* VELeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */; };
+		BEB9C26B1863297A007B331D /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEB9C2691863297A007B331D /* Resources.bundle */; };
+		BEB9C26C1863297A007B331D /* VeespoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB9C26A1863297A007B331D /* VeespoFramework.framework */; };
 		BEC63F52183CC6BD001C82B6 /* VEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */; };
 		BEC63F53183CC6BD001C82B6 /* RassegnaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1C183CC6BD001C82B6 /* RassegnaCell.m */; };
 		BEC63F54183CC6BD001C82B6 /* VEMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1E183CC6BD001C82B6 /* VEMenuCell.m */; };
@@ -119,10 +119,10 @@
 		BEB604041861D95D0086FE2D /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
 		BEB604051861D95D0086FE2D /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		BEB604061861D95D0086FE2D /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
-		BEB6040C1861DB020086FE2D /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
-		BEB6040D1861DB020086FE2D /* VeespoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VeespoFramework.framework; sourceTree = "<group>"; };
 		BEB6A9AD185B13F40029A799 /* VELeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VELeftMenuViewController.h; sourceTree = "<group>"; };
 		BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VELeftMenuViewController.m; sourceTree = "<group>"; };
+		BEB9C2691863297A007B331D /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
+		BEB9C26A1863297A007B331D /* VeespoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VeespoFramework.framework; sourceTree = "<group>"; };
 		BEC63F18183CC6BD001C82B6 /* VEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEAppDelegate.h; sourceTree = "<group>"; };
 		BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEAppDelegate.m; sourceTree = "<group>"; };
 		BEC63F1B183CC6BD001C82B6 /* RassegnaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RassegnaCell.h; sourceTree = "<group>"; };
@@ -251,7 +251,7 @@
 				BEB604071861D95D0086FE2D /* libTestFlight.a in Frameworks */,
 				BE1ECBB917F1962C006CCD56 /* CoreLocation.framework in Frameworks */,
 				BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */,
-				BEB6040F1861DB020086FE2D /* VeespoFramework.framework in Frameworks */,
+				BEB9C26C1863297A007B331D /* VeespoFramework.framework in Frameworks */,
 				BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */,
 				BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */,
 			);
@@ -292,19 +292,19 @@
 			path = TestFlightSDK2.0.2;
 			sourceTree = "<group>";
 		};
-		BEB6040A1861DB020086FE2D /* VeespoFramework.embeddedframework */ = {
+		BEB9C2671863297A007B331D /* VeespoFramework.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
-				BEB6040B1861DB020086FE2D /* Resources */,
-				BEB6040D1861DB020086FE2D /* VeespoFramework.framework */,
+				BEB9C2681863297A007B331D /* Resources */,
+				BEB9C26A1863297A007B331D /* VeespoFramework.framework */,
 			);
 			path = VeespoFramework.embeddedframework;
 			sourceTree = "<group>";
 		};
-		BEB6040B1861DB020086FE2D /* Resources */ = {
+		BEB9C2681863297A007B331D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BEB6040C1861DB020086FE2D /* Resources.bundle */,
+				BEB9C2691863297A007B331D /* Resources.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -562,7 +562,7 @@
 		BEEB671517EC9A1A00F394E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BEB6040A1861DB020086FE2D /* VeespoFramework.embeddedframework */,
+				BEB9C2671863297A007B331D /* VeespoFramework.embeddedframework */,
 				BE9800F3183F814D000900CC /* libz.dylib */,
 				BE7516ED1818192500C2717B /* AdSupport.framework */,
 				BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */,
@@ -718,7 +718,7 @@
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
-				BEB6040E1861DB020086FE2D /* Resources.bundle in Resources */,
+				BEB9C26B1863297A007B331D /* Resources.bundle in Resources */,
 				BE644B24183D7C2B007AEE9F /* Veespo-Keys.plist in Resources */,
 				BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,

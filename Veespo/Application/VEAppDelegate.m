@@ -59,14 +59,17 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     
     NSArray *headers = @[
                          @"Veespo",
-                         @"Examples"
+                         NSLocalizedString(@"Around me", nil),
+                         NSLocalizedString(@"News", nil)
                          ];
 	NSArray *controllers = @[
                              @[
                                  [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] initWithTitle:@"Home" withRevealBlock:nil]]
                                  ],
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:NSLocalizedString(@"Venues", nil) withRevealBlock:nil]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:NSLocalizedString(@"Venues", nil) withRevealBlock:nil]]
+                                 ],
+                             @[
                                  [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] initWithTitle:NSLocalizedString(@"Tech News", nil) withRevealBlock:nil]],
                                  [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] initWithTitle:NSLocalizedString(@"ESPN Top News", nil) withRevealBlock:nil]]
                                  ]
@@ -77,6 +80,8 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                                ],
                            @[
                                @{kSidebarCellImageKey:[UIImage imageNamed:@"shop.png"], kSidebarCellTextKey:NSLocalizedString(@"Venues", nil)},
+                               ],
+                           @[
                                @{kSidebarCellImageKey:[UIImage imageNamed:@"electronics.png"], kSidebarCellTextKey:NSLocalizedString(@"Tech News", nil)},
                                @{kSidebarCellImageKey:[UIImage imageNamed:@"football.png"], kSidebarCellTextKey:NSLocalizedString(@"Sport News", nil)},
                                ]
