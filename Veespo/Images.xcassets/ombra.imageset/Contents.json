@@ -2,12 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "price_tag@2x.png"
+      "filename" : "ombra@2x.png"
     }
   ],
   "info" : {

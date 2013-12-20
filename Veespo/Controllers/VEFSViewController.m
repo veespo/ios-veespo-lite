@@ -50,8 +50,8 @@ static int const maxLocationUpdate = 3;
         self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
     } else {
         self.navigationController.navigationBar.translucent = NO;
-        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x1D7800);
+        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     }
     
     UIBarButtonItem *venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
@@ -134,9 +134,12 @@ static int const maxLocationUpdate = 3;
 - (void)updateVenuesCollection
 {
     locationUpdateCnt = 0;
-    self.locationManager.distanceFilter = 0;
-    [self setupMapForLocation:lastLocation];
-    [self getVenuesForLocation:lastLocation];
+    lastLocation = nil;
+//    self.locationManager.distanceFilter = 0;
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager startUpdatingLocation];
+//    [self setupMapForLocation:lastLocation];
+//    [self getVenuesForLocation:lastLocation];
 }
 
 - (void)checkinButton

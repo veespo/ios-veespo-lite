@@ -39,8 +39,8 @@
         self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
     } else {
         self.navigationController.navigationBar.translucent = NO;
-        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x1D7800);
+        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     }
     
     self.title = NSLocalizedString(@"Favorites", nil);

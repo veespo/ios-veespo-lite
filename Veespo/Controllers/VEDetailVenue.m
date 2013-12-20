@@ -10,6 +10,7 @@
 #import "Foursquare2.h"
 #import "UIImageView+AFNetworking.h"
 #import "VEConnection.h"
+#import "VERatedVenuesViewController.h"
 
 @interface VEDetailVenue () {
     MBProgressHUD *HUD;
@@ -37,20 +38,31 @@
     [self loadAverageVotes];
     
     [Foursquare2 getDetailForVenue:self.venue.venueId callback:^(BOOL success, id result) {
-        NSDictionary *dict = [result valueForKeyPath:@"response.venue"];
-        // Get first photo in first group
-        if ([dict[@"photos"][@"groups"] count] > 0) {
-            NSDictionary *group = [dict[@"photos"][@"groups"] objectAtIndex:0];
-            NSDictionary *item = [group[@"items"] objectAtIndex:0];
-            
-            NSString *urlStr = [NSString stringWithFormat:@"%@500x500%@", item[@"prefix"], item[@"suffix"]];
-            
-            [self.venueImage setImageWithURL:[NSURL URLWithString:urlStr]];
+        if (success) {
+            NSDictionary *dict = [result valueForKeyPath:@"response.venue"];
+            // Get first photo in first group
+            if ([dict[@"photos"][@"groups"] count] > 0) {
+                NSDictionary *group = [dict[@"photos"][@"groups"] objectAtIndex:0];
+                NSDictionary *item = [group[@"items"] objectAtIndex:0];
+                
+                NSString *urlStr = [NSString stringWithFormat:@"%@500x500%@", item[@"prefix"], item[@"suffix"]];
+                
+                [self.venueImage setImageWithURL:[NSURL URLWithString:urlStr]];
+                
+                UIImageView *shadow = [[UIImageView alloc] initWithFrame:self.venueImage.bounds];
+                shadow.image = [UIImage imageNamed:@"ombra.png"];
+                [self.venueImage addSubview:shadow];
+                shadow = nil;
+            }
         }
     }];
 	
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Feedback", nil) style:UIBarButtonItemStylePlain target:self action:@selector(openVeespo:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(openVenuesRatedView)
+                                              ];
     
     if ([_token isEqualToString:@""] || _token == nil) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -58,8 +70,9 @@
     
     self.nameLabel.text = self.venue.name;
     self.adressLabel.text = self.venue.location.address;
-    self.nameLabel.shadowColor = [UIColor lightGrayColor];
-    self.adressLabel.shadowColor = [UIColor whiteColor];
+    self.averageLabel.text = @"-";
+    
+    [self.veespoButton setTitle:NSLocalizedString(@"Feedback", nil) forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,6 +82,12 @@
 }
 
 #pragma mark - Veespo
+
+- (void)openVenuesRatedView
+{
+    VERatedVenuesViewController *ratedViewController = [[VERatedVenuesViewController alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:ratedViewController animated:YES];
+}
 
 - (void)loadAverageVotes
 {
@@ -81,8 +100,9 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     VEConnection *connection = [[VEConnection alloc] init];
-    [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result) {
+    [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result, id overall) {
         if ([result isKindOfClass:[NSArray class]]) {
+            self.averageLabel.text = [NSString stringWithFormat:@"%.1f", [overall floatValue] * 5];
             avgTargetsList = [[NSArray alloc] initWithArray:result];
             [self.avgTableView reloadData];
             [HUD hide:YES afterDelay:0.4];
@@ -142,6 +162,18 @@
     return avgTargetsList.count;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.height, 22.0f)];
+    headerView.backgroundColor = UIColorFromRGB(0xDBDBDB);
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
+    textLabel.text = NSLocalizedString(@"Venue tags", nil);
+    textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:([UIFont systemFontSize] * 0.7f)];
+    textLabel.textColor = [UIColor blackColor];
+    textLabel.backgroundColor = [UIColor clearColor];
+    [headerView addSubview:textLabel];
+	return headerView;
+}
+
 - (UITableViewCell *) getCellContentView:(NSString *)cellIdentifier {
     CGRect labelFrame = CGRectMake(10, 5, 240, 34);
     CGRect imageFrame = CGRectMake(250, 18.5, 57, 7);
@@ -155,10 +187,11 @@
     cell.backgroundColor = [UIColor whiteColor];
     
     title = [[UILabel alloc] initWithFrame:labelFrame];
+    title.font = [UIFont fontWithName:@"Helvetica" size:15.0];
 	title.tag = 1;
     if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
         title.backgroundColor = [UIColor clearColor];
-    title.textColor = UIColorFromRGB(0x747474);
+    title.textColor = [UIColor blackColor];
 	[cell.contentView addSubview:title];
     
     rateImage = [[UIImageView alloc] initWithFrame:imageFrame];

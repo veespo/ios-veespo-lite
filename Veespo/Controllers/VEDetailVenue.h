@@ -16,7 +16,10 @@
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *adressLabel;
+@property (nonatomic, weak) IBOutlet UIButton *veespoButton;
 @property (nonatomic, weak) IBOutlet UIImageView *venueImage;
 @property (nonatomic, weak) IBOutlet UITableView *avgTableView;
+@property (nonatomic, weak) IBOutlet UILabel *averageLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *averageImageView;
 
 @end
