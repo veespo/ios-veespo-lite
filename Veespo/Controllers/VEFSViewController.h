@@ -13,6 +13,6 @@
 
 @class FSVenue;
 
-@interface VEFSViewController : VERootViewController <MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MBProgressHUDDelegate>
+@interface VEFSViewController : VERootViewController <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate>
 
 @end

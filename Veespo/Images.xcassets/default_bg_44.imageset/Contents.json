@@ -2,12 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ombra@2x.png"
+      "filename" : "default_bg_44@2x.png"
     }
   ],
   "info" : {

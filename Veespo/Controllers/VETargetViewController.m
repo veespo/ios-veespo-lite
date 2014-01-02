@@ -74,6 +74,7 @@
     
     NSDictionary *dict = [target objectAtIndex:indexPath.row];
     cell.textLabel.text = dict[@"desc1"];
+    cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:17];
     
     return cell;
 }

@@ -43,9 +43,11 @@
         ann.category = dic[@"shortName"];
         
         if ( [dic[@"icon"][@"prefix"] length] > 0)
-            prefix = [NSString stringWithFormat:@"%@44", dic[@"icon"][@"prefix"]];
+            prefix = [NSString stringWithFormat:@"%@bg_44", dic[@"icon"][@"prefix"]];
         NSString *imageString = [NSString stringWithFormat:@"%@%@", prefix, dic[@"icon"][@"suffix"]];
         [ann setImageURL:[NSURL URLWithString:imageString]];
+        
+        ann.categoryImage = [UIImage imageNamed:@"default_bg_44"];
         
         [objects addObject:ann];
     }
@@ -71,9 +73,11 @@
     ann.category = dic[@"shortName"];
     
     if ( [dic[@"icon"][@"prefix"] length] > 0)
-        prefix = [NSString stringWithFormat:@"%@44", dic[@"icon"][@"prefix"]];
+        prefix = [NSString stringWithFormat:@"%@bg_44", dic[@"icon"][@"prefix"]];
     NSString *imageString = [NSString stringWithFormat:@"%@%@", prefix, dic[@"icon"][@"suffix"]];
     [ann setImageURL:[NSURL URLWithString:imageString]];
+    
+    ann.categoryImage = [UIImage imageNamed:@"default_bg_44"];
     
     return ann;
 }

@@ -57,7 +57,8 @@ static NSString * const kVEDemoCode = @"yumx";
     titleLabel.text = NSLocalizedString(@"DemoCode Title", nil);
     titleLabel.numberOfLines = 2;
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.shadowColor = [UIColor whiteColor];
+    titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
+//    titleLabel.shadowColor = [UIColor whiteColor];
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         titleLabel.backgroundColor = [UIColor clearColor];
     }
@@ -71,6 +72,7 @@ static NSString * const kVEDemoCode = @"yumx";
         [historyDemoCodeBtn setTitle:NSLocalizedString(@"Categories voted", nil) forState:UIControlStateNormal];
     else
         [historyDemoCodeBtn setTitle:NSLocalizedString(@"No Demo", nil) forState:UIControlStateNormal];
+    historyDemoCodeBtn.titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:14];
     [historyDemoCodeBtn touchUpInside:^(UIEvent *event) {
         if (_history) {
             NSArray *keys = [_history allKeys];
@@ -99,6 +101,7 @@ static NSString * const kVEDemoCode = @"yumx";
     logVeespoBtn.frame = CGRectMake(230, userNameTf.frame.origin.y + userNameTf.frame.size.height + 40, 71, 35);
     logVeespoBtn.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     [logVeespoBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
+    logVeespoBtn.titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16];
     [logVeespoBtn touchUpInside:^(UIEvent *event) {
         if (![userNameTf.text isEqualToString:@""]) {
             

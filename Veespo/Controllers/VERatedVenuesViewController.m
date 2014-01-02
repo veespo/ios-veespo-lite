@@ -11,6 +11,7 @@
 #import "VEDetailVenue.h"
 #import "Foursquare2.h"
 #import "FSConverter.h"
+#import "MBProgressHUD.h"
 
 #import <AdSupport/AdSupport.h>
 
@@ -54,7 +55,7 @@
         userId = [NSString stringWithFormat:@"VeespoApp-%@", [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]];
     }
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     [connection requestTargetsForUser:userId withCategory:@"cibi" withToken:[appDelegate.tokens objectForKey:@"cibi"] blockResult:^(id result) {
         if ([result isKindOfClass:[NSArray class]]) {
             if (targetsList)
@@ -68,9 +69,9 @@
             }];
             [self.tableView reloadData];
             
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
         } else {
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
             
             NSString *alertString = [result objectForKey:@"error"];
             
@@ -122,7 +123,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     [Foursquare2 getDetailForVenue:[targetsList objectAtIndex:indexPath.row][@"target"] callback:^(BOOL success, id result) {
         NSDictionary *dict = [result valueForKeyPath:@"response.venue"];
         FSConverter *converter = [[FSConverter alloc] init];
@@ -134,7 +135,7 @@
         
         detail.token = [appDelegate.tokens objectForKey:@"cibi"];
         
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
         
         [self.navigationController pushViewController:detail animated:YES];
     }];

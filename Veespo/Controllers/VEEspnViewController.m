@@ -52,6 +52,7 @@
     }
     newsTitleLbl.textAlignment = NSTextAlignmentCenter;
     newsTitleLbl.text = @"Serie A";
+    newsTitleLbl.font = [UIFont fontWithName:@"Avenir" size:17];
     [headerView addSubview:newsTitleLbl];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {

@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "FSVenue.h"
-#import "MBProgressHUD.h"
 
-@interface VEDetailVenue : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate>
+@interface VEDetailVenue : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) FSVenue *venue;
 @property (nonatomic, strong) NSString *token;

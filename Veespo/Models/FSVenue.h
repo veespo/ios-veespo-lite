@@ -29,5 +29,6 @@
 @property (nonatomic,strong) FSLocation *location;
 @property (nonatomic,strong) NSURL *imageURL;
 @property (nonatomic,strong) NSString *categoryId;
+@property (nonatomic,strong) UIImage *categoryImage;
 
 @end
