@@ -15,7 +15,7 @@
 #import "VEFSHeaderView.h"
 #import "VEDetailVenue.h"
 #import "VERatedVenuesViewController.h"
-
+#import "MBProgressHUD.h"
 
 static NSString * const catCibi = @"4d4b7105d754a06374d81259";
 static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
@@ -23,7 +23,6 @@ static int const maxLocationUpdate = 3;
 
 @interface VEFSViewController () {
     UITableView *venuesTableView;
-    MBProgressHUD *HUD;
     
     FSVenue* selected;
     NSMutableArray* nearbyVenues;
@@ -35,6 +34,7 @@ static int const maxLocationUpdate = 3;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -60,13 +60,7 @@ static int const maxLocationUpdate = 3;
                                                                          action:@selector(openVenuesRatedView)
                                           ];
     
-    UIBarButtonItem *updateVenuesButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                                       target:self
-                                                                                       action:@selector(updateVenuesCollection)
-                                          ];
-    
-    NSArray *tempArray= [[NSArray alloc] initWithObjects:updateVenuesButton, venuesRatedButton, nil];
-    self.navigationItem.rightBarButtonItems=tempArray;
+    self.navigationItem.rightBarButtonItem = venuesRatedButton;
     
     [self.locationManager startUpdatingLocation];
     [self.view addSubview:self.mapView];
@@ -81,6 +75,14 @@ static int const maxLocationUpdate = 3;
     venuesTableView.delegate = self;
     venuesTableView.dataSource = self;
     venuesTableView.backgroundColor = [UIColor whiteColor];
+    
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = venuesTableView;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl .attributedTitle = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Pull", nil)];
+    [self.refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    tableViewController.refreshControl = self.refreshControl;
     
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(42, 5, 236, 30)];
@@ -135,14 +137,21 @@ static int const maxLocationUpdate = 3;
 
 #pragma mark Methods
 
+- (void)refreshView:(UIRefreshControl *)refresh
+{
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Refresh", nil)];
+    [self updateVenuesCollection];
+    [refresh endRefreshing];
+}
+
 - (void)updateVenuesCollection
 {
-    locationUpdateCnt = 0;
+    // Force start up limit
+    locationUpdateCnt = maxLocationUpdate;
     lastLocation = nil;
     [self.locationManager stopUpdatingLocation];
     [self.locationManager startUpdatingLocation];
-    self.locationManager.distanceFilter = 50;
-    [self getVenuesForLocation:lastLocation];
+//    self.locationManager.distanceFilter = 50;
 }
 
 - (void)checkinButton
@@ -248,7 +257,7 @@ static int const maxLocationUpdate = 3;
     if (!pin) {
         pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:s];
         pin.canShowCallout = YES;
-        pin.image = [UIImage imageNamed:@"pin.png"];
+        pin.image = [UIImage imageNamed:@"pin"];
         pin.calloutOffset = CGPointMake(0, 0);
         UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         [button addTarget:self
@@ -265,15 +274,7 @@ static int const maxLocationUpdate = 3;
 
 - (void)getVenuesForLocation:(CLLocation*)location
 {
-    if (HUD) {
-        [HUD hide:NO];
-        HUD = nil;
-    }
-    
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
-    [HUD show:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [Foursquare2 searchVenuesNearByLatitude:@(location.coordinate.latitude)
 								  longitude:@(location.coordinate.longitude)
@@ -283,7 +284,7 @@ static int const maxLocationUpdate = 3;
 									  query:nil
 									  limit:nil
 									 intent:intentBrowse
-                                     radius:@(500)
+                                     radius:@(800)
                                  categoryId:catCibi
 								   callback:^(BOOL success, id result){
 									   if (success) {
@@ -296,9 +297,9 @@ static int const maxLocationUpdate = 3;
                                            nearbyVenues = (NSMutableArray *)[converter convertToObjects:venues withCategory:catCibi];
                                            [self proccessAnnotations];
                                            [venuesTableView reloadData];
-                                           [HUD hide:YES afterDelay:1.5];
+                                           [MBProgressHUD hideHUDForView:self.view animated:YES];
 									   } else
-                                           [HUD hide:YES];
+                                           [MBProgressHUD hideHUDForView:self.view animated:YES];
 								   }];
 }
 
