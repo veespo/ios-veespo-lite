@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -27,13 +27,16 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.15227976160000001" green="0.45717075889999997" blue="0.093374040120000001" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cerchio" translatesAutoresizingMaskIntoConstraints="NO" id="wkk-e3-mLN">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cerchio" translatesAutoresizingMaskIntoConstraints="NO" id="wkk-e3-mLN">
                     <rect key="frame" x="130" y="11" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nsd-gK-q4o">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nsd-gK-q4o">
                     <rect key="frame" x="135" y="11" width="51" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="51" id="Mrk-cf-3pQ"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="35"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -90,18 +93,21 @@
                 <constraint firstItem="rAa-YM-va3" firstAttribute="top" secondItem="qf2-yL-f7e" secondAttribute="bottom" constant="8" symbolic="YES" id="2xv-HY-SDY"/>
                 <constraint firstItem="0hd-Kj-BiH" firstAttribute="leading" secondItem="mEJ-gI-4Vc" secondAttribute="leading" id="6cq-kk-vZp"/>
                 <constraint firstItem="rAa-YM-va3" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="B3y-4a-JM1"/>
+                <constraint firstItem="wkk-e3-mLN" firstAttribute="top" secondItem="1" secondAttribute="top" constant="11" id="CFG-OG-ttc"/>
                 <constraint firstItem="mEJ-gI-4Vc" firstAttribute="centerX" secondItem="wkk-e3-mLN" secondAttribute="centerX" id="D21-Ps-XQc"/>
                 <constraint firstItem="rAa-YM-va3" firstAttribute="centerX" secondItem="qf2-yL-f7e" secondAttribute="centerX" id="G6L-oi-kY4"/>
                 <constraint firstItem="qf2-yL-f7e" firstAttribute="top" secondItem="Fb1-Rq-lu1" secondAttribute="bottom" constant="8" symbolic="YES" id="JDX-Ud-GZD"/>
                 <constraint firstItem="Fb1-Rq-lu1" firstAttribute="top" secondItem="1" secondAttribute="top" id="MLQ-1z-LIg"/>
                 <constraint firstItem="rAa-YM-va3" firstAttribute="trailing" secondItem="Fb1-Rq-lu1" secondAttribute="trailing" id="O0F-YJ-Iaw"/>
-                <constraint firstItem="mEJ-gI-4Vc" firstAttribute="centerX" secondItem="nsd-gK-q4o" secondAttribute="centerX" id="QvK-w0-WhV"/>
                 <constraint firstAttribute="bottom" secondItem="rAa-YM-va3" secondAttribute="bottom" id="b5E-jR-6nZ"/>
                 <constraint firstItem="0hd-Kj-BiH" firstAttribute="top" secondItem="mEJ-gI-4Vc" secondAttribute="bottom" constant="4" id="dHo-Fv-usE"/>
                 <constraint firstItem="qf2-yL-f7e" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="87" id="dLN-rR-gzc"/>
+                <constraint firstItem="nsd-gK-q4o" firstAttribute="centerX" secondItem="wkk-e3-mLN" secondAttribute="centerX" id="gfv-bf-uqo"/>
+                <constraint firstItem="nsd-gK-q4o" firstAttribute="top" secondItem="wkk-e3-mLN" secondAttribute="top" id="k5t-Da-4cu"/>
                 <constraint firstItem="mEJ-gI-4Vc" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="10" id="lBQ-yN-Uqi"/>
                 <constraint firstItem="mEJ-gI-4Vc" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="lO0-6h-BT4"/>
                 <constraint firstAttribute="trailing" secondItem="rAa-YM-va3" secondAttribute="trailing" id="nEk-8g-she"/>
+                <constraint firstItem="nsd-gK-q4o" firstAttribute="bottom" secondItem="wkk-e3-mLN" secondAttribute="bottom" id="tkm-xg-Eae"/>
                 <constraint firstItem="0hd-Kj-BiH" firstAttribute="trailing" secondItem="mEJ-gI-4Vc" secondAttribute="trailing" id="uOW-n5-VN7"/>
                 <constraint firstItem="qf2-yL-f7e" firstAttribute="top" secondItem="Fb1-Rq-lu1" secondAttribute="bottom" constant="8" id="vWF-2k-MVg"/>
                 <constraint firstItem="qf2-yL-f7e" firstAttribute="top" secondItem="0hd-Kj-BiH" secondAttribute="bottom" constant="14" id="wsA-ah-oB3"/>
