@@ -7,12 +7,11 @@
 //
 
 #import "VERootViewController.h"
-#import "MBProgressHUD.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
 @class FSVenue;
 
-@interface VEFSViewController : VERootViewController <MKMapViewDelegate, CLLocationManagerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MBProgressHUDDelegate>
+@interface VEFSViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end

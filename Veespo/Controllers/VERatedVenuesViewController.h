@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
 
-@interface VERatedVenuesViewController : UITableViewController <MBProgressHUDDelegate>
+@interface VERatedVenuesViewController : UITableViewController
 
 @end

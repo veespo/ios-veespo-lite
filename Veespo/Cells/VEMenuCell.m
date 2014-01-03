@@ -28,6 +28,7 @@ NSString const *kSidebarCellImageKey = @"CellImage";
         self.title = [[UILabel alloc] initWithFrame:CGRectMake(46, 12, 251, 21)];
         self.title.textColor = [UIColor whiteColor];
         self.title.backgroundColor = [UIColor clearColor];
+        self.title.font = [UIFont fontWithName:@"Avenir" size:17];
         
         self.iconImage = [[UIImageView alloc] init];
         self.iconImage.frame = CGRectMake(8, 7, 30, 30);

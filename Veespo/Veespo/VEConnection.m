@@ -48,7 +48,7 @@
     [operation start];
 }
 
-- (void)requestAverageForTarget:(NSString *)targertId withCategory:(NSString *)category withToken:(NSString *)token blockResult:(void (^)(id))block
+- (void)requestAverageForTarget:(NSString *)targertId withCategory:(NSString *)category withToken:(NSString *)token blockResult:(void (^)(id result, id overall))block
 {
     // /v1/average/category/:cat/target/:target
 #warning STATIC URL
@@ -61,6 +61,7 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                             NSDictionary *tags = [NSDictionary dictionaryWithDictionary:JSON[@"data"][@"averages"]];
+                                                                                            NSString *overallStr = tags[@"overall"];
                                                                                             tags = tags[@"avgS"];
                                                                                             
                                                                                             [self getTagsForCategory:category userToken:token withBlock:^(id responseData) {
@@ -89,14 +90,14 @@
                                                                                                         return (NSComparisonResult)[num1 compare:num2];
                                                                                                     }];
                                                                                                     
-                                                                                                    block([[sortedList reverseObjectEnumerator] allObjects]);
+                                                                                                    block([[sortedList reverseObjectEnumerator] allObjects], overallStr);
                                                                                                 } else {
-                                                                                                    block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"]);
+                                                                                                    block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"], nil);
                                                                                                 }
                                                                                             }];
                                                                                             
                                                                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                                                            block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"]);
+                                                                                            block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"], nil);
                                                                                         }];
     [operation start];
 }

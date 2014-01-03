@@ -11,7 +11,6 @@
 #import "JASidePanelController.h"
 
 #import "VELeftMenuViewController.h"
-#import "VERootViewController.h"
 #import "VEMenuCell.h"
 #import "VEViewController.h"
 #import "VEFSViewController.h"
@@ -59,16 +58,19 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     
     NSArray *headers = @[
                          @"Veespo",
-                         @"Examples"
+                         NSLocalizedString(@"Around me", nil),
+                         NSLocalizedString(@"News", nil)
                          ];
 	NSArray *controllers = @[
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] initWithTitle:@"Home" withRevealBlock:nil]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]]
                                  ],
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:NSLocalizedString(@"Venues", nil) withRevealBlock:nil]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] initWithTitle:NSLocalizedString(@"Tech News", nil) withRevealBlock:nil]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] initWithTitle:NSLocalizedString(@"ESPN Top News", nil) withRevealBlock:nil]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] init]]
+                                 ],
+                             @[
+                                 [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] init]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] init]]
                                  ]
                              ];
     NSArray *cellInfos = @[
@@ -77,6 +79,8 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                                ],
                            @[
                                @{kSidebarCellImageKey:[UIImage imageNamed:@"shop.png"], kSidebarCellTextKey:NSLocalizedString(@"Venues", nil)},
+                               ],
+                           @[
                                @{kSidebarCellImageKey:[UIImage imageNamed:@"electronics.png"], kSidebarCellTextKey:NSLocalizedString(@"Tech News", nil)},
                                @{kSidebarCellImageKey:[UIImage imageNamed:@"football.png"], kSidebarCellTextKey:NSLocalizedString(@"Sport News", nil)},
                                ]
@@ -86,7 +90,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     [menuController setViewControllers:controllers cellInfos:cellInfos headers:headers];
     
     self.viewController.leftPanel = menuController;
-    self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] initWithTitle:@"Home" withRevealBlock:nil]];
+    self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]];
     self.viewController.rightPanel = nil;
     self.window.rootViewController = self.viewController;
     
@@ -95,10 +99,21 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     return YES;
 }
 
-- (void)configSidebarController
+- (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    
-    
+#ifdef VEESPO
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    if (_tokens == nil) {
+        NSString *keysPath = [[NSBundle mainBundle] pathForResource:kVEKeysFileName ofType:@"plist"];
+        if (!keysPath) {
+            NSLog(@"To use API make sure you have a Veespo-Keys.plist with the Identifier in your project");
+            return;
+        }
+        
+        NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
+        [self setUpVeespo:keys];
+    }
+#endif
 }
 
 + (NSString *)uuid
@@ -121,7 +136,6 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     
     NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
     [self setUpFoursquare:keys];
-    [self setUpVeespo:keys];
 #ifdef TESTFLIGHT
     [TestFlight takeOff:keys[kVETestFlightKey]];
 #endif

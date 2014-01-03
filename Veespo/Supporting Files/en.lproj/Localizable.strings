@@ -8,9 +8,9 @@
 
 "Feedback" = "Vote";
 
-"DemoCode Title" = "Insert Category Code and Name";
+"DemoCode Title" = "Insert Category Code and your name";
 
-"User Name" = "User Name";
+"User Name" = "Personal name";
 
 "Categories voted" = "Categories voted";
 
@@ -41,3 +41,17 @@
 "Favorites" = "Bookmarks";
 
 "No Demo" = "Without Code";
+
+"Around me" = "Around me";
+
+"News" = "News";
+
+"Venue tags" = "The views of users";
+
+"Average Votes" = "AVERAGE USER RATING";
+
+"Pull" = "Pull to Refresh";
+
+"Refresh" = "Refreshing position and data...";
+
+"Veespo Error" = "There's a problem. Try later...";

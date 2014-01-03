@@ -10,10 +10,13 @@
 #import "VERSSParser.h"
 #import "RassegnaCell.h"
 #import "WebViewController.h"
+#import "MBProgressHUD.h"
 
 @interface VERSSViewController ()
 
 @end
+
+static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups";
 
 @implementation VERSSViewController 
 
@@ -25,9 +28,11 @@
         self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
     } else {
         self.navigationController.navigationBar.translucent = NO;
-        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x1D7800);
+        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     }
+    
+    self.title = NSLocalizedString(@"Tech News", nil);
     
     _dataSource = [[NSMutableArray alloc] init];
     
@@ -53,6 +58,7 @@
     }
     newsTitleLbl.textAlignment = NSTextAlignmentCenter;
     newsTitleLbl.text = @"TechCrunch - Startups";
+    newsTitleLbl.font = [UIFont fontWithName:@"Avenir" size:17];
     [headerView addSubview:newsTitleLbl];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
@@ -62,7 +68,7 @@
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    [_tableView setBackgroundColor:[UIColor clearColor]];
+    [_tableView setBackgroundColor:[UIColor whiteColor]];
     [_tableView setShowsVerticalScrollIndicator:YES];
     _tableView.tableHeaderView = headerView;
     [_tableView reloadData];
@@ -72,21 +78,21 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
     if (_dataSource.count == 0) {
-        HUD = [[MBProgressHUD alloc] initWithView:self.view];
-        [self.view addSubview:HUD];
-        HUD.delegate = self;
-        [HUD show:YES];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         rssParser = [[VERSSParser alloc] init];
+        
         __weak VERSSViewController *wSelf = self;
         rssParser.parseResult = ^(NSMutableArray *results){
-            NSLog(@"%d", results.count);
             [wSelf reloadTableView:results];
         };
-        [rssParser parseXMLFileAtURL:@"http://feeds.feedburner.com/TechCrunch/startups"];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [rssParser parseXMLFileAtURL:feed];
+        });
     }
 }
 
@@ -99,9 +105,8 @@
 - (void)reloadTableView:(NSMutableArray *)data
 {
     _dataSource = data;
-    NSLog(@"%d", _dataSource.count);
     [_tableView reloadData];
-    [HUD hide:YES afterDelay:1];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 #pragma mark - TableView mths
@@ -112,7 +117,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [_dataSource count];
+	return (_dataSource.count > 0)?[_dataSource count]:0;
 }
 
 // Customize the height of table view cells.

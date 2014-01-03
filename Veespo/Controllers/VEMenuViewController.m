@@ -79,7 +79,7 @@
 		
 		UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
 		textLabel.text = (NSString *) headerText;
-		textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:([UIFont systemFontSize] * 0.8f)];
+		textLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:([UIFont systemFontSize] * 0.8f)];
 		textLabel.textColor = [UIColor colorWithRed:(125.0f/255.0f) green:(129.0f/255.0f) blue:(146.0f/255.0f) alpha:1.0f];
 		textLabel.backgroundColor = [UIColor clearColor];
 		[headerView addSubview:textLabel];
