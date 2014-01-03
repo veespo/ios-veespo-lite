@@ -60,13 +60,12 @@ static NSString * const kVEDemoCode = @"yumx";
     titleLabel.numberOfLines = 2;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
-//    titleLabel.shadowColor = [UIColor whiteColor];
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         titleLabel.backgroundColor = [UIColor clearColor];
     }
     
     historyDemoCodeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    historyDemoCodeBtn.frame = CGRectMake(10, userNameTf.frame.origin.y + userNameTf.frame.size.height + 40, 130, 35);
+    historyDemoCodeBtn.frame = CGRectMake(10, userNameTf.frame.origin.y + userNameTf.frame.size.height + 40, 140, 35);
     historyDemoCodeBtn.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     
     _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
@@ -74,7 +73,7 @@ static NSString * const kVEDemoCode = @"yumx";
         [historyDemoCodeBtn setTitle:NSLocalizedString(@"Categories voted", nil) forState:UIControlStateNormal];
     else
         [historyDemoCodeBtn setTitle:NSLocalizedString(@"No Demo", nil) forState:UIControlStateNormal];
-    historyDemoCodeBtn.titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:14];
+    historyDemoCodeBtn.titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16];
     [historyDemoCodeBtn touchUpInside:^(UIEvent *event) {
         if (_history) {
             NSArray *keys = [_history allKeys];
