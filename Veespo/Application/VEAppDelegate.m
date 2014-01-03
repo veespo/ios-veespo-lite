@@ -99,10 +99,19 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     return YES;
 }
 
-- (void)configSidebarController
+- (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    
-    
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    if (_tokens == nil) {
+        NSString *keysPath = [[NSBundle mainBundle] pathForResource:kVEKeysFileName ofType:@"plist"];
+        if (!keysPath) {
+            NSLog(@"To use API make sure you have a Veespo-Keys.plist with the Identifier in your project");
+            return;
+        }
+        
+        NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
+        [self setUpVeespo:keys];
+    }
 }
 
 + (NSString *)uuid
@@ -125,7 +134,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     
     NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
     [self setUpFoursquare:keys];
-    [self setUpVeespo:keys];
+//    [self setUpVeespo:keys];
 #ifdef TESTFLIGHT
     [TestFlight takeOff:keys[kVETestFlightKey]];
 #endif

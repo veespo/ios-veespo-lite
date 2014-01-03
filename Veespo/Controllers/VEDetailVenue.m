@@ -64,16 +64,26 @@
                                                                              action:@selector(openVenuesRatedView)
                                               ];
     
-    if ([_token isEqualToString:@""] || _token == nil) {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-    }
-    
     self.title = self.venue.category;
     self.nameLabel.text = self.venue.name;
     self.adressLabel.text = self.venue.location.address;
     self.averageLabel.text = @"-";
     
     [self.veespoButton setTitle:NSLocalizedString(@"Feedback", nil) forState:UIControlStateNormal];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Check if Veespo is reary
+    if ([_token isEqualToString:@""] || _token == nil) {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+        self.veespoButton.enabled = NO;
+    } else {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.veespoButton.enabled = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,20 +102,29 @@
 
 - (void)loadAverageVotes
 {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    VEConnection *connection = [[VEConnection alloc] init];
-    [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result, id overall) {
-        if ([result isKindOfClass:[NSArray class]]) {
-            self.averageLabel.text = [NSString stringWithFormat:@"%.1f", [overall floatValue] * 5];
-            avgTargetsList = [[NSArray alloc] initWithArray:result];
-            [self.avgTableView reloadData];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        } else {
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[result objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        }
-    }];
+    if ([_token isEqualToString:@""] || _token == nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil)
+                                                        message:NSLocalizedString(@"Veespo Error", nil)
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    } else {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        VEConnection *connection = [[VEConnection alloc] init];
+        [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result, id overall) {
+            if ([result isKindOfClass:[NSArray class]]) {
+                self.averageLabel.text = [NSString stringWithFormat:@"%.1f", [overall floatValue] * 5];
+                avgTargetsList = [[NSArray alloc] initWithArray:result];
+                [self.avgTableView reloadData];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            } else {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[result objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+        }];
+    }
 }
 
 - (IBAction)openVeespo:(id)sender
@@ -134,12 +153,13 @@
     };
     
     [veespoViewController showWidget:^(NSDictionary *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug"
-                                                        message:[NSString stringWithFormat:@"Error %@", error]
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil)
+                                                        message:NSLocalizedString(@"Veespo Error", nil)
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+        NSLog(@"Veespo Error: %@", error);
     }];
 #endif
 }

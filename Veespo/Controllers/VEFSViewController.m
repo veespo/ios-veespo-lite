@@ -98,6 +98,15 @@ static int const maxLocationUpdate = 3;
     [self.view addSubview:venuesTableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (appDelegate.tokens == nil)
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    else
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
