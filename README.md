@@ -1,6 +1,6 @@
 veespo-app
 ==========
-
+![Screenshots](https://raw.github.com/darthpelo/veespo-app/master/Veespo/Images.xcassets/AppIcon.appiconset/icon120.png)
 ## Introduction
 
 I create this application to show how simple is include Veespo Framework in your Xcode project.
