@@ -10,10 +10,13 @@
 #import "VERSSParser.h"
 #import "RassegnaCell.h"
 #import "WebViewController.h"
+#import "MBProgressHUD.h"
 
 @interface VERSSViewController ()
 
 @end
+
+static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups";
 
 @implementation VERSSViewController 
 
@@ -28,6 +31,8 @@
         self.navigationController.navigationBar.tintColor = [UIColor blackColor];
         self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     }
+    
+    self.title = NSLocalizedString(@"Tech News", nil);
     
     _dataSource = [[NSMutableArray alloc] init];
     
@@ -100,9 +105,8 @@
 - (void)reloadTableView:(NSMutableArray *)data
 {
     _dataSource = data;
-    NSLog(@"%d", _dataSource.count);
     [_tableView reloadData];
-    [HUD hide:YES afterDelay:1];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 #pragma mark - TableView mths

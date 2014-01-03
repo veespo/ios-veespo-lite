@@ -6,13 +6,9 @@
 //  Copyright (c) 2013 Veespo Ltd. All rights reserved.
 //
 
-#import "VERootViewController.h"
-#import "MBProgressHUD.h"
-
-@interface VEEspnViewController : VERootViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
+@interface VEEspnViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     UITableView *_tableView;
     NSMutableArray *_dataSource;
-    MBProgressHUD *HUD;
 }
 
 @end

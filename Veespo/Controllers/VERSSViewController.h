@@ -6,16 +6,12 @@
 //  Copyright (c) 2013 Veespo Ltd. All rights reserved.
 //
 
-#import "VERootViewController.h"
-#import "MBProgressHUD.h"
-
 @class VERSSParser;
 
-@interface VERSSViewController : VERootViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
+@interface VERSSViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     UITableView *_tableView;
     NSMutableArray *_dataSource;
     VERSSParser *rssParser;
-    MBProgressHUD *HUD;
 }
 
 @end

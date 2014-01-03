@@ -44,6 +44,8 @@ static int const maxLocationUpdate = 3;
 {
     [super viewDidLoad];
     
+    self.title = NSLocalizedString(@"Venues", nil);
+    
     locationUpdateCnt = 0;
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {

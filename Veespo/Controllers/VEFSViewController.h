@@ -12,6 +12,6 @@
 
 @class FSVenue;
 
-@interface VEFSViewController : VERootViewController <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface VEFSViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end

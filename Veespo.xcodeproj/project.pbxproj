@@ -31,7 +31,6 @@
 		BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F27183CC6BD001C82B6 /* VEDetailVenue.xib */; };
 		BEC63F59183CC6BD001C82B6 /* VEEspnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F29183CC6BD001C82B6 /* VEEspnViewController.m */; };
 		BEC63F5A183CC6BD001C82B6 /* VEFSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F2B183CC6BD001C82B6 /* VEFSViewController.m */; };
-		BEC63F5C183CC6BD001C82B6 /* VERootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F2F183CC6BD001C82B6 /* VERootViewController.m */; };
 		BEC63F5D183CC6BD001C82B6 /* VERSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F31183CC6BD001C82B6 /* VERSSViewController.m */; };
 		BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F33183CC6BD001C82B6 /* VETargetDetailViewController.m */; };
 		BEC63F5F183CC6BD001C82B6 /* VETargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F35183CC6BD001C82B6 /* VETargetViewController.m */; };
@@ -139,8 +138,6 @@
 		BEC63F29183CC6BD001C82B6 /* VEEspnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEEspnViewController.m; sourceTree = "<group>"; };
 		BEC63F2A183CC6BD001C82B6 /* VEFSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFSViewController.h; sourceTree = "<group>"; };
 		BEC63F2B183CC6BD001C82B6 /* VEFSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFSViewController.m; sourceTree = "<group>"; };
-		BEC63F2E183CC6BD001C82B6 /* VERootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERootViewController.h; sourceTree = "<group>"; };
-		BEC63F2F183CC6BD001C82B6 /* VERootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VERootViewController.m; sourceTree = "<group>"; };
 		BEC63F30183CC6BD001C82B6 /* VERSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERSSViewController.h; sourceTree = "<group>"; };
 		BEC63F31183CC6BD001C82B6 /* VERSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VERSSViewController.m; sourceTree = "<group>"; };
 		BEC63F32183CC6BD001C82B6 /* VETargetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETargetDetailViewController.h; sourceTree = "<group>"; };
@@ -353,8 +350,6 @@
 				BEC63F2B183CC6BD001C82B6 /* VEFSViewController.m */,
 				BEE7F2AF1850BCDA005EE0F6 /* VERatedVenuesViewController.h */,
 				BEE7F2B01850BCDA005EE0F6 /* VERatedVenuesViewController.m */,
-				BEC63F2E183CC6BD001C82B6 /* VERootViewController.h */,
-				BEC63F2F183CC6BD001C82B6 /* VERootViewController.m */,
 				BEC63F30183CC6BD001C82B6 /* VERSSViewController.h */,
 				BEC63F31183CC6BD001C82B6 /* VERSSViewController.m */,
 				BEC63F32183CC6BD001C82B6 /* VETargetDetailViewController.h */,
@@ -750,7 +745,6 @@
 				BEE64CB3185A331A00539E8A /* UIViewController+JASidePanel.m in Sources */,
 				BEE64C6E1859C6D800539E8A /* FSOAuth.m in Sources */,
 				BEC63F77183CC7BC001C82B6 /* UIControl+VEControl.m in Sources */,
-				BEC63F5C183CC6BD001C82B6 /* VERootViewController.m in Sources */,
 				BEE64C6D1859C6D800539E8A /* Foursquare2.m in Sources */,
 				BEC63F61183CC6BD001C82B6 /* VEViewController.m in Sources */,
 				BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */,

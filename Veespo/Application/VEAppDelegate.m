@@ -11,7 +11,6 @@
 #import "JASidePanelController.h"
 
 #import "VELeftMenuViewController.h"
-#import "VERootViewController.h"
 #import "VEMenuCell.h"
 #import "VEViewController.h"
 #import "VEFSViewController.h"
@@ -64,14 +63,14 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                          ];
 	NSArray *controllers = @[
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] initWithTitle:@"Home" withRevealBlock:nil]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]]
                                  ],
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] initWithTitle:NSLocalizedString(@"Venues", nil) withRevealBlock:nil]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] init]]
                                  ],
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] initWithTitle:NSLocalizedString(@"Tech News", nil) withRevealBlock:nil]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] initWithTitle:NSLocalizedString(@"ESPN Top News", nil) withRevealBlock:nil]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] init]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] init]]
                                  ]
                              ];
     NSArray *cellInfos = @[
@@ -91,7 +90,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     [menuController setViewControllers:controllers cellInfos:cellInfos headers:headers];
     
     self.viewController.leftPanel = menuController;
-    self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] initWithTitle:@"Home" withRevealBlock:nil]];
+    self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]];
     self.viewController.rightPanel = nil;
     self.window.rootViewController = self.viewController;
     

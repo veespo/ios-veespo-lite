@@ -50,6 +50,8 @@ static NSString * const kVEDemoCode = @"yumx";
     
     [self.view setBackgroundColor:UIColorFromRGB(0xDBDBDB)];
     
+    self.title = @"Home";
+    
     [self initDemoCodeTextField];
     
     CGFloat titleLabelY = 8;

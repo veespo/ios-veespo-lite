@@ -28,6 +28,8 @@
         self.navigationController.navigationBar.tintColor = [UIColor blackColor];
         self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     }
+    
+    self.title = NSLocalizedString(@"ESPN Top News", nil);
 	
     _dataSource = [[NSMutableArray alloc] init];
     CGRect appBounds = [UIScreen mainScreen].bounds;
@@ -75,10 +77,8 @@
     [super viewWillAppear:animated];
     
     if (_dataSource.count == 0) {
-        HUD = [[MBProgressHUD alloc] initWithView:self.view];
-        [self.view addSubview:HUD];
-        HUD.delegate = self;
-        [HUD show:YES];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
         NSURL *url = [NSURL URLWithString:@"http://api.espn.com/v1/sports/soccer/ita.1/news/headlines/top/?apikey=t8hkx98mdft2mkuntmvpbwaf"];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         [request setTimeoutInterval:15];
@@ -86,8 +86,9 @@
             NSDictionary *responseData = [NSDictionary dictionaryWithDictionary:JSON];
             _dataSource = [NSMutableArray arrayWithArray:responseData[@"headlines"]];
             [_tableView reloadData];
-            [HUD hide:YES afterDelay:1];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             NSLog(@"%@", error.debugDescription);
         }];
         [operation start];
