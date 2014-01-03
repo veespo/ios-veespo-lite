@@ -11,6 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "VEConnection.h"
 #import "VERatedVenuesViewController.h"
+#import "VEChartViewController.h"
 #import "MBProgressHUD.h"
 
 @interface VEDetailVenue () {
@@ -58,11 +59,28 @@
     }];
 	
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
-                                                                              style:UIBarButtonItemStylePlain
-                                                                             target:self
-                                                                             action:@selector(openVenuesRatedView)
-                                              ];
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
+                                                                                  style:UIBarButtonItemStylePlain
+                                                                                 target:self
+                                                                                 action:@selector(openVenuesRatedView)
+                                                  ];
+    } else {
+        UIBarButtonItem *ratedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
+                                                                        style:UIBarButtonItemStylePlain
+                                                                       target:self
+                                                                       action:@selector(openVenuesRatedView)
+                                        ];
+        
+        UIBarButtonItem *chartButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"bar_chart.png"]
+                                                                        style:UIBarButtonItemStylePlain
+                                                                       target:self
+                                                                       action:@selector(openChartView)
+                                        ];
+        
+        self.navigationItem.rightBarButtonItems = @[ratedButton, chartButton];
+    }
     
     self.title = self.venue.category;
     self.nameLabel.text = self.venue.name;
@@ -98,6 +116,23 @@
 {
     VERatedVenuesViewController *ratedViewController = [[VERatedVenuesViewController alloc] initWithStyle:UITableViewStylePlain];
     [self.navigationController pushViewController:ratedViewController animated:YES];
+}
+
+- (void)openChartView
+{
+    VEChartViewController *chartViewController = [[VEChartViewController alloc] init];
+    
+    NSMutableArray *tmpAvgArray = [NSMutableArray array];
+    NSMutableArray *tmpNameArray = [NSMutableArray array];
+    for (int i = 0; i < avgTargetsList.count; i++) {
+        NSDictionary *dict = [avgTargetsList objectAtIndex:i];
+        [tmpAvgArray addObject:[NSNumber numberWithFloat:roundf([dict[@"avg"] floatValue] * 5)]];
+        [tmpNameArray addObject:dict[@"name"]];
+    }
+    chartViewController.avgRatesArray = tmpAvgArray;
+    chartViewController.tagNamesArray = tmpNameArray;
+    
+    [self.navigationController pushViewController:chartViewController animated:YES];
 }
 
 - (void)loadAverageVotes
@@ -180,7 +215,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.height, 22.0f)];
+    UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 22.0f)];
     headerView.backgroundColor = UIColorFromRGB(0xDBDBDB);
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
     textLabel.text = NSLocalizedString(@"Venue tags", nil);
