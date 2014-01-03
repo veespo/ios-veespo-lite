@@ -64,7 +64,6 @@ static int const maxLocationUpdate = 3;
     
     self.navigationItem.rightBarButtonItem = venuesRatedButton;
     
-    [self.locationManager startUpdatingLocation];
     [self.view addSubview:self.mapView];
     
     UIView *div = [[UIView alloc] initWithFrame:CGRectMake(0, self.mapView.frame.origin.y + self.mapView.frame.size.height, 320, 1)];
@@ -100,6 +99,8 @@ static int const maxLocationUpdate = 3;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self.locationManager startUpdatingLocation];
+    
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
     if (appDelegate.tokens == nil)
         self.navigationItem.rightBarButtonItem.enabled = NO;

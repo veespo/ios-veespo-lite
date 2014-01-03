@@ -160,6 +160,7 @@
                                               otherButtonTitles:nil];
         [alert show];
         NSLog(@"Veespo Error: %@", error);
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
 #endif
 }

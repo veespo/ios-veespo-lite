@@ -82,10 +82,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 #ifdef VEESPO
-    [Veespo initVeespo:@"demo" userId:self.userid partnerId:@"demo" language:[[NSLocale preferredLanguages] objectAtIndex:0] categories:nil testUrl:NO tokens:^(id responseData, BOOL error) {
-        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%@", responseData]];
-    }];
-    
     NSDictionary *dict = [target objectAtIndex:indexPath.row];
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token
                                                                                                 target:dict[@"target"]
@@ -100,11 +96,12 @@
     
     [veespoViewController showWidget:^(NSDictionary *error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil)
-                                                        message:[NSString stringWithFormat:@"Error %@", error]
+                                                        message:NSLocalizedString(@"Veespo Error", nil)
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+        NSLog(@"Veespo Error: %@", error);
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 #endif
