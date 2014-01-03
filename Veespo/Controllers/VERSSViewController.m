@@ -68,7 +68,7 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    [_tableView setBackgroundColor:[UIColor clearColor]];
+    [_tableView setBackgroundColor:[UIColor whiteColor]];
     [_tableView setShowsVerticalScrollIndicator:YES];
     _tableView.tableHeaderView = headerView;
     [_tableView reloadData];
@@ -78,21 +78,21 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
     if (_dataSource.count == 0) {
-        HUD = [[MBProgressHUD alloc] initWithView:self.view];
-        [self.view addSubview:HUD];
-        HUD.delegate = self;
-        [HUD show:YES];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         rssParser = [[VERSSParser alloc] init];
+        
         __weak VERSSViewController *wSelf = self;
         rssParser.parseResult = ^(NSMutableArray *results){
-            NSLog(@"%d", results.count);
             [wSelf reloadTableView:results];
         };
-        [rssParser parseXMLFileAtURL:@"http://feeds.feedburner.com/TechCrunch/startups"];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [rssParser parseXMLFileAtURL:feed];
+        });
     }
 }
 
@@ -117,7 +117,7 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [_dataSource count];
+	return (_dataSource.count > 0)?[_dataSource count]:0;
 }
 
 // Customize the height of table view cells.
