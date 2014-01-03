@@ -22,7 +22,7 @@ Moreover, in this project I use **Foursquare** API, so you need to regist yourse
 
 [Alessio](https://github.com/darthpelo)
 
-Andrea
+Andrea Parodi
 
 ## Thanks
 
