@@ -10,6 +10,7 @@
 
 @interface VEChartViewController () {
     UILabel *tagNameLabel;
+    JBBarChartView *barChartView;
 }
 
 @end
@@ -29,28 +30,45 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = UIColorFromHex(0x313131);
     
-    JBBarChartView *barChartView = [[JBBarChartView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 300)];
+    barChartView = [[JBBarChartView alloc] initWithFrame:CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width - 20, 250)];
     barChartView.delegate = self;
     barChartView.dataSource = self;
+    barChartView.headerPadding = 10;
+    barChartView.backgroundColor = UIColorFromHex(0x3c3c3c);
     [self.view addSubview:barChartView];
-    UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 22.0f)];
-    headerView.backgroundColor = UIColorFromRGB(0xDBDBDB);
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
+    
+    UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, barChartView.frame.size.width, 50.0f)];
+    headerView.backgroundColor = [UIColor clearColor];
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, headerView.frame.size.width, 35)];
     textLabel.text = NSLocalizedString(@"Venue tags", nil);
-    textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:([UIFont systemFontSize] * 0.7f)];
-    textLabel.textColor = [UIColor blackColor];
+    textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:24];
+    textLabel.textAlignment = NSTextAlignmentCenter;
+    textLabel.textColor = [UIColor lightTextColor];
     textLabel.backgroundColor = [UIColor clearColor];
     [headerView addSubview:textLabel];
     barChartView.headerView = headerView;
+    
     [barChartView reloadData];
     
-    tagNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 320, [UIScreen mainScreen].bounds.size.width, 30)];
+    tagNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 340, [UIScreen mainScreen].bounds.size.width, 30)];
     tagNameLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:24];
     tagNameLabel.textAlignment = NSTextAlignmentCenter;
-    tagNameLabel.textColor = [UIColor blackColor];
+    tagNameLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:tagNameLabel];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [barChartView setState:JBChartViewStateExpanded animated:YES callback:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [barChartView setState:JBChartViewStateCollapsed];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,20 +77,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)numberOfBarsInBarChartView:(JBBarChartView *)barChartView
-{
-    return self.avgRatesArray.count; // number of bars in chart
-}
+#pragma mark - JBBarChartViewDelegate
 
 - (NSInteger)barChartView:(JBBarChartView *)barChartView heightForBarViewAtAtIndex:(NSInteger)index
 {
     return [[self.avgRatesArray objectAtIndex:index] integerValue]; // height of bar at index
 }
 
+#pragma mark - JBBarChartViewDataSource
+
+- (NSInteger)numberOfBarsInBarChartView:(JBBarChartView *)barChartView
+{
+    return self.avgRatesArray.count; // number of bars in chart
+}
+
 - (UIView *)barViewForBarChartView:(JBBarChartView *)barChartView atIndex:(NSInteger)index
 {
     UIView *barView = [[UIView alloc] init];
-    barView.backgroundColor = UIColorFromRGB(0x1D7800);
+    barView.backgroundColor = (index % 2 == 0) ? UIColorFromHex(0x1D7800) : UIColorFromHex(0x870013);
     return barView;
 }
 

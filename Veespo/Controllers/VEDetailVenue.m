@@ -216,7 +216,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 22.0f)];
-    headerView.backgroundColor = UIColorFromRGB(0xDBDBDB);
+    headerView.backgroundColor = UIColorFromHex(0xDBDBDB);
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
     textLabel.text = NSLocalizedString(@"Venue tags", nil);
     textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:([UIFont systemFontSize] * 0.7f)];

@@ -18,12 +18,12 @@ NSString const *kSidebarCellImageKey = @"CellImage";
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        bgView.backgroundColor = UIColorFromRGB(0x1D7800);
+        bgView.backgroundColor = UIColorFromHex(0x1D7800);
         
         topSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 42, 320, 1)];
         topSeparator.backgroundColor = [UIColor clearColor];
         bottomSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 43, 320, 1)];
-        bottomSeparator.backgroundColor = UIColorFromRGB(0xBABABA);
+        bottomSeparator.backgroundColor = UIColorFromHex(0xBABABA);
         
         self.title = [[UILabel alloc] initWithFrame:CGRectMake(46, 12, 251, 21)];
         self.title.textColor = [UIColor whiteColor];

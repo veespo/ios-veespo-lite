@@ -51,15 +51,16 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     if SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")
-        self.window.tintColor = UIColorFromRGB(0x1D7800);
+        self.window.tintColor = UIColorFromHex(0x1D7800);
     
     self.viewController = [[JASidePanelController alloc] init];
     self.viewController.shouldDelegateAutorotateToVisiblePanel = NO;
     
     NSArray *headers = @[
-                         @"Veespo",
+                         @"Veespo Lite",
                          NSLocalizedString(@"Around me", nil),
-                         NSLocalizedString(@"News", nil)
+                         NSLocalizedString(@"News", nil),
+                         NSLocalizedString(@"About us", nil)
                          ];
 	NSArray *controllers = @[
                              @[
@@ -71,7 +72,10 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                              @[
                                  [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] init]],
                                  [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] init]]
-                                 ]
+                                 ],
+                             @[[[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]],
+                               [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]],
+                               [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]]]
                              ];
     NSArray *cellInfos = @[
                            @[
@@ -83,6 +87,11 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                            @[
                                @{kSidebarCellImageKey:[UIImage imageNamed:@"electronics.png"], kSidebarCellTextKey:NSLocalizedString(@"Tech News", nil)},
                                @{kSidebarCellImageKey:[UIImage imageNamed:@"football.png"], kSidebarCellTextKey:NSLocalizedString(@"Sport News", nil)},
+                               ],
+                           @[
+                               @{kSidebarCellImageKey:[UIImage imageNamed:@"home.png"], kSidebarCellTextKey:@"Info"},
+                               @{kSidebarCellImageKey:[UIImage imageNamed:@"home.png"], kSidebarCellTextKey:@"Credits"},
+                               @{kSidebarCellImageKey:[UIImage imageNamed:@"home.png"], kSidebarCellTextKey:NSLocalizedString(@"Feedback", nil)}
                                ]
                            ];
     
@@ -154,6 +163,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 #ifdef VEESPO
     NSDictionary *categories = @{
                                  @"categories":@[
+                                         @{@"cat": @"veespo_lite_app"},
                                          @{@"cat": @"cibi"},
                                          @{@"cat": @"localinotturni"},
                                          @{@"cat": @"news"}

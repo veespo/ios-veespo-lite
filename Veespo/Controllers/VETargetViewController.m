@@ -30,11 +30,11 @@
     [super viewDidLoad];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x1D7800);
     } else {
         self.navigationController.navigationBar.translucent = NO;
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x1D7800);
+        self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x1D7800);
     }
 
     target = [[NSMutableArray alloc] init];
