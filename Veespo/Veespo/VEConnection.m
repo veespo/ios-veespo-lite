@@ -52,7 +52,7 @@
 {
     // /v1/average/category/:cat/target/:target
 #warning STATIC URL
-    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/average/category/%@/target/%@?token=%@", category, targertId, token];
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/average/category/%@/target/%@?token=%@&labels=it", category, targertId, token];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
@@ -60,41 +60,33 @@
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                                            NSDictionary *tags = [NSDictionary dictionaryWithDictionary:JSON[@"data"][@"averages"]];
-                                                                                            NSString *overallStr = tags[@"overall"];
-                                                                                            tags = tags[@"avgS"];
+                                                                                            NSDictionary *avgs = [NSDictionary dictionaryWithDictionary:JSON[@"data"][@"averages"]];
+                                                                                            NSString *overallStr = avgs[@"overall"];
+                                                                                            avgs = avgs[@"avgS"];
                                                                                             
-                                                                                            [self getTagsForCategory:category userToken:token withBlock:^(id responseData) {
-                                                                                                if ([responseData isKindOfClass:[NSArray class]]) {
-                                                                                                    
-                                                                                                    NSMutableDictionary *newTagsList = [[NSMutableDictionary alloc] init];
-                                                                                                    
-                                                                                                    for (NSDictionary *dic in responseData) {
-                                                                                                        [newTagsList setObject:dic[@"label"] forKey:dic[@"tag"]];
-                                                                                                    }
+                                                                                            NSDictionary *tagsLabelList = [NSDictionary dictionaryWithDictionary:JSON[@"data"][@"labels"]];
+                                                                                            
+                                                                                            NSMutableArray *resultList = [[NSMutableArray alloc] init];
+                                                                                            
+                                                                                            for (id key in [avgs allKeys]) {
+                                                                                                NSString *label = tagsLabelList[key][@"label"];
+                                                                                                NSString *connotation = tagsLabelList[key][@"connotation"];
+                                                                                                NSString *avg = avgs[key];
                                                                                                 
-                                                                                                    NSMutableArray *list = [[NSMutableArray alloc] init];
-                                                                                                    for (id key in [tags allKeys]) {
-                                                                                                        NSString *label = newTagsList[key];
-                                                                                                        NSString *avg = tags[key];
-                                                                                                        // Ignoro tag senza media
-                                                                                                        if (label && avg) {
-                                                                                                            NSDictionary* object = [NSDictionary dictionaryWithObjects:@[ label, avg ] forKeys:@[ @"name", @"avg" ]];
-                                                                                                            [list addObject:object];
-                                                                                                        }
-                                                                                                    }
-                                                                                                    
-                                                                                                    NSArray *sortedList = [list sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                                                                                                        NSNumber *num1 = [NSNumber numberWithFloat:[obj1[@"avg"] floatValue]];
-                                                                                                        NSNumber *num2 = [NSNumber numberWithFloat:[obj2[@"avg"] floatValue]];
-                                                                                                        return (NSComparisonResult)[num1 compare:num2];
-                                                                                                    }];
-                                                                                                    
-                                                                                                    block([[sortedList reverseObjectEnumerator] allObjects], overallStr);
-                                                                                                } else {
-                                                                                                    block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"], nil);
+                                                                                                // Ignoro tag senza media
+                                                                                                if (label && avg) {
+                                                                                                    NSDictionary* object = [NSDictionary dictionaryWithObjects:@[ label, connotation, avg ] forKeys:@[ @"name", @"connotation", @"avg" ]];
+                                                                                                    [resultList addObject:object];
                                                                                                 }
+                                                                                            }
+                                                                                            
+                                                                                            NSArray *sortedList = [resultList sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                                                                                                NSNumber *num1 = [NSNumber numberWithFloat:[obj1[@"avg"] floatValue]];
+                                                                                                NSNumber *num2 = [NSNumber numberWithFloat:[obj2[@"avg"] floatValue]];
+                                                                                                return (NSComparisonResult)[num1 compare:num2];
                                                                                             }];
+                                                                                            
+                                                                                            block([[sortedList reverseObjectEnumerator] allObjects], overallStr);
                                                                                             
                                                                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                             block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"], nil);
