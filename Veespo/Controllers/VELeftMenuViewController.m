@@ -124,7 +124,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 3 && indexPath.row == 2)
+    if (indexPath.section == 3 && indexPath.row == 1)
         [self openVeespo];
     else {
         self.sidePanelController.centerPanel = _controllers[indexPath.section][indexPath.row];

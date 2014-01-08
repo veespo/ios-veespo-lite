@@ -74,7 +74,6 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                                  [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] init]]
                                  ],
                              @[[[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]],
-                               [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]],
                                [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]]]
                              ];
     NSArray *cellInfos = @[
@@ -89,8 +88,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                                @{kSidebarCellImageKey:[UIImage imageNamed:@"football.png"], kSidebarCellTextKey:NSLocalizedString(@"Sport News", nil)},
                                ],
                            @[
-                               @{kSidebarCellImageKey:[UIImage imageNamed:@"home.png"], kSidebarCellTextKey:@"Info"},
-                               @{kSidebarCellImageKey:[UIImage imageNamed:@"home.png"], kSidebarCellTextKey:@"Credits"},
+                               @{kSidebarCellImageKey:[UIImage imageNamed:@"info.png"], kSidebarCellTextKey:@"Info"},
                                @{kSidebarCellImageKey:[UIImage imageNamed:@"home.png"], kSidebarCellTextKey:NSLocalizedString(@"Feedback", nil)}
                                ]
                            ];
