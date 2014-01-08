@@ -269,9 +269,9 @@ static int const maxLocationUpdate = 3;
     if (!pin) {
         pin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:s];
         pin.canShowCallout = YES;
-        pin.image = [UIImage imageNamed:@"pin"];
+        pin.image = [UIImage imageNamed:@"marker"];
         pin.calloutOffset = CGPointMake(0, 0);
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
         [button addTarget:self
                    action:@selector(checkinButton) forControlEvents:UIControlEventTouchUpInside];
         pin.rightCalloutAccessoryView = button;
