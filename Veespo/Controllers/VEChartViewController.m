@@ -100,7 +100,10 @@
 
 - (void)barChartView:(JBBarChartView *)barChartView didSelectBarAtIndex:(NSInteger)index
 {
-    tagNameLabel.text = [NSString stringWithFormat:@"%@: %d", [self.tagNamesArray objectAtIndex:index],[[self.avgRatesArray objectAtIndex:index] integerValue]];
+    if ([[self.avgRatesArray objectAtIndex:index] integerValue] > 0)
+        tagNameLabel.text = [NSString stringWithFormat:@"%@: %d", [self.tagNamesArray objectAtIndex:index],[[self.avgRatesArray objectAtIndex:index] integerValue]];
+    else
+        tagNameLabel.text = @"";
 }
 
 @end

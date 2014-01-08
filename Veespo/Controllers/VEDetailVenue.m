@@ -124,6 +124,14 @@
     
     NSMutableArray *tmpAvgArray = [NSMutableArray array];
     NSMutableArray *tmpNameArray = [NSMutableArray array];
+    
+    if (avgTargetsList.count < 5) {
+        for (int i = 0; i < (5 - avgTargetsList.count); i++) {
+            [tmpAvgArray addObject:[NSNumber numberWithInt:0]];
+            [tmpNameArray addObject:@""];
+        }
+    }
+    
     for (int i = 0; i < avgTargetsList.count; i++) {
         NSDictionary *dict = [avgTargetsList objectAtIndex:i];
         [tmpAvgArray addObject:[NSNumber numberWithFloat:roundf([dict[@"avg"] floatValue] * 5)]];
