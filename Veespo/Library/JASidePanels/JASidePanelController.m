@@ -87,17 +87,17 @@ static char ja_kvoContext;
 	static UIImage *defaultImage = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		UIGraphicsBeginImageContextWithOptions(CGSizeMake(25.f, 15.f), NO, 0.0f);
+		UIGraphicsBeginImageContextWithOptions(CGSizeMake(22.f, 15.f), NO, 0.0f);
 		
 		[[UIColor blackColor] setFill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 25, 1)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 6, 25, 1)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 12, 25, 1)] fill];
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 22, 1)] fill];
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 6, 22, 1)] fill];
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 12, 22, 1)] fill];
 		
 		[[UIColor whiteColor] setFill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 1, 25, 2)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 7,  25, 2)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 13, 25, 2)] fill];
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 1, 22, 2)] fill];
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 7,  22, 2)] fill];
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 13, 22, 2)] fill];
 		
 		defaultImage = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();

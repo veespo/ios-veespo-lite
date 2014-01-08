@@ -22,7 +22,7 @@
     [super viewDidLoad];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x1D7800);
     } else {
         self.navigationController.navigationBar.translucent = NO;
         self.navigationController.navigationBar.tintColor = [UIColor blackColor];
@@ -43,7 +43,7 @@
         headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
         newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 300, 25)];
     }
-    [headerView setBackgroundColor:UIColorFromRGB(0x1D7800)];
+    [headerView setBackgroundColor:UIColorFromHex(0x1D7800)];
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         newsTitleLbl.font = [UIFont fontWithName:UIFontTextStyleHeadline size:20];
