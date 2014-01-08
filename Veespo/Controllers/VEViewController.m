@@ -103,19 +103,13 @@ static NSString * const kVEDemoCode = @"yumx";
     logVeespoBtn.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     [logVeespoBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
     logVeespoBtn.titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16];
+    logVeespoBtn.enabled = NO;
     [logVeespoBtn touchUpInside:^(UIEvent *event) {
-        if (![userNameTf.text isEqualToString:@""]) {
-            
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            
-            NSString *demoCode = [[NSString stringWithFormat:@"%@%@%@%@", textOneTf.text, textTwoTf.text, textThreeTf.text, textFourTf.text] uppercaseString];
-            
-            [self getTargetsList:demoCode];
-            
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Fill Form", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        }
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        NSString *demoCode = [[NSString stringWithFormat:@"%@%@%@%@", textOneTf.text, textTwoTf.text, textThreeTf.text, textFourTf.text] uppercaseString];
+        
+        [self getTargetsList:demoCode];
     }];
     
     [self.view addSubview:titleLabel];
@@ -137,6 +131,8 @@ static NSString * const kVEDemoCode = @"yumx";
         [historyDemoCodeBtn setTitle:NSLocalizedString(@"Categories voted", nil) forState:UIControlStateNormal];
     else
         [historyDemoCodeBtn setTitle:NSLocalizedString(@"No Demo", nil) forState:UIControlStateNormal];
+    
+    logVeespoBtn.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -302,7 +298,7 @@ static NSString * const kVEDemoCode = @"yumx";
         [userNameTf becomeFirstResponder];
     else {
         [theTextField resignFirstResponder];
-        if (![userNameTf.text isEqualToString:@""]) {
+        if (![userNameTf.text isEqualToString:@""] && (![textOneTf.text isEqualToString:@""] && ![textTwoTf.text isEqualToString:@""] && ![textThreeTf.text isEqualToString:@""] && ![textFourTf.text isEqualToString:@""])) {
             
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             
@@ -329,6 +325,10 @@ static NSString * const kVEDemoCode = @"yumx";
     for (UIView * txt in self.view.subviews){
         if ([txt isKindOfClass:[UITextField class]]) {
             [txt resignFirstResponder];
+            if ([userNameTf.text isEqualToString:@""] || ([textOneTf.text isEqualToString:@""] || [textTwoTf.text isEqualToString:@""] || [textThreeTf.text isEqualToString:@""] || [textFourTf.text isEqualToString:@""]))
+                logVeespoBtn.enabled = NO;
+            else
+                logVeespoBtn.enabled = YES;
         }
     }
 }
@@ -337,7 +337,10 @@ static NSString * const kVEDemoCode = @"yumx";
 
 - (void)pickerClosed
 {
-    
+    if (![userNameTf.text isEqualToString:@""] || (![textOneTf.text isEqualToString:@""] || ![textTwoTf.text isEqualToString:@""] || ![textThreeTf.text isEqualToString:@""] || ![textFourTf.text isEqualToString:@""]))
+        logVeespoBtn.enabled = NO;
+    else
+        logVeespoBtn.enabled = YES;
 }
 
 - (void)selectedRow:(int)row withString:(NSString *)text
@@ -352,6 +355,10 @@ static NSString * const kVEDemoCode = @"yumx";
             break;
         }
     }
+    if ([userNameTf.text isEqualToString:@""] || ([textOneTf.text isEqualToString:@""] || [textTwoTf.text isEqualToString:@""] || [textThreeTf.text isEqualToString:@""] || [textFourTf.text isEqualToString:@""]))
+        logVeespoBtn.enabled = NO;
+    else
+        logVeespoBtn.enabled = YES;
 }
 
 @end

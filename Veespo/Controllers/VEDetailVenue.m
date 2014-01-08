@@ -68,8 +68,6 @@
     self.nameLabel.text = self.venue.name;
     self.adressLabel.text = self.venue.location.address;
     self.averageLabel.text = @"-";
-    
-    [self.veespoButton setTitle:NSLocalizedString(@"Feedback", nil) forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated
