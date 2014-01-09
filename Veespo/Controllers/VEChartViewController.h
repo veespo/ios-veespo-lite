@@ -12,7 +12,6 @@
 
 @interface VEChartViewController : UIViewController <JBBarChartViewDataSource, JBBarChartViewDelegate>
 
-@property (nonatomic, strong) NSArray *avgRatesArray;
-@property (nonatomic, strong) NSArray *tagNamesArray;
+@property (nonatomic, strong) NSArray *tagsArray;
 
 @end

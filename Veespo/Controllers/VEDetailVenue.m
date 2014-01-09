@@ -13,6 +13,7 @@
 #import "VERatedVenuesViewController.h"
 #import "VEChartViewController.h"
 #import "MBProgressHUD.h"
+#import "VEDataChart.h"
 
 @interface VEDetailVenue () {
     NSArray *avgTargetsList;
@@ -120,23 +121,7 @@
 {
     VEChartViewController *chartViewController = [[VEChartViewController alloc] init];
     
-    NSMutableArray *tmpAvgArray = [NSMutableArray array];
-    NSMutableArray *tmpNameArray = [NSMutableArray array];
-    
-    if (avgTargetsList.count < 5) {
-        for (int i = 0; i < (5 - avgTargetsList.count); i++) {
-            [tmpAvgArray addObject:[NSNumber numberWithInt:0]];
-            [tmpNameArray addObject:@""];
-        }
-    }
-    
-    for (int i = 0; i < avgTargetsList.count; i++) {
-        NSDictionary *dict = [avgTargetsList objectAtIndex:i];
-        [tmpAvgArray addObject:[NSNumber numberWithFloat:roundf([dict[@"avg"] floatValue] * 5)]];
-        [tmpNameArray addObject:dict[@"name"]];
-    }
-    chartViewController.avgRatesArray = tmpAvgArray;
-    chartViewController.tagNamesArray = tmpNameArray;
+    chartViewController.tagsArray = avgTargetsList;
     
     [self.navigationController pushViewController:chartViewController animated:YES];
 }
@@ -156,11 +141,12 @@
         [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result, id overall) {
             if ([result isKindOfClass:[NSArray class]]) {
                 self.averageLabel.text = [NSString stringWithFormat:@"%.1f", [overall floatValue] * 5];
-                avgTargetsList = [[NSArray alloc] initWithArray:result];
+                VEDataChart *dataChart = [[VEDataChart alloc] init];
+                avgTargetsList = [[NSArray alloc] initWithArray:[dataChart frequencyTagsOrder:result balanced:NO]];
                 [self.avgTableView reloadData];
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             } else {
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[result objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
             }
@@ -271,6 +257,7 @@
     NSDictionary *dict = [avgTargetsList objectAtIndex:indexPath.row];
     UILabel *label = (UILabel *)[cell viewWithTag:1];
     UIImageView *icon = (UIImageView *)[cell viewWithTag:2];
+    
     label.text = [NSString stringWithFormat:@"%@", dict[@"name"]];
     
     NSString *imageFileName = [NSString stringWithFormat:@"%.f.png", roundf([dict[@"avg"] floatValue] * 5)];

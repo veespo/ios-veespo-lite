@@ -62,31 +62,27 @@
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                             NSDictionary *avgs = [NSDictionary dictionaryWithDictionary:JSON[@"data"][@"averages"]];
                                                                                             NSString *overallStr = avgs[@"overall"];
+                                                                                            NSDictionary *freqs = avgs[@"sumN"];
                                                                                             avgs = avgs[@"avgS"];
                                                                                             
                                                                                             NSDictionary *tagsLabelList = [NSDictionary dictionaryWithDictionary:JSON[@"data"][@"labels"]];
                                                                                             
                                                                                             NSMutableArray *resultList = [[NSMutableArray alloc] init];
                                                                                             
-                                                                                            for (id key in [avgs allKeys]) {
+                                                                                            for (id key in [freqs allKeys]) {
                                                                                                 NSString *label = tagsLabelList[key][@"label"];
                                                                                                 NSString *connotation = tagsLabelList[key][@"connotation"];
                                                                                                 NSString *avg = avgs[key];
+                                                                                                NSString *freq = freqs[key];
                                                                                                 
                                                                                                 // Ignoro tag senza media
                                                                                                 if (label && avg) {
-                                                                                                    NSDictionary* object = [NSDictionary dictionaryWithObjects:@[ label, connotation, avg ] forKeys:@[ @"name", @"connotation", @"avg" ]];
+                                                                                                    NSDictionary* object = [NSDictionary dictionaryWithObjects:@[ key, label, connotation, avg, freq ] forKeys:@[ @"tag", @"name", @"connotation", @"avg", @"ctr" ]];
                                                                                                     [resultList addObject:object];
                                                                                                 }
                                                                                             }
                                                                                             
-                                                                                            NSArray *sortedList = [resultList sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                                                                                                NSNumber *num1 = [NSNumber numberWithFloat:[obj1[@"avg"] floatValue]];
-                                                                                                NSNumber *num2 = [NSNumber numberWithFloat:[obj2[@"avg"] floatValue]];
-                                                                                                return (NSComparisonResult)[num1 compare:num2];
-                                                                                            }];
-                                                                                            
-                                                                                            block([[sortedList reverseObjectEnumerator] allObjects], overallStr);
+                                                                                            block(resultList, overallStr);
                                                                                             
                                                                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                             block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"], nil);
