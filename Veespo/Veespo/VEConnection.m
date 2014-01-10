@@ -33,8 +33,13 @@
             AFJSONRequestOperation *boperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:brequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                 // Richiesta target
                 [self getTarget:catId userToken:JSON[@"data"][@"reply"] withBlock:^(id responseData) {
-                    NSDictionary *resp = [NSDictionary dictionaryWithObjectsAndKeys:catId, @"category",  responseData[@"data"], @"targets", nil];
-                    block(resp, JSON[@"data"][@"reply"]);
+                    __block NSMutableDictionary *targets = [NSMutableDictionary dictionaryWithObjectsAndKeys:catId, @"category",  responseData[@"data"], @"targets", nil];
+                    NSString *token = JSON[@"data"][@"reply"];
+                    // Richiesta nome categoria
+                    [self getCategoryInfo:catId userToken:token withBlock:^(id responseData) {
+                        [targets setObject:responseData forKey:@"categoryname"];
+                        block(targets, token);
+                    }];
                 }];
             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                 block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"], nil);
@@ -108,7 +113,26 @@
     [operation start];
 }
 
+- (void)getCategoryInfo:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block
+{
+#warning STATIC URL
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/info/category/%@/?token=%@", catId, uTk];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    [request setTimeoutInterval:10];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        block(JSON[@"data"][@"desc1"]);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"]);
+    }];
+    
+    [operation start];
+}
+
 #pragma mark - Private
+
 - (void)getTarget:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block
 {
 #warning STATIC URL
@@ -130,7 +154,6 @@
 - (void)getTagsForCategory:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block
 {
     // /v1/info/category/:cat/tags
-    // [[NSLocale preferredLanguages] objectAtIndex:0]
 #warning STATIC URL
     NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/info/category/%@/tags?token=%@&lang=%@", catId, uTk, [[NSLocale preferredLanguages] objectAtIndex:0]];
     NSURL *url = [NSURL URLWithString:urlStr];

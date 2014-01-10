@@ -41,16 +41,29 @@ static NSString * const kVEDemoCode = @"yumx";
     [super viewDidLoad];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x1D7800);
+        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x231F20);
     } else {
         self.navigationController.navigationBar.translucent = NO;
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavbarHome"] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"NavbarShadow"]];
+        self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor whiteColor]};
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x1D7800);
+        self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x231F20);
     }
     
     [self.view setBackgroundColor:UIColorFromHex(0xDBDBDB)];
     
-    self.title = @"Home";
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:(([UIScreen mainScreen].bounds.size.height == 568.0f)?
+                                                                          [UIImage imageNamed:@"background_5"]:
+                                                                          [UIImage imageNamed:@"background_4"])];
+    [backgroundImageView setFrame:[UIScreen mainScreen].bounds];
+    [self.view addSubview:backgroundImageView];
+    
+    UIImageView *foregroundImageView = [[UIImageView alloc] initWithImage:(([UIScreen mainScreen].bounds.size.height == 568.0f)?
+                                                                           [UIImage imageNamed:@"home_shadow_5"]:
+                                                                           [UIImage imageNamed:@"home_shadow_4"])];
+    [foregroundImageView setFrame:[UIScreen mainScreen].bounds];
+    [self.view addSubview:foregroundImageView];
     
     [self initDemoCodeTextField];
     
@@ -60,6 +73,7 @@ static NSString * const kVEDemoCode = @"yumx";
     titleLabel.numberOfLines = 2;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
+    titleLabel.textColor = [UIColor whiteColor];
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         titleLabel.backgroundColor = [UIColor clearColor];
     }
@@ -67,6 +81,7 @@ static NSString * const kVEDemoCode = @"yumx";
     historyDemoCodeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     historyDemoCodeBtn.frame = CGRectMake(10, userNameTf.frame.origin.y + userNameTf.frame.size.height + 40, 140, 35);
     historyDemoCodeBtn.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+    historyDemoCodeBtn.tintColor = [UIColor whiteColor];
     
     _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
     if (_history)
@@ -75,11 +90,13 @@ static NSString * const kVEDemoCode = @"yumx";
         [historyDemoCodeBtn setTitle:NSLocalizedString(@"No Demo", nil) forState:UIControlStateNormal];
     historyDemoCodeBtn.titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16];
     [historyDemoCodeBtn touchUpInside:^(UIEvent *event) {
+        _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
         if (_history) {
             NSArray *keys = [_history allKeys];
             NSMutableArray *categories = [[NSMutableArray alloc] init];
             for (id key in keys) {
-                [categories addObject:[_history objectForKey:key]];
+                NSDictionary *dic = [_history objectForKey:key];
+                [categories addObject:[dic objectForKey:key]];
             }
             
             [userNameTf resignFirstResponder];
@@ -101,6 +118,7 @@ static NSString * const kVEDemoCode = @"yumx";
     logVeespoBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     logVeespoBtn.frame = CGRectMake(230, userNameTf.frame.origin.y + userNameTf.frame.size.height + 40, 71, 35);
     logVeespoBtn.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+    logVeespoBtn.tintColor = [UIColor whiteColor];
     [logVeespoBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
     logVeespoBtn.titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16];
     logVeespoBtn.enabled = NO;
@@ -236,18 +254,18 @@ static NSString * const kVEDemoCode = @"yumx";
                                     targetVC.token = token;
                                 }
                                 targetVC.targetList = responseData[@"targets"];
-                                targetVC.title = responseData[@"category"];
+                                targetVC.title = responseData[@"categoryname"];
                                 
                                 // Creo o aggiorno storico utente
                                 
                                 NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
                                 
                                 if (history == nil) {
-                                    history = @{demoCode: responseData[@"category"]};
+                                    history = @{demoCode: @{demoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]}};
                                     [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
                                 } else {
                                     NSMutableDictionary *tmp = [[NSMutableDictionary alloc] initWithDictionary:history];
-                                    [tmp setObject:responseData[@"category"] forKey:demoCode];
+                                    [tmp setObject:@{demoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]} forKey:demoCode];
                                     [[NSUserDefaults standardUserDefaults] setObject:tmp forKey:@"history"];
                                 }
                                 
@@ -345,9 +363,11 @@ static NSString * const kVEDemoCode = @"yumx";
 
 - (void)selectedRow:(int)row withString:(NSString *)text
 {
+    _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
     NSArray *keys = [_history allKeys];
     for (id key in keys) {
-        if ([[_history objectForKey:key] isEqualToString:text]) {
+        NSDictionary *dic = [_history objectForKey:key];
+        if ([[dic objectForKey:key] isEqualToString:text]) {
             textOneTf.text = [NSString stringWithFormat:@"%c",[key characterAtIndex:0]];
             textTwoTf.text = [NSString stringWithFormat:@"%c",[key characterAtIndex:1]];
             textThreeTf.text = [NSString stringWithFormat:@"%c",[key characterAtIndex:2]];

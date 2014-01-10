@@ -34,24 +34,33 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 {
     [self setUpApi];
     
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+    NSString *dateKey = @"Data Key";
+    NSDate *lastRead = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:dateKey];
+    if (!lastRead) {
+        NSDictionary *appDefaults  = [NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], dateKey, nil];
+        // sync the defaults to disk
         [NSUserDefaults resetStandardUserDefaults];
-        NSString *dateKey = @"Data Key";
-        NSDate *lastRead = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:dateKey];
-        if (!lastRead) {
-            NSDictionary *appDefaults  = [NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], dateKey, nil];
-            // sync the defaults to disk
-            [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            
+        [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
             [[NSUserDefaults standardUserDefaults] setObject:[VEAppDelegate uuid] forKey:@"uuid"];
         }
-        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:dateKey];
     }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:dateKey];
+    
+    // Check old history version
+    NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+    if (history) {
+        NSArray *keys = [history allKeys];
+        if ([[history objectForKey:[keys objectAtIndex:0]] isKindOfClass:[NSString class]]) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"history"];
+        }
+    }
+
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    if SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")
-        self.window.tintColor = UIColorFromHex(0x1D7800);
+//    if SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")
+//        self.window.tintColor = UIColorFromHex(0x1D7800);
     
     self.viewController = [[JASidePanelController alloc] init];
     self.viewController.shouldDelegateAutorotateToVisiblePanel = NO;
@@ -108,6 +117,14 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    // Check old history version
+    NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+    if (history) {
+        NSArray *keys = [history allKeys];
+        if ([[history objectForKey:[keys objectAtIndex:0]] isKindOfClass:[NSString class]]) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"history"];
+        }
+    }
 #ifdef VEESPO
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     if (_tokens == nil) {

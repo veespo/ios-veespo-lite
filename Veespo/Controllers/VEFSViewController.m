@@ -143,6 +143,8 @@ static int const maxLocationUpdate = 3;
         _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, mapViewHeight)];
         [_mapView setShowsUserLocation:YES];
         _mapView.delegate = self;
+        if SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")
+            _mapView.tintColor = UIColorFromHex(0x1D7800);
     }
     return _mapView;
 }
@@ -309,9 +311,9 @@ static int const maxLocationUpdate = 3;
                                            nearbyVenues = (NSMutableArray *)[converter convertToObjects:venues withCategory:catCibi];
                                            [self proccessAnnotations];
                                            [venuesTableView reloadData];
-                                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                           [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 									   } else
-                                           [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                           [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 								   }];
 }
 
