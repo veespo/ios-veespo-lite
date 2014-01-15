@@ -57,7 +57,12 @@
 {
     // /v1/average/category/:cat/target/:target
 #warning STATIC URL
-    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/average/category/%@/target/%@?token=%@&labels=it", category, targertId, token];
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/average/category/%@/target/%@?token=%@&labels=%@",
+                        category,
+                        targertId,
+                        token,
+                        [[NSLocale preferredLanguages] objectAtIndex:0]
+                        ];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];

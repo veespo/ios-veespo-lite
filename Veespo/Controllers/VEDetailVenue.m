@@ -137,6 +137,7 @@
         [alert show];
     } else {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
         VEConnection *connection = [[VEConnection alloc] init];
         [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result, id overall) {
             if ([result isKindOfClass:[NSArray class]]) {
