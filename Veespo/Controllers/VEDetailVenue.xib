@@ -10,7 +10,7 @@
                 <outlet property="adressLabel" destination="0hd-Kj-BiH" id="zqB-Ky-5qJ"/>
                 <outlet property="averageImageView" destination="wkk-e3-mLN" id="EIY-Bp-Jqd"/>
                 <outlet property="averageLabel" destination="nsd-gK-q4o" id="C3x-TM-1CQ"/>
-                <outlet property="avgTableView" destination="rAa-YM-va3" id="z7L-Wu-2X8"/>
+                <outlet property="avgTableView" destination="rAa-YM-va3" id="xBW-y9-w9c"/>
                 <outlet property="nameLabel" destination="mEJ-gI-4Vc" id="j1Q-Y0-qwX"/>
                 <outlet property="veespoButton" destination="qf2-yL-f7e" id="edH-qo-gpw"/>
                 <outlet property="venueImage" destination="Fb1-Rq-lu1" id="bmD-pQ-s2J"/>
@@ -62,7 +62,7 @@
                     <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="rAa-YM-va3">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="rAa-YM-va3">
                     <rect key="frame" x="0.0" y="206" width="320" height="210"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

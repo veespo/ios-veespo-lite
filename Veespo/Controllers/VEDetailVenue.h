@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) FSVenue *venue;
 @property (nonatomic, strong) NSString *token;
+
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *adressLabel;
 @property (nonatomic, weak) IBOutlet UIButton *veespoButton;

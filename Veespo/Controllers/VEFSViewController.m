@@ -49,11 +49,12 @@ static int const maxLocationUpdate = 3;
     locationUpdateCnt = 0;
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x1D7800);
+        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x221E1F);
     } else {
         self.navigationController.navigationBar.translucent = NO;
-        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x221E1F);
+        self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]};
     }
     
     UIBarButtonItem *venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]

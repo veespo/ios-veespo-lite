@@ -17,7 +17,7 @@
 #define DEMOCODETEXT_ISO7 44.0
 #define DEMOCODETEXT_IOS6 30.0
 
-static NSString * const kVEDemoCode = @"yumx";
+static NSString * const kVEDemoCode = @"krbk";
 
 @interface VEHomeViewController () {
     NSMutableDictionary *_history;

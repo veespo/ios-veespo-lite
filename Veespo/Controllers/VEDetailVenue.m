@@ -207,15 +207,29 @@
     return avgTargetsList.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 37.0f;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 22.0f)];
-    headerView.backgroundColor = UIColorFromHex(0xDBDBDB);
+    UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 37.0f)];
+    headerView.backgroundColor = [UIColor clearColor];
+    UIView *topBorderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 30.5f)];
+    topBorderView.backgroundColor = UIColorFromHex(0x221e1f);
+    [headerView addSubview:topBorderView];
+    
+    UIImageView *backGround = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 37.0f)];
+    backGround.image = [UIImage imageNamed:@"header_tabella"];
+    [headerView addSubview:backGround];
+    
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
     textLabel.text = NSLocalizedString(@"Venue tags", nil);
-    textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:([UIFont systemFontSize] * 0.7f)];
-    textLabel.textColor = [UIColor blackColor];
+    textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:13.0f];
+    textLabel.textColor = [UIColor whiteColor];
     textLabel.backgroundColor = [UIColor clearColor];
     [headerView addSubview:textLabel];
+    
 	return headerView;
 }
 
@@ -236,7 +250,7 @@
 	title.tag = 1;
     if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
         title.backgroundColor = [UIColor clearColor];
-    title.textColor = [UIColor blackColor];
+    title.textColor = UIColorFromHex(0x6D6E70);
 	[cell.contentView addSubview:title];
     
     rateImage = [[UIImageView alloc] initWithFrame:imageFrame];
@@ -265,6 +279,11 @@
     icon.image = [UIImage imageNamed:imageFileName];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = (indexPath.row % 2 == 0) ? UIColorFromHex(0xFFFFFF) : UIColorFromHex(0xF1F1F2);
 }
 
 @end
