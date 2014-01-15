@@ -25,6 +25,8 @@
 		BE9DE1C0187573940011A443 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9DE1BA187573940011A443 /* libTestFlight.a */; };
 		BE9DE1C1187573950011A443 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BE9DE1BB187573940011A443 /* README.md */; };
 		BE9DE1C2187573950011A443 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = BE9DE1BC187573940011A443 /* release_notes.md */; };
+		BEABDE6718805C8300079EC5 /* VEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEABDE6518805C8300079EC5 /* VEHomeViewController.m */; };
+		BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEABDE6618805C8300079EC5 /* VEHomeViewController.xib */; };
 		BEB6A9AF185B13F40029A799 /* VELeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */; };
 		BEC63F52183CC6BD001C82B6 /* VEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */; };
 		BEC63F53183CC6BD001C82B6 /* RassegnaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1C183CC6BD001C82B6 /* RassegnaCell.m */; };
@@ -133,6 +135,9 @@
 		BE9DE1BD187573940011A443 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
 		BE9DE1BE187573940011A443 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		BE9DE1BF187573940011A443 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		BEABDE6418805C8300079EC5 /* VEHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEHomeViewController.h; sourceTree = "<group>"; };
+		BEABDE6518805C8300079EC5 /* VEHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEHomeViewController.m; sourceTree = "<group>"; };
+		BEABDE6618805C8300079EC5 /* VEHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEHomeViewController.xib; sourceTree = "<group>"; };
 		BEB6A9AD185B13F40029A799 /* VELeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VELeftMenuViewController.h; sourceTree = "<group>"; };
 		BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VELeftMenuViewController.m; sourceTree = "<group>"; };
 		BEC63F18183CC6BD001C82B6 /* VEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEAppDelegate.h; sourceTree = "<group>"; };
@@ -395,6 +400,9 @@
 				BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */,
 				BE48371618771A2D008EC351 /* VEChartViewController.h */,
 				BE48371718771A2D008EC351 /* VEChartViewController.m */,
+				BEABDE6418805C8300079EC5 /* VEHomeViewController.h */,
+				BEABDE6518805C8300079EC5 /* VEHomeViewController.m */,
+				BEABDE6618805C8300079EC5 /* VEHomeViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -748,6 +756,7 @@
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
 				BE644B24183D7C2B007AEE9F /* Veespo-Keys.plist in Resources */,
 				BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */,
+				BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
 				BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */,
 				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
@@ -792,6 +801,7 @@
 				BE48371818771A2D008EC351 /* VEChartViewController.m in Sources */,
 				BEE64CB0185A2C4800539E8A /* JASidePanelController.m in Sources */,
 				BEC63F66183CC6BD001C82B6 /* FSVenue.m in Sources */,
+				BEABDE6718805C8300079EC5 /* VEHomeViewController.m in Sources */,
 				BEE64C601859C63000539E8A /* UIImageView+AFNetworking.m in Sources */,
 				BEE64C591859C63000539E8A /* AFHTTPRequestOperation.m in Sources */,
 				BEC63F6E183CC6BD001C82B6 /* VEConnection.m in Sources */,
