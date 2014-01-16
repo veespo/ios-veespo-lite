@@ -20,6 +20,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *venueImage;
 @property (nonatomic, weak) IBOutlet UITableView *avgTableView;
 @property (nonatomic, weak) IBOutlet UILabel *averageLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *averageImageView;
+@property (nonatomic, weak) IBOutlet UILabel *headerTableView;
 
 @end

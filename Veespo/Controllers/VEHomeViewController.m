@@ -57,6 +57,8 @@ static NSString * const kVEDemoCode = @"krbk";
     [self.view sendSubviewToBack:foregroundImageView];
     [self.view sendSubviewToBack:backgroundImageView];
     
+    [self.userNameTf setPlaceholder:NSLocalizedString(@"User Name", nil)];
+    
     self.historyDemoCodeBtn.tintColor = [UIColor whiteColor];
     
     _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
@@ -122,6 +124,7 @@ static NSString * const kVEDemoCode = @"krbk";
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         self.navigationController.navigationBar.tintColor = UIColorFromHex(0x231F20);
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavbarHome-44"] forBarMetrics:UIBarMetricsDefault];
     } else {
         self.navigationController.navigationBar.translucent = NO;
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavbarHome"] forBarMetrics:UIBarMetricsDefault];
@@ -168,6 +171,11 @@ static NSString * const kVEDemoCode = @"krbk";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)panelShow

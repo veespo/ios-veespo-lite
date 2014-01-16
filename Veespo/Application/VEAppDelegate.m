@@ -59,8 +59,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-//    if SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")
-//        self.window.tintColor = UIColorFromHex(0x1D7800);
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
     self.viewController = [[JASidePanelController alloc] init];
     self.viewController.shouldDelegateAutorotateToVisiblePanel = NO;

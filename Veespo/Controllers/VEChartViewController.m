@@ -40,6 +40,8 @@ static int const max = 6;
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = UIColorFromHex(0x313131);
     
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
     barChartView = [[JBBarChartView alloc] initWithFrame:CGRectMake(10, 20, [UIScreen mainScreen].bounds.size.width - 20, 250)];
     barChartView.delegate = self;
     barChartView.dataSource = self;
@@ -82,6 +84,11 @@ static int const max = 6;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)setTagsArray:(NSArray *)tagsArray

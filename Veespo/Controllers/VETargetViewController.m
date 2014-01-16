@@ -31,6 +31,7 @@
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         self.navigationController.navigationBar.tintColor = UIColorFromHex(0x231F20);
+        [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     } else {
         self.navigationController.navigationBar.translucent = NO;
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Navbar"] forBarMetrics:UIBarMetricsDefault];
@@ -51,6 +52,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - Table view data source

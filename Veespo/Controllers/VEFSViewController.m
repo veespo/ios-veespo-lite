@@ -19,7 +19,7 @@
 
 static NSString * const catCibi = @"4d4b7105d754a06374d81259";
 static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
-static int const maxLocationUpdate = 3;
+static int const maxLocationUpdate = 1;
 
 @interface VEFSViewController () {
     UITableView *venuesTableView;
@@ -55,6 +55,7 @@ static int const maxLocationUpdate = 3;
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
         self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x221E1F);
         self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]};
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     }
     
     UIBarButtonItem *venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
@@ -123,6 +124,11 @@ static int const maxLocationUpdate = 3;
     nearbyVenues = nil;
     locationUpdateCnt = 0;
     [self.locationManager stopUpdatingLocation];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark Properties
@@ -334,7 +340,7 @@ static int const maxLocationUpdate = 3;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 54;
+    return 66.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -81,12 +81,17 @@
                                         ];
         
         self.navigationItem.rightBarButtonItems = @[ratedButton, chartButton];
+        
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     }
+    
+    [self.veespoButton setImage:[UIImage imageNamed:NSLocalizedString(@"Veespo Button", nil)] forState:UIControlStateNormal];
     
     self.title = self.venue.category;
     self.nameLabel.text = self.venue.name;
     self.adressLabel.text = self.venue.location.address;
-    self.averageLabel.text = @"-";
+    self.averageLabel.text = @"0.0";
+    self.headerTableView.text = NSLocalizedString(@"Venue tags", nil);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -107,6 +112,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - Veespo
@@ -141,7 +151,11 @@
         VEConnection *connection = [[VEConnection alloc] init];
         [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result, id overall) {
             if ([result isKindOfClass:[NSArray class]]) {
-                self.averageLabel.text = [NSString stringWithFormat:@"%.1f", [overall floatValue] * 5];
+                float av = [overall floatValue] * 5;
+                if (av < 0.0) av = 0.0f;
+                
+                self.averageLabel.text = [NSString stringWithFormat:@"%.1f", av];
+                
                 VEDataChart *dataChart = [[VEDataChart alloc] init];
                 avgTargetsList = [[NSArray alloc] initWithArray:[dataChart frequencyTagsOrder:result balanced:NO]];
                 [self.avgTableView reloadData];
@@ -207,31 +221,26 @@
     return avgTargetsList.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 37.0f;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 37.0f)];
-    headerView.backgroundColor = [UIColor clearColor];
-    UIView *topBorderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 30.5f)];
-    topBorderView.backgroundColor = UIColorFromHex(0x221e1f);
-    [headerView addSubview:topBorderView];
-    
-    UIImageView *backGround = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 37.0f)];
-    backGround.image = [UIImage imageNamed:@"header_tabella"];
-    [headerView addSubview:backGround];
-    
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
-    textLabel.text = NSLocalizedString(@"Venue tags", nil);
-    textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:13.0f];
-    textLabel.textColor = [UIColor whiteColor];
-    textLabel.backgroundColor = [UIColor clearColor];
-    [headerView addSubview:textLabel];
-    
-	return headerView;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 37.0f)];
+//    headerView.backgroundColor = [UIColor clearColor];
+//    UIView *topBorderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 30.5f)];
+//    topBorderView.backgroundColor = UIColorFromHex(0x221e1f);
+//    [headerView addSubview:topBorderView];
+//    
+//    UIImageView *backGround = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 37.0f)];
+//    backGround.image = [UIImage imageNamed:@"header_tabella"];
+//    [headerView addSubview:backGround];
+//    
+//    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
+//    textLabel.text = NSLocalizedString(@"Venue tags", nil);
+//    textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:13.0f];
+//    textLabel.textColor = [UIColor whiteColor];
+//    textLabel.backgroundColor = [UIColor clearColor];
+//    [headerView addSubview:textLabel];
+//    
+//	return headerView;
+//}
 
 - (UITableViewCell *) getCellContentView:(NSString *)cellIdentifier {
     CGRect labelFrame = CGRectMake(10, 5, 240, 34);
