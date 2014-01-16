@@ -46,6 +46,9 @@
     for (NSDictionary *tar in _targetList) {
        [target addObject:tar];
     }
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.tableView.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,10 +70,58 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 66.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 37.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIImageView *headerImageView;
+    UILabel *newsTitleLbl;
+    UIView *headerBackground;
+    UIView *headerView;
+    
+    headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 37)];
+    headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 37)];
+    headerBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 300, 18)];
+    
+    headerView.backgroundColor = [UIColor clearColor];
+    headerBackground.backgroundColor = UIColorFromHex(0x231F20);
+    headerImageView.backgroundColor = [UIColor clearColor];
+    headerImageView.image = [UIImage imageNamed:@"header_tabella.png"];
+    [headerImageView setContentMode:UIViewContentModeScaleToFill];
+    
+    newsTitleLbl.textColor = [UIColor whiteColor];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        newsTitleLbl.backgroundColor = [UIColor clearColor];
+    }
+    newsTitleLbl.textAlignment = NSTextAlignmentCenter;
+    newsTitleLbl.text = NSLocalizedString(@"Target List", nil);
+    newsTitleLbl.font = [UIFont fontWithName:@"Avenir-Heavy" size:13];
+    
+    [headerView addSubview:headerBackground];
+    [headerView addSubview:headerImageView];
+    [headerView addSubview:newsTitleLbl];
+    
+    return headerView;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
     return target.count;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = (indexPath.row % 2 == 0) ? UIColorFromHex(0xFFFFFF) : UIColorFromHex(0xF1F1F2);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,6 +130,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     }
     
     NSDictionary *dict = [target objectAtIndex:indexPath.row];

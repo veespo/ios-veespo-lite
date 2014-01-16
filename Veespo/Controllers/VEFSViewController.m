@@ -78,6 +78,7 @@ static int const maxLocationUpdate = 1;
     venuesTableView.delegate = self;
     venuesTableView.dataSource = self;
     venuesTableView.backgroundColor = [UIColor whiteColor];
+    [venuesTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     UITableViewController *tableViewController = [[UITableViewController alloc] init];
     tableViewController.tableView = venuesTableView;
@@ -341,6 +342,11 @@ static int const maxLocationUpdate = 1;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 66.0f;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = (indexPath.row % 2 == 0) ? UIColorFromHex(0xFFFFFF) : UIColorFromHex(0xF1F1F2);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -39,7 +39,7 @@
     UIImageView *headerImageView;
     UILabel *newsTitleLbl;
     headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-1, -1, 322, 38)];
-    newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 18)];
+    newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 300, 18)];
     
     headerImageView.backgroundColor = [UIColor clearColor];
     headerImageView.image = [UIImage imageNamed:@"header_tabella.png"];

@@ -49,7 +49,7 @@
                 
                 NSString *urlStr = [NSString stringWithFormat:@"%@500x500%@", item[@"prefix"], item[@"suffix"]];
                 
-                [self.venueImage setImageWithURL:[NSURL URLWithString:urlStr]];
+                [self.venueImage setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"default_image_venue"]];
                 
                 UIImageView *shadow = [[UIImageView alloc] initWithFrame:self.venueImage.bounds];
                 shadow.image = [UIImage imageNamed:@"ombra.png"];

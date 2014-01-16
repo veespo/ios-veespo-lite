@@ -12,6 +12,8 @@
 #import "VEConnection.h"
 #import "VETargetViewController.h"
 #import "MBProgressHUD.h"
+#import "NSString+Extra.h"
+
 #import <AdSupport/AdSupport.h>
 
 #define DEMOCODETEXT_ISO7 44.0
@@ -58,6 +60,8 @@ static NSString * const kVEDemoCode = @"krbk";
     [self.view sendSubviewToBack:backgroundImageView];
     
     [self.userNameTf setPlaceholder:NSLocalizedString(@"User Name", nil)];
+    
+    [self.disclaimerLbl setText:NSLocalizedString(@"Disclaimer", nil)];
     
     self.historyDemoCodeBtn.tintColor = [UIColor whiteColor];
     
@@ -257,49 +261,64 @@ static NSString * const kVEDemoCode = @"krbk";
 {
     VEConnection *connection = [[VEConnection alloc] init];
     
-    [connection requestTargetList:[NSDictionary dictionaryWithObjectsAndKeys:demoCode, @"democode", self.userNameTf.text, @"userid", nil]
-                        withBlock:^(id responseData, NSString *token) {
-                            if (token != nil) {
-                                VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
-                                
-                                if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-                                    targetVC.userid = [NSString stringWithFormat:@"%@-%@",
-                                                       self.userNameTf.text,
-                                                       [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]
-                                                       ];
-                                    targetVC.token = token;
+    // clean usern name to create correct Veespo userID
+    NSString *veespoUserId;
+    
+    NSData *asciiEncoded = [self.userNameTf.text dataUsingEncoding:NSASCIIStringEncoding
+                                              allowLossyConversion:YES];
+    veespoUserId = [[NSString alloc] initWithData:asciiEncoded encoding:NSASCIIStringEncoding];
+    
+    if ([veespoUserId checkIdString]) {
+        veespoUserId = [veespoUserId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [connection requestTargetList:[NSDictionary dictionaryWithObjectsAndKeys:demoCode, @"democode", veespoUserId, @"userid", nil]
+                            withBlock:^(id responseData, NSString *token) {
+                                if (token != nil) {
+                                    VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
+                                    
+                                    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+                                        targetVC.userid = [NSString stringWithFormat:@"%@-%@",
+                                                           veespoUserId,
+                                                           [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]
+                                                           ];
+                                        targetVC.token = token;
+                                    } else {
+                                        targetVC.userid = [NSString stringWithFormat:@"%@-%@",
+                                                           veespoUserId,
+                                                           [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"]
+                                                           ];
+                                        targetVC.token = token;
+                                    }
+                                    targetVC.targetList = responseData[@"targets"];
+                                    targetVC.title = responseData[@"categoryname"];
+                                    
+                                    // Creo o aggiorno storico utente
+                                    
+                                    NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+                                    
+                                    if (history == nil) {
+                                        history = @{demoCode: @{demoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]}};
+                                        [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
+                                    } else {
+                                        NSMutableDictionary *tmp = [[NSMutableDictionary alloc] initWithDictionary:history];
+                                        [tmp setObject:@{demoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]} forKey:demoCode];
+                                        [[NSUserDefaults standardUserDefaults] setObject:tmp forKey:@"history"];
+                                    }
+                                    
+                                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                    [self.navigationController pushViewController:targetVC animated:YES];
                                 } else {
-                                    targetVC.userid = [NSString stringWithFormat:@"%@-%@",
-                                                       self.userNameTf.text,
-                                                       [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"]
-                                                       ];
-                                    targetVC.token = token;
+                                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[responseData objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                    [alert show];
                                 }
-                                targetVC.targetList = responseData[@"targets"];
-                                targetVC.title = responseData[@"categoryname"];
-                                
-                                // Creo o aggiorno storico utente
-                                
-                                NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
-                                
-                                if (history == nil) {
-                                    history = @{demoCode: @{demoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]}};
-                                    [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
-                                } else {
-                                    NSMutableDictionary *tmp = [[NSMutableDictionary alloc] initWithDictionary:history];
-                                    [tmp setObject:@{demoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]} forKey:demoCode];
-                                    [[NSUserDefaults standardUserDefaults] setObject:tmp forKey:@"history"];
-                                }
-                                
-                                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                                [self.navigationController pushViewController:targetVC animated:YES];
-                            } else {
-                                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[responseData objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                [alert show];
                             }
-                        }
-     ];
+         ];
+    }
+    else {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Name error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 
@@ -321,18 +340,10 @@ static NSString * const kVEDemoCode = @"krbk";
     } else if (textField == self.textFourTf) {
         self.textFourTf.text = string;
         [textField resignFirstResponder];
-        if (![self.userNameTf.text isEqualToString:@""] && (![self.textOneTf.text isEqualToString:@""] && ![self.textTwoTf.text isEqualToString:@""] && ![self.textThreeTf.text isEqualToString:@""] && ![self.textFourTf.text isEqualToString:@""])) {
-            
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            
-            NSString *demoCode = [[NSString stringWithFormat:@"%@%@%@%@", self.textOneTf.text, self.textTwoTf.text, self.textThreeTf.text, self.textFourTf.text] uppercaseString];
-            
-            [self getTargetsList:demoCode];
-            
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Fill Form", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        }
+        if ([self.userNameTf.text isEqualToString:@""] || ([self.textOneTf.text isEqualToString:@""] || [self.textTwoTf.text isEqualToString:@""] || [self.textThreeTf.text isEqualToString:@""] || [self.textFourTf.text isEqualToString:@""]))
+            self.logVeespoBtn.enabled = NO;
+        else
+            self.logVeespoBtn.enabled = YES;
     } else
         return YES;
     
@@ -350,18 +361,10 @@ static NSString * const kVEDemoCode = @"krbk";
         [self.textFourTf becomeFirstResponder];
     else {
         [theTextField resignFirstResponder];
-        if (![self.userNameTf.text isEqualToString:@""] && (![self.textOneTf.text isEqualToString:@""] && ![self.textTwoTf.text isEqualToString:@""] && ![self.textThreeTf.text isEqualToString:@""] && ![self.textFourTf.text isEqualToString:@""])) {
-            
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            
-            NSString *demoCode = [[NSString stringWithFormat:@"%@%@%@%@", self.textOneTf.text, self.textTwoTf.text, self.textThreeTf.text, self.textFourTf.text] uppercaseString];
-            
-            [self getTargetsList:demoCode];
-            
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Fill Form", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        }
+        if ([self.userNameTf.text isEqualToString:@""] || ([self.textOneTf.text isEqualToString:@""] || [self.textTwoTf.text isEqualToString:@""] || [self.textThreeTf.text isEqualToString:@""] || [self.textFourTf.text isEqualToString:@""]))
+            self.logVeespoBtn.enabled = NO;
+        else
+            self.logVeespoBtn.enabled = YES;
     }
     return YES;
 }

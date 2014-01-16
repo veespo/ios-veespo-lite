@@ -42,7 +42,7 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
     UIImageView *headerImageView;
     UILabel *newsTitleLbl;
     headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-1, -1, 322, 38)];
-    newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 18)];
+    newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 300, 18)];
     
     headerImageView.backgroundColor = [UIColor clearColor];
     headerImageView.image = [UIImage imageNamed:@"header_tabella.png"];
@@ -138,7 +138,12 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
 	
 	// Set up the cell
 	int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1];
-    cell.data.text = [[_dataSource objectAtIndex: storyIndex] objectForKey: @"date"];
+    
+    NSString *dateString = [[_dataSource objectAtIndex: storyIndex] objectForKey: @"date"];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"	" withString:@""];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"+0000" withString:@""];
+    cell.data.text = dateString;
     cell.events.text = [[_dataSource objectAtIndex:storyIndex] objectForKey:@"title"];
 	
 	return cell;

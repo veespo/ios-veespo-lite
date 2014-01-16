@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE01245118880E7500F015D4 /* NSString+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = BE01245018880E7500F015D4 /* NSString+Extra.m */; };
 		BE1ECBB917F1962C006CCD56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECBB817F1962C006CCD56 /* CoreLocation.framework */; };
 		BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECBBA17F19632006CCD56 /* MapKit.framework */; };
 		BE1ECC5E17F22DE9006CCD56 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */; };
@@ -107,6 +108,8 @@
 
 /* Begin PBXFileReference section */
 		BE010A96180AEF0E0012817F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BE01244F18880E7500F015D4 /* NSString+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extra.h"; sourceTree = "<group>"; };
+		BE01245018880E7500F015D4 /* NSString+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extra.m"; sourceTree = "<group>"; };
 		BE1ECBB817F1962C006CCD56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BE1ECBBA17F19632006CCD56 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -186,7 +189,6 @@
 		BEC63F6F183CC790001C82B6 /* Empty.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
 		BEC63F73183CC7BC001C82B6 /* UIControl+VEControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+VEControl.h"; sourceTree = "<group>"; };
 		BEC63F74183CC7BC001C82B6 /* UIControl+VEControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+VEControl.m"; sourceTree = "<group>"; };
-		BEC63F76183CC7BC001C82B6 /* Veespo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Veespo-Prefix.pch"; sourceTree = "<group>"; };
 		BEC63F79183CD00D001C82B6 /* Veespo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Veespo-Prefix.pch"; sourceTree = "<group>"; };
 		BEC63F7A183CD0B3001C82B6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Veespo-Info.plist"; sourceTree = "<group>"; };
@@ -285,6 +287,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE01244E18880E7500F015D4 /* NSString+Extra */ = {
+			isa = PBXGroup;
+			children = (
+				BE01244F18880E7500F015D4 /* NSString+Extra.h */,
+				BE01245018880E7500F015D4 /* NSString+Extra.m */,
+			);
+			path = "NSString+Extra";
+			sourceTree = "<group>";
+		};
 		BE2DF9171887EA12007B8EA5 /* VeespoFramework.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +474,7 @@
 		BEC63F71183CC7BC001C82B6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				BE01244E18880E7500F015D4 /* NSString+Extra */,
 				BE9DE1B9187573940011A443 /* TestFlightSDK2.0.2 */,
 				BEC63F72183CC7BC001C82B6 /* UIControl+VEControl */,
 			);
@@ -474,7 +486,6 @@
 			children = (
 				BEC63F73183CC7BC001C82B6 /* UIControl+VEControl.h */,
 				BEC63F74183CC7BC001C82B6 /* UIControl+VEControl.m */,
-				BEC63F76183CC7BC001C82B6 /* Veespo-Prefix.pch */,
 			);
 			path = "UIControl+VEControl";
 			sourceTree = "<group>";
@@ -795,6 +806,7 @@
 				BEC63F7C183CD0B3001C82B6 /* main.m in Sources */,
 				BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */,
 				BEE64C7E1859C7C900539E8A /* MBProgressHUD.m in Sources */,
+				BE01245118880E7500F015D4 /* NSString+Extra.m in Sources */,
 				BEE64C791859C77D00539E8A /* GHRevealViewController.m in Sources */,
 				BE48372218771AEB008EC351 /* JBLineChartView.m in Sources */,
 				BE48371818771A2D008EC351 /* VEChartViewController.m in Sources */,

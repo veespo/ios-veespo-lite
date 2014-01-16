@@ -18,7 +18,7 @@ NSString const *kSidebarCellImageKey = @"CellImage";
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        bgView.backgroundColor = UIColorFromHex(0x1D7800);
+        bgView.backgroundColor = [UIColor whiteColor];
         
         topSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 42, 320, 1)];
         topSeparator.backgroundColor = [UIColor clearColor];
@@ -26,12 +26,12 @@ NSString const *kSidebarCellImageKey = @"CellImage";
         bottomSeparator.backgroundColor = UIColorFromHex(0xBABABA);
         
         self.title = [[UILabel alloc] initWithFrame:CGRectMake(46, 12, 251, 21)];
-        self.title.textColor = [UIColor whiteColor];
+        self.title.textColor = UIColorFromHex(0x231F20);
         self.title.backgroundColor = [UIColor clearColor];
         self.title.font = [UIFont fontWithName:@"Avenir" size:17];
         
         self.iconImage = [[UIImageView alloc] init];
-        self.iconImage.frame = CGRectMake(8, 7, 30, 30);
+        self.iconImage.frame = CGRectMake(5.5, 9.5, 25, 25);
 
         [self.contentView addSubview:bgView];
         [self.contentView addSubview:topSeparator];
