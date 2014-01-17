@@ -62,12 +62,13 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag_white.png"]
                                                                                   style:UIBarButtonItemStylePlain
                                                                                  target:self
                                                                                  action:@selector(openVenuesRatedView)
                                                   ];
     } else {
+        /*
         UIBarButtonItem *ratedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
                                                                         style:UIBarButtonItemStylePlain
                                                                        target:self
@@ -81,7 +82,12 @@
                                         ];
         
         self.navigationItem.rightBarButtonItems = @[ratedButton, chartButton];
-        
+         */
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
+                                                                                  style:UIBarButtonItemStylePlain
+                                                                                 target:self
+                                                                                 action:@selector(openVenuesRatedView)
+                                                  ];
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     }
     
@@ -106,6 +112,8 @@
         self.navigationItem.rightBarButtonItem.enabled = YES;
         self.veespoButton.enabled = YES;
     }
+    
+    [Flurry logEvent:@"Detail Venue View"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -134,6 +142,8 @@
     chartViewController.tagsArray = avgTargetsList;
     
     [self.navigationController pushViewController:chartViewController animated:YES];
+    
+    [Flurry logEvent:@"Open Chart"];
 }
 
 - (void)loadAverageVotes
@@ -189,6 +199,7 @@
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
         [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
+        [Flurry logEvent:[NSString stringWithFormat:@"Venue Detail: Veespo clodes with status %@", data]];
         [self dismissViewControllerAnimated:YES completion:^{
             [self loadAverageVotes];
         }];

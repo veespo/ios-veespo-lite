@@ -51,6 +51,11 @@
     self.tableView.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [Flurry logEvent:@"Target List View"];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -152,6 +157,7 @@
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
         [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
+        [Flurry logEvent:[NSString stringWithFormat:@"Target: Veespo clodes with status %@", data]];
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     

@@ -92,6 +92,8 @@
         }];
         [operation start];
     }
+    
+    [Flurry logEvent:@"Sport News View"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -158,7 +160,7 @@
     [wvc setLocal_id:[NSString stringWithFormat:@"ESPN_SERIEA_%@",[[_dataSource objectAtIndex:indexPath.row] valueForKey:@"id"]]];
     [wvc setToken:[appDelegate.tokens objectForKey:@"news"]];
     [self.navigationController pushViewController:wvc animated:YES];
-
+    [Flurry logEvent:@"Open News Detail"];
 }
 
 

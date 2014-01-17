@@ -48,21 +48,26 @@ static int const maxLocationUpdate = 1;
     
     locationUpdateCnt = 0;
     
+    UIBarButtonItem *venuesRatedButton;
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         self.navigationController.navigationBar.tintColor = UIColorFromHex(0x221E1F);
+        venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag_white.png"]
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(openVenuesRatedView)
+                                              ];
     } else {
         self.navigationController.navigationBar.translucent = NO;
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
         self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x221E1F);
         self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]};
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(openVenuesRatedView)
+                                              ];
     }
-    
-    UIBarButtonItem *venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
-                                                                          style:UIBarButtonItemStylePlain
-                                                                         target:self
-                                                                         action:@selector(openVenuesRatedView)
-                                          ];
     
     self.navigationItem.rightBarButtonItem = venuesRatedButton;
     
@@ -109,6 +114,8 @@ static int const maxLocationUpdate = 1;
         self.navigationItem.rightBarButtonItem.enabled = NO;
     else
         self.navigationItem.rightBarButtonItem.enabled = YES;
+    
+    [Flurry logEvent:@"Venues View"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

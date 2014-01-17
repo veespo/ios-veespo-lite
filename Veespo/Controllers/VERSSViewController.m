@@ -91,6 +91,8 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
             [rssParser parseXMLFileAtURL:feed];
         });
     }
+    
+    [Flurry logEvent:@"Tech News"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -186,9 +188,7 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
          [wvc setHeadline:title];
          [self.navigationController pushViewController:wvc animated:YES];
      }];
-    
-    
-    
+    [Flurry logEvent:@"Open News Detail"];
 }
 
 

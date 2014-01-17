@@ -18,6 +18,7 @@
 #import "Foursquare2.h"
 #import "VEHomeViewController.h"
 
+
 #import <AdSupport/AdSupport.h>
 
 static NSString * const kVEFoursquareKey = @"Foursquare key";
@@ -25,6 +26,7 @@ static NSString * const kVEFoursquareSecret = @"Foursquare secret";
 static NSString * const kVETestFlightKey = @"TestFlight Key";
 static NSString * const kVEKeysFileName = @"Veespo-Keys";
 static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
+static NSString * const kVEFlurryApiKey = @"Flurry Key";
 
 #pragma mark - Private Interface
 @implementation VEAppDelegate
@@ -158,6 +160,8 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
     [self setUpFoursquare:keys];
 
+    [Flurry setCrashReportingEnabled:YES];
+    [Flurry startSession:keys[kVEFlurryApiKey]];
 #ifdef TESTFLIGHT
     [TestFlight takeOff:keys[kVETestFlightKey]];
 #endif
