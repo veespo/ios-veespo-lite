@@ -12,6 +12,8 @@ With veespo-app you can:
 - rate venues and places nearby and see what other people think. 
 - give feedback on the last tech and soccer news
 
+You can find the application on [AppStore](https://itunes.apple.com/nz/app/veespo-lite/id785507111?mt=8).
+
 ## How to use
 
 This project show only the code to implement and use Veespo Framework, the framework isn't present in the prokect. To have it, you can contat me at info@veespo.com
