@@ -96,8 +96,8 @@
                             ];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__, data]];
-        [Flurry logEvent:[NSString stringWithFormat:@"News Detail: Veespo clodes with status %@", data]];
+//        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__, data]];
+//        [Flurry logEvent:[NSString stringWithFormat:@"News Detail: Veespo clodes with status %@", data]];
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     

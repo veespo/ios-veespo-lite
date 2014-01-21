@@ -21,5 +21,18 @@
 @property (nonatomic, weak) IBOutlet UITableView *avgTableView;
 @property (nonatomic, weak) IBOutlet UILabel *averageLabel;
 @property (nonatomic, weak) IBOutlet UILabel *headerTableView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *uimageViewHeightConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableViewYConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableViewConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *firstShadowYConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *secondShadowYConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *headerTableYConstraint;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *nameLabelYConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *adressLabelYConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *avrgLabelYConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *baseLabelYConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *labelHeaderYConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *veespoButtonYConstraint;
 
 @end

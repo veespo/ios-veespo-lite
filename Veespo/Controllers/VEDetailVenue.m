@@ -113,7 +113,7 @@
         self.veespoButton.enabled = YES;
     }
     
-    [Flurry logEvent:@"Detail Venue View"];
+//    [Flurry logEvent:@"Detail Venue View"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,6 +125,23 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+- (void)updateViewConstraints {
+    [super updateViewConstraints];
+    self.uimageViewHeightConstraint.constant =
+    [UIScreen mainScreen].bounds.size.height > 480.0f ? 205 : 165;
+    self.firstShadowYConstraint.constant = [UIScreen mainScreen].bounds.size.height > 480.0f ? 95 : 55;
+    self.secondShadowYConstraint.constant = [UIScreen mainScreen].bounds.size.height > 480.0f ? 149 : 109;
+    self.tableViewConstraint.constant = [UIScreen mainScreen].bounds.size.height > 480.0f ? 231 : 191;
+    self.tableViewYConstraint.constant = [UIScreen mainScreen].bounds.size.height > 480.0f ? 271 : 231;
+    self.headerTableYConstraint.constant = [UIScreen mainScreen].bounds.size.height > 480.0f ? 203 : 163;
+    self.nameLabelYConstraint.constant = [UIScreen mainScreen].bounds.size.height > 480.0f ? 103 : 63;
+    self.adressLabelYConstraint.constant = [UIScreen mainScreen].bounds.size.height > 480.0f ? 127 : 87;
+    self.avrgLabelYConstraint.constant = [UIScreen mainScreen].bounds.size.height > 480.0f ? 106 : 66;
+    self.baseLabelYConstraint.constant = [UIScreen mainScreen].bounds.size.height > 480.0f ? 118 : 78;
+    self.veespoButtonYConstraint.constant = [UIScreen mainScreen].bounds.size.height > 480.0f ? 161 : 121;
+    self.labelHeaderYConstraint.constant = [UIScreen mainScreen].bounds.size.height > 480.0f ? 211 : 171;
 }
 
 #pragma mark - Veespo
@@ -143,7 +160,7 @@
     
     [self.navigationController pushViewController:chartViewController animated:YES];
     
-    [Flurry logEvent:@"Open Chart"];
+//    [Flurry logEvent:@"Open Chart"];
 }
 
 - (void)loadAverageVotes
@@ -198,8 +215,8 @@
                             ];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
-        [Flurry logEvent:[NSString stringWithFormat:@"Venue Detail: Veespo clodes with status %@", data]];
+//        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
+//        [Flurry logEvent:[NSString stringWithFormat:@"Venue Detail: Veespo clodes with status %@", data]];
         [self dismissViewControllerAnimated:YES completion:^{
             [self loadAverageVotes];
         }];
