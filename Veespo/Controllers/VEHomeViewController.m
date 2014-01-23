@@ -159,18 +159,13 @@ static NSString * const kVEDemoCode = @"krbk";
 {
     [super viewDidAppear:animated];
     
-    self.textOneTf.text = @"";
-    self.textTwoTf.text = @"";
-    self.textThreeTf.text = @"";
-    self.textFourTf.text = @"";
+    [self enabledVeespoButton];
     
     _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
     if (_history)
         [self.historyDemoCodeBtn setTitle:NSLocalizedString(@"Categories voted", nil) forState:UIControlStateNormal];
     else
         [self.historyDemoCodeBtn setTitle:NSLocalizedString(@"No Demo", nil) forState:UIControlStateNormal];
-    
-    self.logVeespoBtn.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -258,6 +253,13 @@ static NSString * const kVEDemoCode = @"krbk";
 }
 
 #pragma mark - Veespo
+- (void)enabledVeespoButton
+{
+    if ([self.userNameTf.text isEqualToString:@""] || ([self.textOneTf.text isEqualToString:@""] || [self.textTwoTf.text isEqualToString:@""] || [self.textThreeTf.text isEqualToString:@""] || [self.textFourTf.text isEqualToString:@""]))
+        self.logVeespoBtn.enabled = NO;
+    else
+        self.logVeespoBtn.enabled = YES;
+}
 
 - (void)getTargetsList:(NSString *)demoCode
 {
@@ -342,10 +344,9 @@ static NSString * const kVEDemoCode = @"krbk";
     } else if (textField == self.textFourTf) {
         self.textFourTf.text = string;
         [textField resignFirstResponder];
-        if ([self.userNameTf.text isEqualToString:@""] || ([self.textOneTf.text isEqualToString:@""] || [self.textTwoTf.text isEqualToString:@""] || [self.textThreeTf.text isEqualToString:@""] || [self.textFourTf.text isEqualToString:@""]))
-            self.logVeespoBtn.enabled = NO;
-        else
-            self.logVeespoBtn.enabled = YES;
+        
+        [self enabledVeespoButton];
+        
     } else
         return YES;
     
@@ -363,10 +364,8 @@ static NSString * const kVEDemoCode = @"krbk";
         [self.textFourTf becomeFirstResponder];
     else {
         [theTextField resignFirstResponder];
-        if ([self.userNameTf.text isEqualToString:@""] || ([self.textOneTf.text isEqualToString:@""] || [self.textTwoTf.text isEqualToString:@""] || [self.textThreeTf.text isEqualToString:@""] || [self.textFourTf.text isEqualToString:@""]))
-            self.logVeespoBtn.enabled = NO;
-        else
-            self.logVeespoBtn.enabled = YES;
+        
+        [self enabledVeespoButton];
     }
     return YES;
 }
@@ -382,10 +381,8 @@ static NSString * const kVEDemoCode = @"krbk";
     for (UIView * txt in self.view.subviews){
         if ([txt isKindOfClass:[UITextField class]]) {
             [txt resignFirstResponder];
-            if ([self.userNameTf.text isEqualToString:@""] || ([self.textOneTf.text isEqualToString:@""] || [self.textTwoTf.text isEqualToString:@""] || [self.textThreeTf.text isEqualToString:@""] || [self.textFourTf.text isEqualToString:@""]))
-                self.logVeespoBtn.enabled = NO;
-            else
-                self.logVeespoBtn.enabled = YES;
+            
+            [self enabledVeespoButton];
         }
     }
 }
@@ -414,10 +411,8 @@ static NSString * const kVEDemoCode = @"krbk";
             break;
         }
     }
-    if ([self.userNameTf.text isEqualToString:@""] || ([self.textOneTf.text isEqualToString:@""] || [self.textTwoTf.text isEqualToString:@""] || [self.textThreeTf.text isEqualToString:@""] || [self.textFourTf.text isEqualToString:@""]))
-        self.logVeespoBtn.enabled = NO;
-    else
-        self.logVeespoBtn.enabled = YES;
+    
+    [self enabledVeespoButton];
 }
 
 
