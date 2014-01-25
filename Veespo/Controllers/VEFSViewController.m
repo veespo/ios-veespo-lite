@@ -115,7 +115,7 @@ static int const maxLocationUpdate = 1;
     else
         self.navigationItem.rightBarButtonItem.enabled = YES;
     
-//    [Flurry logEvent:@"Venues View"];
+    [Flurry logEvent:@"Venues View"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

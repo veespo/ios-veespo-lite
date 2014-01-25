@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE01245118880E7500F015D4 /* NSString+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = BE01245018880E7500F015D4 /* NSString+Extra.m */; };
+		BE082A291894010D0015AD41 /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE082A281894010D0015AD41 /* libFlurry_4.3.1.a */; };
 		BE1ECBB917F1962C006CCD56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECBB817F1962C006CCD56 /* CoreLocation.framework */; };
 		BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECBBA17F19632006CCD56 /* MapKit.framework */; };
 		BE1ECC5E17F22DE9006CCD56 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */; };
@@ -107,6 +108,8 @@
 		BE010A96180AEF0E0012817F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE01244F18880E7500F015D4 /* NSString+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extra.h"; sourceTree = "<group>"; };
 		BE01245018880E7500F015D4 /* NSString+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extra.m"; sourceTree = "<group>"; };
+		BE082A271894010D0015AD41 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		BE082A281894010D0015AD41 /* libFlurry_4.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.1.a; sourceTree = "<group>"; };
 		BE1ECBB817F1962C006CCD56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BE1ECBBA17F19632006CCD56 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -257,6 +260,7 @@
 				BE1ECC6017F22DF8006CCD56 /* MobileCoreServices.framework in Frameworks */,
 				BE1ECC5E17F22DE9006CCD56 /* SystemConfiguration.framework in Frameworks */,
 				BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */,
+				BE082A291894010D0015AD41 /* libFlurry_4.3.1.a in Frameworks */,
 				BE1ECBB917F1962C006CCD56 /* CoreLocation.framework in Frameworks */,
 				BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */,
 				BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */,
@@ -284,6 +288,15 @@
 				BE01245018880E7500F015D4 /* NSString+Extra.m */,
 			);
 			path = "NSString+Extra";
+			sourceTree = "<group>";
+		};
+		BE082A261894010D0015AD41 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				BE082A271894010D0015AD41 /* Flurry.h */,
+				BE082A281894010D0015AD41 /* libFlurry_4.3.1.a */,
+			);
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 		BE48371918771AEB008EC351 /* JawboneChartView */ = {
@@ -451,6 +464,7 @@
 		BEC63F71183CC7BC001C82B6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				BE082A261894010D0015AD41 /* Flurry */,
 				BE01244E18880E7500F015D4 /* NSString+Extra */,
 				BEC63F72183CC7BC001C82B6 /* UIControl+VEControl */,
 			);
@@ -970,6 +984,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					/Users/darth/Dropbox/veespo/Veespo/Veespo/Tools/TestFlightSDK2.0.2,
 					/Users/darth/Dropbox/veespo/Veespo/Flurry,
+					/Users/darth/Dropbox/veespo/Veespo/Veespo/Tools/Flurry,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME) Lite";
 				PROVISIONING_PROFILE = "";
@@ -991,7 +1006,7 @@
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
 				INFOPLIST_FILE = "Veespo/Veespo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /Users/darth/Dropbox/veespo/Veespo/Veespo/Tools/Flurry;
 				PRODUCT_NAME = "$(TARGET_NAME) Lite";
 				PROVISIONING_PROFILE = "C41C6637-6F6B-4741-9AED-C5B722290897";
 				VALID_ARCHS = "armv7 armv7s";

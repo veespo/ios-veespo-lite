@@ -160,8 +160,8 @@ static NSString * const kVEFlurryApiKey = @"Flurry Key";
     NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
     [self setUpFoursquare:keys];
 
-//    [Flurry setCrashReportingEnabled:YES];
-//    [Flurry startSession:keys[kVEFlurryApiKey]];
+    [Flurry setCrashReportingEnabled:YES];
+    [Flurry startSession:keys[kVEFlurryApiKey]];
 #ifdef TESTFLIGHT
     [TestFlight takeOff:keys[kVETestFlightKey]];
 #endif
