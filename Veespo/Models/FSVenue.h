@@ -30,5 +30,8 @@
 @property (nonatomic,strong) NSURL *imageURL;
 @property (nonatomic,strong) NSString *categoryId;
 @property (nonatomic,strong) UIImage *categoryImage;
+@property (nonatomic,strong) NSString *city;
+@property (nonatomic,strong) NSString *postalCode;
+@property (nonatomic,strong) NSString *country;
 
 @end

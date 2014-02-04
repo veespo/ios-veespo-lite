@@ -217,6 +217,12 @@
                             targetInfo:d
                             withQuestion:[NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), self.venue.name]
                             detailsView:nil
+                            key1:self.venue.category
+                            key2:self.venue.country
+                            key3:self.venue.city
+                            key4:self.venue.postalCode
+                            key5:nil
+                            version:nil
                             ];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
