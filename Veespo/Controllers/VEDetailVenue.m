@@ -11,6 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "VEConnection.h"
 #import "VERatedVenuesViewController.h"
+#import "VERatedVenuesForTagViewController.h"
 #import "VEChartViewController.h"
 #import "MBProgressHUD.h"
 #import "VEDataChart.h"
@@ -61,6 +62,7 @@
 	
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
+    /*
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag_white.png"]
                                                                                   style:UIBarButtonItemStylePlain
@@ -68,7 +70,7 @@
                                                                                  action:@selector(openVenuesRatedView)
                                                   ];
     } else {
-        /*
+        
         UIBarButtonItem *ratedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
                                                                         style:UIBarButtonItemStylePlain
                                                                        target:self
@@ -82,14 +84,16 @@
                                         ];
         
         self.navigationItem.rightBarButtonItems = @[ratedButton, chartButton];
-         */
+         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
                                                                                   style:UIBarButtonItemStylePlain
                                                                                  target:self
                                                                                  action:@selector(openVenuesRatedView)
                                                   ];
+        
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     }
+    */
     
     [self.veespoButton setImage:[UIImage imageNamed:NSLocalizedString(@"Veespo Button", nil)] forState:UIControlStateNormal];
     
@@ -282,13 +286,14 @@
 //}
 
 - (UITableViewCell *) getCellContentView:(NSString *)cellIdentifier {
-    CGRect labelFrame = CGRectMake(10, 5, 240, 34);
-    CGRect imageFrame = CGRectMake(250, 18.5, 57, 7);
+    CGRect labelFrame = CGRectMake(10, 5, 235, 34);
+    CGRect imageFrame = CGRectMake(240, 18.5, 57, 7);
 	
 	UILabel *title;
     UIImageView *rateImage;
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     cell.backgroundView = nil;
     cell.backgroundColor = [UIColor whiteColor];
@@ -332,6 +337,23 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = (indexPath.row % 2 == 0) ? UIColorFromHex(0xFFFFFF) : UIColorFromHex(0xF1F1F2);
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *dict = [avgTargetsList objectAtIndex:indexPath.row];
+    
+    VERatedVenuesForTagViewController *newViewController = [[VERatedVenuesForTagViewController alloc] initWithStyle:UITableViewStylePlain category:@"cibi" tagId:dict[@"tag"] tagName:dict[@"name"] token:_token];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    }
+    
+    [self.navigationController pushViewController:newViewController animated:YES];
 }
 
 @end

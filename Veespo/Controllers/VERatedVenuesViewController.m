@@ -196,20 +196,27 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    
+    // Reqeust to Foursquare info about target
     [Foursquare2 getDetailForVenue:[targetsList objectAtIndex:indexPath.row][@"target"] callback:^(BOOL success, id result) {
-        NSDictionary *dict = [result valueForKeyPath:@"response.venue"];
-        FSConverter *converter = [[FSConverter alloc] init];
-        
-        VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        VEDetailVenue *detail = [[VEDetailVenue alloc] initWithNibName:@"VEDetailVenue" bundle:nil];
-        detail.venue = [converter converterToObject:dict];
-        
-        detail.token = [appDelegate.tokens objectForKey:@"cibi"];
-        
-        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
-        
-        [self.navigationController pushViewController:detail animated:YES];
+        if (success) {
+            NSDictionary *dict = [result valueForKeyPath:@"response.venue"];
+            FSConverter *converter = [[FSConverter alloc] init];
+            
+            VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            VEDetailVenue *detail = [[VEDetailVenue alloc] initWithNibName:@"VEDetailVenue" bundle:nil];
+            detail.venue = [converter converterToObject:dict];
+            
+            detail.token = [appDelegate.tokens objectForKey:@"cibi"];
+            
+            [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+            
+            [self.navigationController pushViewController:detail animated:YES];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Network error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
     }];
 }
 

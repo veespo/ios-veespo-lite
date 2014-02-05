@@ -32,7 +32,7 @@
             __block NSString *catId = JSON[@"data"][@"category"];
             AFJSONRequestOperation *boperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:brequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                 // Richiesta target
-                [self getTarget:catId userToken:JSON[@"data"][@"reply"] withBlock:^(id responseData) {
+                [self getTargets:catId userToken:JSON[@"data"][@"reply"] withBlock:^(id responseData) {
                     __block NSMutableDictionary *targets = [NSMutableDictionary dictionaryWithObjectsAndKeys:catId, @"category",  responseData[@"data"], @"targets", nil];
                     NSString *token = JSON[@"data"][@"reply"];
                     // Richiesta nome categoria
@@ -121,7 +121,7 @@
 - (void)getCategoryInfo:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block
 {
 #warning STATIC URL
-    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/info/category/%@/?token=%@", catId, uTk];
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/info/category/%@?token=%@", catId, uTk];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
@@ -136,9 +136,42 @@
     [operation start];
 }
 
+- (void)requestAvgTargetsForTag:(NSString *)tag withCategory:(NSString *)category withToken:(NSString *)token blockResult:(void(^)(id result))block
+{
+#warning STATIC URL
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/average/category/%@/tag/%@?token=%@", category, tag, token];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    [request setTimeoutInterval:10];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSDictionary *data = JSON[@"data"][@"averages"];
+        NSArray *targetsList = [NSArray array];
+        NSMutableArray *list = [NSMutableArray array];
+        
+        NSArray *keys = data[@"avgS"];
+        for (id key in keys) {
+            [list addObject:@{@"target": key, @"avg": data[@"avgS"][key]}];
+        }
+        
+        targetsList = [list sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            NSNumber *avg1 = [NSNumber numberWithFloat:[obj1[@"avg"] floatValue]];
+            NSNumber *avg2 = [NSNumber numberWithFloat:[obj2[@"avg"] floatValue]];
+            return [avg2 compare:avg1];
+        }];
+        
+        block(targetsList);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"]);
+    }];
+    
+    [operation start];
+}
+
 #pragma mark - Private
 
-- (void)getTarget:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block
+- (void)getTargets:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block
 {
 #warning STATIC URL
     NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/info/category/%@/targets?token=%@", catId, uTk];
