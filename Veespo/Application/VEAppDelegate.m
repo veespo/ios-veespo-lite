@@ -18,9 +18,6 @@
 #import "Foursquare2.h"
 #import "VEHomeViewController.h"
 
-
-#import <AdSupport/AdSupport.h>
-
 static NSString * const kVEFoursquareKey = @"Foursquare key";
 static NSString * const kVEFoursquareSecret = @"Foursquare secret";
 static NSString * const kVETestFlightKey = @"TestFlight Key";
@@ -36,20 +33,16 @@ static NSString * const kVEFlurryApiKey = @"Flurry Key";
 {
     [self setUpApi];
     
-    NSString *dateKey = @"Data Key";
-    NSDate *lastRead = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:dateKey];
-    if (!lastRead) {
-        NSDictionary *appDefaults  = [NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], dateKey, nil];
-        // sync the defaults to disk
-        [NSUserDefaults resetStandardUserDefaults];
-        [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    NSString *UUID = [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"];
+    if (!UUID) {
+        CFUUIDRef uuid = CFUUIDCreate(NULL);
+        UUID = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
+        CFRelease(uuid);
+        
+        [[NSUserDefaults standardUserDefaults] setObject:UUID forKey:@"uuid"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-            [[NSUserDefaults standardUserDefaults] setObject:[VEAppDelegate uuid] forKey:@"uuid"];
-        }
     }
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:dateKey];
-    
+        
     // Check old history version
     NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
     if (history) {
@@ -187,11 +180,7 @@ static NSString * const kVEFlurryApiKey = @"Flurry Key";
                                  };
     NSString *userId = nil;
     
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
-    } else {
-        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]];
-    }
+    userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
     
     [Veespo initVeespo:keys[kVEVeespoApiKey]
                 userId:userId

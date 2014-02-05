@@ -14,8 +14,6 @@
 #import "MBProgressHUD.h"
 #import "NSString+Extra.h"
 
-#import <AdSupport/AdSupport.h>
-
 #define DEMOCODETEXT_ISO7 44.0
 #define DEMOCODETEXT_IOS6 30.0
 
@@ -279,19 +277,12 @@ static NSString * const kVEDemoCode = @"krbk";
                                 if (token != nil) {
                                     VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
                                     
-                                    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-                                        targetVC.userid = [NSString stringWithFormat:@"%@-%@",
-                                                           veespoUserId,
-                                                           [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]
-                                                           ];
-                                        targetVC.token = token;
-                                    } else {
-                                        targetVC.userid = [NSString stringWithFormat:@"%@-%@",
-                                                           veespoUserId,
-                                                           [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"]
-                                                           ];
-                                        targetVC.token = token;
-                                    }
+                                    targetVC.userid = [NSString stringWithFormat:@"%@-%@",
+                                                       veespoUserId,
+                                                       [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"]
+                                                       ];
+                                    targetVC.token = token;
+                                    
                                     targetVC.targetList = responseData[@"targets"];
                                     targetVC.title = responseData[@"categoryname"];
                                     

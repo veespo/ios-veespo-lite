@@ -13,8 +13,6 @@
 #import "FSConverter.h"
 #import "MBProgressHUD.h"
 
-#import <AdSupport/AdSupport.h>
-
 @interface VERatedVenuesViewController () {
     NSArray *targetsList;
 }
@@ -48,11 +46,7 @@
     VEConnection *connection = [[VEConnection alloc] init];
     NSString *userId = nil;
     
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
-    } else {
-        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]];
-    }
+    userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
     
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
