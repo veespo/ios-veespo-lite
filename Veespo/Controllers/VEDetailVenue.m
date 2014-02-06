@@ -117,7 +117,7 @@
         self.veespoButton.enabled = YES;
     }
     
-    [Flurry logEvent:@"Detail Venue View"];
+//    [Flurry logEvent:@"Detail Venue View"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -164,7 +164,7 @@
     
     [self.navigationController pushViewController:chartViewController animated:YES];
     
-    [Flurry logEvent:@"Open Chart"];
+//    [Flurry logEvent:@"Open Chart"];
 }
 
 - (void)loadAverageVotes
@@ -231,7 +231,7 @@
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
 //        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
-        [Flurry logEvent:[NSString stringWithFormat:@"Venue Detail: Veespo clodes with status %@", data]];
+//        [Flurry logEvent:[NSString stringWithFormat:@"Venue Detail: Veespo clodes with status %@", data]];
         [self dismissViewControllerAnimated:YES completion:^{
             [self loadAverageVotes];
         }];

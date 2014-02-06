@@ -136,7 +136,7 @@ static NSString * const kVEDemoCode = @"krbk";
         self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x231F20);
     }
     
-    [Flurry logEvent:@"Home View"];
+//    [Flurry logEvent:@"Home View"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

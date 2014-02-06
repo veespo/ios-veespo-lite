@@ -16,7 +16,7 @@
 #import <Foundation/Foundation.h>
 #import "VEAppDelegate.h"
 //#import "TestFlight.h"
-#import "Flurry.h"
+//#import "Flurry.h"
 
 #define VEESPO
 //#define TESTFLIGHT
