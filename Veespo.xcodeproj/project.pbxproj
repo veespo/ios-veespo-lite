@@ -20,10 +20,10 @@
 		BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE644B20183D6D7A007AEE9F /* Localizable.strings */; };
 		BE644B24183D7C2B007AEE9F /* Veespo-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE644B23183D7C2B007AEE9F /* Veespo-Keys.plist */; };
 		BE7516EE1818192500C2717B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7516ED1818192500C2717B /* AdSupport.framework */; };
-		BE926DE618A2B09E003E8FEF /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE926DE218A2B09E003E8FEF /* Resources.bundle */; };
-		BE926DE718A2B09E003E8FEF /* VEECountly.mom in Resources */ = {isa = PBXBuildFile; fileRef = BE926DE318A2B09E003E8FEF /* VEECountly.mom */; };
-		BE926DE818A2B09E003E8FEF /* VEEFPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE926DE418A2B09E003E8FEF /* VEEFPropertyList.plist */; };
-		BE926DE918A2B09E003E8FEF /* VeespoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE926DE518A2B09E003E8FEF /* VeespoFramework.framework */; };
+		BE9446FB18ABB592009DFFF7 /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE9446F718ABB592009DFFF7 /* Resources.bundle */; };
+		BE9446FC18ABB592009DFFF7 /* VEECountly.mom in Resources */ = {isa = PBXBuildFile; fileRef = BE9446F818ABB592009DFFF7 /* VEECountly.mom */; };
+		BE9446FD18ABB592009DFFF7 /* VEEFPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE9446F918ABB592009DFFF7 /* VEEFPropertyList.plist */; };
+		BE9446FE18ABB592009DFFF7 /* VeespoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9446FA18ABB592009DFFF7 /* VeespoFramework.framework */; };
 		BE9800F4183F814D000900CC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9800F3183F814D000900CC /* libz.dylib */; };
 		BEABDE6718805C8300079EC5 /* VEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEABDE6518805C8300079EC5 /* VEHomeViewController.m */; };
 		BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEABDE6618805C8300079EC5 /* VEHomeViewController.xib */; };
@@ -131,10 +131,10 @@
 		BE644B22183D6D89007AEE9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BE644B23183D7C2B007AEE9F /* Veespo-Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Veespo-Keys.plist"; path = "Supporting Files/Veespo-Keys.plist"; sourceTree = "<group>"; };
 		BE7516ED1818192500C2717B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		BE926DE218A2B09E003E8FEF /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
-		BE926DE318A2B09E003E8FEF /* VEECountly.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = VEECountly.mom; sourceTree = "<group>"; };
-		BE926DE418A2B09E003E8FEF /* VEEFPropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = VEEFPropertyList.plist; sourceTree = "<group>"; };
-		BE926DE518A2B09E003E8FEF /* VeespoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VeespoFramework.framework; sourceTree = "<group>"; };
+		BE9446F718ABB592009DFFF7 /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
+		BE9446F818ABB592009DFFF7 /* VEECountly.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = VEECountly.mom; sourceTree = "<group>"; };
+		BE9446F918ABB592009DFFF7 /* VEEFPropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = VEEFPropertyList.plist; sourceTree = "<group>"; };
+		BE9446FA18ABB592009DFFF7 /* VeespoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VeespoFramework.framework; sourceTree = "<group>"; };
 		BE9800F3183F814D000900CC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BEABDE6418805C8300079EC5 /* VEHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEHomeViewController.h; sourceTree = "<group>"; };
 		BEABDE6518805C8300079EC5 /* VEHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEHomeViewController.m; sourceTree = "<group>"; };
@@ -262,12 +262,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE926DE918A2B09E003E8FEF /* VeespoFramework.framework in Frameworks */,
 				BED167A218991AB60083B3B5 /* CoreData.framework in Frameworks */,
 				BED167A018991A700083B3B5 /* CoreTelephony.framework in Frameworks */,
 				BE9800F4183F814D000900CC /* libz.dylib in Frameworks */,
 				BE7516EE1818192500C2717B /* AdSupport.framework in Frameworks */,
 				BE1ECC6017F22DF8006CCD56 /* MobileCoreServices.framework in Frameworks */,
+				BE9446FE18ABB592009DFFF7 /* VeespoFramework.framework in Frameworks */,
 				BE1ECC5E17F22DE9006CCD56 /* SystemConfiguration.framework in Frameworks */,
 				BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */,
 				BE1ECBB917F1962C006CCD56 /* CoreLocation.framework in Frameworks */,
@@ -322,21 +322,21 @@
 			path = PickerView;
 			sourceTree = "<group>";
 		};
-		BE926DE018A2B09E003E8FEF /* VeespoFramework.embeddedframework */ = {
+		BE9446F518ABB592009DFFF7 /* VeespoFramework.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
-				BE926DE118A2B09E003E8FEF /* Resources */,
-				BE926DE518A2B09E003E8FEF /* VeespoFramework.framework */,
+				BE9446F618ABB592009DFFF7 /* Resources */,
+				BE9446FA18ABB592009DFFF7 /* VeespoFramework.framework */,
 			);
 			path = VeespoFramework.embeddedframework;
 			sourceTree = "<group>";
 		};
-		BE926DE118A2B09E003E8FEF /* Resources */ = {
+		BE9446F618ABB592009DFFF7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BE926DE218A2B09E003E8FEF /* Resources.bundle */,
-				BE926DE318A2B09E003E8FEF /* VEECountly.mom */,
-				BE926DE418A2B09E003E8FEF /* VEEFPropertyList.plist */,
+				BE9446F718ABB592009DFFF7 /* Resources.bundle */,
+				BE9446F818ABB592009DFFF7 /* VEECountly.mom */,
+				BE9446F918ABB592009DFFF7 /* VEEFPropertyList.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -599,7 +599,7 @@
 		BEEB671517EC9A1A00F394E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BE926DE018A2B09E003E8FEF /* VeespoFramework.embeddedframework */,
+				BE9446F518ABB592009DFFF7 /* VeespoFramework.embeddedframework */,
 				BED167A118991AB60083B3B5 /* CoreData.framework */,
 				BED1679F18991A700083B3B5 /* CoreTelephony.framework */,
 				BE9800F3183F814D000900CC /* libz.dylib */,
@@ -752,13 +752,13 @@
 				BEC63F80183CD528001C82B6 /* Supporting Files in Resources */,
 				BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */,
 				BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */,
-				BE926DE818A2B09E003E8FEF /* VEEFPropertyList.plist in Resources */,
+				BE9446FD18ABB592009DFFF7 /* VEEFPropertyList.plist in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
-				BE926DE718A2B09E003E8FEF /* VEECountly.mom in Resources */,
+				BE9446FC18ABB592009DFFF7 /* VEECountly.mom in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
-				BE926DE618A2B09E003E8FEF /* Resources.bundle in Resources */,
+				BE9446FB18ABB592009DFFF7 /* Resources.bundle in Resources */,
 				BE644B24183D7C2B007AEE9F /* Veespo-Keys.plist in Resources */,
 				BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */,
 				BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */,
