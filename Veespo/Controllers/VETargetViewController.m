@@ -149,9 +149,15 @@
 {
 #ifdef VEESPO
     NSDictionary *dict = [target objectAtIndex:indexPath.row];
+    
+    NSDictionary *p = @{@"question": @{
+                                @"text": [NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), dict[@"desc1"]]
+                                }
+                        };
+    
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token
                                                                                                 target:dict[@"target"]
-                                                                                          withQuestion:[NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), dict[@"desc1"]]
+                                                                                          parameters:p
                                                                                            detailsView:nil
                                                     ];
     

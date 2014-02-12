@@ -85,15 +85,19 @@
     VEVeespoViewController *veespoViewController = nil;
     
     NSDictionary *d = @{
-                        @"local_id": self.local_id, @"desc1": self.headline, @"desc2": self.newsTitle, @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
+                        @"local_id": self.local_id,
+                        @"desc1": self.headline,
+                        @"desc2": self.newsTitle,
+                        @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
                         };
     
-    veespoViewController = [[VEVeespoViewController alloc]
-                            initWidgetWithToken:_token
-                            targetInfo:d
-                            withQuestion:[NSString stringWithFormat:NSLocalizedString(@"Veespo News Question", nil), self.headline]
-                            detailsView:nil
-                            ];
+    NSDictionary *p = @{@"question": @{
+                                @"text": [NSString stringWithFormat:NSLocalizedString(@"Veespo News Question", nil), self.headline],
+                                @"category": @"news"
+                            }
+                        };
+    
+    veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d parameters:p detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
 //        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__, data]];

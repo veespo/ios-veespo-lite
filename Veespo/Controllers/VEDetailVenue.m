@@ -216,10 +216,16 @@
                         @"local_id": self.venue.venueId, @"desc1": self.venue.name, @"desc2": desc2, @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
                         };
     
+    NSDictionary *p = @{@"question": @{
+                                @"text": [NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), self.venue.name],
+                                @"category": @"cibi"
+                                }
+                        };
+    
     veespoViewController = [[VEVeespoViewController alloc]
                             initWidgetWithToken:_token
                             targetInfo:d
-                            withQuestion:[NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), self.venue.name]
+                            parameters:p
                             detailsView:nil
                             key1:self.venue.category
                             key2:self.venue.country

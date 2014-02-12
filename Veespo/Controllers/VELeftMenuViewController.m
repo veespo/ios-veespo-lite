@@ -154,9 +154,15 @@
 {
 #ifdef VEESPO
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    NSDictionary *p = @{@"question": @{
+                                @"text": [NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), @"Veespo Lite"]
+                                }
+                        };
+    
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:[appDelegate.tokens objectForKey:@"veespo_lite_app"]
                                                                                                 target:@"veespo_lite_iOS"
-                                                                                          withQuestion:[NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), @"Veespo Lite"]
+                                                                                          parameters:p
                                                                                            detailsView:nil
                                                     ];
     
