@@ -47,6 +47,10 @@
         NSString *imageString = [NSString stringWithFormat:@"%@%@", prefix, dic[@"icon"][@"suffix"]];
         [ann setImageURL:[NSURL URLWithString:imageString]];
         
+        ann.country = v[@"location"][@"country"];
+        ann.city = v[@"location"][@"city"];
+        ann.postalCode = v[@"location"][@"postalCode"];
+        
         ann.categoryImage = [UIImage imageNamed:@"default_bg_44"];
         
         [objects addObject:ann];
@@ -76,6 +80,10 @@
         prefix = [NSString stringWithFormat:@"%@bg_44", dic[@"icon"][@"prefix"]];
     NSString *imageString = [NSString stringWithFormat:@"%@%@", prefix, dic[@"icon"][@"suffix"]];
     [ann setImageURL:[NSURL URLWithString:imageString]];
+    
+    ann.country = venue[@"location"][@"country"];
+    ann.city = venue[@"location"][@"city"];
+    ann.postalCode = venue[@"location"][@"postalCode"];
     
     ann.categoryImage = [UIImage imageNamed:@"default_bg_44"];
     

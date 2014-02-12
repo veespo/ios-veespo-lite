@@ -239,20 +239,12 @@ static NSString * const kVEDemoCode = @"krbk";
                         withBlock:^(id responseData, NSString *token) {
                             if (token != nil) {
                                 VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
+                                targetVC.userid = [NSString stringWithFormat:@"%@-%@",
+                                                   userNameTf.text,
+                                                   [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"]
+                                                   ];
+                                targetVC.token = token;
                                 
-                                if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-                                    targetVC.userid = [NSString stringWithFormat:@"%@-%@",
-                                                       userNameTf.text,
-                                                       [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]
-                                                       ];
-                                    targetVC.token = token;
-                                } else {
-                                    targetVC.userid = [NSString stringWithFormat:@"%@-%@",
-                                                       userNameTf.text,
-                                                       [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"]
-                                                       ];
-                                    targetVC.token = token;
-                                }
                                 targetVC.targetList = responseData[@"targets"];
                                 targetVC.title = responseData[@"categoryname"];
                                 

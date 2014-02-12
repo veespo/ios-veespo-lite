@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
 	
-    self.view.backgroundColor = UIColorFromHex(0xDBDBDB);
+    self.view.backgroundColor = UIColorFromHex(0x231F20);
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,12 +66,12 @@
 	UIView *headerView = nil;
 	if (headerText != [NSNull null]) {
 		headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.height, 21.0f)];
-        headerView.backgroundColor = UIColorFromHex(0xDBDBDB);
+        headerView.backgroundColor = UIColorFromHex(0x231F20);
 		
 		UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
 		textLabel.text = (NSString *) headerText;
 		textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:([UIFont systemFontSize] * 0.8f)];
-		textLabel.textColor = [UIColor colorWithRed:(125.0f/255.0f) green:(129.0f/255.0f) blue:(146.0f/255.0f) alpha:1.0f];
+		textLabel.textColor = [UIColor whiteColor];
 		textLabel.backgroundColor = [UIColor clearColor];
 		[headerView addSubview:textLabel];
 	}
@@ -90,7 +90,7 @@
         NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
 		textLabel.text = [NSString stringWithFormat:@"v.%@", version];
 		textLabel.font = [UIFont fontWithName:@"Avenir-Light" size:([UIFont systemFontSize] * 0.8f)];
-		textLabel.textColor = [UIColor whiteColor];
+		textLabel.textColor = UIColorFromHex(0x231F20);
 		textLabel.backgroundColor = [UIColor clearColor];
 		[footerView addSubview:textLabel];
 	}
@@ -124,7 +124,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 3 && indexPath.row == 1)
+    // fix to by pass standard menu logic and open the widget
+    if (indexPath.section == 3 && indexPath.row == 0)
         [self openVeespo];
     else {
         self.sidePanelController.centerPanel = _controllers[indexPath.section][indexPath.row];
@@ -142,7 +143,7 @@
 	_menuTableView.delegate = self;
 	_menuTableView.dataSource = self;
 	_menuTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-	_menuTableView.backgroundColor = UIColorFromHex(0x1D7800);
+	_menuTableView.backgroundColor = [UIColor whiteColor];
     _menuTableView.separatorColor = [UIColor clearColor];
 	_menuTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _menuTableView.scrollEnabled = NO;
@@ -153,14 +154,21 @@
 {
 #ifdef VEESPO
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    NSDictionary *p = @{@"question": @{
+                                @"text": [NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), @"Veespo Lite"]
+                                }
+                        };
+    
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:[appDelegate.tokens objectForKey:@"veespo_lite_app"]
                                                                                                 target:@"veespo_lite_iOS"
-                                                                                          withQuestion:[NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), @"Veespo Lite"]
+                                                                                          parameters:p
                                                                                            detailsView:nil
                                                     ];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
+//        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
+//        [Flurry logEvent:[NSString stringWithFormat:@"App Feedback: Veespo clodes with status %@", data]];
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     

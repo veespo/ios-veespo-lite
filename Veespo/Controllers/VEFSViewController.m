@@ -19,7 +19,7 @@
 
 static NSString * const catCibi = @"4d4b7105d754a06374d81259";
 static NSString * const catLocaliNotturni = @"4d4b7105d754a06376d81259";
-static int const maxLocationUpdate = 3;
+static int const maxLocationUpdate = 1;
 
 @interface VEFSViewController () {
     UITableView *venuesTableView;
@@ -48,19 +48,26 @@ static int const maxLocationUpdate = 3;
     
     locationUpdateCnt = 0;
     
+    UIBarButtonItem *venuesRatedButton;
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x1D7800);
+        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x221E1F);
+        venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag_white.png"]
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(openVenuesRatedView)
+                                              ];
     } else {
         self.navigationController.navigationBar.translucent = NO;
-        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x221E1F);
+        self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor : [UIColor whiteColor]};
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(openVenuesRatedView)
+                                              ];
     }
-    
-    UIBarButtonItem *venuesRatedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"price_tag.png"]
-                                                                          style:UIBarButtonItemStylePlain
-                                                                         target:self
-                                                                         action:@selector(openVenuesRatedView)
-                                          ];
     
     self.navigationItem.rightBarButtonItem = venuesRatedButton;
     
@@ -76,6 +83,7 @@ static int const maxLocationUpdate = 3;
     venuesTableView.delegate = self;
     venuesTableView.dataSource = self;
     venuesTableView.backgroundColor = [UIColor whiteColor];
+    [venuesTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     UITableViewController *tableViewController = [[UITableViewController alloc] init];
     tableViewController.tableView = venuesTableView;
@@ -106,6 +114,8 @@ static int const maxLocationUpdate = 3;
         self.navigationItem.rightBarButtonItem.enabled = NO;
     else
         self.navigationItem.rightBarButtonItem.enabled = YES;
+    
+//    [Flurry logEvent:@"Venues View"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -122,6 +132,11 @@ static int const maxLocationUpdate = 3;
     nearbyVenues = nil;
     locationUpdateCnt = 0;
     [self.locationManager stopUpdatingLocation];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark Properties
@@ -333,7 +348,12 @@ static int const maxLocationUpdate = 3;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 54;
+    return 66.0f;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = (indexPath.row % 2 == 0) ? UIColorFromHex(0xFFFFFF) : UIColorFromHex(0xF1F1F2);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

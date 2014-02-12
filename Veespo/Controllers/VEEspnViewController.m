@@ -22,54 +22,53 @@
     [super viewDidLoad];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x1D7800);
+        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x231F20);
     } else {
         self.navigationController.navigationBar.translucent = NO;
-        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor whiteColor]};
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x231F20);
     }
     
     self.title = NSLocalizedString(@"ESPN Top News", nil);
+    self.view.backgroundColor = [UIColor whiteColor];
 	
     _dataSource = [[NSMutableArray alloc] init];
     CGRect appBounds = [UIScreen mainScreen].bounds;
     
-    UIView *headerView;
+    UIImageView *headerImageView;
     UILabel *newsTitleLbl;
-    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
-        newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 300, 25)];
-    } else {
-        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-        newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 300, 25)];
-    }
-    [headerView setBackgroundColor:UIColorFromHex(0x1D7800)];
+    headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-1, -1, 322, 38)];
+    newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 300, 18)];
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        newsTitleLbl.font = [UIFont fontWithName:UIFontTextStyleHeadline size:20];
-    }
+    headerImageView.backgroundColor = [UIColor clearColor];
+    headerImageView.image = [UIImage imageNamed:@"header_tabella.png"];
+    [headerImageView setContentMode:UIViewContentModeScaleToFill];
+    
     newsTitleLbl.textColor = [UIColor whiteColor];
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         newsTitleLbl.backgroundColor = [UIColor clearColor];
     }
     newsTitleLbl.textAlignment = NSTextAlignmentCenter;
     newsTitleLbl.text = @"Serie A";
-    newsTitleLbl.font = [UIFont fontWithName:@"Avenir" size:17];
-    [headerView addSubview:newsTitleLbl];
+    newsTitleLbl.font = [UIFont fontWithName:@"Avenir-Heavy" size:13];
+
+    [headerImageView addSubview:newsTitleLbl];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, appBounds.size.height - 20) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, 320, appBounds.size.height - 50) style:UITableViewStylePlain];
     } else {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, 320, appBounds.size.height + 64) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, 320, appBounds.size.height - 30) style:UITableViewStylePlain];
     }
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView setBackgroundColor:[UIColor whiteColor]];
     [_tableView setShowsVerticalScrollIndicator:YES];
-    _tableView.tableHeaderView = headerView;
     [_tableView reloadData];
+    
     [self.view addSubview:_tableView];
+    [self.view addSubview:headerImageView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -93,12 +92,19 @@
         }];
         [operation start];
     }
+    
+//    [Flurry logEvent:@"Sport News View"];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - TableView mths
@@ -154,7 +160,7 @@
     [wvc setLocal_id:[NSString stringWithFormat:@"ESPN_SERIEA_%@",[[_dataSource objectAtIndex:indexPath.row] valueForKey:@"id"]]];
     [wvc setToken:[appDelegate.tokens objectForKey:@"news"]];
     [self.navigationController pushViewController:wvc animated:YES];
-
+//    [Flurry logEvent:@"Open News Detail"];
 }
 
 

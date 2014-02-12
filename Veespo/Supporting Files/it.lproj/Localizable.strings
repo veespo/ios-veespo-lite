@@ -10,15 +10,15 @@
 
 "DemoCode Title" = "Inserisci il Codice della Categoria ed il tuo nome";
 
-"User Name" = "Il proprio nome";
+"User Name" = "Il tuo nome";
 
-"Categories voted" = "Categorie votate";
+"Categories voted" = "Categorie già votate";
 
 "Start" = "Accedi";
 
 "Alert" = "Attenzione";
 
-"Fill Form" = "Inserire un codice Veespo (oppure selezionare una categoria dallo storico) ed inserire il nome utente";
+"Disclaimer" = "Inserisci il tuo nome e un Veespo code per iniziare a votare!";
 
 "Veespo Question" =  "Cosa ne pensi di %@?";
 
@@ -28,6 +28,8 @@
 
 "Network error" = "Errore di connessione";
 
+"Name error" = "Caratteri non validi";
+
 "Venues" = "Locali";
 
 "Tech News" = "Notizie tecnologiche";
@@ -36,7 +38,7 @@
 
 "ESPN Top News" = "ESPN Top News";
 
-"No Votes" = "Non abbiamo nessun locale preferito da farti vedere perché non hai mai votato";
+"No Votes" = "Vota un locale per aggiungerlo a questa lista";
 
 "Favorites" = "Locali votati";
 
@@ -57,3 +59,11 @@
 "Veespo Error" = "Si è verificato un errore. Riprova più tardi...";
 
 "About us" = "Chi siamo";
+
+"Veespo Button" = "bottone_vota";
+
+"Target List" = "Esprimi la tua opinione su...";
+
+"App Feedback" =  "Lasciaci un feedback";
+
+"Top Venues" = "I migliori locali";

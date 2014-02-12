@@ -26,6 +26,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "JASidePanelController.h"
 
+#import "VEHomeViewController.h"
+
 static char ja_kvoContext;
 
 @interface JASidePanelController() {
@@ -987,6 +989,12 @@ static char ja_kvoContext;
     if (self.state == JASidePanelLeftVisible) {
         [self _showCenterPanel:YES bounce:NO];
     } else if (self.state == JASidePanelCenterVisible) {
+        NSArray *viewControllers = ((UINavigationController*)self.centerPanel).viewControllers;
+        UIViewController *rootViewController = [viewControllers objectAtIndex:0];
+        
+        if ([rootViewController isKindOfClass:[VEHomeViewController class]])
+            [((VEHomeViewController *)rootViewController) panelShow];
+        
         [self _showLeftPanel:YES bounce:NO];
     }
 }

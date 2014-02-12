@@ -12,19 +12,18 @@
 
 #import "VELeftMenuViewController.h"
 #import "VEMenuCell.h"
-#import "VEViewController.h"
 #import "VEFSViewController.h"
 #import "VERSSViewController.h"
 #import "VEEspnViewController.h"
 #import "Foursquare2.h"
-
-#import <AdSupport/AdSupport.h>
+#import "VEHomeViewController.h"
 
 static NSString * const kVEFoursquareKey = @"Foursquare key";
 static NSString * const kVEFoursquareSecret = @"Foursquare secret";
 static NSString * const kVETestFlightKey = @"TestFlight Key";
 static NSString * const kVEKeysFileName = @"Veespo-Keys";
 static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
+static NSString * const kVEFlurryApiKey = @"Flurry Key";
 
 #pragma mark - Private Interface
 @implementation VEAppDelegate
@@ -34,20 +33,16 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 {
     [self setUpApi];
     
-    NSString *dateKey = @"Data Key";
-    NSDate *lastRead = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:dateKey];
-    if (!lastRead) {
-        NSDictionary *appDefaults  = [NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], dateKey, nil];
-        // sync the defaults to disk
-        [NSUserDefaults resetStandardUserDefaults];
-        [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    NSString *UUID = [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"];
+    if (!UUID) {
+        CFUUIDRef uuid = CFUUIDCreate(NULL);
+        UUID = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
+        CFRelease(uuid);
+        
+        [[NSUserDefaults standardUserDefaults] setObject:UUID forKey:@"uuid"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-            [[NSUserDefaults standardUserDefaults] setObject:[VEAppDelegate uuid] forKey:@"uuid"];
-        }
     }
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:dateKey];
-    
+        
     // Check old history version
     NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
     if (history) {
@@ -59,8 +54,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-//    if SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")
-//        self.window.tintColor = UIColorFromHex(0x1D7800);
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
     self.viewController = [[JASidePanelController alloc] init];
     self.viewController.shouldDelegateAutorotateToVisiblePanel = NO;
@@ -73,7 +67,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                          ];
 	NSArray *controllers = @[
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEHomeViewController alloc] init]]
                                  ],
                              @[
                                  [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] init]]
@@ -82,8 +76,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                                  [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] init]],
                                  [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] init]]
                                  ],
-                             @[[[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]],
-                               [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]]]
+                             @[[[UINavigationController alloc] initWithRootViewController:[[VEHomeViewController alloc] init]]]
                              ];
     NSArray *cellInfos = @[
                            @[
@@ -97,8 +90,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                                @{kSidebarCellImageKey:[UIImage imageNamed:@"football.png"], kSidebarCellTextKey:NSLocalizedString(@"Sport News", nil)},
                                ],
                            @[
-                               @{kSidebarCellImageKey:[UIImage imageNamed:@"info.png"], kSidebarCellTextKey:@"Info"},
-                               @{kSidebarCellImageKey:[UIImage imageNamed:@"home.png"], kSidebarCellTextKey:NSLocalizedString(@"Feedback", nil)}
+                               @{kSidebarCellImageKey:[UIImage imageNamed:@"icona_vota_app.png"], kSidebarCellTextKey:NSLocalizedString(@"App Feedback", nil)}
                                ]
                            ];
     
@@ -106,7 +98,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     [menuController setViewControllers:controllers cellInfos:cellInfos headers:headers];
     
     self.viewController.leftPanel = menuController;
-    self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]];
+    self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[VEHomeViewController alloc] init]];
     self.viewController.rightPanel = nil;
     self.window.rootViewController = self.viewController;
     
@@ -160,8 +152,9 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
     
     NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
     [self setUpFoursquare:keys];
-
 #ifdef TESTFLIGHT
+    [Flurry setCrashReportingEnabled:YES];
+    [Flurry startSession:keys[kVEFlurryApiKey]];
     [TestFlight takeOff:keys[kVETestFlightKey]];
 #endif
 }
@@ -186,11 +179,7 @@ static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
                                  };
     NSString *userId = nil;
     
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
-    } else {
-        userId = [NSString stringWithFormat:@"VeespoApp-%@", [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]];
-    }
+    userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
     
     [Veespo initVeespo:keys[kVEVeespoApiKey]
                 userId:userId
