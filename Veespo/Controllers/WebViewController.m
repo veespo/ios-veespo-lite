@@ -96,8 +96,9 @@
                                 @"category": @"news"
                             }
                         };
-    
-    veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d parameters:p detailsView:nil];
+
+//    veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d parameters:p detailsView:nil];
+    veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d withQuestion:nil detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
 //        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__, data]];

@@ -155,11 +155,13 @@
                                 }
                         };
     
-    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token
-                                                                                                target:dict[@"target"]
-                                                                                          parameters:p
-                                                                                           detailsView:nil
-                                                    ];
+//    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token
+//                                                                                                target:dict[@"target"]
+//                                                                                          parameters:p
+//                                                                                           detailsView:nil
+//                                                    ];
+    
+    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token target:dict[@"target"] withQuestion:nil detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
 //        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];

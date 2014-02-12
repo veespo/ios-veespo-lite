@@ -160,11 +160,13 @@
                                 }
                         };
     
-    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:[appDelegate.tokens objectForKey:@"veespo_lite_app"]
-                                                                                                target:@"veespo_lite_iOS"
-                                                                                          parameters:p
-                                                                                           detailsView:nil
-                                                    ];
+//    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:[appDelegate.tokens objectForKey:@"veespo_lite_app"]
+//                                                                                                target:@"veespo_lite_iOS"
+//                                                                                          parameters:p
+//                                                                                           detailsView:nil
+//                                                    ];
+    
+    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:[appDelegate.tokens objectForKey:@"veespo_lite_app"] target:@"veespo_lite_iOS" withQuestion:nil detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
 //        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
