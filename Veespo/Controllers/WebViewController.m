@@ -97,22 +97,22 @@
                             }
                         };
     
-    veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d parameters:p detailsView:nil];
+    veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d targetParameters:nil parameters:p detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-//        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__, data]];
-//        [Flurry logEvent:[NSString stringWithFormat:@"News Detail: Veespo clodes with status %@", data]];
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     
     [veespoViewController showWidget:^(NSDictionary *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug"
-                                                        message:[NSString stringWithFormat:@"Error %@", error]
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil)
+                                                        message:NSLocalizedString(@"Veespo Error", nil)
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
+    
 #endif
 }
 

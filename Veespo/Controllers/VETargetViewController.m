@@ -157,7 +157,8 @@
     
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token
                                                                                                 target:dict[@"target"]
-                                                                                          parameters:p
+                                                                                      targetParameters:nil
+                                                                                            parameters:p
                                                                                            detailsView:nil
                                                     ];
     

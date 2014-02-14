@@ -222,22 +222,15 @@
                                 }
                         };
     
-    veespoViewController = [[VEVeespoViewController alloc]
-                            initWidgetWithToken:_token
-                            targetInfo:d
-                            parameters:p
-                            detailsView:nil
-                            key1:self.venue.category
-                            key2:self.venue.country
-                            key3:self.venue.city
-                            key4:self.venue.postalCode
-                            key5:nil
-                            version:nil
-                            ];
+    NSDictionary *tp = @{@"key1": self.venue.category,
+                         @"key2": self.venue.country,
+                         @"key2": self.venue.country,
+                         @"key2": self.venue.country
+                         };
+    
+    veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d targetParameters:tp parameters:p detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-//        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
-//        [Flurry logEvent:[NSString stringWithFormat:@"Venue Detail: Veespo clodes with status %@", data]];
         [self dismissViewControllerAnimated:YES completion:^{
             [self loadAverageVotes];
         }];

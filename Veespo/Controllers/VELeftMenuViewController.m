@@ -160,15 +160,9 @@
                                 }
                         };
     
-    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:[appDelegate.tokens objectForKey:@"veespo_lite_app"]
-                                                                                                target:@"veespo_lite_iOS"
-                                                                                          parameters:p
-                                                                                           detailsView:nil
-                                                    ];
+    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:[appDelegate.tokens objectForKey:@"veespo_lite_app"] target:@"veespo_lite_iOS" targetParameters:nil parameters:p detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-//        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
-//        [Flurry logEvent:[NSString stringWithFormat:@"App Feedback: Veespo clodes with status %@", data]];
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     
@@ -179,7 +173,6 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-        NSLog(@"Veespo Error: %@", error);
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 #endif
