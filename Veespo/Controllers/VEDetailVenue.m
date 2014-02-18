@@ -208,11 +208,9 @@
 - (IBAction)openVeespo:(id)sender
 {
 #ifdef VEESPO
-    VEVeespoViewController *veespoViewController = nil;
-    
     NSString *desc2 = (_venue.location.address) ? (NSString *)_venue.location.address : (NSString *)_venue.location.distance;
     
-    NSDictionary *d = @{
+    NSDictionary *tinfo = @{
                         @"local_id": self.venue.venueId, @"desc1": self.venue.name, @"desc2": desc2, @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
                         };
     
@@ -221,23 +219,15 @@
                                 @"category": @"cibi"
                                 }
                         };
+    NSDictionary *tp = @{@"key1": self.venue.category,
+                         @"key2": self.venue.country,
+                         @"key3": self.venue.city,
+                         @"key4": self.venue.postalCode
+                         };
     
-//    veespoViewController = [[VEVeespoViewController alloc]
-//                            initWidgetWithToken:_token
-//                            targetInfo:d
-//                            parameters:p
-//                            detailsView:nil
-//                            key1:self.venue.category
-//                            key2:self.venue.country
-//                            key3:self.venue.city
-//                            key4:self.venue.postalCode
-//                            key5:nil
-//                            version:nil
-//                            ];
+    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:tinfo targetParameters:tp parameters:p detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-//        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s: %@", __PRETTY_FUNCTION__, data]];
-//        [Flurry logEvent:[NSString stringWithFormat:@"Venue Detail: Veespo clodes with status %@", data]];
         [self dismissViewControllerAnimated:YES completion:^{
             [self loadAverageVotes];
         }];

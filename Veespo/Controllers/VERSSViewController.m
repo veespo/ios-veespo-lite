@@ -82,7 +82,7 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
         
         rssParser = [[VERSSParser alloc] init];
         
-        __weak VERSSViewController *wSelf = self;
+        __block VERSSViewController *wSelf = self;
         rssParser.parseResult = ^(NSMutableArray *results){
             [wSelf reloadTableView:results];
         };
@@ -167,6 +167,16 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
     dateString = [dateString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     dateString = [dateString stringByReplacingOccurrencesOfString:@"	" withString:@""];
     
+    VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    WebViewController *wvc = [[WebViewController alloc] init];
+    [wvc setUrl:[NSURL URLWithString:storyLink]];
+    [wvc setToken:[appDelegate.tokens objectForKey:@"news"]];
+    NSString *title = [[_dataSource objectAtIndex:indexPath.row] valueForKey:@"title"];
+    title = [title stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    title = [title stringByReplacingOccurrencesOfString:@"	" withString:@""];
+    [wvc setNewsTitle:title];
+    [wvc setHeadline:title];
+    
     //Detect.
     NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingAllTypes error:nil];
     [detector enumerateMatchesInString:dateString
@@ -175,19 +185,10 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
                             usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop)
      {
          time_t unixTime = (time_t) [result.date timeIntervalSince1970];
-         VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
-         
-         WebViewController *wvc = [[WebViewController alloc] init];
-         [wvc setUrl:[NSURL URLWithString:storyLink]];
          [wvc setLocal_id:[NSString stringWithFormat:@"rss_tech_%ld", unixTime]];
-         [wvc setToken:[appDelegate.tokens objectForKey:@"news"]];
-         NSString *title = [[_dataSource objectAtIndex:indexPath.row] valueForKey:@"title"];
-         title = [title stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-         title = [title stringByReplacingOccurrencesOfString:@"	" withString:@""];
-         [wvc setNewsTitle:title];
-         [wvc setHeadline:title];
-         [self.navigationController pushViewController:wvc animated:YES];
      }];
+    
+    [self.navigationController pushViewController:wvc animated:YES];
 //    [Flurry logEvent:@"Open News Detail"];
 }
 

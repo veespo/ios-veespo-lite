@@ -97,12 +97,9 @@
                             }
                         };
 
-//    veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d parameters:p detailsView:nil];
-    veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d withQuestion:nil detailsView:nil];
+    veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d targetParameters:nil parameters:p detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-//        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__, data]];
-//        [Flurry logEvent:[NSString stringWithFormat:@"News Detail: Veespo clodes with status %@", data]];
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     
@@ -113,6 +110,7 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
 #endif
 }
