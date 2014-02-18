@@ -96,7 +96,7 @@
                                 @"category": @"news"
                             }
                         };
-    
+
     veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d targetParameters:nil parameters:p detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
