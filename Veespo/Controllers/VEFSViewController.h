@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Veespo Ltd. All rights reserved.
 //
 
-#import "VERootViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
