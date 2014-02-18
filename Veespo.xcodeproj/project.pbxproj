@@ -39,7 +39,6 @@
 		BEC63F5D183CC6BD001C82B6 /* VERSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F31183CC6BD001C82B6 /* VERSSViewController.m */; };
 		BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F33183CC6BD001C82B6 /* VETargetDetailViewController.m */; };
 		BEC63F5F183CC6BD001C82B6 /* VETargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F35183CC6BD001C82B6 /* VETargetViewController.m */; };
-		BEC63F61183CC6BD001C82B6 /* VEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F39183CC6BD001C82B6 /* VEViewController.m */; };
 		BEC63F62183CC6BD001C82B6 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F3B183CC6BD001C82B6 /* WebViewController.m */; };
 		BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F3C183CC6BD001C82B6 /* WebViewController.xib */; };
 		BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F40183CC6BD001C82B6 /* FSConverter.m */; };
@@ -162,8 +161,6 @@
 		BEC63F33183CC6BD001C82B6 /* VETargetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETargetDetailViewController.m; sourceTree = "<group>"; };
 		BEC63F34183CC6BD001C82B6 /* VETargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETargetViewController.h; sourceTree = "<group>"; };
 		BEC63F35183CC6BD001C82B6 /* VETargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETargetViewController.m; sourceTree = "<group>"; };
-		BEC63F38183CC6BD001C82B6 /* VEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEViewController.h; sourceTree = "<group>"; };
-		BEC63F39183CC6BD001C82B6 /* VEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEViewController.m; sourceTree = "<group>"; };
 		BEC63F3A183CC6BD001C82B6 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		BEC63F3B183CC6BD001C82B6 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		BEC63F3C183CC6BD001C82B6 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -397,8 +394,6 @@
 				BEC63F33183CC6BD001C82B6 /* VETargetDetailViewController.m */,
 				BEC63F34183CC6BD001C82B6 /* VETargetViewController.h */,
 				BEC63F35183CC6BD001C82B6 /* VETargetViewController.m */,
-				BEC63F38183CC6BD001C82B6 /* VEViewController.h */,
-				BEC63F39183CC6BD001C82B6 /* VEViewController.m */,
 				BEC63F3A183CC6BD001C82B6 /* WebViewController.h */,
 				BEC63F3B183CC6BD001C82B6 /* WebViewController.m */,
 				BEC63F3C183CC6BD001C82B6 /* WebViewController.xib */,
@@ -790,7 +785,6 @@
 				BE48372018771AEB008EC351 /* JBBarChartView.m in Sources */,
 				BEC63F77183CC7BC001C82B6 /* UIControl+VEControl.m in Sources */,
 				BEE64C6D1859C6D800539E8A /* Foursquare2.m in Sources */,
-				BEC63F61183CC6BD001C82B6 /* VEViewController.m in Sources */,
 				BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */,
 				BEC63F7C183CD0B3001C82B6 /* main.m in Sources */,
 				BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */,
