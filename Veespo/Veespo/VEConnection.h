@@ -6,4 +6,8 @@
 
 - (void)requestTargetsForUser:(NSString *)user withCategory:(NSString *)category withToken:(NSString *)token blockResult:(void(^)(id result))block;
 
+- (void)getCategoryInfo:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block;
+
+- (void)requestAvgTargetsForTag:(NSString *)tag withCategory:(NSString *)category withToken:(NSString *)token blockResult:(void(^)(id result))block;
+
 @end

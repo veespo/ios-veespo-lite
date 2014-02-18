@@ -27,11 +27,12 @@
         self.navigationItem.rightBarButtonItem.enabled = NO;
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x231F20);
     } else {
         self.navigationController.navigationBar.translucent = NO;
-        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor whiteColor]};
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x231F20);
     }
     
     CGRect appBounds = [UIScreen mainScreen].bounds;
@@ -62,6 +63,11 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -79,29 +85,34 @@
     VEVeespoViewController *veespoViewController = nil;
     
     NSDictionary *d = @{
-                        @"local_id": self.local_id, @"desc1": self.headline, @"desc2": self.newsTitle, @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
+                        @"local_id": self.local_id,
+                        @"desc1": self.headline,
+                        @"desc2": self.newsTitle,
+                        @"lang": [[NSLocale preferredLanguages] objectAtIndex:0]
                         };
     
-    veespoViewController = [[VEVeespoViewController alloc]
-                            initWidgetWithToken:_token
-                            targetInfo:d
-                            withQuestion:[NSString stringWithFormat:NSLocalizedString(@"Veespo News Question", nil), self.headline]
-                            detailsView:nil
-                            ];
+    NSDictionary *p = @{@"question": @{
+                                @"text": [NSString stringWithFormat:NSLocalizedString(@"Veespo News Question", nil), self.headline],
+                                @"category": @"news"
+                            }
+                        };
+
+    veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d targetParameters:nil parameters:p detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-        [TestFlight passCheckpoint:[NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__, data]];
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     
     [veespoViewController showWidget:^(NSDictionary *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Messagio di debug"
-                                                        message:[NSString stringWithFormat:@"Error %@", error]
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil)
+                                                        message:NSLocalizedString(@"Veespo Error", nil)
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
+    
 #endif
 }
 

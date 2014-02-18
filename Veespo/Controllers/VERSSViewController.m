@@ -25,55 +25,52 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
     [super viewDidLoad];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x231F20);
     } else {
         self.navigationController.navigationBar.translucent = NO;
-        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor whiteColor]};
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x231F20);
     }
     
-    self.title = NSLocalizedString(@"Tech News", nil);
+    self.title = @"TechCrunch";
     
     _dataSource = [[NSMutableArray alloc] init];
     
     CGRect appBounds = [UIScreen mainScreen].bounds;
     
-    UIView *headerView;
+    UIImageView *headerImageView;
     UILabel *newsTitleLbl;
-    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
-        newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 300, 25)];
-    } else {
-        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-        newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, 300, 25)];
-    }
-    [headerView setBackgroundColor:UIColorFromRGB(0x1D7800)];
+    headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-1, -1, 322, 38)];
+    newsTitleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 6, 300, 18)];
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        newsTitleLbl.font = [UIFont fontWithName:UIFontTextStyleHeadline size:20];
-    }
+    headerImageView.backgroundColor = [UIColor clearColor];
+    headerImageView.image = [UIImage imageNamed:@"header_tabella.png"];
+    [headerImageView setContentMode:UIViewContentModeScaleToFill];
+    
     newsTitleLbl.textColor = [UIColor whiteColor];
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         newsTitleLbl.backgroundColor = [UIColor clearColor];
     }
     newsTitleLbl.textAlignment = NSTextAlignmentCenter;
-    newsTitleLbl.text = @"TechCrunch - Startups";
-    newsTitleLbl.font = [UIFont fontWithName:@"Avenir" size:17];
-    [headerView addSubview:newsTitleLbl];
+    newsTitleLbl.text = @"Startups";
+    newsTitleLbl.font = [UIFont fontWithName:@"Avenir-Heavy" size:13];
+    
+    [headerImageView addSubview:newsTitleLbl];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, appBounds.size.height - 20) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, 320, appBounds.size.height - 50) style:UITableViewStylePlain];
     else
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, 320, appBounds.size.height + 64) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, 320, appBounds.size.height - 30) style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView setBackgroundColor:[UIColor whiteColor]];
     [_tableView setShowsVerticalScrollIndicator:YES];
-    _tableView.tableHeaderView = headerView;
     [_tableView reloadData];
     
     [self.view addSubview:_tableView];
+    [self.view addSubview:headerImageView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -85,7 +82,7 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
         
         rssParser = [[VERSSParser alloc] init];
         
-        __weak VERSSViewController *wSelf = self;
+        __block VERSSViewController *wSelf = self;
         rssParser.parseResult = ^(NSMutableArray *results){
             [wSelf reloadTableView:results];
         };
@@ -94,6 +91,8 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
             [rssParser parseXMLFileAtURL:feed];
         });
     }
+    
+//    [Flurry logEvent:@"Tech News"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,6 +106,11 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
     _dataSource = data;
     [_tableView reloadData];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - TableView mths
@@ -136,7 +140,12 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
 	
 	// Set up the cell
 	int storyIndex = [indexPath indexAtPosition: [indexPath length] - 1];
-    cell.data.text = [[_dataSource objectAtIndex: storyIndex] objectForKey: @"date"];
+    
+    NSString *dateString = [[_dataSource objectAtIndex: storyIndex] objectForKey: @"date"];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"	" withString:@""];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"+0000" withString:@""];
+    cell.data.text = dateString;
     cell.events.text = [[_dataSource objectAtIndex:storyIndex] objectForKey:@"title"];
 	
 	return cell;
@@ -158,6 +167,16 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
     dateString = [dateString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     dateString = [dateString stringByReplacingOccurrencesOfString:@"	" withString:@""];
     
+    VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    WebViewController *wvc = [[WebViewController alloc] init];
+    [wvc setUrl:[NSURL URLWithString:storyLink]];
+    [wvc setToken:[appDelegate.tokens objectForKey:@"news"]];
+    NSString *title = [[_dataSource objectAtIndex:indexPath.row] valueForKey:@"title"];
+    title = [title stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    title = [title stringByReplacingOccurrencesOfString:@"	" withString:@""];
+    [wvc setNewsTitle:title];
+    [wvc setHeadline:title];
+    
     //Detect.
     NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingAllTypes error:nil];
     [detector enumerateMatchesInString:dateString
@@ -166,22 +185,11 @@ static NSString * const feed = @"http://feeds.feedburner.com/TechCrunch/startups
                             usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop)
      {
          time_t unixTime = (time_t) [result.date timeIntervalSince1970];
-         VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
-         
-         WebViewController *wvc = [[WebViewController alloc] init];
-         [wvc setUrl:[NSURL URLWithString:storyLink]];
          [wvc setLocal_id:[NSString stringWithFormat:@"rss_tech_%ld", unixTime]];
-         [wvc setToken:[appDelegate.tokens objectForKey:@"news"]];
-         NSString *title = [[_dataSource objectAtIndex:indexPath.row] valueForKey:@"title"];
-         title = [title stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-         title = [title stringByReplacingOccurrencesOfString:@"	" withString:@""];
-         [wvc setNewsTitle:title];
-         [wvc setHeadline:title];
-         [self.navigationController pushViewController:wvc animated:YES];
      }];
     
-    
-    
+    [self.navigationController pushViewController:wvc animated:YES];
+//    [Flurry logEvent:@"Open News Detail"];
 }
 
 

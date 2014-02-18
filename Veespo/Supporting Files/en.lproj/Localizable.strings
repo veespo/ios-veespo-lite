@@ -8,25 +8,25 @@
 
 "Feedback" = "Vote";
 
-"DemoCode Title" = "Insert Category Code and your name";
+"User Name" = "Your name";
 
-"User Name" = "Personal name";
-
-"Categories voted" = "Categories voted";
+"Categories voted" = "Voted categories";
 
 "Start" = "Start";
 
 "Alert" = "Attention";
 
-"Fill Form" = "Enter a Veespo code (or select an existing category rated) and enter the user name";
+"Disclaimer" = "Type in your name and a Veespo code to start rating!";
 
-"Veespo Question" = "What is your opinion about %@?";
+"Veespo Question" = "What do you think about %@?";
 
-"Veespo News Question" = "What is your opinion about the news '%@'?";
+"Veespo News Question" = "What is your opinion on '%@'?";
 
-"Wrong Code" = "Wrong demo code";
+"Wrong Code" = "The Veespo code is wrong";
 
 "Network error" = "Network error";
+
+"Name error" = "Invalid character";
 
 "Venues" = "Venues";
 
@@ -36,22 +36,30 @@
 
 "ESPN Top News" = "ESPN Top News";
 
-"No Votes" = "There aren't favorite places because you never voted";
+"No Votes" = "Vote a venue to add it to this list";
 
-"Favorites" = "Bookmarks";
+"Favorites" = "Your venues";
 
-"No Demo" = "Without Code";
-
-"Around me" = "Around me";
+"Around me" = "Around you";
 
 "News" = "News";
 
-"Venue tags" = "The views of users";
+"Venue tags" = "Other users' opinions";
 
-"Average Votes" = "AVERAGE USER RATING";
+"Pull" = "Pull to refresh";
 
-"Pull" = "Pull to Refresh";
+"Refresh" = "Refreshing your position…";
 
-"Refresh" = "Refreshing position and data...";
+"Veespo Error" = "Error. Try again";
 
-"Veespo Error" = "There's a problem. Try later...";
+"About us" = "About Us";
+
+"Veespo Button" = "bottone_vote";
+
+"Target List" = "Express your opinion on...";
+
+"App Feedback" =  "Give us feedback";
+
+"No Demo" = "I don't have a code";
+
+"Top Venues" = "The best venues";

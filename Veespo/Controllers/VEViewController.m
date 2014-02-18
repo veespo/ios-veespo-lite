@@ -17,7 +17,7 @@
 #define DEMOCODETEXT_ISO7 44.0
 #define DEMOCODETEXT_IOS6 30.0
 
-static NSString * const kVEDemoCode = @"yumx";
+static NSString * const kVEDemoCode = @"krbk";
 
 @interface VEViewController () {
     UIButton *historyDemoCodeBtn;
@@ -41,16 +41,29 @@ static NSString * const kVEDemoCode = @"yumx";
     [super viewDidLoad];
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x1D7800);
+        self.navigationController.navigationBar.tintColor = UIColorFromHex(0x231F20);
     } else {
         self.navigationController.navigationBar.translucent = NO;
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavbarHome"] forBarMetrics:UIBarMetricsDefault];
+        [self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"NavbarShadow"]];
+        self.navigationController.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor whiteColor]};
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x1D7800);
+        self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x231F20);
     }
     
-    [self.view setBackgroundColor:UIColorFromRGB(0xDBDBDB)];
+    [self.view setBackgroundColor:UIColorFromHex(0xDBDBDB)];
     
-    self.title = @"Home";
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:(([UIScreen mainScreen].bounds.size.height == 568.0f)?
+                                                                          [UIImage imageNamed:@"background_5"]:
+                                                                          [UIImage imageNamed:@"background_4"])];
+    [backgroundImageView setFrame:[UIScreen mainScreen].bounds];
+    [self.view addSubview:backgroundImageView];
+    
+    UIImageView *foregroundImageView = [[UIImageView alloc] initWithImage:(([UIScreen mainScreen].bounds.size.height == 568.0f)?
+                                                                           [UIImage imageNamed:@"home_shadow_5"]:
+                                                                           [UIImage imageNamed:@"home_shadow_4"])];
+    [foregroundImageView setFrame:[UIScreen mainScreen].bounds];
+    [self.view addSubview:foregroundImageView];
     
     [self initDemoCodeTextField];
     
@@ -60,27 +73,30 @@ static NSString * const kVEDemoCode = @"yumx";
     titleLabel.numberOfLines = 2;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont fontWithName:@"Avenir" size:18];
-//    titleLabel.shadowColor = [UIColor whiteColor];
+    titleLabel.textColor = [UIColor whiteColor];
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         titleLabel.backgroundColor = [UIColor clearColor];
     }
     
     historyDemoCodeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    historyDemoCodeBtn.frame = CGRectMake(10, userNameTf.frame.origin.y + userNameTf.frame.size.height + 40, 130, 35);
+    historyDemoCodeBtn.frame = CGRectMake(10, userNameTf.frame.origin.y + userNameTf.frame.size.height + 40, 140, 35);
     historyDemoCodeBtn.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+    historyDemoCodeBtn.tintColor = [UIColor whiteColor];
     
     _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
     if (_history)
         [historyDemoCodeBtn setTitle:NSLocalizedString(@"Categories voted", nil) forState:UIControlStateNormal];
     else
         [historyDemoCodeBtn setTitle:NSLocalizedString(@"No Demo", nil) forState:UIControlStateNormal];
-    historyDemoCodeBtn.titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:14];
+    historyDemoCodeBtn.titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16];
     [historyDemoCodeBtn touchUpInside:^(UIEvent *event) {
+        _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
         if (_history) {
             NSArray *keys = [_history allKeys];
             NSMutableArray *categories = [[NSMutableArray alloc] init];
             for (id key in keys) {
-                [categories addObject:[_history objectForKey:key]];
+                NSDictionary *dic = [_history objectForKey:key];
+                [categories addObject:[dic objectForKey:key]];
             }
             
             [userNameTf resignFirstResponder];
@@ -102,21 +118,16 @@ static NSString * const kVEDemoCode = @"yumx";
     logVeespoBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     logVeespoBtn.frame = CGRectMake(230, userNameTf.frame.origin.y + userNameTf.frame.size.height + 40, 71, 35);
     logVeespoBtn.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+    logVeespoBtn.tintColor = [UIColor whiteColor];
     [logVeespoBtn setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
     logVeespoBtn.titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16];
+    logVeespoBtn.enabled = NO;
     [logVeespoBtn touchUpInside:^(UIEvent *event) {
-        if (![userNameTf.text isEqualToString:@""]) {
-            
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            
-            NSString *demoCode = [[NSString stringWithFormat:@"%@%@%@%@", textOneTf.text, textTwoTf.text, textThreeTf.text, textFourTf.text] uppercaseString];
-            
-            [self getTargetsList:demoCode];
-            
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Fill Form", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        }
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        NSString *demoCode = [[NSString stringWithFormat:@"%@%@%@%@", textOneTf.text, textTwoTf.text, textThreeTf.text, textFourTf.text] uppercaseString];
+        
+        [self getTargetsList:demoCode];
     }];
     
     [self.view addSubview:titleLabel];
@@ -138,6 +149,8 @@ static NSString * const kVEDemoCode = @"yumx";
         [historyDemoCodeBtn setTitle:NSLocalizedString(@"Categories voted", nil) forState:UIControlStateNormal];
     else
         [historyDemoCodeBtn setTitle:NSLocalizedString(@"No Demo", nil) forState:UIControlStateNormal];
+    
+    logVeespoBtn.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -226,33 +239,25 @@ static NSString * const kVEDemoCode = @"yumx";
                         withBlock:^(id responseData, NSString *token) {
                             if (token != nil) {
                                 VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
+                                targetVC.userid = [NSString stringWithFormat:@"%@-%@",
+                                                   userNameTf.text,
+                                                   [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"]
+                                                   ];
+                                targetVC.token = token;
                                 
-                                if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-                                    targetVC.userid = [NSString stringWithFormat:@"%@-%@",
-                                                       userNameTf.text,
-                                                       [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]
-                                                       ];
-                                    targetVC.token = token;
-                                } else {
-                                    targetVC.userid = [NSString stringWithFormat:@"%@-%@",
-                                                       userNameTf.text,
-                                                       [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"]
-                                                       ];
-                                    targetVC.token = token;
-                                }
                                 targetVC.targetList = responseData[@"targets"];
-                                targetVC.title = responseData[@"category"];
+                                targetVC.title = responseData[@"categoryname"];
                                 
                                 // Creo o aggiorno storico utente
                                 
                                 NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
                                 
                                 if (history == nil) {
-                                    history = @{demoCode: responseData[@"category"]};
+                                    history = @{demoCode: @{demoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]}};
                                     [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
                                 } else {
                                     NSMutableDictionary *tmp = [[NSMutableDictionary alloc] initWithDictionary:history];
-                                    [tmp setObject:responseData[@"category"] forKey:demoCode];
+                                    [tmp setObject:@{demoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]} forKey:demoCode];
                                     [[NSUserDefaults standardUserDefaults] setObject:tmp forKey:@"history"];
                                 }
                                 
@@ -303,7 +308,7 @@ static NSString * const kVEDemoCode = @"yumx";
         [userNameTf becomeFirstResponder];
     else {
         [theTextField resignFirstResponder];
-        if (![userNameTf.text isEqualToString:@""]) {
+        if (![userNameTf.text isEqualToString:@""] && (![textOneTf.text isEqualToString:@""] && ![textTwoTf.text isEqualToString:@""] && ![textThreeTf.text isEqualToString:@""] && ![textFourTf.text isEqualToString:@""])) {
             
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             
@@ -330,6 +335,10 @@ static NSString * const kVEDemoCode = @"yumx";
     for (UIView * txt in self.view.subviews){
         if ([txt isKindOfClass:[UITextField class]]) {
             [txt resignFirstResponder];
+            if ([userNameTf.text isEqualToString:@""] || ([textOneTf.text isEqualToString:@""] || [textTwoTf.text isEqualToString:@""] || [textThreeTf.text isEqualToString:@""] || [textFourTf.text isEqualToString:@""]))
+                logVeespoBtn.enabled = NO;
+            else
+                logVeespoBtn.enabled = YES;
         }
     }
 }
@@ -338,14 +347,19 @@ static NSString * const kVEDemoCode = @"yumx";
 
 - (void)pickerClosed
 {
-    
+    if (![userNameTf.text isEqualToString:@""] || (![textOneTf.text isEqualToString:@""] || ![textTwoTf.text isEqualToString:@""] || ![textThreeTf.text isEqualToString:@""] || ![textFourTf.text isEqualToString:@""]))
+        logVeespoBtn.enabled = NO;
+    else
+        logVeespoBtn.enabled = YES;
 }
 
 - (void)selectedRow:(int)row withString:(NSString *)text
 {
+    _history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
     NSArray *keys = [_history allKeys];
     for (id key in keys) {
-        if ([[_history objectForKey:key] isEqualToString:text]) {
+        NSDictionary *dic = [_history objectForKey:key];
+        if ([[dic objectForKey:key] isEqualToString:text]) {
             textOneTf.text = [NSString stringWithFormat:@"%c",[key characterAtIndex:0]];
             textTwoTf.text = [NSString stringWithFormat:@"%c",[key characterAtIndex:1]];
             textThreeTf.text = [NSString stringWithFormat:@"%c",[key characterAtIndex:2]];
@@ -353,6 +367,10 @@ static NSString * const kVEDemoCode = @"yumx";
             break;
         }
     }
+    if ([userNameTf.text isEqualToString:@""] || ([textOneTf.text isEqualToString:@""] || [textTwoTf.text isEqualToString:@""] || [textThreeTf.text isEqualToString:@""] || [textFourTf.text isEqualToString:@""]))
+        logVeespoBtn.enabled = NO;
+    else
+        logVeespoBtn.enabled = YES;
 }
 
 @end

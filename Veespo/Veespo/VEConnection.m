@@ -32,9 +32,14 @@
             __block NSString *catId = JSON[@"data"][@"category"];
             AFJSONRequestOperation *boperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:brequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                 // Richiesta target
-                [self getTarget:catId userToken:JSON[@"data"][@"reply"] withBlock:^(id responseData) {
-                    NSDictionary *resp = [NSDictionary dictionaryWithObjectsAndKeys:catId, @"category",  responseData[@"data"], @"targets", nil];
-                    block(resp, JSON[@"data"][@"reply"]);
+                [self getTargets:catId userToken:JSON[@"data"][@"reply"] withBlock:^(id responseData) {
+                    __block NSMutableDictionary *targets = [NSMutableDictionary dictionaryWithObjectsAndKeys:catId, @"category",  responseData[@"data"], @"targets", nil];
+                    NSString *token = JSON[@"data"][@"reply"];
+                    // Richiesta nome categoria
+                    [self getCategoryInfo:catId userToken:token withBlock:^(id responseData) {
+                        [targets setObject:responseData forKey:@"categoryname"];
+                        block(targets, token);
+                    }];
                 }];
             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                 block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"], nil);
@@ -52,7 +57,12 @@
 {
     // /v1/average/category/:cat/target/:target
 #warning STATIC URL
-    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/average/category/%@/target/%@?token=%@", category, targertId, token];
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/average/category/%@/target/%@?token=%@&labels=%@",
+                        category,
+                        targertId,
+                        token,
+                        [[NSLocale preferredLanguages] objectAtIndex:0]
+                        ];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
@@ -60,41 +70,29 @@
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                                            NSDictionary *tags = [NSDictionary dictionaryWithDictionary:JSON[@"data"][@"averages"]];
-                                                                                            NSString *overallStr = tags[@"overall"];
-                                                                                            tags = tags[@"avgS"];
+                                                                                            NSDictionary *avgs = [NSDictionary dictionaryWithDictionary:JSON[@"data"][@"averages"]];
+                                                                                            NSString *overallStr = avgs[@"overall"];
+                                                                                            NSDictionary *freqs = avgs[@"sumN"];
+                                                                                            avgs = avgs[@"avgS"];
                                                                                             
-                                                                                            [self getTagsForCategory:category userToken:token withBlock:^(id responseData) {
-                                                                                                if ([responseData isKindOfClass:[NSArray class]]) {
-                                                                                                    
-                                                                                                    NSMutableDictionary *newTagsList = [[NSMutableDictionary alloc] init];
-                                                                                                    
-                                                                                                    for (NSDictionary *dic in responseData) {
-                                                                                                        [newTagsList setObject:dic[@"label"] forKey:dic[@"tag"]];
-                                                                                                    }
+                                                                                            NSDictionary *tagsLabelList = [NSDictionary dictionaryWithDictionary:JSON[@"data"][@"labels"]];
+                                                                                            
+                                                                                            NSMutableArray *resultList = [[NSMutableArray alloc] init];
+                                                                                            
+                                                                                            for (id key in [freqs allKeys]) {
+                                                                                                NSString *label = tagsLabelList[key][@"label"];
+                                                                                                NSString *connotation = tagsLabelList[key][@"connotation"];
+                                                                                                NSString *avg = avgs[key];
+                                                                                                NSString *freq = freqs[key];
                                                                                                 
-                                                                                                    NSMutableArray *list = [[NSMutableArray alloc] init];
-                                                                                                    for (id key in [tags allKeys]) {
-                                                                                                        NSString *label = newTagsList[key];
-                                                                                                        NSString *avg = tags[key];
-                                                                                                        // Ignoro tag senza media
-                                                                                                        if (label && avg) {
-                                                                                                            NSDictionary* object = [NSDictionary dictionaryWithObjects:@[ label, avg ] forKeys:@[ @"name", @"avg" ]];
-                                                                                                            [list addObject:object];
-                                                                                                        }
-                                                                                                    }
-                                                                                                    
-                                                                                                    NSArray *sortedList = [list sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                                                                                                        NSNumber *num1 = [NSNumber numberWithFloat:[obj1[@"avg"] floatValue]];
-                                                                                                        NSNumber *num2 = [NSNumber numberWithFloat:[obj2[@"avg"] floatValue]];
-                                                                                                        return (NSComparisonResult)[num1 compare:num2];
-                                                                                                    }];
-                                                                                                    
-                                                                                                    block([[sortedList reverseObjectEnumerator] allObjects], overallStr);
-                                                                                                } else {
-                                                                                                    block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"], nil);
+                                                                                                // Ignoro tag senza media
+                                                                                                if (label && avg) {
+                                                                                                    NSDictionary* object = [NSDictionary dictionaryWithObjects:@[ key, label, connotation, avg, freq ] forKeys:@[ @"tag", @"name", @"connotation", @"avg", @"ctr" ]];
+                                                                                                    [resultList addObject:object];
                                                                                                 }
-                                                                                            }];
+                                                                                            }
+                                                                                            
+                                                                                            block(resultList, overallStr);
                                                                                             
                                                                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                             block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"], nil);
@@ -120,8 +118,60 @@
     [operation start];
 }
 
+- (void)getCategoryInfo:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block
+{
+#warning STATIC URL
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/info/category/%@?token=%@", catId, uTk];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    [request setTimeoutInterval:10];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        block(JSON[@"data"][@"desc1"]);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"]);
+    }];
+    
+    [operation start];
+}
+
+- (void)requestAvgTargetsForTag:(NSString *)tag withCategory:(NSString *)category withToken:(NSString *)token blockResult:(void(^)(id result))block
+{
+#warning STATIC URL
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/average/category/%@/tag/%@?token=%@", category, tag, token];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    [request setTimeoutInterval:10];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSDictionary *data = JSON[@"data"][@"averages"];
+        NSArray *targetsList = [NSArray array];
+        NSMutableArray *list = [NSMutableArray array];
+        
+        NSArray *keys = data[@"avgS"];
+        for (id key in keys) {
+            [list addObject:@{@"target": key, @"avg": data[@"avgS"][key]}];
+        }
+        
+        targetsList = [list sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            NSNumber *avg1 = [NSNumber numberWithFloat:[obj1[@"avg"] floatValue]];
+            NSNumber *avg2 = [NSNumber numberWithFloat:[obj2[@"avg"] floatValue]];
+            return [avg2 compare:avg1];
+        }];
+        
+        block(targetsList);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        block([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"]);
+    }];
+    
+    [operation start];
+}
+
 #pragma mark - Private
-- (void)getTarget:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block
+
+- (void)getTargets:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block
 {
 #warning STATIC URL
     NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/info/category/%@/targets?token=%@", catId, uTk];
@@ -142,7 +192,6 @@
 - (void)getTagsForCategory:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block
 {
     // /v1/info/category/:cat/tags
-    // [[NSLocale preferredLanguages] objectAtIndex:0]
 #warning STATIC URL
     NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/info/category/%@/tags?token=%@&lang=%@", catId, uTk, [[NSLocale preferredLanguages] objectAtIndex:0]];
     NSURL *url = [NSURL URLWithString:urlStr];

@@ -26,6 +26,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "JASidePanelController.h"
 
+#import "VEHomeViewController.h"
+
 static char ja_kvoContext;
 
 @interface JASidePanelController() {
@@ -87,17 +89,17 @@ static char ja_kvoContext;
 	static UIImage *defaultImage = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		UIGraphicsBeginImageContextWithOptions(CGSizeMake(20.f, 13.f), NO, 0.0f);
+		UIGraphicsBeginImageContextWithOptions(CGSizeMake(22.f, 15.f), NO, 0.0f);
 		
 		[[UIColor blackColor] setFill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 20, 1)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 5, 20, 1)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 10, 20, 1)] fill];
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 22, 1)] fill];
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 6, 22, 1)] fill];
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 12, 22, 1)] fill];
 		
 		[[UIColor whiteColor] setFill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 1, 20, 2)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 6,  20, 2)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 11, 20, 2)] fill];   
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 1, 22, 2)] fill];
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 7,  22, 2)] fill];
+		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 13, 22, 2)] fill];
 		
 		defaultImage = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
@@ -136,7 +138,7 @@ static char ja_kvoContext;
     self.rightGapPercentage = 0.8f;
     self.minimumMovePercentage = 0.15f;
     self.maximumAnimationDuration = 0.2f;
-    self.bounceDuration = 0.1f;
+    self.bounceDuration = 0.05f;
     self.bouncePercentage = 0.075f;
     self.panningLimitedToTopViewController = YES;
     self.recognizesPanGesture = YES;
@@ -144,7 +146,7 @@ static char ja_kvoContext;
     self.allowRightOverpan = YES;
     self.bounceOnSidePanelOpen = YES;
     self.bounceOnSidePanelClose = NO;
-    self.bounceOnCenterPanelChange = YES;
+    self.bounceOnCenterPanelChange = NO;
     self.shouldDelegateAutorotateToVisiblePanel = YES;
     self.allowRightSwipe = YES;
     self.allowLeftSwipe = YES;
@@ -987,6 +989,12 @@ static char ja_kvoContext;
     if (self.state == JASidePanelLeftVisible) {
         [self _showCenterPanel:YES bounce:NO];
     } else if (self.state == JASidePanelCenterVisible) {
+        NSArray *viewControllers = ((UINavigationController*)self.centerPanel).viewControllers;
+        UIViewController *rootViewController = [viewControllers objectAtIndex:0];
+        
+        if ([rootViewController isKindOfClass:[VEHomeViewController class]])
+            [((VEHomeViewController *)rootViewController) panelShow];
+        
         [self _showLeftPanel:YES bounce:NO];
     }
 }
