@@ -41,11 +41,8 @@
 		BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F40183CC6BD001C82B6 /* FSConverter.m */; };
 		BEC63F66183CC6BD001C82B6 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F43183CC6BD001C82B6 /* FSVenue.m */; };
 		BEC63F67183CC6BD001C82B6 /* VEUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F45183CC6BD001C82B6 /* VEUser.m */; };
-		BEC63F68183CC6BD001C82B6 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F47183CC6BD001C82B6 /* pin.png */; };
-		BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F48183CC6BD001C82B6 /* pin@2x.png */; };
 		BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F49183CC6BD001C82B6 /* poweredByFoursquare_gray.png */; };
 		BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F4A183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png */; };
-		BEC63F6C183CC6BD001C82B6 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F4B183CC6BD001C82B6 /* user.png */; };
 		BEC63F6D183CC6BD001C82B6 /* VERSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F4E183CC6BD001C82B6 /* VERSSParser.m */; };
 		BEC63F6E183CC6BD001C82B6 /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F51183CC6BD001C82B6 /* VEConnection.m */; };
 		BEC63F70183CC790001C82B6 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F6F183CC790001C82B6 /* Empty.xib */; };
@@ -160,11 +157,8 @@
 		BEC63F43183CC6BD001C82B6 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVenue.m; sourceTree = "<group>"; };
 		BEC63F44183CC6BD001C82B6 /* VEUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEUser.h; sourceTree = "<group>"; };
 		BEC63F45183CC6BD001C82B6 /* VEUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEUser.m; sourceTree = "<group>"; };
-		BEC63F47183CC6BD001C82B6 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
-		BEC63F48183CC6BD001C82B6 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
 		BEC63F49183CC6BD001C82B6 /* poweredByFoursquare_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poweredByFoursquare_gray.png; sourceTree = "<group>"; };
 		BEC63F4A183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poweredByFoursquare_gray@2x.png"; sourceTree = "<group>"; };
-		BEC63F4B183CC6BD001C82B6 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		BEC63F4D183CC6BD001C82B6 /* VERSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERSSParser.h; sourceTree = "<group>"; };
 		BEC63F4E183CC6BD001C82B6 /* VERSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VERSSParser.m; sourceTree = "<group>"; };
 		BEC63F50183CC6BD001C82B6 /* VEConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEConnection.h; sourceTree = "<group>"; };
@@ -388,11 +382,8 @@
 		BEC63F46183CC6BD001C82B6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BEC63F47183CC6BD001C82B6 /* pin.png */,
-				BEC63F48183CC6BD001C82B6 /* pin@2x.png */,
 				BEC63F49183CC6BD001C82B6 /* poweredByFoursquare_gray.png */,
 				BEC63F4A183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png */,
-				BEC63F4B183CC6BD001C82B6 /* user.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -685,7 +676,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */,
-				BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
 				BEA939C818B3915E00BB4B31 /* VEHomeViewController.xib in Resources */,
@@ -699,8 +689,6 @@
 				BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */,
 				BEE64C721859C6D800539E8A /* FSWebLogin.xib in Resources */,
 				BE9446EA18AB7740009DFFF7 /* VEEFPropertyList.plist in Resources */,
-				BEC63F6C183CC6BD001C82B6 /* user.png in Resources */,
-				BEC63F68183CC6BD001C82B6 /* pin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
