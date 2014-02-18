@@ -12,11 +12,11 @@
 
 #import "VELeftMenuViewController.h"
 #import "VEMenuCell.h"
+#import "VEViewController.h"
 #import "VEFSViewController.h"
 #import "VERSSViewController.h"
 #import "VEEspnViewController.h"
 #import "Foursquare2.h"
-#import "VEHomeViewController.h"
 
 static NSString * const kVEFoursquareKey = @"Foursquare key";
 static NSString * const kVEFoursquareSecret = @"Foursquare secret";
@@ -67,7 +67,7 @@ static NSString * const kVEFlurryApiKey = @"Flurry Key";
                          ];
 	NSArray *controllers = @[
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[VEHomeViewController alloc] init]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]]
                                  ],
                              @[
                                  [[UINavigationController alloc] initWithRootViewController:[[VEFSViewController alloc] init]]
@@ -76,7 +76,7 @@ static NSString * const kVEFlurryApiKey = @"Flurry Key";
                                  [[UINavigationController alloc] initWithRootViewController:[[VERSSViewController alloc] init]],
                                  [[UINavigationController alloc] initWithRootViewController:[[VEEspnViewController alloc] init]]
                                  ],
-                             @[[[UINavigationController alloc] initWithRootViewController:[[VEHomeViewController alloc] init]]]
+                             @[[[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]]]
                              ];
     NSArray *cellInfos = @[
                            @[
@@ -98,7 +98,7 @@ static NSString * const kVEFlurryApiKey = @"Flurry Key";
     [menuController setViewControllers:controllers cellInfos:cellInfos headers:headers];
     
     self.viewController.leftPanel = menuController;
-    self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[VEHomeViewController alloc] init]];
+    self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[VEViewController alloc] init]];
     self.viewController.rightPanel = nil;
     self.window.rootViewController = self.viewController;
     
