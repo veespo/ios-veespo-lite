@@ -26,7 +26,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "JASidePanelController.h"
 
-#import "VEViewController.h"
+#import "VEHomeViewController.h"
 
 static char ja_kvoContext;
 
@@ -992,8 +992,8 @@ static char ja_kvoContext;
         NSArray *viewControllers = ((UINavigationController*)self.centerPanel).viewControllers;
         UIViewController *rootViewController = [viewControllers objectAtIndex:0];
         
-        if ([rootViewController isKindOfClass:[VEViewController class]])
-            [((VEViewController *)rootViewController) panelShow];
+        if ([rootViewController isKindOfClass:[VEHomeViewController class]])
+            [((VEHomeViewController *)rootViewController) panelShow];
         
         [self _showLeftPanel:YES bounce:NO];
     }

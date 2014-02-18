@@ -20,6 +20,9 @@
 		BEA939BB18B38F3100BB4B31 /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA939B618B38F3100BB4B31 /* JBBarChartView.m */; };
 		BEA939BC18B38F3100BB4B31 /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA939B818B38F3100BB4B31 /* JBChartView.m */; };
 		BEA939BD18B38F3100BB4B31 /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA939BA18B38F3100BB4B31 /* JBLineChartView.m */; };
+		BEA939C718B3915E00BB4B31 /* VEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA939BF18B3915E00BB4B31 /* VEHomeViewController.m */; };
+		BEA939C818B3915E00BB4B31 /* VEHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEA939C018B3915E00BB4B31 /* VEHomeViewController.xib */; };
+		BEA939CF18B391DE00BB4B31 /* NSString+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA939CE18B391DE00BB4B31 /* NSString+Extra.m */; };
 		BEB6A9AF185B13F40029A799 /* VELeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */; };
 		BEC63F52183CC6BD001C82B6 /* VEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */; };
 		BEC63F53183CC6BD001C82B6 /* RassegnaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1C183CC6BD001C82B6 /* RassegnaCell.m */; };
@@ -33,7 +36,6 @@
 		BEC63F5D183CC6BD001C82B6 /* VERSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F31183CC6BD001C82B6 /* VERSSViewController.m */; };
 		BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F33183CC6BD001C82B6 /* VETargetDetailViewController.m */; };
 		BEC63F5F183CC6BD001C82B6 /* VETargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F35183CC6BD001C82B6 /* VETargetViewController.m */; };
-		BEC63F61183CC6BD001C82B6 /* VEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F39183CC6BD001C82B6 /* VEViewController.m */; };
 		BEC63F62183CC6BD001C82B6 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F3B183CC6BD001C82B6 /* WebViewController.m */; };
 		BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F3C183CC6BD001C82B6 /* WebViewController.xib */; };
 		BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F40183CC6BD001C82B6 /* FSConverter.m */; };
@@ -119,6 +121,11 @@
 		BEA939B818B38F3100BB4B31 /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartView.m; sourceTree = "<group>"; };
 		BEA939B918B38F3100BB4B31 /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
 		BEA939BA18B38F3100BB4B31 /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
+		BEA939BE18B3915E00BB4B31 /* VEHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEHomeViewController.h; sourceTree = "<group>"; };
+		BEA939BF18B3915E00BB4B31 /* VEHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEHomeViewController.m; sourceTree = "<group>"; };
+		BEA939C018B3915E00BB4B31 /* VEHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEHomeViewController.xib; sourceTree = "<group>"; };
+		BEA939CD18B391DE00BB4B31 /* NSString+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extra.h"; sourceTree = "<group>"; };
+		BEA939CE18B391DE00BB4B31 /* NSString+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extra.m"; sourceTree = "<group>"; };
 		BEB6A9AD185B13F40029A799 /* VELeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VELeftMenuViewController.h; sourceTree = "<group>"; };
 		BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VELeftMenuViewController.m; sourceTree = "<group>"; };
 		BEC63F18183CC6BD001C82B6 /* VEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEAppDelegate.h; sourceTree = "<group>"; };
@@ -144,8 +151,6 @@
 		BEC63F33183CC6BD001C82B6 /* VETargetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETargetDetailViewController.m; sourceTree = "<group>"; };
 		BEC63F34183CC6BD001C82B6 /* VETargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VETargetViewController.h; sourceTree = "<group>"; };
 		BEC63F35183CC6BD001C82B6 /* VETargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VETargetViewController.m; sourceTree = "<group>"; };
-		BEC63F38183CC6BD001C82B6 /* VEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEViewController.h; sourceTree = "<group>"; };
-		BEC63F39183CC6BD001C82B6 /* VEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEViewController.m; sourceTree = "<group>"; };
 		BEC63F3A183CC6BD001C82B6 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		BEC63F3B183CC6BD001C82B6 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		BEC63F3C183CC6BD001C82B6 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -281,6 +286,15 @@
 			path = Library/JawboneChartView;
 			sourceTree = "<group>";
 		};
+		BEA939CC18B391DE00BB4B31 /* NSString+Extra */ = {
+			isa = PBXGroup;
+			children = (
+				BEA939CD18B391DE00BB4B31 /* NSString+Extra.h */,
+				BEA939CE18B391DE00BB4B31 /* NSString+Extra.m */,
+			);
+			path = "NSString+Extra";
+			sourceTree = "<group>";
+		};
 		BEC63F17183CC6BD001C82B6 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +341,9 @@
 				BEC63F29183CC6BD001C82B6 /* VEEspnViewController.m */,
 				BEC63F2A183CC6BD001C82B6 /* VEFSViewController.h */,
 				BEC63F2B183CC6BD001C82B6 /* VEFSViewController.m */,
+				BEA939BE18B3915E00BB4B31 /* VEHomeViewController.h */,
+				BEA939BF18B3915E00BB4B31 /* VEHomeViewController.m */,
+				BEA939C018B3915E00BB4B31 /* VEHomeViewController.xib */,
 				BEB6A9AD185B13F40029A799 /* VELeftMenuViewController.h */,
 				BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */,
 				BEF6547118A14CD60074E1A7 /* VERatedVenuesForTagViewController.h */,
@@ -339,8 +356,6 @@
 				BEC63F33183CC6BD001C82B6 /* VETargetDetailViewController.m */,
 				BEC63F34183CC6BD001C82B6 /* VETargetViewController.h */,
 				BEC63F35183CC6BD001C82B6 /* VETargetViewController.m */,
-				BEC63F38183CC6BD001C82B6 /* VEViewController.h */,
-				BEC63F39183CC6BD001C82B6 /* VEViewController.m */,
 				BEC63F3A183CC6BD001C82B6 /* WebViewController.h */,
 				BEC63F3B183CC6BD001C82B6 /* WebViewController.m */,
 				BEC63F3C183CC6BD001C82B6 /* WebViewController.xib */,
@@ -405,6 +420,7 @@
 		BEC63F71183CC7BC001C82B6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				BEA939CC18B391DE00BB4B31 /* NSString+Extra */,
 				BEC63F72183CC7BC001C82B6 /* UIControl+VEControl */,
 			);
 			path = Tools;
@@ -672,6 +688,7 @@
 				BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
+				BEA939C818B3915E00BB4B31 /* VEHomeViewController.xib in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
 				BE644B24183D7C2B007AEE9F /* Veespo-Keys.plist in Resources */,
@@ -710,7 +727,6 @@
 				BEC63F77183CC7BC001C82B6 /* UIControl+VEControl.m in Sources */,
 				BEA939BB18B38F3100BB4B31 /* JBBarChartView.m in Sources */,
 				BEE64C6D1859C6D800539E8A /* Foursquare2.m in Sources */,
-				BEC63F61183CC6BD001C82B6 /* VEViewController.m in Sources */,
 				BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */,
 				BEC63F7C183CD0B3001C82B6 /* main.m in Sources */,
 				BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */,
@@ -722,6 +738,7 @@
 				BEC63F66183CC6BD001C82B6 /* FSVenue.m in Sources */,
 				BEE64C601859C63000539E8A /* UIImageView+AFNetworking.m in Sources */,
 				BEE64C591859C63000539E8A /* AFHTTPRequestOperation.m in Sources */,
+				BEA939C718B3915E00BB4B31 /* VEHomeViewController.m in Sources */,
 				BEC63F6E183CC6BD001C82B6 /* VEConnection.m in Sources */,
 				BEE64C6F1859C6D800539E8A /* FSRequester.m in Sources */,
 				BEE64C5E1859C63000539E8A /* AFURLConnectionOperation.m in Sources */,
@@ -735,6 +752,7 @@
 				BEC63F59183CC6BD001C82B6 /* VEEspnViewController.m in Sources */,
 				BEC63F5F183CC6BD001C82B6 /* VETargetViewController.m in Sources */,
 				BEC63F6D183CC6BD001C82B6 /* VERSSParser.m in Sources */,
+				BEA939CF18B391DE00BB4B31 /* NSString+Extra.m in Sources */,
 				BEE64C5D1859C63000539E8A /* AFPropertyListRequestOperation.m in Sources */,
 				BEA939B318B38E6800BB4B31 /* PickerView.m in Sources */,
 				BEE64C711859C6D800539E8A /* FSWebLogin.m in Sources */,
