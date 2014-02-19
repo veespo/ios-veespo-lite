@@ -92,7 +92,7 @@
                         };
     
     NSDictionary *p = @{@"question": @{
-                                @"text": [NSString stringWithFormat:NSLocalizedString(@"Veespo News Question", nil), self.headline],
+                                @"text": NSLocalizedString(@"Veespo News Question", nil),
                                 @"category": @"news"
                             }
                         };

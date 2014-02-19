@@ -215,7 +215,7 @@
                         };
     
     NSDictionary *p = @{@"question": @{
-                                @"text": [NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), self.venue.name],
+                                @"text": NSLocalizedString(@"Veespo Question", nil),
                                 @"category": @"cibi"
                                 }
                         };
