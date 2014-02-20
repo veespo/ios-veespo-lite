@@ -9,7 +9,6 @@
 #import "VEDetailVenue.h"
 #import "Foursquare2.h"
 #import "UIImageView+AFNetworking.h"
-#import "VEConnection.h"
 #import "VERatedVenuesViewController.h"
 #import "VERatedVenuesForTagViewController.h"
 #import "VEChartViewController.h"
@@ -179,29 +178,31 @@
     } else {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
-        VEConnection *connection = [[VEConnection alloc] init];
-        [connection requestAverageForTarget:self.venue.venueId withCategory:@"cibi" withToken:_token blockResult:^(id result, id overall) {
-            if ([result isKindOfClass:[NSArray class]]) {
-                if (((NSArray*)result).count > 0) {
-                    // Convert value to factor 5
-                    float av = [overall floatValue] * 5;
-                    // Scale to 10-0 value (pos value from 6 to 10)
-                    av = (av + 5) / 2;
-                    
-                    self.averageLabel.text = [NSString stringWithFormat:@"%.1f", av];
-                    
-                    VEDataChart *dataChart = [[VEDataChart alloc] init];
-                    avgTargetsList = [[NSArray alloc] initWithArray:[dataChart frequencyTagsOrder:result balanced:NO]];
-                }
-                
-                [self.avgTableView reloadData];
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-            } else {
-                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[result objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-            }
-        }];
+        VEVeespoAPIWrapper *veespoApi = [[VEVeespoAPIWrapper alloc] init];
+        
+        [veespoApi requestAverageForTarget:self.venue.venueId
+                              withCategory:@"cibi"
+                                 withToken:_token
+                                   success:^(id responseData, id overall) {
+                                       if (((NSArray*)responseData).count > 0) {
+                                           // Convert value to factor 5
+                                           float av = [overall floatValue] * 5;
+                                           // Scale to 10-0 value (pos value from 6 to 10)
+                                           av = (av + 5) / 2;
+                                           
+                                           self.averageLabel.text = [NSString stringWithFormat:@"%.1f", av];
+                                           
+                                           VEDataChart *dataChart = [[VEDataChart alloc] init];
+                                           avgTargetsList = [[NSArray alloc] initWithArray:[dataChart frequencyTagsOrder:responseData balanced:NO]];
+                                       }
+                                       
+                                       [self.avgTableView reloadData];
+                                       [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                   } failure:^(id error) {
+                                       [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[error objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                       [alert show];
+                                   }];
     }
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "VERatedVenuesViewController.h"
-#import "VEConnection.h"
 #import "VEDetailVenue.h"
 #import "Foursquare2.h"
 #import "FSConverter.h"
@@ -43,31 +42,37 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.tableView.backgroundColor = [UIColor whiteColor];
     
-    VEConnection *connection = [[VEConnection alloc] init];
+    VEVeespoAPIWrapper *veespoApi = [[VEVeespoAPIWrapper alloc] init];
     NSString *userId = nil;
     
     userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
     
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    [connection requestTargetsForUser:userId withCategory:@"cibi" withToken:[appDelegate.tokens objectForKey:@"cibi"] blockResult:^(id result) {
-        if ([result isKindOfClass:[NSArray class]]) {
-            if (targetsList)
-                targetsList = nil;
-            
-            NSArray *list = [[NSArray alloc] initWithArray:result];
-            targetsList = [list sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                NSString *name1 = obj1[@"desc1"];
-                NSString *name2 = obj2[@"desc1"];
-                return [name1 compare:name2];
-            }];
-            [self.tableView reloadData];
-            
-            [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
-        } else {
-            [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
-        }
-    }];
+    
+    [veespoApi requestTargetsForUser:userId
+                        withCategory:@"cibi"
+                           withToken:[appDelegate.tokens objectForKey:@"cibi"]
+                             success:^(id responseData) {
+                                 if (((NSArray *)responseData).count > 0) {
+                                     if (targetsList)
+                                         targetsList = nil;
+                                     
+                                     NSArray *list = [[NSArray alloc] initWithArray:responseData];
+                                     targetsList = [list sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                                         NSString *name1 = obj1[@"desc1"];
+                                         NSString *name2 = obj2[@"desc1"];
+                                         return [name1 compare:name2];
+                                     }];
+                                 }
+                                 
+                                 [self.tableView reloadData];
+                                 
+                                 [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
+                             } failure:^(id error) {
+                                 [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
+                             }];
 }
 
 - (void)didReceiveMemoryWarning

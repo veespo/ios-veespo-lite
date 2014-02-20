@@ -7,7 +7,6 @@
 //
 
 #import "VERatedVenuesForTagViewController.h"
-#import "VEConnection.h"
 #import "MBProgressHUD.h"
 #import "Foursquare2.h"
 #import "FSConverter.h"
@@ -67,39 +66,40 @@ static int const topVenue = 10;
 
 - (void)foursquareRequest
 {
-    VEConnection *connection = [[VEConnection alloc] init];
+    VEVeespoAPIWrapper *veespoApi = [[VEVeespoAPIWrapper alloc] init];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [connection requestAvgTargetsForTag:_tagid withCategory:_category withToken:_token blockResult:^(id result) {
-        if ([result isKindOfClass:[NSArray class]]) {
-            
-            targetsAvgList = [[NSArray alloc] initWithArray:result];
-            
-            if (targetsListFoursquare)
-                targetsListFoursquare = nil;
-            targetsListFoursquare = [[NSMutableArray alloc] init];
-            
-            int totV = (targetsAvgList.count > topVenue) ? topVenue : targetsAvgList.count;
-            
-            for (int i = 0; i < totV; i++) {
-                // Reqeust to Foursquare info about target
-                [Foursquare2 getDetailForVenue:[targetsAvgList objectAtIndex:i][@"target"] callback:^(BOOL success, id result) {
-                    if (success) {
-                        NSDictionary *dict = [result valueForKeyPath:@"response.venue"];
-                        FSConverter *converter = [[FSConverter alloc] init];
-                        [targetsListFoursquare addObject:[converter converterToObject:dict]];
-                    }
-                    
-                    if (i == totV - 1) {
-                        [self.tableView reloadData];
-                        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                    }
-                }];
-            }
-        } else {
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        }
+    [veespoApi requestAvgTargetsForTag:_tagid
+                          withCategory:_category
+                             withToken:_token
+                               success:^(id responseData) {
+                                   targetsAvgList = [[NSArray alloc] initWithArray:responseData];
+                                   
+                                   if (targetsListFoursquare)
+                                       targetsListFoursquare = nil;
+                                   targetsListFoursquare = [[NSMutableArray alloc] init];
+                                   
+                                   int totV = (targetsAvgList.count > topVenue) ? topVenue : targetsAvgList.count;
+                                   
+                                   for (int i = 0; i < totV; i++) {
+                                       // Reqeust to Foursquare info about target
+                                       [Foursquare2 getDetailForVenue:[targetsAvgList objectAtIndex:i][@"target"] callback:^(BOOL success, id result) {
+                                           if (success) {
+                                               NSDictionary *dict = [result valueForKeyPath:@"response.venue"];
+                                               FSConverter *converter = [[FSConverter alloc] init];
+                                               [targetsListFoursquare addObject:[converter converterToObject:dict]];
+                                           }
+                                           
+                                           if (i == totV - 1) {
+                                               [self.tableView reloadData];
+                                               [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                           }
+                                       }];
+                                   }
+    }
+                               failure:^(id error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
 }
 
