@@ -155,7 +155,7 @@
 #ifdef VEESPO
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    detail *ddet = [[detail alloc] initWithFrame:CGRectMake(10, 49.5, 300, 78.5)];
+//    detail *ddet = [[detail alloc] initWithFrame:CGRectMake(10, 49.5, 300, 78.5)];
     
     NSDictionary *p = @{@"question": @{
                                 @"text": [NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), @"Veespo Lite"]
@@ -166,7 +166,7 @@
                                                                                                 target:@"veespo_lite_iOS"
                                                                                       targetParameters:nil
                                                                                             parameters:p
-                                                                                           detailsView:@[ddet]
+                                                                                           detailsView:nil
                                                     ];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){

@@ -19,6 +19,9 @@
 		BE644B1B183D5EDA007AEE9F /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE644B1A183D5EDA007AEE9F /* PickerView.m */; };
 		BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE644B20183D6D7A007AEE9F /* Localizable.strings */; };
 		BE644B24183D7C2B007AEE9F /* Veespo-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE644B23183D7C2B007AEE9F /* Veespo-Keys.plist */; };
+		BE667EBF18BFEAC100152A52 /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE667EBC18BFEAC100152A52 /* Resources.bundle */; };
+		BE667EC018BFEAC100152A52 /* VEECountly.mom in Resources */ = {isa = PBXBuildFile; fileRef = BE667EBD18BFEAC100152A52 /* VEECountly.mom */; };
+		BE667EC118BFEAC100152A52 /* VeespoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE667EBE18BFEAC100152A52 /* VeespoFramework.framework */; };
 		BE72AB1F18B7B9690045211A /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB1E18B7B9690045211A /* VEConnection.m */; };
 		BE72AB2018B7BA610045211A /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB1E18B7B9690045211A /* VEConnection.m */; };
 		BE72AB2218B7BAB70045211A /* VEVeespoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB2118B7BAB70045211A /* VEVeespoTest.m */; };
@@ -126,6 +129,9 @@
 		BE644B21183D6D7F007AEE9F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BE644B22183D6D89007AEE9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BE644B23183D7C2B007AEE9F /* Veespo-Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Veespo-Keys.plist"; path = "Supporting Files/Veespo-Keys.plist"; sourceTree = "<group>"; };
+		BE667EBC18BFEAC100152A52 /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
+		BE667EBD18BFEAC100152A52 /* VEECountly.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = VEECountly.mom; sourceTree = "<group>"; };
+		BE667EBE18BFEAC100152A52 /* VeespoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VeespoFramework.framework; sourceTree = "<group>"; };
 		BE72AB1D18B7B9690045211A /* VEConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEConnection.h; sourceTree = "<group>"; };
 		BE72AB1E18B7B9690045211A /* VEConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEConnection.m; sourceTree = "<group>"; };
 		BE72AB2118B7BAB70045211A /* VEVeespoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEVeespoTest.m; sourceTree = "<group>"; };
@@ -262,6 +268,7 @@
 				BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */,
 				BE1ECBB917F1962C006CCD56 /* CoreLocation.framework in Frameworks */,
 				BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */,
+				BE667EC118BFEAC100152A52 /* VeespoFramework.framework in Frameworks */,
 				BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */,
 				BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */,
 			);
@@ -310,6 +317,24 @@
 				BE644B1A183D5EDA007AEE9F /* PickerView.m */,
 			);
 			path = PickerView;
+			sourceTree = "<group>";
+		};
+		BE667EBA18BFEAC100152A52 /* VeespoFramework.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				BE667EBB18BFEAC100152A52 /* Resources */,
+				BE667EBE18BFEAC100152A52 /* VeespoFramework.framework */,
+			);
+			path = VeespoFramework.embeddedframework;
+			sourceTree = "<group>";
+		};
+		BE667EBB18BFEAC100152A52 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BE667EBC18BFEAC100152A52 /* Resources.bundle */,
+				BE667EBD18BFEAC100152A52 /* VEECountly.mom */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		BEC63F17183CC6BD001C82B6 /* Application */ = {
@@ -570,6 +595,7 @@
 		BEEB671517EC9A1A00F394E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE667EBA18BFEAC100152A52 /* VeespoFramework.embeddedframework */,
 				BED167A118991AB60083B3B5 /* CoreData.framework */,
 				BED1679F18991A700083B3B5 /* CoreTelephony.framework */,
 				BE9800F3183F814D000900CC /* libz.dylib */,
@@ -725,7 +751,9 @@
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
+				BE667EC018BFEAC100152A52 /* VEECountly.mom in Resources */,
 				BE644B24183D7C2B007AEE9F /* Veespo-Keys.plist in Resources */,
+				BE667EBF18BFEAC100152A52 /* Resources.bundle in Resources */,
 				BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */,
 				BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
@@ -952,7 +980,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = /Users/darth/Dropbox/veespo/Veespo/VeespoFramework.embeddedframework;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
 				INFOPLIST_FILE = "Veespo/Veespo-Info.plist";
@@ -977,7 +1005,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: giordano scalzo (8H2HF6RX92)";
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = /Users/darth/Dropbox/veespo/Veespo/VeespoFramework.embeddedframework;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
 				INFOPLIST_FILE = "Veespo/Veespo-Info.plist";
