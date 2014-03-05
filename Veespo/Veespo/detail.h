@@ -12,5 +12,6 @@
 @interface detail : VEVisualView
 
 @property (nonatomic, strong) UILabel *questionLabel;
+@property (nonatomic, strong) NSNumber *globalAverage;
 
 @end

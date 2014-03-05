@@ -11,8 +11,7 @@
 // Numerics
 CGFloat const _kVEDetailValueViewPadding = 10.0f;
 CGFloat const _kVEDetailValueViewSeparatorSize = 1.0f;
-CGFloat const _kVEDetailValueViewTitleHeight = 20.0f;
-CGFloat const _kVEDetailValueViewTitleWidth = 75.0f;
+CGFloat const _kVEDetailValueViewTitleHeight = 25.0f;
 
 // Colors
 static UIColor *kVEDetailViewSeparatorColor = nil;
@@ -39,14 +38,15 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
 @property (nonatomic, strong) UIView *firstView;
 @property (nonatomic, strong) UILabel *userTitleLabel;
 @property (nonatomic, strong) UILabel *globalTitleLabel;
-@property (nonatomic, strong) UIView *horizzontalSeparatorView;
+@property (nonatomic, strong) UIView *horizontalSeparatorView;
 @property (nonatomic, strong) UIView *verticalSeparatorView;
 
 // Position
 - (CGRect)valueViewRect;
 - (CGRect)globalValueViewRect;
 - (CGRect)titleViewRectForHidden:(BOOL)hidden;
-- (CGRect)separatorViewRectForHidden:(BOOL)hidden;
+- (CGRect)horizontalSeparatorViewRectForHidden:(BOOL)hidden;
+- (CGRect)verticalSeparatorViewRectForHidden:(BOOL)hidden;
 
 @end
 
@@ -78,6 +78,7 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
         _userTitleLabel.textColor = kVEDetailViewTitleColor;
         _userTitleLabel.shadowColor = kVEDetailViewShadowColor;
         _userTitleLabel.shadowOffset = CGSizeMake(0, 1);
+        _userTitleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_userTitleLabel];
         
         _globalTitleLabel = [[UILabel alloc] init];
@@ -88,13 +89,18 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
         _globalTitleLabel.textColor = kVEDetailViewTitleColor;
         _globalTitleLabel.shadowColor = kVEDetailViewShadowColor;
         _globalTitleLabel.shadowOffset = CGSizeMake(0, 1);
+        _globalTitleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_globalTitleLabel];
         
-        _horizzontalSeparatorView = [[UIView alloc] init];
-        _horizzontalSeparatorView.backgroundColor = kVEDetailViewShadowColor;
-        [self addSubview:_horizzontalSeparatorView];
+        _horizontalSeparatorView = [[UIView alloc] init];
+        _horizontalSeparatorView.backgroundColor = kVEDetailViewShadowColor;
+        [self addSubview:_horizontalSeparatorView];
         
-        _valueView = [[detailview alloc] init];
+        _verticalSeparatorView = [[UIView alloc] init];
+        _verticalSeparatorView.backgroundColor = kVEDetailViewShadowColor;
+        [self addSubview:_verticalSeparatorView];
+        
+        _valueView = [[detailview alloc] initWithFrame:[self valueViewRect]];
         [self addSubview:_valueView];
         
         _firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 76)];
@@ -120,7 +126,7 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
 {
     CGRect valueRect = CGRectZero;
     valueRect.origin.x = _kVEDetailValueViewPadding;
-    valueRect.origin.y = _kVEDetailValueViewPadding + _kVEDetailValueViewTitleHeight;
+    valueRect.origin.y = 5;
     valueRect.size.width = self.bounds.size.width - (_kVEDetailValueViewPadding * 2);
     valueRect.size.height = self.bounds.size.height - valueRect.origin.y - _kVEDetailValueViewPadding;
     return valueRect;
@@ -141,7 +147,7 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
     CGRect titleRect = CGRectZero;
     titleRect.origin.x = _kVEDetailValueViewPadding;
     titleRect.origin.y = hidden ? -_kVEDetailValueViewTitleHeight : 2;
-    titleRect.size.width = self.bounds.size.width - (_kVEDetailValueViewPadding * 2);
+    titleRect.size.width = (self.bounds.size.width - (_kVEDetailValueViewPadding * 2)) / 2;
     titleRect.size.height = _kVEDetailValueViewTitleHeight;
     return titleRect;
 }
@@ -149,14 +155,14 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
 - (CGRect)globalTitleViewRectForHidden:(BOOL)hidden
 {
     CGRect titleRect = CGRectZero;
-    titleRect.origin.x = _kVEDetailValueViewPadding + 140;
+    titleRect.origin.x = _kVEDetailValueViewPadding + ((self.bounds.size.width - (_kVEDetailValueViewPadding * 2)) / 2);
     titleRect.origin.y = hidden ? -_kVEDetailValueViewTitleHeight : 2;
-    titleRect.size.width = self.bounds.size.width - (_kVEDetailValueViewPadding * 2);
+    titleRect.size.width = (self.bounds.size.width - (_kVEDetailValueViewPadding * 2)) / 2;
     titleRect.size.height = _kVEDetailValueViewTitleHeight;
     return titleRect;
 }
 
-- (CGRect)separatorViewRectForHidden:(BOOL)hidden
+- (CGRect)horizontalSeparatorViewRectForHidden:(BOOL)hidden
 {
     CGRect separatorRect = CGRectZero;
     separatorRect.origin.x = _kVEDetailValueViewPadding;
@@ -170,13 +176,28 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
     return separatorRect;
 }
 
+- (CGRect)verticalSeparatorViewRectForHidden:(BOOL)hidden
+{
+    CGRect separatorRect = CGRectZero;
+    separatorRect.origin.x = _kVEDetailValueViewPadding + ((self.bounds.size.width - (_kVEDetailValueViewPadding * 2)) / 2);
+    separatorRect.origin.y = _kVEDetailValueViewPadding;
+    separatorRect.size.width = _kVEDetailValueViewSeparatorSize;
+    separatorRect.size.height = self.bounds.size.height - (_kVEDetailValueViewSeparatorSize * 2);
+    if (hidden)
+    {
+        separatorRect.origin.y -= self.bounds.size.height;
+    }
+    return separatorRect;
+}
+
 #pragma mark - Setters
 
 - (void)setTitleTexts:(NSString *)userTitleText globalTitleText:(NSString *)globalTitleText
 {
     self.userTitleLabel.text = userTitleText;
     self.globalTitleLabel.text = globalTitleText;
-    self.horizzontalSeparatorView.hidden = !(userTitleText != nil);
+    self.horizontalSeparatorView.hidden = !(userTitleText != nil);
+    self.verticalSeparatorView.hidden = !(userTitleText != nil);
 }
 
 - (void)setValueText:(NSString *)valueText unitText:(NSString *)unitText
@@ -208,7 +229,7 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
 
 - (void)setSeparatorColor:(UIColor *)separatorColor
 {
-    self.horizzontalSeparatorView.backgroundColor = separatorColor;
+    self.horizontalSeparatorView.backgroundColor = separatorColor;
     self.verticalSeparatorView.backgroundColor = separatorColor;
     [self setNeedsDisplay];
 }
@@ -222,26 +243,30 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
             [UIView animateWithDuration:0.25f * 0.5 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                 self.userTitleLabel.alpha = 0.0;
                 self.globalTitleLabel.alpha = 0.0;
-                self.horizzontalSeparatorView.alpha = 0.0;
+                self.horizontalSeparatorView.alpha = 0.0;
+                self.verticalSeparatorView.alpha = 0.0;
                 self.valueView.valueLabel.alpha = 0.0;
                 self.valueView.globalValueLabel.alpha = 0.0;
             } completion:^(BOOL finished) {
                 self.userTitleLabel.frame = [self titleViewRectForHidden:YES];
                 self.globalTitleLabel.frame = [self globalTitleViewRectForHidden:YES];
-                self.horizzontalSeparatorView.frame = [self separatorViewRectForHidden:YES];
+                self.horizontalSeparatorView.frame = [self horizontalSeparatorViewRectForHidden:YES];
+                self.verticalSeparatorView.frame = [self verticalSeparatorViewRectForHidden:YES];
             }];
         }
         else
         {
-            [UIView animateWithDuration:0.25f delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            [UIView animateWithDuration:0.4f delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                 self.userTitleLabel.frame = [self titleViewRectForHidden:NO];
                 self.userTitleLabel.alpha = 1.0;
                 self.globalTitleLabel.frame = [self globalTitleViewRectForHidden:NO];
                 self.globalTitleLabel.alpha = 1.0;
                 self.valueView.valueLabel.alpha = 1.0;
                 self.valueView.globalValueLabel.alpha = 1.0;
-                self.horizzontalSeparatorView.frame = [self separatorViewRectForHidden:NO];
-                self.horizzontalSeparatorView.alpha = 1.0;
+                self.horizontalSeparatorView.frame = [self horizontalSeparatorViewRectForHidden:NO];
+                self.horizontalSeparatorView.alpha = 1.0;
+                self.verticalSeparatorView.frame = [self verticalSeparatorViewRectForHidden:NO];
+                self.verticalSeparatorView.alpha = 1.0;
             } completion:nil];
         }
     }
@@ -251,8 +276,10 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
         self.userTitleLabel.alpha = hidden ? 0.0 : 1.0;
         self.globalTitleLabel.frame = [self globalTitleViewRectForHidden:hidden];
         self.globalTitleLabel.alpha = hidden ? 0.0 : 1.0;
-        self.horizzontalSeparatorView.frame = [self separatorViewRectForHidden:hidden];
-        self.horizzontalSeparatorView.alpha = hidden ? 0.0 : 1.0;
+        self.horizontalSeparatorView.frame = [self horizontalSeparatorViewRectForHidden:hidden];
+        self.horizontalSeparatorView.alpha = hidden ? 0.0 : 1.0;
+        self.verticalSeparatorView.frame = [self verticalSeparatorViewRectForHidden:hidden];
+        self.verticalSeparatorView.alpha = hidden ? 0.0 : 1.0;
         self.valueView.valueLabel.alpha = hidden ? 0.0 : 1.0;
         self.valueView.globalValueLabel.alpha = hidden ? 0.0 : 1.0;
     }
@@ -273,12 +300,12 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
 {
     if (firstVote == NO) {
         firstVote = YES;
-        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationTransitionNone | UIViewAnimationOptionCurveLinear animations:^{
+        [UIView animateWithDuration:0.35f delay:0 options:UIViewAnimationTransitionNone | UIViewAnimationOptionCurveLinear animations:^{
             _firstView.center = CGPointMake(_firstView.center.x, _firstView.center.y - 100);
+            [self setTitleTexts:NSLocalizedString(@"Panel title 1", nil) globalTitleText:NSLocalizedString(@"Panel title 2", nil)];
+            [self setHidden:NO animated:YES];
         } completion:^(BOOL finished) {
             [_firstView removeFromSuperview];
-            [self setTitleTexts:@"La tua media" globalTitleText:@"Media globale"];
-            [self setHidden:NO animated:YES];
         }];
     }
     
@@ -292,10 +319,12 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
     [formatter setRoundingMode:NSNumberFormatterRoundCeiling];
     [formatter setMaximumFractionDigits:1];
     [formatter setMinimumIntegerDigits:1];
+    
+    
     if (votes > 0)
-        [self setValueText:[NSString stringWithFormat:@"%@",[formatter stringFromNumber:average]] unitText:@"n.a."];
+        [self setValueText:[formatter stringFromNumber:average] unitText:[formatter stringFromNumber:_globalAverage]];
     else
-        [self setValueText:@"n.a." unitText:@"n.a."];
+        [self setValueText:@"n.a." unitText:[formatter stringFromNumber:_globalAverage]];
 }
 
 @end
@@ -320,7 +349,7 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
     if (self)
     {
         _valueLabel = [[UILabel alloc] init];
-        _valueLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:50];
+        _valueLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:46];
         _valueLabel.textColor = kVEEDubleInformationDetailValueColor;
         _valueLabel.shadowColor = kVEEDubleInformationDetailShadowColor;
         _valueLabel.shadowOffset = CGSizeMake(0, 1);
@@ -331,7 +360,7 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
         [self addSubview:_valueLabel];
         
         _globalValueLabel = [[UILabel alloc] init];
-        _globalValueLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:50];
+        _globalValueLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:46];
         _globalValueLabel.textColor = kVEEDubleInformationDetailValueColor;
         _globalValueLabel.shadowColor = kVEEDubleInformationDetailShadowColor;
         _globalValueLabel.shadowOffset = CGSizeMake(0, 1);
@@ -348,8 +377,8 @@ static UIColor *kVEEDubleInformationDetailShadowColor = nil;
 
 - (void)layoutSubviews
 {
-    self.valueLabel.frame = CGRectMake(20, 30, 100, 50);
-    self.globalValueLabel.frame = CGRectMake(150, 30, 100, 50);
+    self.valueLabel.frame = CGRectMake(_kVEDetailValueViewPadding, 20, (self.bounds.size.width - (_kVEDetailValueViewPadding * 2)) / 2, 50);
+    self.globalValueLabel.frame = CGRectMake(_kVEDetailValueViewPadding + ((self.bounds.size.width - (_kVEDetailValueViewPadding * 2)) / 2), 20, (self.bounds.size.width - (_kVEDetailValueViewPadding * 2)) / 2, 50);
 }
 
 @end

@@ -15,6 +15,8 @@
 #import "MBProgressHUD.h"
 #import "VEDataChart.h"
 
+#import "detail.h"
+
 @interface VEDetailVenue () {
     NSArray *avgTargetsList;
 }
@@ -221,7 +223,6 @@
     
     // Parametri UI widget
     NSDictionary *p = @{@"question": @{
-                                @"text": NSLocalizedString(@"Veespo Question", nil),
                                 @"category": @"cibi"
                                 }
                         };
@@ -229,15 +230,29 @@
     // key e version del target
     NSDictionary *tp = @{@"key1": self.venue.category,
                          @"key2": self.venue.country,
-                         @"key3": self.venue.city,
-                         @"key4": self.venue.postalCode
+                         @"key3": self.venue.city ? self.venue.city : @"",
+                         @"key4": self.venue.postalCode ? self.venue.city : @""
                          };
+    
+    // Custom panel
+    detail *ddet = [[detail alloc] initWithFrame:CGRectMake(10, 49.5, 300, 78.5)];
+    ddet.questionLabel.text = NSLocalizedString(@"Veespo Question", nil);
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setLocale:[NSLocale currentLocale]];
+    [formatter setMinimumFractionDigits:2];
+    [formatter setMaximumFractionDigits:2];
+    NSString *n = _averageLabel.text;
+    NSNumber * myNumber = [formatter numberFromString:n];
+    
+    ddet.globalAverage = [NSNumber numberWithDouble:[n doubleValue]];
     
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token
                                                                                             targetInfo:tinfo
                                                                                       targetParameters:tp
                                                                                             parameters:p
-                                                                                           detailsView:nil
+                                                                                           detailsView:@[ddet]
                                                     ];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
