@@ -313,7 +313,7 @@ static int const maxLocationUpdate = 1;
 									  query:nil
 									  limit:nil
 									 intent:intentBrowse
-                                     radius:@(800)
+                                     radius:@(500)
                                  categoryId:catCibi
 								   callback:^(BOOL success, id result){
 									   if (success) {
