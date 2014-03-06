@@ -91,9 +91,12 @@
 		BEEB8E4418BF97CE00977E47 /* detail.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB8E4318BF97CE00977E47 /* detail.m */; };
 		BEED2ECA187EA853009D8C18 /* VEDataChart.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED2EC9187EA853009D8C18 /* VEDataChart.m */; };
 		BEED2ECB187EA869009D8C18 /* VEDataChart.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED2EC9187EA853009D8C18 /* VEDataChart.m */; };
-		BEF2C30C18C769EA00908963 /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEF2C30918C769EA00908963 /* Resources.bundle */; };
-		BEF2C30D18C769EA00908963 /* VEECountly.mom in Resources */ = {isa = PBXBuildFile; fileRef = BEF2C30A18C769EA00908963 /* VEECountly.mom */; };
-		BEF2C30E18C769EA00908963 /* VeespoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF2C30B18C769EA00908963 /* VeespoFramework.framework */; };
+		BEF2C31418C7804A00908963 /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEF2C31118C7804A00908963 /* Resources.bundle */; };
+		BEF2C31518C7804A00908963 /* VEECountly.mom in Resources */ = {isa = PBXBuildFile; fileRef = BEF2C31218C7804A00908963 /* VEECountly.mom */; };
+		BEF2C31618C7804A00908963 /* VeespoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF2C31318C7804A00908963 /* VeespoFramework.framework */; };
+		BEF2C31A18C783A900908963 /* VEFlickrConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C31918C783A900908963 /* VEFlickrConnection.m */; };
+		BEF2C31B18C783A900908963 /* VEFlickrConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C31918C783A900908963 /* VEFlickrConnection.m */; };
+		BEF2C31E18C794AF00908963 /* VEFlickrGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C31D18C794AF00908963 /* VEFlickrGalleryViewController.m */; };
 		BEF6547318A14CD60074E1A7 /* VERatedVenuesForTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF6547218A14CD60074E1A7 /* VERatedVenuesForTagViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -248,9 +251,13 @@
 		BEEB8E4318BF97CE00977E47 /* detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detail.m; sourceTree = "<group>"; };
 		BEED2EC8187EA853009D8C18 /* VEDataChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEDataChart.h; sourceTree = "<group>"; };
 		BEED2EC9187EA853009D8C18 /* VEDataChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEDataChart.m; sourceTree = "<group>"; };
-		BEF2C30918C769EA00908963 /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
-		BEF2C30A18C769EA00908963 /* VEECountly.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = VEECountly.mom; sourceTree = "<group>"; };
-		BEF2C30B18C769EA00908963 /* VeespoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VeespoFramework.framework; sourceTree = "<group>"; };
+		BEF2C31118C7804A00908963 /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
+		BEF2C31218C7804A00908963 /* VEECountly.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = VEECountly.mom; sourceTree = "<group>"; };
+		BEF2C31318C7804A00908963 /* VeespoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VeespoFramework.framework; sourceTree = "<group>"; };
+		BEF2C31818C783A900908963 /* VEFlickrConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEFlickrConnection.h; path = Flickr/VEFlickrConnection.h; sourceTree = "<group>"; };
+		BEF2C31918C783A900908963 /* VEFlickrConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEFlickrConnection.m; path = Flickr/VEFlickrConnection.m; sourceTree = "<group>"; };
+		BEF2C31C18C794AF00908963 /* VEFlickrGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFlickrGalleryViewController.h; sourceTree = "<group>"; };
+		BEF2C31D18C794AF00908963 /* VEFlickrGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFlickrGalleryViewController.m; sourceTree = "<group>"; };
 		BEF6547118A14CD60074E1A7 /* VERatedVenuesForTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERatedVenuesForTagViewController.h; sourceTree = "<group>"; };
 		BEF6547218A14CD60074E1A7 /* VERatedVenuesForTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VERatedVenuesForTagViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -268,7 +275,7 @@
 				BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */,
 				BE1ECBB917F1962C006CCD56 /* CoreLocation.framework in Frameworks */,
 				BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */,
-				BEF2C30E18C769EA00908963 /* VeespoFramework.framework in Frameworks */,
+				BEF2C31618C7804A00908963 /* VeespoFramework.framework in Frameworks */,
 				BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */,
 				BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */,
 			);
@@ -383,6 +390,8 @@
 				BEC63F3A183CC6BD001C82B6 /* WebViewController.h */,
 				BEC63F3B183CC6BD001C82B6 /* WebViewController.m */,
 				BEC63F3C183CC6BD001C82B6 /* WebViewController.xib */,
+				BEF2C31C18C794AF00908963 /* VEFlickrGalleryViewController.h */,
+				BEF2C31D18C794AF00908963 /* VEFlickrGalleryViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -577,7 +586,7 @@
 		BEEB671517EC9A1A00F394E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BEF2C30718C769EA00908963 /* VeespoFramework.embeddedframework */,
+				BEF2C30F18C7804A00908963 /* VeespoFramework.embeddedframework */,
 				BED167A118991AB60083B3B5 /* CoreData.framework */,
 				BED1679F18991A700083B3B5 /* CoreTelephony.framework */,
 				BE9800F3183F814D000900CC /* libz.dylib */,
@@ -597,6 +606,7 @@
 		BEEB671C17EC9A1A00F394E9 /* Veespo */ = {
 			isa = PBXGroup;
 			children = (
+				BEF2C31718C7835100908963 /* Flickr */,
 				BEC63F17183CC6BD001C82B6 /* Application */,
 				BEC63F1A183CC6BD001C82B6 /* Cells */,
 				BEC63F1F183CC6BD001C82B6 /* Collections */,
@@ -646,23 +656,32 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BEF2C30718C769EA00908963 /* VeespoFramework.embeddedframework */ = {
+		BEF2C30F18C7804A00908963 /* VeespoFramework.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
-				BEF2C30818C769EA00908963 /* Resources */,
-				BEF2C30B18C769EA00908963 /* VeespoFramework.framework */,
+				BEF2C31018C7804A00908963 /* Resources */,
+				BEF2C31318C7804A00908963 /* VeespoFramework.framework */,
 			);
 			name = VeespoFramework.embeddedframework;
 			path = "../../../Library/Developer/Xcode/DerivedData/VeespoFramework-eldtvhdwpsteoudgvebpfjvbcvhm/Build/Products/Debug-iphoneos/VeespoFramework.embeddedframework";
 			sourceTree = "<group>";
 		};
-		BEF2C30818C769EA00908963 /* Resources */ = {
+		BEF2C31018C7804A00908963 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BEF2C30918C769EA00908963 /* Resources.bundle */,
-				BEF2C30A18C769EA00908963 /* VEECountly.mom */,
+				BEF2C31118C7804A00908963 /* Resources.bundle */,
+				BEF2C31218C7804A00908963 /* VEECountly.mom */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		BEF2C31718C7835100908963 /* Flickr */ = {
+			isa = PBXGroup;
+			children = (
+				BEF2C31818C783A900908963 /* VEFlickrConnection.h */,
+				BEF2C31918C783A900908963 /* VEFlickrConnection.m */,
+			);
+			name = Flickr;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -752,9 +771,9 @@
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
-				BEF2C30D18C769EA00908963 /* VEECountly.mom in Resources */,
+				BEF2C31518C7804A00908963 /* VEECountly.mom in Resources */,
 				BE644B24183D7C2B007AEE9F /* Veespo-Keys.plist in Resources */,
-				BEF2C30C18C769EA00908963 /* Resources.bundle in Resources */,
+				BEF2C31418C7804A00908963 /* Resources.bundle in Resources */,
 				BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */,
 				BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
@@ -797,6 +816,7 @@
 				BEC63F7C183CD0B3001C82B6 /* main.m in Sources */,
 				BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */,
 				BEE64C7E1859C7C900539E8A /* MBProgressHUD.m in Sources */,
+				BEF2C31E18C794AF00908963 /* VEFlickrGalleryViewController.m in Sources */,
 				BE01245118880E7500F015D4 /* NSString+Extra.m in Sources */,
 				BE72AB1F18B7B9690045211A /* VEConnection.m in Sources */,
 				BEE64C791859C77D00539E8A /* GHRevealViewController.m in Sources */,
@@ -820,6 +840,7 @@
 				BEC63F59183CC6BD001C82B6 /* VEEspnViewController.m in Sources */,
 				BEC63F5F183CC6BD001C82B6 /* VETargetViewController.m in Sources */,
 				BEC63F6D183CC6BD001C82B6 /* VERSSParser.m in Sources */,
+				BEF2C31A18C783A900908963 /* VEFlickrConnection.m in Sources */,
 				BEE64C5D1859C63000539E8A /* AFPropertyListRequestOperation.m in Sources */,
 				BE644B1B183D5EDA007AEE9F /* PickerView.m in Sources */,
 				BEE64C711859C6D800539E8A /* FSWebLogin.m in Sources */,
@@ -842,6 +863,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE72AB2018B7BA610045211A /* VEConnection.m in Sources */,
+				BEF2C31B18C783A900908963 /* VEFlickrConnection.m in Sources */,
 				BE72AB2218B7BAB70045211A /* VEVeespoTest.m in Sources */,
 				BEED2ECB187EA869009D8C18 /* VEDataChart.m in Sources */,
 			);
