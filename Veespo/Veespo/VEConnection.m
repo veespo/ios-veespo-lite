@@ -169,6 +169,28 @@
     [operation start];
 }
 
+- (void)getCountRatingsForCategory:(NSString *)category
+                         andTarget:(NSString *)target
+                         withToken:(NSString *)token
+                           success:(void(^)(id responseData))success
+                           failure:(void (^)(id error))failure
+{
+    // /v1/count/ratings/category/:cat/target/:target
+    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/count/ratings/category/%@/target/%@?token=%@&lang=%@", category, target, token, [[NSLocale preferredLanguages] objectAtIndex:0]];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    [request setTimeoutInterval:10];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        success(JSON[@"data"][@"count"]);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        failure([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"]);
+    }];
+    
+    [operation start];
+}
+
 #pragma mark - Private
 
 - (void)getTargets:(NSString *)catId userToken:(NSString *)uTk withBlock:(void(^)(id responseData))block

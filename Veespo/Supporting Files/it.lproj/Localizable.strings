@@ -20,9 +20,9 @@
 
 "Disclaimer" = "Inserisci il tuo nome e un Veespo code per iniziare a votare!";
 
-"Veespo Question" =  "Cosa ne pensi di %@?";
+"Veespo Question" =  "Esprimi la tua opinione!";
 
-"Veespo News Question" = "Qual'è la tua opinione sulla notizia '%@'?";
+"Veespo News Question" = "Qual'è la tua opinione su questa notizia?";
 
 "Wrong Code" = "Il codice demo è errato";
 
