@@ -23,6 +23,8 @@
 #import "VEFlickrGalleryViewController.h"
 #import "VEFlickrConnection.h"
 #import "MBProgressHUD.h"
+#import "ScaleAnimation.h"
+#import "ImageViewController.h"
 
 static CGFloat const kImageDistance = 5;
 
@@ -32,12 +34,19 @@ static CGSize CGSizeResizeToHeight(CGSize size, CGFloat height) {
     return size;
 }
 
-@interface VEFlickrGalleryViewController ()
+@interface VEFlickrGalleryViewController () {
+    ScaleAnimation *_scaleAnimationController;
+}
+
 @property (nonatomic, strong) UIScrollView *contentView;
+@property (nonatomic, strong) NSArray *photosList;
+@property (nonatomic, strong) NSMutableArray *images;
+@property (nonatomic, strong) NSMutableArray *imageViews;
 
 - (void)placeImages;
 - (CGSize)setFramesToImageViews:(NSArray *)imageViews toFitSize:(CGSize)frameSize;
 - (void)deviceOrientationChange;
+
 @end
 
 @implementation VEFlickrGalleryViewController
@@ -51,9 +60,10 @@ static CGSize CGSizeResizeToHeight(CGSize size, CGFloat height) {
     return self;
 }
 
-- (id)initWithImages:(NSArray *)images {
+- (id)initWithImages:(NSArray *)images
+{
     if (self = [super init]) {
-        self.images = images;
+        self.images = nil;
     }
     return self;
 }
@@ -74,10 +84,19 @@ static CGSize CGSizeResizeToHeight(CGSize size, CGFloat height) {
 //    self.title = NSLocalizedString(@"ESPN Top News", nil);
     self.view.backgroundColor = [UIColor whiteColor];
     
+     _scaleAnimationController = [[ScaleAnimation alloc] initWithNavigationController:self.navigationController];
+    
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 }
 
-- (void)loadView {
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    _scaleAnimationController.viewForInteraction = nil;
+}
+
+- (void)loadView
+{
     [super loadView];
     self.contentView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
@@ -93,12 +112,13 @@ static CGSize CGSizeResizeToHeight(CGSize size, CGFloat height) {
 {
     VEFlickrConnection *connection = [[VEFlickrConnection alloc] init];
     
-    __block NSMutableArray *photosList = [[NSMutableArray alloc] init];
+    self.images = [[NSMutableArray alloc] init];
     
     [connection getPhotosInSet:nil
                        success:^(NSArray *responseData) {
+                           self.photosList = responseData;
                            __block int i = responseData.count;
-                           for (NSDictionary *dic in responseData) {
+                           for (NSDictionary *dic in self.photosList) {
                                VEFlickrConnection *bConnection = [[VEFlickrConnection alloc] init];
                                
                                [bConnection getPhotoThumb:dic[@"id"]
@@ -111,10 +131,9 @@ static CGSize CGSizeResizeToHeight(CGSize size, CGFloat height) {
                                                                          
                                                                          //This is your completion handler
                                                                          dispatch_sync(dispatch_get_main_queue(), ^{
-                                                                             [photosList addObject:[UIImage imageWithData:imageData]];
+                                                                             [self.images addObject:[UIImage imageWithData:imageData]];
                                                                              i--;
                                                                              if (i == 0) {
-                                                                                 self.images = photosList;
                                                                                  [self placeImages];
                                                                                  [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
                                                                              }
@@ -124,7 +143,6 @@ static CGSize CGSizeResizeToHeight(CGSize size, CGFloat height) {
                                                       NSLog(@"error");
                                                       i--;
                                                       if (i == 0) {
-                                                          self.images = photosList;
                                                           [self placeImages];
                                                           [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
                                                       }
@@ -137,7 +155,8 @@ static CGSize CGSizeResizeToHeight(CGSize size, CGFloat height) {
                        }];
 }
 
-- (void)placeImages {
+- (void)placeImages
+{
     [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     self.imageViews = [NSMutableArray array];
@@ -150,7 +169,8 @@ static CGSize CGSizeResizeToHeight(CGSize size, CGFloat height) {
     self.contentView.contentSize = newSize;
     int i=0;
     for (UIImageView *imageView in self.imageViews) {
-        [self.contentView addSubview:imageView];
+//        [self.contentView addSubview:imageView];
+        
         //delegate
         [imageView setUserInteractionEnabled:YES];
         [imageView setTag:i];
@@ -161,23 +181,56 @@ static CGSize CGSizeResizeToHeight(CGSize size, CGFloat height) {
     }
 }
 
--(void) imgTouchUp:(id)sender {
+-(void)imgTouchUp:(id)sender
+{
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *) sender;
     NSLog(@"Taped Image tag is %d", gesture.view.tag);
     
-    UIImageView *imageView = [self.imageViews objectAtIndex:gesture.view.tag];
+    //    imageController.title = @"Apple";
     
-    [self.delegate imageSelected:imageView];
+    VEFlickrConnection *bConnection = [[VEFlickrConnection alloc] init];
+    NSDictionary *dic = [self.photosList objectAtIndex:gesture.view.tag];
+    
+    [bConnection getPhotoThumb:dic[@"id"]
+                       success:^(NSDictionary *responseData) {
+                           NSString *strURL = [[responseData[@"size"] objectAtIndex:1] objectForKey:@"source"];
+                           dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+                                          ^{
+                                              NSURL *imageURL = [NSURL URLWithString:strURL];
+                                              NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                                              
+                                              //This is your completion handler
+                                              dispatch_sync(dispatch_get_main_queue(), ^{
+                                                  [self presentImageController:[UIImage imageWithData:imageData]];
+                                              });
+                                          });
+                       } failure:^(id error) {
+                           NSLog(@"error");
+                       }
+     ];
 }
 
-- (void)deviceOrientationChange {
+- (void)deviceOrientationChange
+{
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(placeImages) object:nil];
     [self performSelector:@selector(placeImages) withObject:nil afterDelay:1];
 }
 
+-(void)presentImageController:(UIImage *)image {
+    ImageViewController *imageController = [[ImageViewController alloc] init];
+    imageController.photo =  image;
+    
+    VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    imageController.token = [appDelegate.tokens objectForKey:@"photo_flickr"];
+    
+    _scaleAnimationController.viewForInteraction = imageController.view;
+    [self.navigationController pushViewController:imageController animated:YES];
+}
+
 #pragma mark
 
-- (CGSize)setFramesToImageViews:(NSArray *)imageViews toFitSize:(CGSize)frameSize {
+- (CGSize)setFramesToImageViews:(NSArray *)imageViews toFitSize:(CGSize)frameSize
+{
     /**
      Linear Partition
      */
@@ -273,5 +326,32 @@ static CGSize CGSizeResizeToHeight(CGSize size, CGFloat height) {
     return CGSizeMake(frameSize.width, heightOffset);
 }
 
+#pragma mark - Navigation Controller Delegate
+
+-(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    
+    BaseAnimation *animationController;
+
+    animationController = _scaleAnimationController;
+    
+    switch (operation) {
+        case UINavigationControllerOperationPush:
+            animationController.type = AnimationTypePresent;
+            return  animationController;
+        case UINavigationControllerOperationPop:
+            animationController.type = AnimationTypeDismiss;
+            return animationController;
+        default: return nil;
+    }
+    
+}
+
+-(id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController {
+    if ([animationController isKindOfClass:[ScaleAnimation class]]) {
+        ScaleAnimation *controller = (ScaleAnimation *)animationController;
+        if (controller.isInteractive) return controller;
+        else return nil;
+    } else return nil;
+}
 
 @end

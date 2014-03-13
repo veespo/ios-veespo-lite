@@ -15,7 +15,7 @@
 #import "MBProgressHUD.h"
 #import "VEDataChart.h"
 
-#import "detail.h"
+#import "VEDoublePannel.h"
 
 @interface VEDetailVenue () {
     NSArray *avgTargetsList;
@@ -235,8 +235,7 @@
                          };
     
     // Custom panel
-    detail *ddet = [[detail alloc] initWithFrame:CGRectMake(10, 49.5, 300, 78.5)];
-    ddet.questionLabel.text = NSLocalizedString(@"Veespo Question", nil);
+    VEDoublePannel *ddet = [[VEDoublePannel alloc] initWithFrame:CGRectMake(10, 49.5, 300, 78.5) withPanelQuestion:NSLocalizedString(@"Veespo Question", nil)];
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -245,9 +244,7 @@
     [formatter setMaximumFractionDigits:2];
     NSString *n = _averageLabel.text;
     NSNumber * myNumber = [formatter numberFromString:n];
-    
-    ddet.globalAverage = [NSNumber numberWithDouble:[n doubleValue]];
-    
+        
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token
                                                                                             targetInfo:tinfo
                                                                                       targetParameters:tp

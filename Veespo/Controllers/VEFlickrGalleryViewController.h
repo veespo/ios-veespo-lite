@@ -28,13 +28,11 @@
 - (void)imageSelected:(UIImageView*)image;
 @end
 
-@interface VEFlickrGalleryViewController : UIViewController
+@interface VEFlickrGalleryViewController : UIViewController <UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
 
 - (id)initWithSet:(NSString *)setId;
 - (id)initWithImages:(NSArray *)images;
 
-@property (nonatomic, strong) NSArray *images;
-@property (nonatomic, strong) NSMutableArray *imageViews;
 @property (nonatomic, strong) id <NSGAlleryDelegate> delegate;
 
 @end
