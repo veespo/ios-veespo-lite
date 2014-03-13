@@ -151,7 +151,7 @@
     NSDictionary *dict = [target objectAtIndex:indexPath.row];
     
     NSDictionary *p = @{@"question": @{
-                                @"text": [NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), dict[@"desc1"]]
+                                @"text": NSLocalizedString(@"Veespo Question", nil)
                                 }
                         };
     

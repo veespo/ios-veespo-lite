@@ -10,4 +10,10 @@
 
 - (void)requestAvgTargetsForTag:(NSString *)tag withCategory:(NSString *)category withToken:(NSString *)token blockResult:(void(^)(id result))block;
 
+- (void)getCountRatingsForCategory:(NSString *)category
+                         andTarget:(NSString *)target
+                         withToken:(NSString *)token
+                           success:(void(^)(id responseData))success
+                           failure:(void (^)(id error))failure;
+
 @end
