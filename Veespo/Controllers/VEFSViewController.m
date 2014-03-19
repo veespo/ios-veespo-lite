@@ -326,9 +326,8 @@ static int const maxLocationUpdate = 1;
                                            nearbyVenues = (NSMutableArray *)[converter convertToObjects:venues withCategory:catCibi];
                                            [self proccessAnnotations];
                                            [venuesTableView reloadData];
-                                           [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-									   } else
-                                           [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+									   }
+                                       [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 								   }];
 }
 
