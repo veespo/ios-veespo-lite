@@ -260,6 +260,7 @@ static NSString * const kVEDemoCode = @"krbk";
 
 - (void)getTargetsList:(NSString *)demoCode
 {
+#ifdef VEESPO
     VEVeespoAPIWrapper *veespo = [[VEVeespoAPIWrapper alloc] init];
     
     // clean usern name to create correct Veespo userID
@@ -311,6 +312,7 @@ static NSString * const kVEDemoCode = @"krbk";
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Name error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
+#endif
 }
 
 
