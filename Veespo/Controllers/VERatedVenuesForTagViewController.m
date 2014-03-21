@@ -66,6 +66,7 @@ static int const topVenue = 10;
 
 - (void)foursquareRequest
 {
+#ifdef VEESPO
     VEVeespoAPIWrapper *veespoApi = [[VEVeespoAPIWrapper alloc] init];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -101,6 +102,7 @@ static int const topVenue = 10;
                                failure:^(id error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
+#endif
 }
 
 #pragma mark - Table view data source

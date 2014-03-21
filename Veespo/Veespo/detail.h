@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <VeespoFramework/VEVisualView.h>
+//#import <VeespoFramework/VEVisualView.h>
 
-@interface detail : VEVisualView
+@interface detail : UIView
 
 @property (nonatomic, strong) UILabel *questionLabel;
+@property (nonatomic, strong) NSNumber *globalAverage;
 
 @end

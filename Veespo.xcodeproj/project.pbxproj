@@ -11,14 +11,29 @@
 		BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECBBA17F19632006CCD56 /* MapKit.framework */; };
 		BE1ECC5E17F22DE9006CCD56 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */; };
 		BE1ECC6017F22DF8006CCD56 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */; };
+		BE293D4218D9FFAA0097D42A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE293D4118D9FFAA0097D42A /* CoreText.framework */; };
+		BE37348218DCE9AF004A20ED /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE37348118DCE9AF004A20ED /* PickerView.m */; };
+		BE37349118DCE9E6004A20ED /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE37348C18DCE9E6004A20ED /* JBBarChartView.m */; };
+		BE37349218DCE9E6004A20ED /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE37348E18DCE9E6004A20ED /* JBChartView.m */; };
+		BE37349318DCE9E6004A20ED /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE37349018DCE9E6004A20ED /* JBLineChartView.m */; };
+		BE37349718DCEBAC004A20ED /* NSString+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = BE37349618DCEBAC004A20ED /* NSString+Extra.m */; };
 		BE48371818771A2D008EC351 /* VEChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE48371718771A2D008EC351 /* VEChartViewController.m */; };
 		BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE644B20183D6D7A007AEE9F /* Localizable.strings */; };
-		BE644B24183D7C2B007AEE9F /* Veespo-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE644B23183D7C2B007AEE9F /* Veespo-Keys.plist */; };
 		BE72AB1F18B7B9690045211A /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB1E18B7B9690045211A /* VEConnection.m */; };
 		BE72AB2018B7BA610045211A /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB1E18B7B9690045211A /* VEConnection.m */; };
 		BE72AB2218B7BAB70045211A /* VEVeespoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB2118B7BAB70045211A /* VEVeespoTest.m */; };
 		BE9800F4183F814D000900CC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9800F3183F814D000900CC /* libz.dylib */; };
+		BEAF554C18DCEFCF00AFCE36 /* VEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAF554A18DCEFCF00AFCE36 /* VEHomeViewController.m */; };
+		BEAF554D18DCEFCF00AFCE36 /* VEHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEAF554B18DCEFCF00AFCE36 /* VEHomeViewController.xib */; };
+		BEAF554E18DCF07300AFCE36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE010A95180AEF0E0012817F /* Main.storyboard */; };
 		BEB6A9AF185B13F40029A799 /* VELeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */; };
+		BEC31C6E18CA1F7400DF3954 /* VEDoublePannel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C6D18CA1F7400DF3954 /* VEDoublePannel.m */; };
+		BEC31C7E18CA201500DF3954 /* MSAnnotatedGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7118CA201400DF3954 /* MSAnnotatedGauge.m */; };
+		BEC31C7F18CA201500DF3954 /* MSArcLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7318CA201400DF3954 /* MSArcLayer.m */; };
+		BEC31C8018CA201500DF3954 /* MSGradientArcLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7618CA201400DF3954 /* MSGradientArcLayer.m */; };
+		BEC31C8118CA201500DF3954 /* MSNeedleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7818CA201400DF3954 /* MSNeedleView.m */; };
+		BEC31C8218CA201500DF3954 /* MSRangeGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7A18CA201400DF3954 /* MSRangeGauge.m */; };
+		BEC31C8318CA201500DF3954 /* MSSimpleGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7C18CA201500DF3954 /* MSSimpleGauge.m */; };
 		BEC63F52183CC6BD001C82B6 /* VEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */; };
 		BEC63F53183CC6BD001C82B6 /* RassegnaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1C183CC6BD001C82B6 /* RassegnaCell.m */; };
 		BEC63F54183CC6BD001C82B6 /* VEMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1E183CC6BD001C82B6 /* VEMenuCell.m */; };
@@ -42,8 +57,6 @@
 		BEC63F70183CC790001C82B6 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F6F183CC790001C82B6 /* Empty.xib */; };
 		BEC63F77183CC7BC001C82B6 /* UIControl+VEControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F74183CC7BC001C82B6 /* UIControl+VEControl.m */; };
 		BEC63F7C183CD0B3001C82B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F7A183CD0B3001C82B6 /* main.m */; };
-		BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */; };
-		BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE010A95180AEF0E0012817F /* Main.storyboard */; };
 		BEE64C581859C63000539E8A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C461859C63000539E8A /* AFHTTPClient.m */; };
 		BEE64C591859C63000539E8A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C481859C63000539E8A /* AFHTTPRequestOperation.m */; };
 		BEE64C5A1859C63000539E8A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C4A1859C63000539E8A /* AFImageRequestOperation.m */; };
@@ -76,6 +89,15 @@
 		BEEB8E4418BF97CE00977E47 /* detail.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB8E4318BF97CE00977E47 /* detail.m */; };
 		BEED2ECA187EA853009D8C18 /* VEDataChart.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED2EC9187EA853009D8C18 /* VEDataChart.m */; };
 		BEED2ECB187EA869009D8C18 /* VEDataChart.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED2EC9187EA853009D8C18 /* VEDataChart.m */; };
+		BEF2C31A18C783A900908963 /* VEFlickrConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C31918C783A900908963 /* VEFlickrConnection.m */; };
+		BEF2C31B18C783A900908963 /* VEFlickrConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C31918C783A900908963 /* VEFlickrConnection.m */; };
+		BEF2C31E18C794AF00908963 /* VEFlickrGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C31D18C794AF00908963 /* VEFlickrGalleryViewController.m */; };
+		BEF2C32518C8893800908963 /* BaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C32218C8893800908963 /* BaseAnimation.m */; };
+		BEF2C32618C8893800908963 /* ScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C32418C8893800908963 /* ScaleAnimation.m */; };
+		BEF2C32918C88E6200908963 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C32818C88E6200908963 /* ImageViewController.m */; };
+		BEF2C33C18C9D9E000908963 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C33718C9D9E000908963 /* RIButtonItem.m */; };
+		BEF2C33D18C9D9E000908963 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C33918C9D9E000908963 /* UIActionSheet+Blocks.m */; };
+		BEF2C33E18C9D9E000908963 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C33B18C9D9E000908963 /* UIAlertView+Blocks.m */; };
 		BEF6547318A14CD60074E1A7 /* VERatedVenuesForTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF6547218A14CD60074E1A7 /* VERatedVenuesForTagViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -95,18 +117,47 @@
 		BE1ECBBA17F19632006CCD56 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BE293D4118D9FFAA0097D42A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		BE37348018DCE9AF004A20ED /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
+		BE37348118DCE9AF004A20ED /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
+		BE37348B18DCE9E6004A20ED /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartView.h; sourceTree = "<group>"; };
+		BE37348C18DCE9E6004A20ED /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartView.m; sourceTree = "<group>"; };
+		BE37348D18DCE9E6004A20ED /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartView.h; sourceTree = "<group>"; };
+		BE37348E18DCE9E6004A20ED /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartView.m; sourceTree = "<group>"; };
+		BE37348F18DCE9E6004A20ED /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
+		BE37349018DCE9E6004A20ED /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
+		BE37349518DCEBAC004A20ED /* NSString+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extra.h"; sourceTree = "<group>"; };
+		BE37349618DCEBAC004A20ED /* NSString+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extra.m"; sourceTree = "<group>"; };
 		BE48371618771A2D008EC351 /* VEChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEChartViewController.h; sourceTree = "<group>"; };
 		BE48371718771A2D008EC351 /* VEChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEChartViewController.m; sourceTree = "<group>"; };
 		BE644B1F183D6D7A007AEE9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BE644B21183D6D7F007AEE9F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BE644B22183D6D89007AEE9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		BE644B23183D7C2B007AEE9F /* Veespo-Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Veespo-Keys.plist"; path = "Supporting Files/Veespo-Keys.plist"; sourceTree = "<group>"; };
 		BE72AB1D18B7B9690045211A /* VEConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEConnection.h; sourceTree = "<group>"; };
 		BE72AB1E18B7B9690045211A /* VEConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEConnection.m; sourceTree = "<group>"; };
 		BE72AB2118B7BAB70045211A /* VEVeespoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEVeespoTest.m; sourceTree = "<group>"; };
 		BE9800F3183F814D000900CC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		BEAF554918DCEFCF00AFCE36 /* VEHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEHomeViewController.h; sourceTree = "<group>"; };
+		BEAF554A18DCEFCF00AFCE36 /* VEHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEHomeViewController.m; sourceTree = "<group>"; };
+		BEAF554B18DCEFCF00AFCE36 /* VEHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEHomeViewController.xib; sourceTree = "<group>"; };
 		BEB6A9AD185B13F40029A799 /* VELeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VELeftMenuViewController.h; sourceTree = "<group>"; };
 		BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VELeftMenuViewController.m; sourceTree = "<group>"; };
+		BEC31C6C18CA1F7400DF3954 /* VEDoublePannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEDoublePannel.h; sourceTree = "<group>"; };
+		BEC31C6D18CA1F7400DF3954 /* VEDoublePannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEDoublePannel.m; sourceTree = "<group>"; };
+		BEC31C7018CA201400DF3954 /* MSAnnotatedGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAnnotatedGauge.h; sourceTree = "<group>"; };
+		BEC31C7118CA201400DF3954 /* MSAnnotatedGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAnnotatedGauge.m; sourceTree = "<group>"; };
+		BEC31C7218CA201400DF3954 /* MSArcLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSArcLayer.h; sourceTree = "<group>"; };
+		BEC31C7318CA201400DF3954 /* MSArcLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSArcLayer.m; sourceTree = "<group>"; };
+		BEC31C7418CA201400DF3954 /* MSArcLayerSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSArcLayerSubclass.h; sourceTree = "<group>"; };
+		BEC31C7518CA201400DF3954 /* MSGradientArcLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGradientArcLayer.h; sourceTree = "<group>"; };
+		BEC31C7618CA201400DF3954 /* MSGradientArcLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGradientArcLayer.m; sourceTree = "<group>"; };
+		BEC31C7718CA201400DF3954 /* MSNeedleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNeedleView.h; sourceTree = "<group>"; };
+		BEC31C7818CA201400DF3954 /* MSNeedleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNeedleView.m; sourceTree = "<group>"; };
+		BEC31C7918CA201400DF3954 /* MSRangeGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRangeGauge.h; sourceTree = "<group>"; };
+		BEC31C7A18CA201400DF3954 /* MSRangeGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRangeGauge.m; sourceTree = "<group>"; };
+		BEC31C7B18CA201500DF3954 /* MSSimpleGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSimpleGauge.h; sourceTree = "<group>"; };
+		BEC31C7C18CA201500DF3954 /* MSSimpleGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSimpleGauge.m; sourceTree = "<group>"; };
+		BEC31C7D18CA201500DF3954 /* MSSimpleGaugeSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSimpleGaugeSubclass.h; sourceTree = "<group>"; };
 		BEC63F18183CC6BD001C82B6 /* VEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEAppDelegate.h; sourceTree = "<group>"; };
 		BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEAppDelegate.m; sourceTree = "<group>"; };
 		BEC63F1B183CC6BD001C82B6 /* RassegnaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RassegnaCell.h; sourceTree = "<group>"; };
@@ -205,6 +256,22 @@
 		BEEB8E4318BF97CE00977E47 /* detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detail.m; sourceTree = "<group>"; };
 		BEED2EC8187EA853009D8C18 /* VEDataChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEDataChart.h; sourceTree = "<group>"; };
 		BEED2EC9187EA853009D8C18 /* VEDataChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEDataChart.m; sourceTree = "<group>"; };
+		BEF2C31818C783A900908963 /* VEFlickrConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEFlickrConnection.h; path = Flickr/VEFlickrConnection.h; sourceTree = "<group>"; };
+		BEF2C31918C783A900908963 /* VEFlickrConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEFlickrConnection.m; path = Flickr/VEFlickrConnection.m; sourceTree = "<group>"; };
+		BEF2C31C18C794AF00908963 /* VEFlickrGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFlickrGalleryViewController.h; sourceTree = "<group>"; };
+		BEF2C31D18C794AF00908963 /* VEFlickrGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEFlickrGalleryViewController.m; sourceTree = "<group>"; };
+		BEF2C32118C8893800908963 /* BaseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseAnimation.h; path = Animation/BaseAnimation.h; sourceTree = "<group>"; };
+		BEF2C32218C8893800908963 /* BaseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseAnimation.m; path = Animation/BaseAnimation.m; sourceTree = "<group>"; };
+		BEF2C32318C8893800908963 /* ScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScaleAnimation.h; path = Animation/ScaleAnimation.h; sourceTree = "<group>"; };
+		BEF2C32418C8893800908963 /* ScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScaleAnimation.m; path = Animation/ScaleAnimation.m; sourceTree = "<group>"; };
+		BEF2C32718C88E6200908963 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		BEF2C32818C88E6200908963 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		BEF2C33618C9D9E000908963 /* RIButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
+		BEF2C33718C9D9E000908963 /* RIButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIButtonItem.m; sourceTree = "<group>"; };
+		BEF2C33818C9D9E000908963 /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
+		BEF2C33918C9D9E000908963 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
+		BEF2C33A18C9D9E000908963 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		BEF2C33B18C9D9E000908963 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 		BEF6547118A14CD60074E1A7 /* VERatedVenuesForTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERatedVenuesForTagViewController.h; sourceTree = "<group>"; };
 		BEF6547218A14CD60074E1A7 /* VERatedVenuesForTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VERatedVenuesForTagViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +281,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE293D4218D9FFAA0097D42A /* CoreText.framework in Frameworks */,
 				BE9800F4183F814D000900CC /* libz.dylib in Frameworks */,
 				BE1ECC6017F22DF8006CCD56 /* MobileCoreServices.framework in Frameworks */,
 				BE1ECC5E17F22DE9006CCD56 /* SystemConfiguration.framework in Frameworks */,
@@ -238,19 +306,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BEA939B018B38E6800BB4B31 /* PickerView */ = {
+		BE37347F18DCE9AF004A20ED /* PickerView */ = {
 			isa = PBXGroup;
 			children = (
+				BE37348018DCE9AF004A20ED /* PickerView.h */,
+				BE37348118DCE9AF004A20ED /* PickerView.m */,
 			);
 			path = PickerView;
 			sourceTree = "<group>";
 		};
-		BEA939B418B38F3100BB4B31 /* JawboneChartView */ = {
+		BE37348A18DCE9E6004A20ED /* JawboneChartView */ = {
 			isa = PBXGroup;
 			children = (
+				BE37348B18DCE9E6004A20ED /* JBBarChartView.h */,
+				BE37348C18DCE9E6004A20ED /* JBBarChartView.m */,
+				BE37348D18DCE9E6004A20ED /* JBChartView.h */,
+				BE37348E18DCE9E6004A20ED /* JBChartView.m */,
+				BE37348F18DCE9E6004A20ED /* JBLineChartView.h */,
+				BE37349018DCE9E6004A20ED /* JBLineChartView.m */,
 			);
 			name = JawboneChartView;
 			path = Library/JawboneChartView;
+			sourceTree = "<group>";
+		};
+		BE37349418DCEBAC004A20ED /* NSString+Extra */ = {
+			isa = PBXGroup;
+			children = (
+				BE37349518DCEBAC004A20ED /* NSString+Extra.h */,
+				BE37349618DCEBAC004A20ED /* NSString+Extra.m */,
+			);
+			path = "NSString+Extra";
+			sourceTree = "<group>";
+		};
+		BEC31C6F18CA201400DF3954 /* Gauges */ = {
+			isa = PBXGroup;
+			children = (
+				BEC31C7018CA201400DF3954 /* MSAnnotatedGauge.h */,
+				BEC31C7118CA201400DF3954 /* MSAnnotatedGauge.m */,
+				BEC31C7218CA201400DF3954 /* MSArcLayer.h */,
+				BEC31C7318CA201400DF3954 /* MSArcLayer.m */,
+				BEC31C7418CA201400DF3954 /* MSArcLayerSubclass.h */,
+				BEC31C7518CA201400DF3954 /* MSGradientArcLayer.h */,
+				BEC31C7618CA201400DF3954 /* MSGradientArcLayer.m */,
+				BEC31C7718CA201400DF3954 /* MSNeedleView.h */,
+				BEC31C7818CA201400DF3954 /* MSNeedleView.m */,
+				BEC31C7918CA201400DF3954 /* MSRangeGauge.h */,
+				BEC31C7A18CA201400DF3954 /* MSRangeGauge.m */,
+				BEC31C7B18CA201500DF3954 /* MSSimpleGauge.h */,
+				BEC31C7C18CA201500DF3954 /* MSSimpleGauge.m */,
+				BEC31C7D18CA201500DF3954 /* MSSimpleGaugeSubclass.h */,
+			);
+			path = Gauges;
 			sourceTree = "<group>";
 		};
 		BEC63F17183CC6BD001C82B6 /* Application */ = {
@@ -290,6 +396,11 @@
 		BEC63F24183CC6BD001C82B6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BEAF554918DCEFCF00AFCE36 /* VEHomeViewController.h */,
+				BEAF554A18DCEFCF00AFCE36 /* VEHomeViewController.m */,
+				BEAF554B18DCEFCF00AFCE36 /* VEHomeViewController.xib */,
+				BEF2C32718C88E6200908963 /* ImageViewController.h */,
+				BEF2C32818C88E6200908963 /* ImageViewController.m */,
 				BE48371618771A2D008EC351 /* VEChartViewController.h */,
 				BE48371718771A2D008EC351 /* VEChartViewController.m */,
 				BEC63F25183CC6BD001C82B6 /* VEDetailVenue.h */,
@@ -297,6 +408,8 @@
 				BEC63F27183CC6BD001C82B6 /* VEDetailVenue.xib */,
 				BEC63F28183CC6BD001C82B6 /* VEEspnViewController.h */,
 				BEC63F29183CC6BD001C82B6 /* VEEspnViewController.m */,
+				BEF2C31C18C794AF00908963 /* VEFlickrGalleryViewController.h */,
+				BEF2C31D18C794AF00908963 /* VEFlickrGalleryViewController.m */,
 				BEC63F2A183CC6BD001C82B6 /* VEFSViewController.h */,
 				BEC63F2B183CC6BD001C82B6 /* VEFSViewController.m */,
 				BEB6A9AD185B13F40029A799 /* VELeftMenuViewController.h */,
@@ -367,6 +480,8 @@
 				BE72AB1E18B7B9690045211A /* VEConnection.m */,
 				BEED2EC8187EA853009D8C18 /* VEDataChart.h */,
 				BEED2EC9187EA853009D8C18 /* VEDataChart.m */,
+				BEC31C6C18CA1F7400DF3954 /* VEDoublePannel.h */,
+				BEC31C6D18CA1F7400DF3954 /* VEDoublePannel.m */,
 			);
 			path = Veespo;
 			sourceTree = "<group>";
@@ -374,6 +489,8 @@
 		BEC63F71183CC7BC001C82B6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				BE37349418DCEBAC004A20ED /* NSString+Extra */,
+				BEF2C33518C9D9E000908963 /* UIAlertView+Blocks */,
 				BEC63F72183CC7BC001C82B6 /* UIControl+VEControl */,
 			);
 			path = Tools;
@@ -391,7 +508,8 @@
 		BEE64C431859C62400539E8A /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				BEA939B418B38F3100BB4B31 /* JawboneChartView */,
+				BE37348A18DCE9E6004A20ED /* JawboneChartView */,
+				BEC31C6F18CA201400DF3954 /* Gauges */,
 				BEE64CAD185A2C4800539E8A /* JASidePanels */,
 				BEE64C7B1859C7C900539E8A /* MBProgressHUD */,
 				BEE64C611859C6D800539E8A /* Foursquare2 */,
@@ -490,6 +608,7 @@
 		BEEB671517EC9A1A00F394E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE293D4118D9FFAA0097D42A /* CoreText.framework */,
 				BE9800F3183F814D000900CC /* libz.dylib */,
 				BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */,
 				BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */,
@@ -506,19 +625,21 @@
 		BEEB671C17EC9A1A00F394E9 /* Veespo */ = {
 			isa = PBXGroup;
 			children = (
-				BEA939B018B38E6800BB4B31 /* PickerView */,
+				BE37347F18DCE9AF004A20ED /* PickerView */,
+				BEF2C32018C8890D00908963 /* Animation */,
 				BEC63F17183CC6BD001C82B6 /* Application */,
 				BEC63F1A183CC6BD001C82B6 /* Cells */,
 				BEC63F1F183CC6BD001C82B6 /* Collections */,
 				BEC63F24183CC6BD001C82B6 /* Controllers */,
+				BEF2C31718C7835100908963 /* Flickr */,
 				BEC63F3D183CC6BD001C82B6 /* Foursquare */,
 				BEE64C431859C62400539E8A /* Library */,
 				BEC63F41183CC6BD001C82B6 /* Models */,
 				BEC63F46183CC6BD001C82B6 /* Resources */,
 				BEC63F4C183CC6BD001C82B6 /* RSS */,
+				BEEB671D17EC9A1A00F394E9 /* Supporting Files */,
 				BEC63F71183CC7BC001C82B6 /* Tools */,
 				BEC63F4F183CC6BD001C82B6 /* Veespo */,
-				BEEB671D17EC9A1A00F394E9 /* Supporting Files */,
 			);
 			path = Veespo;
 			sourceTree = "<group>";
@@ -526,7 +647,6 @@
 		BEEB671D17EC9A1A00F394E9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BE644B23183D7C2B007AEE9F /* Veespo-Keys.plist */,
 				BEC63F7A183CD0B3001C82B6 /* main.m */,
 				BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */,
 				BEC63F79183CD00D001C82B6 /* Veespo-Prefix.pch */,
@@ -552,6 +672,39 @@
 				BEEB673E17EC9A1A00F394E9 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BEF2C31718C7835100908963 /* Flickr */ = {
+			isa = PBXGroup;
+			children = (
+				BEF2C31818C783A900908963 /* VEFlickrConnection.h */,
+				BEF2C31918C783A900908963 /* VEFlickrConnection.m */,
+			);
+			name = Flickr;
+			sourceTree = "<group>";
+		};
+		BEF2C32018C8890D00908963 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				BEF2C32118C8893800908963 /* BaseAnimation.h */,
+				BEF2C32218C8893800908963 /* BaseAnimation.m */,
+				BEF2C32318C8893800908963 /* ScaleAnimation.h */,
+				BEF2C32418C8893800908963 /* ScaleAnimation.m */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+		BEF2C33518C9D9E000908963 /* UIAlertView+Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				BEF2C33618C9D9E000908963 /* RIButtonItem.h */,
+				BEF2C33718C9D9E000908963 /* RIButtonItem.m */,
+				BEF2C33818C9D9E000908963 /* UIActionSheet+Blocks.h */,
+				BEF2C33918C9D9E000908963 /* UIActionSheet+Blocks.m */,
+				BEF2C33A18C9D9E000908963 /* UIAlertView+Blocks.h */,
+				BEF2C33B18C9D9E000908963 /* UIAlertView+Blocks.m */,
+			);
+			path = "UIAlertView+Blocks";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -599,7 +752,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = VE;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Veespo Ltd.";
 				TargetAttributes = {
 					BEEB671217EC9A1A00F394E9 = {
@@ -635,18 +788,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
-				BE644B24183D7C2B007AEE9F /* Veespo-Keys.plist in Resources */,
-				BEC63F7D183CD0B3001C82B6 /* Veespo-Info.plist in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
 				BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */,
+				BEAF554E18DCF07300AFCE36 /* Main.storyboard in Resources */,
 				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
 				BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */,
 				BEE64C721859C6D800539E8A /* FSWebLogin.xib in Resources */,
+				BEAF554D18DCEFCF00AFCE36 /* VEHomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +817,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE37348218DCE9AF004A20ED /* PickerView.m in Sources */,
 				BEC63F5A183CC6BD001C82B6 /* VEFSViewController.m in Sources */,
 				BEC63F52183CC6BD001C82B6 /* VEAppDelegate.m in Sources */,
 				BEC63F56183CC6BD001C82B6 /* VEVenueCell.m in Sources */,
@@ -672,19 +825,30 @@
 				BEE64CB3185A331A00539E8A /* UIViewController+JASidePanel.m in Sources */,
 				BEE64C6E1859C6D800539E8A /* FSOAuth.m in Sources */,
 				BEC63F77183CC7BC001C82B6 /* UIControl+VEControl.m in Sources */,
+				BEC31C8218CA201500DF3954 /* MSRangeGauge.m in Sources */,
 				BEE64C6D1859C6D800539E8A /* Foursquare2.m in Sources */,
+				BE37349218DCE9E6004A20ED /* JBChartView.m in Sources */,
 				BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */,
 				BEC63F7C183CD0B3001C82B6 /* main.m in Sources */,
+				BE37349318DCE9E6004A20ED /* JBLineChartView.m in Sources */,
 				BEC63F65183CC6BD001C82B6 /* FSConverter.m in Sources */,
+				BEC31C7F18CA201500DF3954 /* MSArcLayer.m in Sources */,
 				BEE64C7E1859C7C900539E8A /* MBProgressHUD.m in Sources */,
+				BEF2C31E18C794AF00908963 /* VEFlickrGalleryViewController.m in Sources */,
+				BEC31C8018CA201500DF3954 /* MSGradientArcLayer.m in Sources */,
 				BE72AB1F18B7B9690045211A /* VEConnection.m in Sources */,
+				BEC31C7E18CA201500DF3954 /* MSAnnotatedGauge.m in Sources */,
 				BE48371818771A2D008EC351 /* VEChartViewController.m in Sources */,
 				BEE64CB0185A2C4800539E8A /* JASidePanelController.m in Sources */,
 				BEF6547318A14CD60074E1A7 /* VERatedVenuesForTagViewController.m in Sources */,
+				BE37349718DCEBAC004A20ED /* NSString+Extra.m in Sources */,
 				BEC63F66183CC6BD001C82B6 /* FSVenue.m in Sources */,
+				BEF2C33C18C9D9E000908963 /* RIButtonItem.m in Sources */,
 				BEE64C601859C63000539E8A /* UIImageView+AFNetworking.m in Sources */,
 				BEE64C591859C63000539E8A /* AFHTTPRequestOperation.m in Sources */,
+				BEF2C32918C88E6200908963 /* ImageViewController.m in Sources */,
 				BEE64C6F1859C6D800539E8A /* FSRequester.m in Sources */,
+				BEF2C32518C8893800908963 /* BaseAnimation.m in Sources */,
 				BEE64C5E1859C63000539E8A /* AFURLConnectionOperation.m in Sources */,
 				BEE64C5B1859C63000539E8A /* AFJSONRequestOperation.m in Sources */,
 				BEE64C581859C63000539E8A /* AFHTTPClient.m in Sources */,
@@ -692,22 +856,31 @@
 				BEC63F55183CC6BD001C82B6 /* VEFSHeaderView.m in Sources */,
 				BEE64C5A1859C63000539E8A /* AFImageRequestOperation.m in Sources */,
 				BEE7F2B11850BCDA005EE0F6 /* VERatedVenuesViewController.m in Sources */,
+				BEF2C33D18C9D9E000908963 /* UIActionSheet+Blocks.m in Sources */,
 				BEC63F62183CC6BD001C82B6 /* WebViewController.m in Sources */,
 				BEC63F59183CC6BD001C82B6 /* VEEspnViewController.m in Sources */,
 				BEC63F5F183CC6BD001C82B6 /* VETargetViewController.m in Sources */,
 				BEC63F6D183CC6BD001C82B6 /* VERSSParser.m in Sources */,
+				BEF2C31A18C783A900908963 /* VEFlickrConnection.m in Sources */,
 				BEE64C5D1859C63000539E8A /* AFPropertyListRequestOperation.m in Sources */,
+				BEAF554C18DCEFCF00AFCE36 /* VEHomeViewController.m in Sources */,
 				BEE64C711859C6D800539E8A /* FSWebLogin.m in Sources */,
 				BEC63F5D183CC6BD001C82B6 /* VERSSViewController.m in Sources */,
+				BEC31C8318CA201500DF3954 /* MSSimpleGauge.m in Sources */,
 				BEE64C701859C6D800539E8A /* FSTargetCallback.m in Sources */,
 				BEE64C5F1859C63000539E8A /* AFXMLRequestOperation.m in Sources */,
 				BEE64C5C1859C63000539E8A /* AFNetworkActivityIndicatorManager.m in Sources */,
+				BEF2C32618C8893800908963 /* ScaleAnimation.m in Sources */,
 				BEC63F67183CC6BD001C82B6 /* VEUser.m in Sources */,
 				BEC63F54183CC6BD001C82B6 /* VEMenuCell.m in Sources */,
 				BEB6A9AF185B13F40029A799 /* VELeftMenuViewController.m in Sources */,
+				BEC31C6E18CA1F7400DF3954 /* VEDoublePannel.m in Sources */,
 				BEC63F53183CC6BD001C82B6 /* RassegnaCell.m in Sources */,
+				BEF2C33E18C9D9E000908963 /* UIAlertView+Blocks.m in Sources */,
 				BEC63F57183CC6BD001C82B6 /* VEDetailVenue.m in Sources */,
+				BE37349118DCE9E6004A20ED /* JBBarChartView.m in Sources */,
 				BEED2ECA187EA853009D8C18 /* VEDataChart.m in Sources */,
+				BEC31C8118CA201500DF3954 /* MSNeedleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,6 +889,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE72AB2018B7BA610045211A /* VEConnection.m in Sources */,
+				BEF2C31B18C783A900908963 /* VEFlickrConnection.m in Sources */,
 				BE72AB2218B7BAB70045211A /* VEVeespoTest.m in Sources */,
 				BEED2ECB187EA869009D8C18 /* VEDataChart.m in Sources */,
 			);
@@ -777,7 +951,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
@@ -790,7 +963,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -807,7 +980,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-all_load";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
@@ -817,7 +991,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
@@ -830,7 +1003,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: giordano scalzo (8H2HF6RX92)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -841,7 +1014,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PROVISIONING_PROFILE = "C41C6637-6F6B-4741-9AED-C5B722290897";
+				OTHER_LDFLAGS = "-all_load";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -850,20 +1024,21 @@
 		BEEB674617EC9A1A00F394E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Veespo/Veespo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME) Lite";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s armv64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -871,7 +1046,6 @@
 		BEEB674717EC9A1A00F394E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -879,12 +1053,14 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Veespo/Veespo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME) Lite";
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s armv64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -892,7 +1068,6 @@
 		BEEB674917EC9A1A00F394E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Veespo Lite.app/Veespo Lite";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -916,7 +1091,6 @@
 		BEEB674A17EC9A1A00F394E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Veespo.app/Veespo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

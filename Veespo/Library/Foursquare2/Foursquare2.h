@@ -14,7 +14,7 @@
 
 //update this date to use up-to-date Foursquare API
 #ifndef FS2_API_VERSION
-#define FS2_API_VERSION (@"20131120")
+#define FS2_API_VERSION (@"20140228")
 #endif
 
 

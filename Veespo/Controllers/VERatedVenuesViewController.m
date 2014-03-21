@@ -42,6 +42,7 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.tableView.backgroundColor = [UIColor whiteColor];
     
+#ifdef VEESPO
     VEVeespoAPIWrapper *veespoApi = [[VEVeespoAPIWrapper alloc] init];
     NSString *userId = nil;
     
@@ -73,6 +74,7 @@
                              } failure:^(id error) {
                                  [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:YES];
                              }];
+#endif
 }
 
 - (void)didReceiveMemoryWarning
