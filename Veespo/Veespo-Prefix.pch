@@ -19,9 +19,9 @@
 //#define VEESPO
 
 #ifdef VEESPO
-#import <VeespoFramework/Veespo.h>
-#import <VeespoFramework/VEVeespoViewController.h>
-#import <VeespoFramework/VEVeespoAPIWrapper.h>
+#import <Veespo/Veespo.h>
+//#import <VeespoFramework/VEVeespoViewController.h>
+//#import <VeespoFramework/VEVeespoAPIWrapper.h>
 #endif
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)

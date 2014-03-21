@@ -11,7 +11,6 @@
 #import "UIViewController+JASidePanel.h"
 #import "JASidePanelController.h"
 #import "VEMenuCell.h"
-#import "detail.h"
 
 @interface VELeftMenuViewController ()
 
@@ -154,8 +153,6 @@
 {
 #ifdef VEESPO
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-//    detail *ddet = [[detail alloc] initWithFrame:CGRectMake(10, 49.5, 300, 78.5)];
     
     NSDictionary *p = @{@"question": @{
                                 @"text": [NSString stringWithFormat:NSLocalizedString(@"Veespo Question", nil), @"Veespo Lite"]
