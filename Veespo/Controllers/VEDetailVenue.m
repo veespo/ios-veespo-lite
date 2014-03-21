@@ -180,6 +180,7 @@
     } else {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
+#ifdef VEESPO
         VEVeespoAPIWrapper *veespoApi = [[VEVeespoAPIWrapper alloc] init];
         
         [veespoApi requestAverageForTarget:self.venue.venueId
@@ -205,6 +206,7 @@
                                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[error objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                                        [alert show];
                                    }];
+#endif
     }
 }
 
