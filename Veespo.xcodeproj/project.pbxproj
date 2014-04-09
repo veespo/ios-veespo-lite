@@ -27,6 +27,7 @@
 		BE9800F4183F814D000900CC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9800F3183F814D000900CC /* libz.dylib */; };
 		BEABDE6718805C8300079EC5 /* VEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEABDE6518805C8300079EC5 /* VEHomeViewController.m */; };
 		BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEABDE6618805C8300079EC5 /* VEHomeViewController.xib */; };
+		BEAECBC018F55FAE00F94423 /* Lookback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAECBBF18F55FAE00F94423 /* Lookback.framework */; };
 		BEB6A9AF185B13F40029A799 /* VELeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */; };
 		BEC31C6E18CA1F7400DF3954 /* VEDoublePannel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C6D18CA1F7400DF3954 /* VEDoublePannel.m */; };
 		BEC31C7E18CA201500DF3954 /* MSAnnotatedGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7118CA201400DF3954 /* MSAnnotatedGauge.m */; };
@@ -153,6 +154,7 @@
 		BEABDE6418805C8300079EC5 /* VEHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEHomeViewController.h; sourceTree = "<group>"; };
 		BEABDE6518805C8300079EC5 /* VEHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEHomeViewController.m; sourceTree = "<group>"; };
 		BEABDE6618805C8300079EC5 /* VEHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEHomeViewController.xib; sourceTree = "<group>"; };
+		BEAECBBF18F55FAE00F94423 /* Lookback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lookback.framework; path = lookback/HD/Lookback.framework; sourceTree = "<group>"; };
 		BEB6A9AD185B13F40029A799 /* VELeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VELeftMenuViewController.h; sourceTree = "<group>"; };
 		BEB6A9AE185B13F40029A799 /* VELeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VELeftMenuViewController.m; sourceTree = "<group>"; };
 		BEC31C6C18CA1F7400DF3954 /* VEDoublePannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEDoublePannel.h; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */,
 				BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */,
 				BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */,
+				BEAECBC018F55FAE00F94423 /* Lookback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +658,7 @@
 		BEEB671517EC9A1A00F394E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BEAECBBF18F55FAE00F94423 /* Lookback.framework */,
 				BE293D4118D9FFAA0097D42A /* CoreText.framework */,
 				BED167A118991AB60083B3B5 /* CoreData.framework */,
 				BED1679F18991A700083B3B5 /* CoreTelephony.framework */,
@@ -1091,6 +1095,7 @@
 					"$(PROJECT_DIR)/Veespo",
 					Framework,
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/lookback/HD",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
@@ -1116,6 +1121,7 @@
 					"$(PROJECT_DIR)/Veespo",
 					Framework,
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/lookback/HD",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
