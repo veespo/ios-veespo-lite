@@ -13,6 +13,7 @@
                 <outlet property="avgTableView" destination="rAa-YM-va3" id="xBW-y9-w9c"/>
                 <outlet property="avrgLabelYConstraint" destination="3Zu-vz-DWg" id="jWi-5p-0SN"/>
                 <outlet property="baseLabelYConstraint" destination="krY-yj-4qh" id="i8R-00-D0W"/>
+                <outlet property="directionButton" destination="oEi-uL-28a" id="F9G-j8-RYz"/>
                 <outlet property="firstShadowYConstraint" destination="FQ2-Ej-F5S" id="h9s-2v-hKO"/>
                 <outlet property="headerTableView" destination="Jim-bX-2Sh" id="Pce-NO-Wdw"/>
                 <outlet property="headerTableYConstraint" destination="kXz-X5-AbK" id="MD3-40-1P3"/>
@@ -72,11 +73,18 @@
                         <action selector="openVeespo:" destination="-1" eventType="touchUpInside" id="bsu-mz-gj9"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDi-7D-i5G">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDi-7D-i5G">
                     <rect key="frame" x="12" y="103" width="234" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <attributedString key="attributedText">
+                        <fragment content="Name">
+                            <attributes>
+                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <font key="NSFont" size="20" name="Helvetica-Bold"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Adress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afD-Ou-S8c">
@@ -112,6 +120,17 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oEi-uL-28a">
+                    <rect key="frame" x="256" y="155" width="44" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="near_me">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="directionPressed:" destination="-1" eventType="touchUpInside" id="wCy-74-Ne8"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -155,5 +174,6 @@
         <image name="background__testo_locale" width="320" height="55"/>
         <image name="background_bottone" width="320" height="55"/>
         <image name="header_tabella" width="320" height="37"/>
+        <image name="near_me" width="256" height="256"/>
     </resources>
 </document>

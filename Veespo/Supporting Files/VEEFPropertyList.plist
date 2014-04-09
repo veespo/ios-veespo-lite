@@ -43,6 +43,11 @@
 					<key>news</key>
 					<string>ff6440</string>
 				</dict>
+				<key>textcolor</key>
+				<dict>
+					<key>default</key>
+					<string>fff</string>
+				</dict>
 			</dict>
 		</dict>
 	</dict>

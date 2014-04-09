@@ -21,6 +21,8 @@
 @property (nonatomic, weak) IBOutlet UITableView *avgTableView;
 @property (nonatomic, weak) IBOutlet UILabel *averageLabel;
 @property (nonatomic, weak) IBOutlet UILabel *headerTableView;
+@property (weak, nonatomic) IBOutlet UIButton *directionButton;
+
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *uimageViewHeightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableViewYConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableViewConstraint;
@@ -34,5 +36,8 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *baseLabelYConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *labelHeaderYConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *veespoButtonYConstraint;
+
+
+- (IBAction)directionPressed:(id)sender;
 
 @end
