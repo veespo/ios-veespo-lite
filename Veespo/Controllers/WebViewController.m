@@ -1,5 +1,6 @@
-
 #import "WebViewController.h"
+
+#import <Lookback/Lookback.h>
 
 @implementation WebViewController
 @synthesize url = _url;
@@ -100,7 +101,9 @@
     veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token targetInfo:d targetParameters:nil parameters:p detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[Lookback_Weak lookback] setEnabled:NO];
+        }];
     };
     
     [veespoViewController showWidget:^(NSDictionary *error) {
@@ -110,8 +113,12 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[Lookback_Weak lookback] setEnabled:NO];
+        }];
     }];
+    
+    [[Lookback_Weak lookback] setEnabled:YES];
     
 #endif
 }

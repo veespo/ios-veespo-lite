@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Veespo Ltd. All rights reserved.
 //
 
+#import <Lookback/Lookback.h>
+
 #import "VEAppDelegate.h"
 
 #import "JASidePanelController.h"
@@ -130,6 +132,15 @@ static NSString * const kVEFlurryApiKey = @"Flurry Key";
         [self setUpVeespo:keys];
     }
 #endif
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kVeespoGoToForeground" object:self];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kVeespoGoToBackground" object:self];
 }
 
 + (NSString *)uuid
@@ -157,6 +168,14 @@ static NSString * const kVEFlurryApiKey = @"Flurry Key";
     [Flurry startSession:keys[kVEFlurryApiKey]];
     [TestFlight takeOff:keys[kVETestFlightKey]];
 #endif
+    
+    [Lookback_Weak setupWithAppToken:@"z4McRYohpuS8SRRW5"];
+    [Lookback_Weak lookback].shakeToRecord = NO;
+    [Lookback_Weak lookback].userIdentifier = [[UIDevice currentDevice] name];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:LookbackAudioEnabledSettingsKey];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:LookbackCameraEnabledSettingsKey];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:LookbackAutosplitSettingsKey];
 }
 
 - (void)setUpFoursquare:(NSDictionary *)keys

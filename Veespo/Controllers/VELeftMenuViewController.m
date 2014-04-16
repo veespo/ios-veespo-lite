@@ -12,6 +12,8 @@
 #import "JASidePanelController.h"
 #import "VEMenuCell.h"
 
+#import <Lookback/Lookback.h>
+
 @interface VELeftMenuViewController ()
 
 @end
@@ -167,7 +169,9 @@
                                                     ];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[Lookback_Weak lookback] setEnabled:NO];
+        }];
     };
     
     [veespoViewController showWidget:^(NSDictionary *error) {
@@ -177,8 +181,12 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[Lookback_Weak lookback] setEnabled:NO];
+        }];
     }];
+    
+    [[Lookback_Weak lookback] setEnabled:YES];
 #endif
 }
 

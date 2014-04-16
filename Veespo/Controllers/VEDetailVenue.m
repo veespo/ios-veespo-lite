@@ -17,6 +17,8 @@
 
 #import "VEDoublePannel.h"
 
+#import <Lookback/Lookback.h>
+
 @interface VEDetailVenue () {
     NSArray *avgTargetsList;
 }
@@ -257,6 +259,7 @@
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
         [self dismissViewControllerAnimated:YES completion:^{
             [self loadAverageVotes];
+            [[Lookback_Weak lookback] setEnabled:NO];
         }];
     };
     
@@ -268,8 +271,12 @@
                                               otherButtonTitles:nil];
         [alert show];
         NSLog(@"Veespo Error: %@", error);
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[Lookback_Weak lookback] setEnabled:NO];
+        }];
     }];
+    
+    [[Lookback_Weak lookback] setEnabled:YES];
 #endif
 }
 
