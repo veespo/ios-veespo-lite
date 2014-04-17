@@ -8,8 +8,10 @@
 
 #import "VEHomeViewController.h"
 
-#import "UIControl+VEControl.h"
 #import "VETargetViewController.h"
+
+#import "VEEReachabilityManager.h"
+#import "UIControl+VEControl.h"
 #import "MBProgressHUD.h"
 #import "NSString+Extra.h"
 
@@ -105,7 +107,7 @@ static NSString * const kVEDemoCode = @"krbk";
         NSString *demoCode = [[NSString stringWithFormat:@"%@%@%@%@", self.textOneTf.text, self.textTwoTf.text, self.textThreeTf.text, self.textFourTf.text] uppercaseString];
         
         [self getTargetsList:demoCode];
-    }];
+    }];    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -134,8 +136,6 @@ static NSString * const kVEDemoCode = @"krbk";
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
         self.navigationController.navigationBar.barTintColor = UIColorFromHex(0x231F20);
     }
-    
-//    [Flurry logEvent:@"Home View"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -184,6 +184,8 @@ static NSString * const kVEDemoCode = @"krbk";
         }
     }
 }
+
+#pragma mark Private Properties
 
 #pragma mark Keyboard and view managment
 
@@ -270,17 +272,31 @@ static NSString * const kVEDemoCode = @"krbk";
                                               allowLossyConversion:YES];
     veespoUserId = [[NSString alloc] initWithData:asciiEncoded encoding:NSASCIIStringEncoding];
     
+    veespoUserId = [NSString stringWithFormat:@"%@-%@",
+                    veespoUserId,
+                    [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"]
+                    ];
+    
     if ([veespoUserId checkIdString]) {
+        
+        // Check if veespoUserId is change
+        if (![[NSUserDefaults standardUserDefaults] stringForKey:kVEEUserNameKey] ||
+            ( ![veespoUserId isEqualToString:[[NSUserDefaults standardUserDefaults] stringForKey:kVEEUserNameKey]] && [[NSUserDefaults standardUserDefaults] stringForKey:kVEEUserNameKey]) ) {
+            
+            [[NSUserDefaults standardUserDefaults] setObject:veespoUserId forKey:kVEEUserNameKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+            [appDelegate checkVeespoTokens];
+        }
+        
         veespoUserId = [veespoUserId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         [veespo requestTargetList:[NSDictionary dictionaryWithObjectsAndKeys:demoCode, @"democode", veespoUserId, @"userid", nil]
                           success:^(id responseData, NSString *token) {
                               VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
                               
-                              targetVC.userid = [NSString stringWithFormat:@"%@-%@",
-                                                 veespoUserId,
-                                                 [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"]
-                                                 ];
+                              targetVC.userid = veespoUserId;
                               targetVC.token = token;
                               
                               targetVC.targetList = responseData[@"targets"];

@@ -18,4 +18,6 @@
 
 @property (strong, nonatomic) JASidePanelController *viewController;
 
+- (void)checkVeespoTokens;
+
 @end

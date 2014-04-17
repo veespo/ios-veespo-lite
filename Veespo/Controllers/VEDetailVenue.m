@@ -260,6 +260,7 @@
         [self dismissViewControllerAnimated:YES completion:^{
             [self loadAverageVotes];
             [[Lookback_Weak lookback] setEnabled:NO];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
         }];
     };
     
@@ -273,10 +274,12 @@
         NSLog(@"Veespo Error: %@", error);
         [self dismissViewControllerAnimated:YES completion:^{
             [[Lookback_Weak lookback] setEnabled:NO];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
         }];
     }];
     
     [[Lookback_Weak lookback] setEnabled:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kVEEStartLookBackRecording object:self];
 #endif
 }
 
@@ -293,27 +296,6 @@
     // Return the number of rows in the section.
     return avgTargetsList.count;
 }
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 37.0f)];
-//    headerView.backgroundColor = [UIColor clearColor];
-//    UIView *topBorderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 30.5f)];
-//    topBorderView.backgroundColor = UIColorFromHex(0x221e1f);
-//    [headerView addSubview:topBorderView];
-//    
-//    UIImageView *backGround = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 37.0f)];
-//    backGround.image = [UIImage imageNamed:@"header_tabella"];
-//    [headerView addSubview:backGround];
-//    
-//    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
-//    textLabel.text = NSLocalizedString(@"Venue tags", nil);
-//    textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:13.0f];
-//    textLabel.textColor = [UIColor whiteColor];
-//    textLabel.backgroundColor = [UIColor clearColor];
-//    [headerView addSubview:textLabel];
-//    
-//	return headerView;
-//}
 
 - (UITableViewCell *) getCellContentView:(NSString *)cellIdentifier {
     CGRect labelFrame = CGRectMake(10, 5, 235, 34);

@@ -103,6 +103,7 @@
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
         [self dismissViewControllerAnimated:YES completion:^{
             [[Lookback_Weak lookback] setEnabled:NO];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
         }];
     };
     
@@ -115,11 +116,12 @@
         [alert show];
         [self dismissViewControllerAnimated:YES completion:^{
             [[Lookback_Weak lookback] setEnabled:NO];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
         }];
     }];
     
     [[Lookback_Weak lookback] setEnabled:YES];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kVEEStartLookBackRecording object:self];
 #endif
 }
 
