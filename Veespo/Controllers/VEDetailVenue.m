@@ -277,8 +277,9 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
         }];
     }];
-    
+#ifdef TARGET_OS_IPHONE
     [[Lookback_Weak lookback] setEnabled:YES];
+#endif
     [[NSNotificationCenter defaultCenter] postNotificationName:kVEEStartLookBackRecording object:self];
 #endif
 }
