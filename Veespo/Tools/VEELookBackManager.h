@@ -14,4 +14,10 @@
 #pragma mark Shared Manager
 + (VEELookBackManager *)sharedManager;
 
+#pragma mark Start User's Location
+- (void)startLocation;
+
+#pragma mark Stop User's Location
+- (void)stopLocation;
+
 @end

@@ -34,6 +34,35 @@
 }
 
 #pragma mark -
+#pragma mark Start User's Location
+- (void)startLocation
+{
+    if ([VEEReachabilityManager isReachableViaWiFi] == YES && startUploadDate && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording]) {
+        NSLog(@"============= Applicazione in chiusura, ma non ci sono le condizioni per avviare update posizione =============");
+        [self startLookBackRecording];
+        startUploadDate = nil;
+    } else if ([VEEReachabilityManager isReachableViaWiFi] == NO && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording]) {
+        if (startUploadDate)
+            startUploadDate = nil;
+        
+        NSLog(@"============= Start location in background =============");
+        
+        [self startStandardUpdates];
+    } else if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording]) {
+        NSLog(@"============= Start location in background =============");
+        
+        [self startStandardUpdates];
+    }
+}
+
+#pragma mark Stop User's Location
+- (void)stopLocation
+{
+    [self.locationManager stopUpdatingLocation];
+    
+    NSLog(@"============= Stop location in background =============");
+}
+
 #pragma mark Private Initialization
 - (id)init {
     self = [super init];
@@ -95,23 +124,6 @@
     return _locationManager;
 }
 
-- (void)startLocation
-{
-    
-    if ([VEEReachabilityManager isReachableViaWiFi] == YES && startUploadDate && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording]) {
-        NSLog(@"============= Applicazione in chiusura, ma non ci sono le condizioni per avviare update posizione =============");
-        [self startLookBackRecording];
-        startUploadDate = nil;
-    } else if ([VEEReachabilityManager isReachableViaWiFi] == NO && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording]) {
-        if (startUploadDate)
-            startUploadDate = nil;
-        
-        NSLog(@"============= Start location in background =============");
-        
-        [self startStandardUpdates];
-    }
-}
-
 - (void)startStandardUpdates
 {
     // Set a movement threshold for new events.
@@ -125,31 +137,30 @@
     [self.locationManager startMonitoringSignificantLocationChanges];
 }
 
-- (void)stopLocation
-{
-    [self.locationManager stopUpdatingLocation];
-    
-    NSLog(@"============= Stop location in background =============");
-}
-
 // Delegate method from the CLLocationManagerDelegate protocol.
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
     // If it's a relatively recent event, turn off updates to save power.
     
-    CLLocation* location = [locations lastObject];
-    NSDate* eventDate = location.timestamp;
-    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+//    CLLocation* location = [locations lastObject];
+//    NSDate* eventDate = location.timestamp;
+//    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     
-    if (abs(howRecent) < 60.0 && !startUploadDate) {
-        // If the event is recent, do something with it.
-        ([VEEReachabilityManager isReachableViaWiFi]) ? NSLog(@"WiFi ON") : NSLog(@"WiFi OFF");
-    } else if (abs(howRecent) < 5.0) {
-        ([VEEReachabilityManager isReachableViaWiFi]) ? NSLog(@"WiFi ON") : NSLog(@"WiFi OFF");
+    if ([VEEReachabilityManager isReachableViaWiFi] == YES) {
         // Set a movement threshold for new events.
-        self.locationManager.distanceFilter = 1000; // meters
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+        self.locationManager.distanceFilter = 500; // meters
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     }
+    
+//    if (abs(howRecent) < 60.0 && !startUploadDate) {
+//        // If the event is recent, do something with it.
+//        ([VEEReachabilityManager isReachableViaWiFi]) ? NSLog(@"============= WiFi ON =============") : NSLog(@"============= WiFi OFF =============");
+//    } else if (abs(howRecent) < 5.0 && startUploadDate) {
+//        ([VEEReachabilityManager isReachableViaWiFi]) ? NSLog(@"============= WiFi ON =============") : NSLog(@"============= WiFi OFF =============");
+//        // Set a movement threshold for new events.
+//        self.locationManager.distanceFilter = 200; // meters
+//        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+//    }
     
     CGFloat timeout = 60.0f;
     if(startUploadDate && fabs([startUploadDate timeIntervalSinceNow]) > timeout) {

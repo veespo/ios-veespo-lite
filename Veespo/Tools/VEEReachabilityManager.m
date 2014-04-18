@@ -10,6 +10,8 @@
 
 #import "VEEReachability.h"
 
+#import "VEELookBackManager.h"
+
 @implementation VEEReachabilityManager
 
 #pragma mark -
@@ -59,6 +61,22 @@
     if (self) {
         // Initialize Reachability
         self.reachability = [VEEReachability reachabilityWithHostname:@"www.google.com"];
+        
+        // Tell the reachability that we DON'T want to be reachable on 3G/EDGE/CDMA
+        self.reachability.reachableOnWWAN = NO;
+        
+        // Set the blocks
+        self.reachability.reachableBlock = ^(VEEReachability *reach)
+        {
+            NSLog(@"REACHABLE!");
+            if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground)
+                [[VEELookBackManager sharedManager] startLocation];
+        };
+        
+        self.reachability.unreachableBlock = ^(VEEReachability *reach)
+        {
+            NSLog(@"UNREACHABLE!");
+        };
         
         // Start Monitoring
         [self.reachability startNotifier];
