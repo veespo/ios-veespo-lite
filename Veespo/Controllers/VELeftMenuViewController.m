@@ -187,9 +187,10 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
         }];
     }];
-#ifdef TARGET_OS_IPHONE
-    [[Lookback_Weak lookback] setEnabled:YES];
-#endif
+    
+    if (IS_IPHONE_5)
+        [[Lookback_Weak lookback] setEnabled:YES];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:kVEEStartLookBackRecording object:self];
 #endif
 }
