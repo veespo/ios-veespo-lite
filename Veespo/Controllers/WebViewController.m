@@ -1,6 +1,6 @@
 #import "WebViewController.h"
 
-#import <Lookback/Lookback.h>
+#import "VEELookBackManager.h"
 
 @implementation WebViewController
 @synthesize url = _url;
@@ -102,8 +102,7 @@
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
         [self dismissViewControllerAnimated:YES completion:^{
-            [[Lookback_Weak lookback] setEnabled:NO];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
+            [[VEELookBackManager sharedManager] stopRecording];
         }];
     };
     
@@ -115,15 +114,11 @@
                                               otherButtonTitles:nil];
         [alert show];
         [self dismissViewControllerAnimated:YES completion:^{
-            [[Lookback_Weak lookback] setEnabled:NO];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
+            [[VEELookBackManager sharedManager] stopRecording];
         }];
     }];
 
-    if (IS_IPHONE_5)
-        [[Lookback_Weak lookback] setEnabled:YES];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:kVEEStartLookBackRecording object:self];
+    [[VEELookBackManager sharedManager] startRecording];
 #endif
 }
 

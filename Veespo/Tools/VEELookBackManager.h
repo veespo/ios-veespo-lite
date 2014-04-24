@@ -14,6 +14,9 @@
 #pragma mark Shared Manager
 + (VEELookBackManager *)sharedManager;
 
+- (void)startRecording;
+- (void)stopRecording;
+
 #pragma mark Start User's Location
 - (void)startLocation;
 

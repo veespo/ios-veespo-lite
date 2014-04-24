@@ -34,21 +34,40 @@
 }
 
 #pragma mark -
+#pragma Recording manager
+
+- (void)startRecording
+{
+    if (IS_IPHONE_5) {
+        [[Lookback_Weak lookback] setEnabled:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kVEEStartLookBackRecording object:self];
+    }
+}
+
+- (void)stopRecording
+{
+    if (IS_IPHONE_5) {
+        [[Lookback_Weak lookback] setEnabled:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
+    }
+}
+
+#pragma mark -
 #pragma mark Start User's Location
 - (void)startLocation
 {
-    if ([VEEReachabilityManager isReachableViaWiFi] == YES && startUploadDate && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording]) {
+    if ([VEEReachabilityManager isReachableViaWiFi] == YES && startUploadDate && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES) {
         NSLog(@"============= Applicazione in chiusura, ma non ci sono le condizioni per avviare update posizione =============");
         [self startLookBackRecording];
         startUploadDate = nil;
-    } else if ([VEEReachabilityManager isReachableViaWiFi] == NO && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording]) {
+    } else if ([VEEReachabilityManager isReachableViaWiFi] == NO && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES) {
         if (startUploadDate)
             startUploadDate = nil;
         
         NSLog(@"============= Start location in background =============");
         
         [self startStandardUpdates];
-    } else if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording]) {
+    } else if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES) {
         NSLog(@"============= Start location in background =============");
         
         [self startStandardUpdates];

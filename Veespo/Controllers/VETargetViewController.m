@@ -8,7 +8,7 @@
 
 #import "VETargetViewController.h"
 
-#import <Lookback/Lookback.h>
+#import "VEELookBackManager.h"
 
 @interface VETargetViewController () {
     NSMutableArray *target;
@@ -161,8 +161,7 @@
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
         [self dismissViewControllerAnimated:YES completion:^{
-            [[Lookback_Weak lookback] setEnabled:NO];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
+            [[VEELookBackManager sharedManager] stopRecording];
         }];
     };
     
@@ -175,15 +174,11 @@
         [alert show];
         NSLog(@"Veespo Error: %@", error);
         [self dismissViewControllerAnimated:YES completion:^{
-            [[Lookback_Weak lookback] setEnabled:NO];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
+            [[VEELookBackManager sharedManager] stopRecording];
         }];
     }];
 
-    if (IS_IPHONE_5)
-        [[Lookback_Weak lookback] setEnabled:YES];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:kVEEStartLookBackRecording object:self];
+    [[VEELookBackManager sharedManager] startRecording];
 #endif
 
 }

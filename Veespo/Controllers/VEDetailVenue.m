@@ -12,12 +12,12 @@
 #import "VERatedVenuesViewController.h"
 #import "VERatedVenuesForTagViewController.h"
 #import "VEChartViewController.h"
+#import "VEELookBackManager.h"
+
 #import "MBProgressHUD.h"
 #import "VEDataChart.h"
 
 #import "VEDoublePannel.h"
-
-#import <Lookback/Lookback.h>
 
 @interface VEDetailVenue () {
     NSArray *avgTargetsList;
@@ -241,14 +241,6 @@
     // Custom panel
     VEDoublePannel *ddet = [[VEDoublePannel alloc] initWithFrame:CGRectMake(10, 49.5, 300, 78.5) withPanelQuestion:NSLocalizedString(@"Veespo Question", nil)];
     
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    [formatter setLocale:[NSLocale currentLocale]];
-    [formatter setMinimumFractionDigits:2];
-    [formatter setMaximumFractionDigits:2];
-    NSString *n = _averageLabel.text;
-    NSNumber * myNumber = [formatter numberFromString:n];
-        
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token
                                                                                             targetInfo:tinfo
                                                                                       targetParameters:tp
@@ -259,8 +251,7 @@
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
         [self dismissViewControllerAnimated:YES completion:^{
             [self loadAverageVotes];
-            [[Lookback_Weak lookback] setEnabled:NO];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
+            [[VEELookBackManager sharedManager] stopRecording];
         }];
     };
     
@@ -273,15 +264,11 @@
         [alert show];
         NSLog(@"Veespo Error: %@", error);
         [self dismissViewControllerAnimated:YES completion:^{
-            [[Lookback_Weak lookback] setEnabled:NO];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
+            [[VEELookBackManager sharedManager] stopRecording];
         }];
     }];
     
-    if (IS_IPHONE_5)
-        [[Lookback_Weak lookback] setEnabled:YES];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:kVEEStartLookBackRecording object:self];
+    [[VEELookBackManager sharedManager] startRecording];
 #endif
 }
 
