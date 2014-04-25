@@ -28,11 +28,8 @@
 		BE72AB2218B7BAB70045211A /* VEVeespoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB2118B7BAB70045211A /* VEVeespoTest.m */; };
 		BE9446EA18AB7740009DFFF7 /* VEEFPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE9446E918AB7740009DFFF7 /* VEEFPropertyList.plist */; };
 		BE9800F4183F814D000900CC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9800F3183F814D000900CC /* libz.dylib */; };
-		BEA81D5F1907CF7500817412 /* Veespo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEA81D5D1907CF7500817412 /* Veespo.bundle */; };
-		BEA81D601907CF7500817412 /* Veespo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA81D5E1907CF7500817412 /* Veespo.framework */; };
 		BEABDE6718805C8300079EC5 /* VEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEABDE6518805C8300079EC5 /* VEHomeViewController.m */; };
 		BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEABDE6618805C8300079EC5 /* VEHomeViewController.xib */; };
-		BEAECBC218F59C5300F94423 /* Lookback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAECBC118F59C5300F94423 /* Lookback.framework */; };
 		BEAECBC518F5A45900F94423 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAECBC418F5A45900F94423 /* AVFoundation.framework */; };
 		BEAECBC718F5A47900F94423 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAECBC618F5A47900F94423 /* AudioToolbox.framework */; };
 		BEAECBC918F5A48300F94423 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAECBC818F5A48300F94423 /* CoreVideo.framework */; };
@@ -76,6 +73,7 @@
 		BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE010A95180AEF0E0012817F /* Main.storyboard */; };
 		BED167A018991A700083B3B5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED1679F18991A700083B3B5 /* CoreTelephony.framework */; };
 		BED167A218991AB60083B3B5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED167A118991AB60083B3B5 /* CoreData.framework */; };
+		BED5382F190A649A00790491 /* Lookback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED5382E190A649A00790491 /* Lookback.framework */; };
 		BEE64C581859C63000539E8A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C461859C63000539E8A /* AFHTTPClient.m */; };
 		BEE64C591859C63000539E8A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C481859C63000539E8A /* AFHTTPRequestOperation.m */; };
 		BEE64C5A1859C63000539E8A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C4A1859C63000539E8A /* AFImageRequestOperation.m */; };
@@ -120,6 +118,8 @@
 		BEF2C33D18C9D9E000908963 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C33918C9D9E000908963 /* UIActionSheet+Blocks.m */; };
 		BEF2C33E18C9D9E000908963 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C33B18C9D9E000908963 /* UIAlertView+Blocks.m */; };
 		BEF6547318A14CD60074E1A7 /* VERatedVenuesForTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF6547218A14CD60074E1A7 /* VERatedVenuesForTagViewController.m */; };
+		BEFC3496190972B900594AA5 /* Veespo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEFC3494190972B900594AA5 /* Veespo.bundle */; };
+		BEFC3497190972B900594AA5 /* Veespo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFC3495190972B900594AA5 /* Veespo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,12 +167,9 @@
 		BE72AB2118B7BAB70045211A /* VEVeespoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEVeespoTest.m; sourceTree = "<group>"; };
 		BE9446E918AB7740009DFFF7 /* VEEFPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = VEEFPropertyList.plist; path = "Supporting Files/VEEFPropertyList.plist"; sourceTree = "<group>"; };
 		BE9800F3183F814D000900CC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		BEA81D5D1907CF7500817412 /* Veespo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Veespo.bundle; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.bundle"; sourceTree = "<group>"; };
-		BEA81D5E1907CF7500817412 /* Veespo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Veespo.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.framework"; sourceTree = "<group>"; };
 		BEABDE6418805C8300079EC5 /* VEHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEHomeViewController.h; sourceTree = "<group>"; };
 		BEABDE6518805C8300079EC5 /* VEHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEHomeViewController.m; sourceTree = "<group>"; };
 		BEABDE6618805C8300079EC5 /* VEHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEHomeViewController.xib; sourceTree = "<group>"; };
-		BEAECBC118F59C5300F94423 /* Lookback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lookback.framework; path = lookback/Safe/Lookback.framework; sourceTree = "<group>"; };
 		BEAECBC418F5A45900F94423 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BEAECBC618F5A47900F94423 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BEAECBC818F5A48300F94423 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -244,6 +241,7 @@
 		BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Veespo-Info.plist"; sourceTree = "<group>"; };
 		BED1679F18991A700083B3B5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		BED167A118991AB60083B3B5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BED5382E190A649A00790491 /* Lookback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lookback.framework; path = lookback/Safe/Lookback.framework; sourceTree = "<group>"; };
 		BEE64C451859C63000539E8A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		BEE64C461859C63000539E8A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		BEE64C471859C63000539E8A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -323,6 +321,8 @@
 		BEF2C33B18C9D9E000908963 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 		BEF6547118A14CD60074E1A7 /* VERatedVenuesForTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERatedVenuesForTagViewController.h; sourceTree = "<group>"; };
 		BEF6547218A14CD60074E1A7 /* VERatedVenuesForTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VERatedVenuesForTagViewController.m; sourceTree = "<group>"; };
+		BEFC3494190972B900594AA5 /* Veespo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Veespo.bundle; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.bundle"; sourceTree = "<group>"; };
+		BEFC3495190972B900594AA5 /* Veespo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Veespo.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,8 +335,9 @@
 				BEAECBCD18F5A49800F94423 /* MediaPlayer.framework in Frameworks */,
 				BEAECBCB18F5A48A00F94423 /* CoreMedia.framework in Frameworks */,
 				BEAECBC918F5A48300F94423 /* CoreVideo.framework in Frameworks */,
+				BED5382F190A649A00790491 /* Lookback.framework in Frameworks */,
 				BEAECBC718F5A47900F94423 /* AudioToolbox.framework in Frameworks */,
-				BEA81D601907CF7500817412 /* Veespo.framework in Frameworks */,
+				BEFC3497190972B900594AA5 /* Veespo.framework in Frameworks */,
 				BEAECBC518F5A45900F94423 /* AVFoundation.framework in Frameworks */,
 				BE293D4218D9FFAA0097D42A /* CoreText.framework in Frameworks */,
 				BED167A218991AB60083B3B5 /* CoreData.framework in Frameworks */,
@@ -348,7 +349,6 @@
 				BEEB671917EC9A1A00F394E9 /* CoreGraphics.framework in Frameworks */,
 				BEEB671B17EC9A1A00F394E9 /* UIKit.framework in Frameworks */,
 				BEEB671717EC9A1A00F394E9 /* Foundation.framework in Frameworks */,
-				BEAECBC218F59C5300F94423 /* Lookback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,8 +400,8 @@
 		BEA81D5C1907CF6900817412 /* Veespo Framework */ = {
 			isa = PBXGroup;
 			children = (
-				BEA81D5D1907CF7500817412 /* Veespo.bundle */,
-				BEA81D5E1907CF7500817412 /* Veespo.framework */,
+				BEFC3494190972B900594AA5 /* Veespo.bundle */,
+				BEFC3495190972B900594AA5 /* Veespo.framework */,
 			);
 			name = "Veespo Framework";
 			sourceTree = "<group>";
@@ -700,13 +700,13 @@
 		BEEB671517EC9A1A00F394E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BED5382E190A649A00790491 /* Lookback.framework */,
 				BEAECBCE18F5A49E00F94423 /* QuartzCore.framework */,
 				BEAECBCC18F5A49800F94423 /* MediaPlayer.framework */,
 				BEAECBCA18F5A48A00F94423 /* CoreMedia.framework */,
 				BEAECBC818F5A48300F94423 /* CoreVideo.framework */,
 				BEAECBC618F5A47900F94423 /* AudioToolbox.framework */,
 				BEAECBC418F5A45900F94423 /* AVFoundation.framework */,
-				BEAECBC118F59C5300F94423 /* Lookback.framework */,
 				BE293D4118D9FFAA0097D42A /* CoreText.framework */,
 				BED167A118991AB60083B3B5 /* CoreData.framework */,
 				BED1679F18991A700083B3B5 /* CoreTelephony.framework */,
@@ -913,7 +913,7 @@
 				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
 				BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */,
 				BEE64C721859C6D800539E8A /* FSWebLogin.xib in Resources */,
-				BEA81D5F1907CF7500817412 /* Veespo.bundle in Resources */,
+				BEFC3496190972B900594AA5 /* Veespo.bundle in Resources */,
 				BE9446EA18AB7740009DFFF7 /* VEEFPropertyList.plist in Resources */,
 				BEC63F6C183CC6BD001C82B6 /* user.png in Resources */,
 				BEC63F68183CC6BD001C82B6 /* pin.png in Resources */,
@@ -1154,6 +1154,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/lookback/Safe",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/Veespo",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
@@ -1184,6 +1186,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/lookback/Safe",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos",
+					"$(PROJECT_DIR)/Veespo",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
@@ -1198,7 +1202,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME) Lite";
-				PROVISIONING_PROFILE = "0E749AB2-C820-4EDE-BE82-73D0CB6B8E04";
+				PROVISIONING_PROFILE = "C41C6637-6F6B-4741-9AED-C5B722290897";
 				VALID_ARCHS = "armv7 armv7s armv64";
 				WRAPPER_EXTENSION = app;
 			};

@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Veespo Ltd. All rights reserved.
 //
 
-#import <Lookback/Lookback.h>
-
 #import "VEAppDelegate.h"
 
 #import "JASidePanelController.h"

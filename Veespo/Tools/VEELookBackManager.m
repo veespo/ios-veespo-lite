@@ -10,7 +10,6 @@
 
 #import "VEEReachabilityManager.h"
 
-#import <Lookback/Lookback.h>
 #import <CoreLocation/CoreLocation.h>
 
 @interface VEELookBackManager  () <CLLocationManagerDelegate> {
@@ -38,36 +37,36 @@
 
 - (void)startRecording
 {
-    if (IS_IPHONE_5) {
+//    if (IS_IPHONE_5) {
         [[Lookback_Weak lookback] setEnabled:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:kVEEStartLookBackRecording object:self];
-    }
+//    }
 }
 
 - (void)stopRecording
 {
-    if (IS_IPHONE_5) {
+//    if (IS_IPHONE_5) {
         [[Lookback_Weak lookback] setEnabled:NO];
         [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
-    }
+//    }
 }
 
 #pragma mark -
 #pragma mark Start User's Location
 - (void)startLocation
 {
-    if ([VEEReachabilityManager isReachableViaWiFi] == YES && startUploadDate && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES) {
+    if ([VEEReachabilityManager isReachableViaWiFi] == YES && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEFinishedUploading] == YES) {
         NSLog(@"============= Applicazione in chiusura, ma non ci sono le condizioni per avviare update posizione =============");
         [self startLookBackRecording];
         startUploadDate = nil;
-    } else if ([VEEReachabilityManager isReachableViaWiFi] == NO && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES) {
+    } else if ([[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEFinishedUploading] == NO) {
         if (startUploadDate)
             startUploadDate = nil;
         
         NSLog(@"============= Start location in background =============");
         
         [self startStandardUpdates];
-    } else if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES) {
+    } else if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEFinishedUploading] == NO) {
         NSLog(@"============= Start location in background =============");
         
         [self startStandardUpdates];
@@ -93,7 +92,14 @@
             NSLog(@"============= Start LookBack Upload =============");
             NSLog(@"%@ - %@",[note userInfo][LookbackExperienceDestinationURLUserInfoKey], [note userInfo][LookbackExperienceStartedAtUserInfoKey]);
             
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kVEEFinishedUploading];
+        }];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:kVEEFinishedUploading object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+            NSLog(@"============= Finished LookBack Upload =============");
+            NSLog(@"%@",note);
             
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kVEEFinishedUploading];
         }];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -131,6 +137,7 @@
 - (void)endLookBackRecording
 {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kVEEEndLookBackRecording];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kVEEFinishedUploading];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -181,9 +188,16 @@
 //        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
 //    }
     
-    CGFloat timeout = 60.0f;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kVEEFinishedUploading] == YES) {
+        [self stopLocation];
+        startUploadDate = nil;
+        // Reset recording flag
+        [self startLookBackRecording];
+    }
+    
+    CGFloat timeout = 180.0f;
     if(startUploadDate && fabs([startUploadDate timeIntervalSinceNow]) > timeout) {
-        NSLog(@"============= Sono passati %f minuti dall'avvio del upload =============", timeout/60.0f);
+        NSLog(@"============= Sono passati %.1f minuti dall'avvio del upload =============", timeout/60.0f);
         [self stopLocation];
         startUploadDate = nil;
         // Reset recording flag

@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
-#import <LookBack/LookbackSettingsViewController.h>
+#import <Lookback/LookbackSettingsViewController.h>
+#import <Lookback/LookbackRecordingViewController.h>
 
 /*! @header Lookback Public API
     Public interface for Lookback, the UX testing tool that records your screen
@@ -83,6 +84,29 @@
         </pre>
 */
 #define Lookback_Weak (NSClassFromString(@"Lookback"))
+
+
+#pragma mark UIKit extensions
+
+/*!
+ *  Lookback-specific extenions to UIView.
+ */
+@interface UIView (LookbackConcealing)
+/*!
+ *  If set to YES, the receiver will be covered by a red rectangle in recordings
+ *  you make with Lookback. This is useful for hiding sensitive user
+ *  data. Secure text fields are automatically concealed when focused.
+ *  @example <pre>
+		- (void)viewDidLoad {
+			if([Lookback_Weak lookback]) { // don't set lookback properties if lookback isn't available
+				self.userEmailLabel.lookback_shouldBeConcealedInRecordings = YES;
+			}
+			...
+		}
+		</pre>
+ */
+@property(nonatomic) BOOL lookback_shouldBeConcealedInRecordings;
+@end
 
 
 #pragma mark Settings

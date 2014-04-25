@@ -28,6 +28,7 @@ static NSString * const kVEEGoToForeground = @"kVeespoGoToForeground";
 static NSString * const kVEEGoToBackground = @"kVeespoGoToBackground";
 static NSString * const kVEEEndLookBackRecording = @"kVEEEndLookBackRecording";
 static NSString * const kVEEStartLookBackRecording = @"kVEEStartLookBackRecording";
+static NSString * const kVEEFinishedUploading = @"com.thirdcog.lookback.notification.finishedUploading";
 
 @interface VEEConstants : NSObject
 
