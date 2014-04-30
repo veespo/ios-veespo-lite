@@ -37,18 +37,18 @@
 
 - (void)startRecording
 {
-//    if (IS_IPHONE_5) {
+    if (IS_IPHONE_5) {
         [[Lookback_Weak lookback] setEnabled:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:kVEEStartLookBackRecording object:self];
-//    }
+    }
 }
 
 - (void)stopRecording
 {
-//    if (IS_IPHONE_5) {
+    if (IS_IPHONE_5) {
         [[Lookback_Weak lookback] setEnabled:NO];
         [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
-//    }
+    }
 }
 
 #pragma mark -
