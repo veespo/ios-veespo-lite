@@ -12,12 +12,10 @@
 
 #import "VELeftMenuViewController.h"
 #import "VEMenuCell.h"
-#import "VEHomeViewController.h"
 #import "VEFSViewController.h"
 #import "VERSSViewController.h"
 #import "VEEspnViewController.h"
 #import "Foursquare2.h"
-
 #import "VEHomeViewController.h"
 #import "VEELookBackManager.h"
 #import "VEEReachabilityManager.h"
@@ -41,7 +39,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:UUID forKey:kVEEUserUniqueID];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-        
+    
     // Check old history version
     NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:kVEEUserCategoriesHistory];
     if (history) {
@@ -68,7 +66,7 @@
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:kVEEUserCategoriesHistory];
         }
     }
-
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:kVEEGoToForeground object:self];
     
     if (self.tokens == nil)
@@ -151,33 +149,6 @@
     self.window.rootViewController = self.viewController;
     
     [self.window makeKeyAndVisible];
-    
-    return YES;
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-#ifdef VEESPO
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    if (_tokens == nil) {
-        NSString *keysPath = [[NSBundle mainBundle] pathForResource:kVEKeysFileName ofType:@"plist"];
-        if (!keysPath) {
-            NSLog(@"To use API make sure you have a Veespo-Keys.plist with the Identifier in your project");
-            return;
-        }
-        
-        NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
-        [self setUpVeespo:keys];
-    }
-#endif
-}
-
-+ (NSString *)uuid
-{
-    CFUUIDRef uuidRef = CFUUIDCreate(NULL);
-    CFStringRef uuidStringRef = CFUUIDCreateString(NULL, uuidRef);
-    CFRelease(uuidRef);
-    return (__bridge NSString *)uuidStringRef;
 }
 
 #pragma mark - API

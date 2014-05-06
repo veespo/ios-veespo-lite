@@ -24,9 +24,10 @@
 		BE72AB2018B7BA610045211A /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB1E18B7B9690045211A /* VEConnection.m */; };
 		BE72AB2218B7BAB70045211A /* VEVeespoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB2118B7BAB70045211A /* VEVeespoTest.m */; };
 		BE9446EA18AB7740009DFFF7 /* VEEFPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE9446E918AB7740009DFFF7 /* VEEFPropertyList.plist */; };
-		BE95163819197B980073F280 /* Veespo-Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE95163719197B980073F280 /* Veespo-Keys.plist */; };
+		BE95163C19197FC40073F280 /* VEHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE95163A19197FC40073F280 /* VEHomeViewController.m */; };
+		BE9516411919800A0073F280 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE9516401919800A0073F280 /* PickerView.m */; };
+		BE951642191980A20073F280 /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE37348E18DCE9E6004A20ED /* JBChartView.m */; };
 		BE9800F4183F814D000900CC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9800F3183F814D000900CC /* libz.dylib */; };
-		BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEABDE6618805C8300079EC5 /* VEHomeViewController.xib */; };
 		BEAECBC518F5A45900F94423 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAECBC418F5A45900F94423 /* AVFoundation.framework */; };
 		BEAECBC718F5A47900F94423 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAECBC618F5A47900F94423 /* AudioToolbox.framework */; };
 		BEAECBC918F5A48300F94423 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAECBC818F5A48300F94423 /* CoreVideo.framework */; };
@@ -150,9 +151,11 @@
 		BE72AB1E18B7B9690045211A /* VEConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEConnection.m; sourceTree = "<group>"; };
 		BE72AB2118B7BAB70045211A /* VEVeespoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEVeespoTest.m; sourceTree = "<group>"; };
 		BE9446E918AB7740009DFFF7 /* VEEFPropertyList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = VEEFPropertyList.plist; path = "Supporting Files/VEEFPropertyList.plist"; sourceTree = "<group>"; };
-		BE95163719197B980073F280 /* Veespo-Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Veespo-Keys.plist"; path = "Supporting Files/Veespo-Keys.plist"; sourceTree = "<group>"; };
+		BE95163919197FC40073F280 /* VEHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEHomeViewController.h; sourceTree = "<group>"; };
+		BE95163A19197FC40073F280 /* VEHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEHomeViewController.m; sourceTree = "<group>"; };
+		BE95163F1919800A0073F280 /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
+		BE9516401919800A0073F280 /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
 		BE9800F3183F814D000900CC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		BEABDE6618805C8300079EC5 /* VEHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VEHomeViewController.xib; sourceTree = "<group>"; };
 		BEAECBC418F5A45900F94423 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BEAECBC618F5A47900F94423 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BEAECBC818F5A48300F94423 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -356,6 +359,15 @@
 			path = "NSString+Extra";
 			sourceTree = "<group>";
 		};
+		BE95163E1919800A0073F280 /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				BE95163F1919800A0073F280 /* PickerView.h */,
+				BE9516401919800A0073F280 /* PickerView.m */,
+			);
+			path = PickerView;
+			sourceTree = "<group>";
+		};
 		BEA81D5C1907CF6900817412 /* Veespo Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +434,8 @@
 		BEC63F24183CC6BD001C82B6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BE95163919197FC40073F280 /* VEHomeViewController.h */,
+				BE95163A19197FC40073F280 /* VEHomeViewController.m */,
 				BEF2C32718C88E6200908963 /* ImageViewController.h */,
 				BEF2C32818C88E6200908963 /* ImageViewController.m */,
 				BE48371618771A2D008EC351 /* VEChartViewController.h */,
@@ -537,6 +551,7 @@
 		BEE64C431859C62400539E8A /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				BE95163E1919800A0073F280 /* PickerView */,
 				BE37348A18DCE9E6004A20ED /* JawboneChartView */,
 				BEC31C6F18CA201400DF3954 /* Gauges */,
 				BEE64CAD185A2C4800539E8A /* JASidePanels */,
@@ -683,7 +698,6 @@
 		BEEB671D17EC9A1A00F394E9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BE95163719197B980073F280 /* Veespo-Keys.plist */,
 				BE9446E918AB7740009DFFF7 /* VEEFPropertyList.plist */,
 				BEC63F7A183CD0B3001C82B6 /* main.m */,
 				BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */,
@@ -838,8 +852,6 @@
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
-				BE95163819197B980073F280 /* Veespo-Keys.plist in Resources */,
-				BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
 				BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */,
 				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
@@ -874,6 +886,7 @@
 				BEC31C8218CA201500DF3954 /* MSRangeGauge.m in Sources */,
 				BEE64C6D1859C6D800539E8A /* Foursquare2.m in Sources */,
 				BE5B6FEE19000279009EEEA8 /* VEELookBackManager.m in Sources */,
+				BE9516411919800A0073F280 /* PickerView.m in Sources */,
 				BEC63F5E183CC6BD001C82B6 /* VETargetDetailViewController.m in Sources */,
 				BEC63F7C183CD0B3001C82B6 /* main.m in Sources */,
 				BE37349318DCE9E6004A20ED /* JBLineChartView.m in Sources */,
@@ -911,6 +924,7 @@
 				BEC63F6D183CC6BD001C82B6 /* VERSSParser.m in Sources */,
 				BEF2C31A18C783A900908963 /* VEFlickrConnection.m in Sources */,
 				BEE64C5D1859C63000539E8A /* AFPropertyListRequestOperation.m in Sources */,
+				BE95163C19197FC40073F280 /* VEHomeViewController.m in Sources */,
 				BEE64C711859C6D800539E8A /* FSWebLogin.m in Sources */,
 				BEC63F5D183CC6BD001C82B6 /* VERSSViewController.m in Sources */,
 				BEC31C8318CA201500DF3954 /* MSSimpleGauge.m in Sources */,
@@ -919,6 +933,7 @@
 				BEE64C5C1859C63000539E8A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				BEF2C32618C8893800908963 /* ScaleAnimation.m in Sources */,
 				BEC63F67183CC6BD001C82B6 /* VEUser.m in Sources */,
+				BE951642191980A20073F280 /* JBChartView.m in Sources */,
 				BEC63F54183CC6BD001C82B6 /* VEMenuCell.m in Sources */,
 				BEB6A9AF185B13F40029A799 /* VELeftMenuViewController.m in Sources */,
 				BEC31C6E18CA1F7400DF3954 /* VEDoublePannel.m in Sources */,
