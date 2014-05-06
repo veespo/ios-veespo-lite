@@ -12,6 +12,8 @@
 #import "JASidePanelController.h"
 #import "VEMenuCell.h"
 
+#import "VEELookBackManager.h"
+
 @interface VELeftMenuViewController ()
 
 @end
@@ -167,7 +169,9 @@
                                                     ];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[VEELookBackManager sharedManager] stopRecording];
+        }];
     };
     
     [veespoViewController showWidget:^(NSDictionary *error) {
@@ -177,8 +181,12 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[VEELookBackManager sharedManager] stopRecording];
+        }];
     }];
+    
+    [[VEELookBackManager sharedManager] startRecording];
 #endif
 }
 

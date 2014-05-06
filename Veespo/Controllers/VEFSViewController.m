@@ -114,8 +114,6 @@ static int const maxLocationUpdate = 1;
         self.navigationItem.rightBarButtonItem.enabled = NO;
     else
         self.navigationItem.rightBarButtonItem.enabled = YES;
-    
-//    [Flurry logEvent:@"Venues View"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -186,14 +184,18 @@ static int const maxLocationUpdate = 1;
 - (void)checkinButton
 {
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     selected = self.mapView.selectedAnnotations.lastObject;
+    
     VEDetailVenue *detail = [[VEDetailVenue alloc] initWithNibName:@"VEDetailVenue" bundle:nil];
     detail.venue = selected;
+    
     if ([detail.venue.categoryId isEqualToString:catCibi]) {
         detail.token = [appDelegate.tokens objectForKey:@"cibi"];
     } else {
         detail.token = [appDelegate.tokens objectForKey:@"localinotturni"];
     }
+    
     [self.navigationController pushViewController:detail animated:YES];
 }
 
@@ -209,6 +211,7 @@ static int const maxLocationUpdate = 1;
     } else {
         detail.token = [appDelegate.tokens objectForKey:@"localinotturni"];
     }
+    
     [self.navigationController pushViewController:detail animated:YES];
 }
 

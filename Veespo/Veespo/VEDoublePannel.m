@@ -93,7 +93,7 @@
     annotatedGauge.startRangeLabel.text = [NSString stringWithFormat:@"Voti %d/%d", votes, tags];
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setRoundingMode:NSNumberFormatterDecimalStyle];
+    [formatter setRoundingMode:NSNumberFormatterRoundCeiling];
     [formatter setMaximumFractionDigits:1];
     [formatter setMinimumIntegerDigits:1];
     if (votes > 0)
