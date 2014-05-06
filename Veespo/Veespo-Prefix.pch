@@ -18,7 +18,7 @@
 #import "VEEConstants.h"
 #import <Lookback/Lookback.h>
 
-#define VEESPO
+//#define VEESPO
 
 #ifdef VEESPO
 #import <Veespo/Veespo.h>
