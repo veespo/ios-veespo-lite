@@ -11,7 +11,6 @@
 
 static NSString * const kVEFlickrApiKey     = @"Flickr Key";
 static NSString * const kVEFlickrApiSecret  = @"Flickr secret";
-static NSString * const kVEKeysFileName     = @"Veespo-Keys";
 
 @implementation VEFlickrConnection
 

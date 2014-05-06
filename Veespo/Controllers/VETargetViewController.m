@@ -8,6 +8,8 @@
 
 #import "VETargetViewController.h"
 
+#import "VEELookBackManager.h"
+
 @interface VETargetViewController () {
     NSMutableArray *target;
 }
@@ -158,7 +160,9 @@
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token target:dict[@"target"] targetParameters:nil parameters:p detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[VEELookBackManager sharedManager] stopRecording];
+        }];
     };
     
     [veespoViewController showWidget:^(NSDictionary *error) {
@@ -169,8 +173,12 @@
                                               otherButtonTitles:nil];
         [alert show];
         NSLog(@"Veespo Error: %@", error);
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[VEELookBackManager sharedManager] stopRecording];
+        }];
     }];
+
+    [[VEELookBackManager sharedManager] startRecording];
 #endif
 
 }

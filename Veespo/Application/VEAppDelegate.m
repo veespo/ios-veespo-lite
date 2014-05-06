@@ -18,40 +18,88 @@
 #import "VEEspnViewController.h"
 #import "Foursquare2.h"
 
-static NSString * const kVEFoursquareKey = @"Foursquare key";
-static NSString * const kVEFoursquareSecret = @"Foursquare secret";
-static NSString * const kVETestFlightKey = @"TestFlight Key";
-static NSString * const kVEKeysFileName = @"Veespo-Keys";
-static NSString * const kVEVeespoApiKey = @"Veespo Api Key";
-static NSString * const kVEFlurryApiKey = @"Flurry Key";
+#import "VEHomeViewController.h"
+#import "VEELookBackManager.h"
+#import "VEEReachabilityManager.h"
 
 #pragma mark - Private Interface
 @implementation VEAppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [VEEReachabilityManager sharedManager];
+    [VEELookBackManager sharedManager];
+    
     [self setUpApi];
     
-    NSString *UUID = [[NSUserDefaults standardUserDefaults] objectForKey:@"uuid"];
+    NSString *UUID = [[NSUserDefaults standardUserDefaults] objectForKey:kVEEUserUniqueID];
     if (!UUID) {
         CFUUIDRef uuid = CFUUIDCreate(NULL);
         UUID = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
         CFRelease(uuid);
         
-        [[NSUserDefaults standardUserDefaults] setObject:UUID forKey:@"uuid"];
+        [[NSUserDefaults standardUserDefaults] setObject:UUID forKey:kVEEUserUniqueID];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
         
     // Check old history version
-    NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+    NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:kVEEUserCategoriesHistory];
     if (history) {
         NSArray *keys = [history allKeys];
         if ([[history objectForKey:[keys objectAtIndex:0]] isKindOfClass:[NSString class]]) {
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"history"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:kVEEUserCategoriesHistory];
+        }
+    }
+    
+    // Side Panel
+    [self setUpSidePanel];
+    
+    return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    // Check old history version
+    NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:kVEEUserCategoriesHistory];
+    if (history) {
+        NSArray *keys = [history allKeys];
+        if ([[history objectForKey:[keys objectAtIndex:0]] isKindOfClass:[NSString class]]) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:kVEEUserCategoriesHistory];
         }
     }
 
+    [[NSNotificationCenter defaultCenter] postNotificationName:kVEEGoToForeground object:self];
+    
+    if (self.tokens == nil)
+        [self checkVeespoTokens];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[NSNotificationCenter defaultCenter] postNotificationName:kVEEGoToBackground object:self];
+}
+
+- (void)checkVeespoTokens
+{
+#ifdef VEESPO
+    NSString *keysPath = [[NSBundle mainBundle] pathForResource:kVEKeysFileName ofType:@"plist"];
+    if (!keysPath) {
+        NSLog(@"To use API make sure you have a Veespo-Keys.plist with the Identifier in your project");
+        return;
+    }
+    
+    NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
+    [self setUpVeespo:keys];
+#endif
+}
+
+#pragma mark - Private methods
+#pragma mark - Side Panel
+- (void)setUpSidePanel
+{
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
@@ -144,11 +192,20 @@ static NSString * const kVEFlurryApiKey = @"Flurry Key";
     
     NSDictionary *keys = [NSDictionary dictionaryWithContentsOfFile:keysPath];
     [self setUpFoursquare:keys];
+    
 #ifdef TESTFLIGHT
     [Flurry setCrashReportingEnabled:YES];
     [Flurry startSession:keys[kVEFlurryApiKey]];
     [TestFlight takeOff:keys[kVETestFlightKey]];
 #endif
+    
+    [Lookback_Weak setupWithAppToken:keys[kVEELoockBackApiKey]];
+    [Lookback_Weak lookback].shakeToRecord = NO;
+    [Lookback_Weak lookback].userIdentifier = [[UIDevice currentDevice] name];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:LookbackAudioEnabledSettingsKey];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:LookbackCameraEnabledSettingsKey];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:LookbackAutosplitSettingsKey];
 }
 
 - (void)setUpFoursquare:(NSDictionary *)keys
@@ -165,13 +222,16 @@ static NSString * const kVEFlurryApiKey = @"Flurry Key";
                                  @"categories":@[
                                          @{@"cat": @"veespo_lite_app"},
                                          @{@"cat": @"cibi"},
-                                         @{@"cat": @"localinotturni"},
                                          @{@"cat": @"news"}
                                          ]
                                  };
-    NSString *userId = nil;
+    NSString *userId;
     
-    userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:kVEEUserNameKey]) {
+        userId = [[NSUserDefaults standardUserDefaults] stringForKey:kVEEUserNameKey];
+    } else {
+        userId = [NSString stringWithFormat:@"VeespoLiteApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:kVEEUserUniqueID]];
+    }
     
     [Veespo initVeespo:keys[kVEVeespoApiKey]
                 userId:userId
@@ -182,7 +242,6 @@ static NSString * const kVEFlurryApiKey = @"Flurry Key";
                 tokens:^(id responseData, BOOL error) {
                     if (error == NO) {
                         self.tokens = [[NSDictionary alloc] initWithDictionary:responseData];
-                        NSLog(@"%@ /n %@", userId, self.tokens);
                     } else {
                         self.tokens = nil;
                         NSLog(@"%@", responseData);

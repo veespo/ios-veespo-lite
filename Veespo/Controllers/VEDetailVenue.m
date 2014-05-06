@@ -12,6 +12,8 @@
 #import "VERatedVenuesViewController.h"
 #import "VERatedVenuesForTagViewController.h"
 #import "VEChartViewController.h"
+#import "VEELookBackManager.h"
+
 #import "MBProgressHUD.h"
 #import "VEDataChart.h"
 
@@ -239,14 +241,6 @@
     // Custom panel
     VEDoublePannel *ddet = [[VEDoublePannel alloc] initWithFrame:CGRectMake(10, 49.5, 300, 78.5) withPanelQuestion:NSLocalizedString(@"Veespo Question", nil)];
     
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    [formatter setLocale:[NSLocale currentLocale]];
-    [formatter setMinimumFractionDigits:2];
-    [formatter setMaximumFractionDigits:2];
-    NSString *n = _averageLabel.text;
-    NSNumber * myNumber = [formatter numberFromString:n];
-        
     VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:_token
                                                                                             targetInfo:tinfo
                                                                                       targetParameters:tp
@@ -257,6 +251,7 @@
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
         [self dismissViewControllerAnimated:YES completion:^{
             [self loadAverageVotes];
+            [[VEELookBackManager sharedManager] stopRecording];
         }];
     };
     
@@ -268,8 +263,12 @@
                                               otherButtonTitles:nil];
         [alert show];
         NSLog(@"Veespo Error: %@", error);
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[VEELookBackManager sharedManager] stopRecording];
+        }];
     }];
+    
+    [[VEELookBackManager sharedManager] startRecording];
 #endif
 }
 
@@ -286,27 +285,6 @@
     // Return the number of rows in the section.
     return avgTargetsList.count;
 }
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    UIView *headerView = headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 37.0f)];
-//    headerView.backgroundColor = [UIColor clearColor];
-//    UIView *topBorderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 30.5f)];
-//    topBorderView.backgroundColor = UIColorFromHex(0x221e1f);
-//    [headerView addSubview:topBorderView];
-//    
-//    UIImageView *backGround = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 37.0f)];
-//    backGround.image = [UIImage imageNamed:@"header_tabella"];
-//    [headerView addSubview:backGround];
-//    
-//    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectInset(headerView.bounds, 12.0f, 5.0f)];
-//    textLabel.text = NSLocalizedString(@"Venue tags", nil);
-//    textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:13.0f];
-//    textLabel.textColor = [UIColor whiteColor];
-//    textLabel.backgroundColor = [UIColor clearColor];
-//    [headerView addSubview:textLabel];
-//    
-//	return headerView;
-//}
 
 - (UITableViewCell *) getCellContentView:(NSString *)cellIdentifier {
     CGRect labelFrame = CGRectMake(10, 5, 235, 34);
@@ -379,4 +357,6 @@
     [self.navigationController pushViewController:newViewController animated:YES];
 }
 
+- (IBAction)directionPressed:(id)sender {
+}
 @end
