@@ -9,7 +9,7 @@
 #import "VEHomeViewController.h"
 
 #import "VETargetViewController.h"
-#import "VEETargetObj.h"
+#import "VEConnection.h"
 
 #import "VEEReachabilityManager.h"
 #import "UIControl+VEControl.h"
@@ -264,8 +264,6 @@ static NSString * const kVEDemoCode = @"krbk";
 - (void)getTargetsList:(NSString *)demoCode
 {
 #ifdef VEESPO
-    VEVeespoAPIWrapper *veespo = [[VEVeespoAPIWrapper alloc] init];
-    
     // clean user name to create correct Veespo userID
     NSString *veespoUserId;
     
@@ -293,74 +291,24 @@ static NSString * const kVEDemoCode = @"krbk";
         
         veespoUserId = [veespoUserId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
-        [veespo requestTargetList:[NSDictionary dictionaryWithObjectsAndKeys:demoCode, @"democode", veespoUserId, @"userid", nil]
-                          success:^(id responseData, NSString *token) {
-                              
-                              __block NSDictionary *targetList = [[NSDictionary alloc] initWithDictionary:responseData];
-                              
-                              __block VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
-                              
-                              targetVC.userid = veespoUserId;
-                              targetVC.token = token;
-                              targetVC.title = targetList[@"categoryname"];
-                              
-                              // Inizializzo TargetObj
-                              for (int i = 0; i < ((NSArray *)targetList[@"targets"]).count; i++) {
-                                  VEETargetObj *tobj = [[VEETargetObj alloc] initWithDictionary:[targetList[@"targets"] objectAtIndex:i]];
-                                  [targetVC.targetList addObject:tobj];
-                              }
-                              
-                              // Creo o aggiorno storico utente
-                              
-                              NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
-                              
-                              if (history == nil) {
-                                  history = @{demoCode: @{demoCode: targetList[@"category"], @"desc1": targetList[@"categoryname"]}};
-                                  [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
-                              } else {
-                                  NSMutableDictionary *tmp = [[NSMutableDictionary alloc] initWithDictionary:history];
-                                  [tmp setObject:@{demoCode: targetList[@"category"], @"desc1": targetList[@"categoryname"]} forKey:demoCode];
-                                  [[NSUserDefaults standardUserDefaults] setObject:tmp forKey:@"history"];
-                              }
-                              
-                              // Verifico se ci sono target già votati dall'utente e li ordino alfabeticamente
-                              [veespo requestTargetsForUser:veespoUserId withCategory:targetList[@"category"] withToken:token success:^(id responseData) {
-                                  
-                                  if (((NSArray *)responseData).count > 0) {
-                                      NSArray *userTargetsList = [NSArray new];
-                                      
-                                      NSArray *list = [[NSArray alloc] initWithArray:responseData];
-                                      userTargetsList = [list sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                                          NSString *name1 = obj1[@"desc1"];
-                                          NSString *name2 = obj2[@"desc1"];
-                                          return [name1 compare:name2];
-                                      }];
-                                      
-                                      for (int i = 0; i < userTargetsList.count; i++) {
-                                          for (int j = 0; j < targetVC.targetList.count; j++) {
-                                              VEETargetObj *tobj = [targetVC.targetList objectAtIndex:j];
-                                              if ([[userTargetsList objectAtIndex:i][@"target"] isEqualToString:tobj.targetId]) {
-                                                  tobj.voted = YES;
-                                              }
-                                          }
-                                      }
-                                  }
-
-                                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                                  
-                                  [self.navigationController pushViewController:targetVC animated:YES];
-                              } failure:^(id error) {
-                                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                                  
-                                  [self.navigationController pushViewController:targetVC animated:YES];
-                              }];
-                              
-                          } failure:^(id error) {
-                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                              
-                              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[error objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                              [alert show];
-                          }];
+        VEConnection *connection = [[VEConnection alloc] init];
+        [connection veespoCodeTargetsList:demoCode userIdentify:veespoUserId success:^(id responseData) {
+            VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
+            targetVC.userid = veespoUserId;
+            targetVC.token = responseData[@"token"];
+            targetVC.title = responseData[@"title"];
+            targetVC.targetList = responseData[@"targetlist"];
+            
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
+            [self.navigationController pushViewController:targetVC animated:YES];
+            
+        } failure:^(id error) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[error objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }];
     }
     else {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

@@ -1,85 +1,64 @@
 #import "VEConnection.h"
-#import "AFNetworking.h"
+#import "VEETargetObj.h"
 
 @implementation VEConnection
 
 #pragma mark - Public
-
-- (void)getCountRatingsForCategory:(NSString *)category
-                         andTarget:(NSString *)target
-                         withToken:(NSString *)token
-                           success:(void(^)(id responseData))success
-                           failure:(void (^)(id error))failure
+- (void)veespoCodeTargetsList:(NSString *)veespoCode
+                 userIdentify:(NSString *)userid
+                      success:(void(^)(id responseData))success
+                      failure:(void (^)(id error))failure
 {
-    // /v1/count/ratings/category/:cat/target/:target
-    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/count/ratings/category/%@/target/%@?token=%@&lang=%@", category, target, token, [[NSLocale preferredLanguages] objectAtIndex:0]];
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setHTTPMethod:@"GET"];
-    [request setTimeoutInterval:10];
+    VEVeespoAPIWrapper *veespo = [[VEVeespoAPIWrapper alloc] init];
     
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        success(JSON[@"data"][@"count"]);
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        failure([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"]);
-    }];
-    
-    [operation start];
-}
-
-- (void)getRatingsForTarget:(NSString *)target
-                andCategory:(NSString *)category
-                  withToken:(NSString *)token
-                    success:(void(^)(NSDictionary * responseData))success
-                    failure:(void (^)(id error))failure
-{
-    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/ratings/category/%@/target/%@?token=%@&labels=%@", category, target, token, [[NSLocale preferredLanguages] objectAtIndex:0]];
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setHTTPMethod:@"GET"];
-    [request setTimeoutInterval:10];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSDictionary *result = @{@"labels": JSON[@"data"][@"labels"], @"ratings": JSON[@"data"][@"ratings"]};
-        success(result);
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        failure([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"]);
-    }];
-    
-    [operation start];
-}
-
-- (void)getRatingTag:(NSString *)tag
-           forTarget:(NSString *)target
-          inCategory:(NSString *)category
-           withToken:(NSString *)token
-             success:(void(^)(NSDictionary * responseData))success
-             failure:(void (^)(id error))failure
-{
-    NSString *urlStr = [NSString stringWithFormat:@"http://production.veespo.com/v1/ratings/category/%@/target/%@/tag/%@?token=%@&labels=%@",
-                        category,
-                        target,
-                        tag,
-                        token,
-                        [[NSLocale preferredLanguages] objectAtIndex:0]
-                        ];
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setHTTPMethod:@"GET"];
-    [request setTimeoutInterval:10];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        if (JSON[@"data"][@"labels"] == nil)
-            success(nil);
-        else {
-            NSDictionary *result = @{@"labels": JSON[@"data"][@"labels"], @"ratings": JSON[@"data"][@"ratings"]};
-            success(result);
-        }
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        failure([NSDictionary dictionaryWithObject:NSLocalizedString(@"Network error", nil) forKey:@"error"]);
-    }];
-    
-    [operation start];
+    [veespo requestTargetList:[NSDictionary dictionaryWithObjectsAndKeys:veespoCode, @"democode", userid, @"userid", nil]
+                      success:^(id responseData, NSString *token) {
+                          
+                          __block NSMutableDictionary *targetList = [[NSMutableDictionary alloc] init];
+                          
+                          [targetList setValue:token forKeyPath:@"token"];
+                          [targetList setValue:responseData[@"categoryname"] forKeyPath:@"title"];
+                          
+                          // Inizializzo TargetObj
+                          __block NSMutableArray *tList = [NSMutableArray new];
+                          for (int i = 0; i < ((NSArray *)responseData[@"targets"]).count; i++) {
+                              VEETargetObj *tobj = [[VEETargetObj alloc] initWithDictionary:[responseData[@"targets"] objectAtIndex:i]];
+                              [tList addObject:tobj];
+                          }
+                          [targetList setValue:tList forKeyPath:@"targetlist"];
+                          
+                          // Verifico se ci sono target già votati dall'utente e li ordino alfabeticamente
+                          [veespo requestTargetsForUser:userid withCategory:responseData[@"category"] withToken:token success:^(id responseData) {
+                              
+                              if (((NSArray *)responseData).count > 0) {
+                                  NSArray *userTargetsList = [NSArray new];
+                                  
+                                  NSArray *list = [[NSArray alloc] initWithArray:responseData];
+                                  userTargetsList = [list sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                                      NSString *name1 = obj1[@"desc1"];
+                                      NSString *name2 = obj2[@"desc1"];
+                                      return [name1 compare:name2];
+                                  }];
+                                  
+                                  for (int i = 0; i < userTargetsList.count; i++) {
+                                      for (int j = 0; j < tList.count; j++) {
+                                          VEETargetObj *tobj = [tList objectAtIndex:j];
+                                          if ([[userTargetsList objectAtIndex:i][@"target"] isEqualToString:tobj.targetId]) {
+                                              tobj.voted = YES;
+                                          }
+                                      }
+                                  }
+                                  
+                                  [targetList setValue:tList forKeyPath:@"targetlist"];
+                              }
+                              success(targetList);
+                          } failure:^(id error) {
+                              failure(nil);
+                          }];
+                          
+                      } failure:^(id error) {
+                          failure(nil);
+                      }];
 }
 
 @end
