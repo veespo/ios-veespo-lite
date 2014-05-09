@@ -14,6 +14,7 @@
 
 @interface VEELookBackManager  () <CLLocationManagerDelegate> {
     NSDate *startUploadDate;
+    NSTimer *pendingLocationsTimer;
 }
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @end
@@ -37,18 +38,18 @@
 
 - (void)startRecording
 {
-    if (IS_IPHONE_5) {
+//    if (IS_IPHONE_5) {
         [[Lookback_Weak lookback] setEnabled:YES];
         [[NSNotificationCenter defaultCenter] postNotificationName:kVEEStartLookBackRecording object:self];
-    }
+//    }
 }
 
 - (void)stopRecording
 {
-    if (IS_IPHONE_5) {
+//    if (IS_IPHONE_5) {
         [[Lookback_Weak lookback] setEnabled:NO];
         [[NSNotificationCenter defaultCenter] postNotificationName:kVEEEndLookBackRecording object:self];
-    }
+//    }
 }
 
 #pragma mark -
@@ -63,11 +64,8 @@
         if (startUploadDate)
             startUploadDate = nil;
         
-        NSLog(@"============= Start location in background =============");
-        
         [self startStandardUpdates];
     } else if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEFinishedUploading] == NO) {
-        NSLog(@"============= Start location in background =============");
         
         [self startStandardUpdates];
     }
@@ -76,9 +74,9 @@
 #pragma mark Stop User's Location
 - (void)stopLocation
 {
-    [self.locationManager stopUpdatingLocation];
+    [self.locationManager stopMonitoringSignificantLocationChanges];
     
-    NSLog(@"============= Stop location in background =============");
+    NSLog(@"============= Stop MonitoringSignificantLocationChanges =============");
 }
 
 #pragma mark Private Initialization
@@ -104,12 +102,17 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(startLocation)
-                                                     name:kVEEGoToBackground
+                                                     name:UIApplicationDidEnterBackgroundNotification
                                                    object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(stopLocation)
-                                                     name:kVEEGoToForeground
+                                                     name:UIApplicationDidFinishLaunchingNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(stopLocation)
+                                                     name:UIApplicationDidFinishLaunchingNotification
                                                    object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -153,56 +156,30 @@
 - (void)startStandardUpdates
 {
     // Set a movement threshold for new events.
-    //self.locationManager.distanceFilter = 500; // meters
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    [self.locationManager startUpdatingLocation];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    self.locationManager.distanceFilter = 10.0;
+    [self.locationManager startMonitoringSignificantLocationChanges];
+    
+    NSLog(@"============= Start MonitoringSignificantLocationChanges =============");
 }
 
-- (void)startSignificantChangeUpdates
-{
-    [self.locationManager startMonitoringSignificantLocationChanges];
-}
 
 // Delegate method from the CLLocationManagerDelegate protocol.
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
-    // If it's a relatively recent event, turn off updates to save power.
     
-//    CLLocation* location = [locations lastObject];
-//    NSDate* eventDate = location.timestamp;
-//    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    
-    if ([VEEReachabilityManager isReachableViaWiFi] == YES) {
-        // Set a movement threshold for new events.
-        self.locationManager.distanceFilter = 500; // meters
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    }
-    
-//    if (abs(howRecent) < 60.0 && !startUploadDate) {
-//        // If the event is recent, do something with it.
-//        ([VEEReachabilityManager isReachableViaWiFi]) ? NSLog(@"============= WiFi ON =============") : NSLog(@"============= WiFi OFF =============");
-//    } else if (abs(howRecent) < 5.0 && startUploadDate) {
-//        ([VEEReachabilityManager isReachableViaWiFi]) ? NSLog(@"============= WiFi ON =============") : NSLog(@"============= WiFi OFF =============");
-//        // Set a movement threshold for new events.
-//        self.locationManager.distanceFilter = 200; // meters
-//        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-//    }
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kVEEFinishedUploading] == YES) {
-        [self stopLocation];
-        startUploadDate = nil;
-        // Reset recording flag
-        [self startLookBackRecording];
-    }
-    
-    CGFloat timeout = 180.0f;
-    if(startUploadDate && fabs([startUploadDate timeIntervalSinceNow]) > timeout) {
-        NSLog(@"============= Sono passati %.1f minuti dall'avvio del upload =============", timeout/60.0f);
-        [self stopLocation];
-        startUploadDate = nil;
-        // Reset recording flag
-        [self startLookBackRecording];
-    }
+        [[VEELookBackManager sharedManager] stopRecording];
+        if ([VEEReachabilityManager isReachableViaWiFi] == YES) {
+            // Set a movement threshold for new events.
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        }
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:kVEEFinishedUploading] == YES) {
+            [self stopLocation];
+            startUploadDate = nil;
+            // Reset recording flag
+            [self startLookBackRecording];
+        }
 }
 
 @end

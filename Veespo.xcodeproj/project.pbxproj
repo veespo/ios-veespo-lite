@@ -20,6 +20,8 @@
 		BE5B6FDD18FEB48D009EEEA8 /* VEEReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B6FDC18FEB48D009EEEA8 /* VEEReachability.m */; };
 		BE5B6FE018FEB6A5009EEEA8 /* VEEReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B6FDF18FEB6A5009EEEA8 /* VEEReachabilityManager.m */; };
 		BE5B6FEE19000279009EEEA8 /* VEELookBackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B6FED19000279009EEEA8 /* VEELookBackManager.m */; };
+		BE5DAC7B191D142800AF6756 /* TTLocationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5DAC7A191D142800AF6756 /* TTLocationHandler.m */; };
+		BE5DAC7D191D320900AF6756 /* Test001.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BE5DAC7C191D320900AF6756 /* Test001.gpx */; };
 		BE644B1B183D5EDA007AEE9F /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE644B1A183D5EDA007AEE9F /* PickerView.m */; };
 		BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE644B20183D6D7A007AEE9F /* Localizable.strings */; };
 		BE72AB1F18B7B9690045211A /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB1E18B7B9690045211A /* VEConnection.m */; };
@@ -157,6 +159,9 @@
 		BE5B6FE918FFD6FF009EEEA8 /* VEEConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEEConstants.h; sourceTree = "<group>"; };
 		BE5B6FEC19000279009EEEA8 /* VEELookBackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEELookBackManager.h; sourceTree = "<group>"; };
 		BE5B6FED19000279009EEEA8 /* VEELookBackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEELookBackManager.m; sourceTree = "<group>"; };
+		BE5DAC79191D142800AF6756 /* TTLocationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTLocationHandler.h; sourceTree = "<group>"; };
+		BE5DAC7A191D142800AF6756 /* TTLocationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTLocationHandler.m; sourceTree = "<group>"; };
+		BE5DAC7C191D320900AF6756 /* Test001.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test001.gpx; sourceTree = "<group>"; };
 		BE644B19183D5EDA007AEE9F /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
 		BE644B1A183D5EDA007AEE9F /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
 		BE644B1F183D6D7A007AEE9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -566,15 +571,17 @@
 		BEC63F71183CC7BC001C82B6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				BEF2C33518C9D9E000908963 /* UIAlertView+Blocks */,
 				BE01244E18880E7500F015D4 /* NSString+Extra */,
+				BE5DAC79191D142800AF6756 /* TTLocationHandler.h */,
+				BE5DAC7A191D142800AF6756 /* TTLocationHandler.m */,
+				BEF2C33518C9D9E000908963 /* UIAlertView+Blocks */,
 				BEC63F72183CC7BC001C82B6 /* UIControl+VEControl */,
+				BE5B6FEC19000279009EEEA8 /* VEELookBackManager.h */,
+				BE5B6FED19000279009EEEA8 /* VEELookBackManager.m */,
 				BE5B6FDB18FEB48D009EEEA8 /* VEEReachability.h */,
 				BE5B6FDC18FEB48D009EEEA8 /* VEEReachability.m */,
 				BE5B6FDE18FEB6A5009EEEA8 /* VEEReachabilityManager.h */,
 				BE5B6FDF18FEB6A5009EEEA8 /* VEEReachabilityManager.m */,
-				BE5B6FEC19000279009EEEA8 /* VEELookBackManager.h */,
-				BE5B6FED19000279009EEEA8 /* VEELookBackManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -686,6 +693,7 @@
 		BEEB670A17EC9A1A00F394E9 = {
 			isa = PBXGroup;
 			children = (
+				BE5DAC7C191D320900AF6756 /* Test001.gpx */,
 				BEEB671C17EC9A1A00F394E9 /* Veespo */,
 				BEEB673B17EC9A1A00F394E9 /* VeespoTests */,
 				BEEB671517EC9A1A00F394E9 /* Frameworks */,
@@ -868,7 +876,7 @@
 						DevelopmentTeam = 8H2HF6RX92;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.iOS = {
 								enabled = 1;
@@ -914,6 +922,7 @@
 				BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
 				BE951648191A33070073F280 /* Veespo-Keys.plist in Resources */,
+				BE5DAC7D191D320900AF6756 /* Test001.gpx in Resources */,
 				BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */,
 				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
 				BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */,
@@ -988,6 +997,7 @@
 				BEC63F62183CC6BD001C82B6 /* WebViewController.m in Sources */,
 				BEC63F59183CC6BD001C82B6 /* VEEspnViewController.m in Sources */,
 				BEC63F5F183CC6BD001C82B6 /* VETargetViewController.m in Sources */,
+				BE5DAC7B191D142800AF6756 /* TTLocationHandler.m in Sources */,
 				BEC63F6D183CC6BD001C82B6 /* VERSSParser.m in Sources */,
 				BEF2C31A18C783A900908963 /* VEFlickrConnection.m in Sources */,
 				BEE64C5D1859C63000539E8A /* AFPropertyListRequestOperation.m in Sources */,
