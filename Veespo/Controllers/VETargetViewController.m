@@ -8,11 +8,14 @@
 
 #import "VETargetViewController.h"
 
+#import "VEETargetObj.h"
+
 #import "VEELookBackManager.h"
 
 @interface VETargetViewController () <UISearchBarDelegate, UIScrollViewDelegate> {
-    NSMutableArray *target;
     NSMutableArray *searchResults;
+    
+    BOOL searchBarVisible;
 }
 
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -24,7 +27,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        _targetList = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -59,11 +62,6 @@
     self.navigationItem.rightBarButtonItem = searchButton;
     
     searchResults = [[NSMutableArray alloc] init];
-    target = [[NSMutableArray alloc] init];
-    
-    for (NSDictionary *tar in _targetList) {
-       [target addObject:tar];
-    }
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.tableView.backgroundColor = UIColorFromHex(0x231F20);
@@ -76,21 +74,21 @@
         [self.searchBar setBackgroundColor:UIColorFromHex(0x231F20)];
     else {
         [self.searchBar setBarTintColor:UIColorFromHex(0x231F20)];
-        [self.searchBar setTintColor:[UIColor whiteColor]];
+        [self.searchBar setTintColor:[UIColor grayColor]];
     }
     [self.searchBar setShowsCancelButton:YES];
     self.searchBar.placeholder = NSLocalizedString(@"Search", nil);
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     
     // scroll the search bar off-screen
     CGRect newBounds = self.tableView.bounds;
     newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height;
     self.tableView.bounds = newBounds;
+    searchBarVisible = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,18 +106,32 @@
 {
     [searchResults removeAllObjects];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.desc1 contains[cd] %@", self.searchBar.text];
-    searchResults = [[target filteredArrayUsingPredicate:predicate] mutableCopy];
+    searchResults = [[self.targetList filteredArrayUsingPredicate:predicate] mutableCopy];
 }
 
 - (void)showSearchBar
 {
-    // scroll the search bar on-screen
-    [self.tableView setContentOffset:CGPointZero animated:YES];
+    if (searchBarVisible == YES) {
+        // scroll the search bar off-screen
+        CGRect newBounds = self.tableView.bounds;
+        newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height;
+        self.tableView.bounds = newBounds;
+        searchBarVisible = NO;
+    } else {
+        // scroll the search bar on-screen
+        [self.tableView setContentOffset:CGPointZero animated:YES];
+        searchBarVisible = YES;
+    }
 }
 
 #pragma mark - SearchBar delegate
 
-- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    searchBarVisible = YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
     [self filterData];
     
@@ -129,7 +141,8 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     [self.searchBar resignFirstResponder];
-    [self viewWillAppear:YES];
+    
+    [self showSearchBar];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -200,7 +213,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (searchResults.count == 0) {
-        return target.count;
+        return self.targetList.count;
     } else
         return searchResults.count;
     
@@ -219,16 +232,21 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            cell.tintColor = [UIColor blackColor];
+        }
     }
     
     if (searchResults.count == 0) {
-     NSDictionary *dict = [target objectAtIndex:indexPath.row];
-        cell.textLabel.text = dict[@"desc1"];
+        VEETargetObj *tobj = [self.targetList objectAtIndex:indexPath.row];
+        cell.textLabel.text = tobj.desc1;
         cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:17];
+        (tobj.voted == YES) ? [cell setAccessoryType:UITableViewCellAccessoryCheckmark] : [cell setAccessoryType:UITableViewCellAccessoryNone];
     } else {
-        NSDictionary *dict = [searchResults objectAtIndex:indexPath.row];
-        cell.textLabel.text = dict[@"desc1"];
-        cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:17];
+        VEETargetObj *tobj = [searchResults objectAtIndex:indexPath.row];
+        cell.textLabel.text = tobj.desc1;
+        cell.textLabel.font = [UIFont fontWithName:@"Avenir-Black" size:17];
+        (tobj.voted == YES) ? [cell setAccessoryType:UITableViewCellAccessoryCheckmark] : [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
     
     return cell;
@@ -236,21 +254,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 #ifdef VEESPO
-    NSDictionary *dict = [target objectAtIndex:indexPath.row];
+    VEETargetObj *tobj = [self.targetList objectAtIndex:indexPath.row];
     
     NSDictionary *p = @{@"question": @{
                                 @"text": NSLocalizedString(@"Veespo Question", nil)
                                 }
                         };
     
-    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token target:dict[@"target"] targetParameters:nil parameters:p detailsView:nil];
+    VEVeespoViewController *veespoViewController = [[VEVeespoViewController alloc] initWidgetWithToken:self.token target:tobj.targetId targetParameters:nil parameters:p detailsView:nil];
     
     veespoViewController.closeVeespoViewController = ^(NSDictionary *data){
         [self dismissViewControllerAnimated:YES completion:^{
             [[VEELookBackManager sharedManager] stopRecording];
         }];
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        if ([data objectForKey:@"1"]) {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        }
     };
     
     [veespoViewController showWidget:^(NSDictionary *error) {
@@ -268,7 +291,7 @@
 
     [[VEELookBackManager sharedManager] startRecording];
 #endif
-
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
