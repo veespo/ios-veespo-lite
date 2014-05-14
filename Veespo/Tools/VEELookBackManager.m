@@ -52,33 +52,6 @@
 //    }
 }
 
-#pragma mark -
-#pragma mark Start User's Location
-- (void)startLocation
-{
-    if ([VEEReachabilityManager isReachableViaWiFi] == YES && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEFinishedUploading] == YES) {
-        NSLog(@"============= Applicazione in chiusura, ma non ci sono le condizioni per avviare update posizione =============");
-        [self startLookBackRecording];
-        startUploadDate = nil;
-    } else if ([[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEFinishedUploading] == NO) {
-        if (startUploadDate)
-            startUploadDate = nil;
-        
-        [self startStandardUpdates];
-    } else if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEEndLookBackRecording] == YES && [[NSUserDefaults standardUserDefaults] boolForKey:kVEEFinishedUploading] == NO) {
-        
-        [self startStandardUpdates];
-    }
-}
-
-#pragma mark Stop User's Location
-- (void)stopLocation
-{
-    [self.locationManager stopMonitoringSignificantLocationChanges];
-    
-    NSLog(@"============= Stop MonitoringSignificantLocationChanges =============");
-}
-
 #pragma mark Private Initialization
 - (id)init {
     self = [super init];
@@ -101,21 +74,6 @@
         }];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(startLocation)
-                                                     name:UIApplicationDidEnterBackgroundNotification
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(stopLocation)
-                                                     name:UIApplicationDidFinishLaunchingNotification
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(stopLocation)
-                                                     name:UIApplicationDidFinishLaunchingNotification
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(startLookBackRecording)
                                                      name:kVEEStartLookBackRecording
                                                    object:nil];
@@ -129,8 +87,6 @@
     return self;
 }
 
-#pragma mark CLLocation Manager
-
 - (void)startLookBackRecording
 {
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kVEEEndLookBackRecording];
@@ -142,44 +98,6 @@
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kVEEEndLookBackRecording];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kVEEFinishedUploading];
     [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (CLLocationManager *)locationManager
-{
-    if (!_locationManager) {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
-    }
-    return _locationManager;
-}
-
-- (void)startStandardUpdates
-{
-    // Set a movement threshold for new events.
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    self.locationManager.distanceFilter = 10.0;
-    [self.locationManager startMonitoringSignificantLocationChanges];
-    
-    NSLog(@"============= Start MonitoringSignificantLocationChanges =============");
-}
-
-
-// Delegate method from the CLLocationManagerDelegate protocol.
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations {
-    
-        [[VEELookBackManager sharedManager] stopRecording];
-        if ([VEEReachabilityManager isReachableViaWiFi] == YES) {
-            // Set a movement threshold for new events.
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        }
-        
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:kVEEFinishedUploading] == YES) {
-            [self stopLocation];
-            startUploadDate = nil;
-            // Reset recording flag
-            [self startLookBackRecording];
-        }
 }
 
 @end

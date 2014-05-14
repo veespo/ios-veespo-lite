@@ -145,6 +145,7 @@ static int const maxLocationUpdate = 1;
         _locationManager = [[CLLocationManager alloc] init];
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         _locationManager.delegate = self;
+        _locationManager.distanceFilter = 10.0;
     }
     return _locationManager;
 }
@@ -178,7 +179,6 @@ static int const maxLocationUpdate = 1;
     lastLocation = nil;
     [self.locationManager stopUpdatingLocation];
     [self.locationManager startUpdatingLocation];
-//    self.locationManager.distanceFilter = 50;
 }
 
 - (void)checkinButton
@@ -238,17 +238,16 @@ static int const maxLocationUpdate = 1;
 }
 
 - (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
+     didUpdateLocations:(NSArray *)locations
 {
-    lastLocation = newLocation;
+    lastLocation = [locations lastObject];
     
     // First time waitin maxLocationUpdate before call getVenuesForLocation
     // to improve user's position
     if (locationUpdateCnt == maxLocationUpdate) {
         locationUpdateCnt++;
         [self getVenuesForLocation:lastLocation];
-        self.locationManager.distanceFilter = 50;
+        self.locationManager.distanceFilter = 100.0;
     } else if (locationUpdateCnt < maxLocationUpdate)
         locationUpdateCnt++;
     

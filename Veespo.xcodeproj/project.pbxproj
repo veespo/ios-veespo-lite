@@ -20,8 +20,18 @@
 		BE5B6FDD18FEB48D009EEEA8 /* VEEReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B6FDC18FEB48D009EEEA8 /* VEEReachability.m */; };
 		BE5B6FE018FEB6A5009EEEA8 /* VEEReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B6FDF18FEB6A5009EEEA8 /* VEEReachabilityManager.m */; };
 		BE5B6FEE19000279009EEEA8 /* VEELookBackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B6FED19000279009EEEA8 /* VEELookBackManager.m */; };
-		BE5DAC7B191D142800AF6756 /* TTLocationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5DAC7A191D142800AF6756 /* TTLocationHandler.m */; };
 		BE5DAC7D191D320900AF6756 /* Test001.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BE5DAC7C191D320900AF6756 /* Test001.gpx */; };
+		BE635BAE19236367006FA9D3 /* Test002.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BE635BAC19236367006FA9D3 /* Test002.gpx */; };
+		BE635BAF19236367006FA9D3 /* Test003.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BE635BAD19236367006FA9D3 /* Test003.gpx */; };
+		BE635BBA19236BF4006FA9D3 /* GFSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB119236BF4006FA9D3 /* GFSettings.storyboard */; };
+		BE635BBB19236BF4006FA9D3 /* lookback-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB219236BF4006FA9D3 /* lookback-logo.png */; };
+		BE635BBC19236BF4006FA9D3 /* lookback-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB319236BF4006FA9D3 /* lookback-logo@2x.png */; };
+		BE635BBD19236BF4006FA9D3 /* lookback-recorder-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB419236BF4006FA9D3 /* lookback-recorder-logo.png */; };
+		BE635BBE19236BF4006FA9D3 /* lookback-recorder-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB519236BF4006FA9D3 /* lookback-recorder-logo@2x.png */; };
+		BE635BBF19236BF4006FA9D3 /* lookback-recorder-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB619236BF4006FA9D3 /* lookback-recorder-settings.png */; };
+		BE635BC019236BF4006FA9D3 /* lookback-recorder-settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB719236BF4006FA9D3 /* lookback-recorder-settings@2x.png */; };
+		BE635BC119236BF4006FA9D3 /* lookback-recorder-status.png in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB819236BF4006FA9D3 /* lookback-recorder-status.png */; };
+		BE635BC219236BF4006FA9D3 /* lookback-recorder-status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB919236BF4006FA9D3 /* lookback-recorder-status@2x.png */; };
 		BE644B1B183D5EDA007AEE9F /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE644B1A183D5EDA007AEE9F /* PickerView.m */; };
 		BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE644B20183D6D7A007AEE9F /* Localizable.strings */; };
 		BE72AB1F18B7B9690045211A /* VEConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB1E18B7B9690045211A /* VEConnection.m */; };
@@ -75,7 +85,6 @@
 		BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE010A95180AEF0E0012817F /* Main.storyboard */; };
 		BED167A018991A700083B3B5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED1679F18991A700083B3B5 /* CoreTelephony.framework */; };
 		BED167A218991AB60083B3B5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED167A118991AB60083B3B5 /* CoreData.framework */; };
-		BED5382F190A649A00790491 /* Lookback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED5382E190A649A00790491 /* Lookback.framework */; };
 		BEE64C581859C63000539E8A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C461859C63000539E8A /* AFHTTPClient.m */; };
 		BEE64C591859C63000539E8A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C481859C63000539E8A /* AFHTTPRequestOperation.m */; };
 		BEE64C5A1859C63000539E8A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C4A1859C63000539E8A /* AFImageRequestOperation.m */; };
@@ -159,9 +168,18 @@
 		BE5B6FE918FFD6FF009EEEA8 /* VEEConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEEConstants.h; sourceTree = "<group>"; };
 		BE5B6FEC19000279009EEEA8 /* VEELookBackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEELookBackManager.h; sourceTree = "<group>"; };
 		BE5B6FED19000279009EEEA8 /* VEELookBackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEELookBackManager.m; sourceTree = "<group>"; };
-		BE5DAC79191D142800AF6756 /* TTLocationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTLocationHandler.h; sourceTree = "<group>"; };
-		BE5DAC7A191D142800AF6756 /* TTLocationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTLocationHandler.m; sourceTree = "<group>"; };
 		BE5DAC7C191D320900AF6756 /* Test001.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test001.gpx; sourceTree = "<group>"; };
+		BE635BAC19236367006FA9D3 /* Test002.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test002.gpx; sourceTree = "<group>"; };
+		BE635BAD19236367006FA9D3 /* Test003.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test003.gpx; sourceTree = "<group>"; };
+		BE635BB119236BF4006FA9D3 /* GFSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GFSettings.storyboard; sourceTree = "<group>"; };
+		BE635BB219236BF4006FA9D3 /* lookback-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lookback-logo.png"; sourceTree = "<group>"; };
+		BE635BB319236BF4006FA9D3 /* lookback-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lookback-logo@2x.png"; sourceTree = "<group>"; };
+		BE635BB419236BF4006FA9D3 /* lookback-recorder-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lookback-recorder-logo.png"; sourceTree = "<group>"; };
+		BE635BB519236BF4006FA9D3 /* lookback-recorder-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lookback-recorder-logo@2x.png"; sourceTree = "<group>"; };
+		BE635BB619236BF4006FA9D3 /* lookback-recorder-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lookback-recorder-settings.png"; sourceTree = "<group>"; };
+		BE635BB719236BF4006FA9D3 /* lookback-recorder-settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lookback-recorder-settings@2x.png"; sourceTree = "<group>"; };
+		BE635BB819236BF4006FA9D3 /* lookback-recorder-status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lookback-recorder-status.png"; sourceTree = "<group>"; };
+		BE635BB919236BF4006FA9D3 /* lookback-recorder-status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lookback-recorder-status@2x.png"; sourceTree = "<group>"; };
 		BE644B19183D5EDA007AEE9F /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
 		BE644B1A183D5EDA007AEE9F /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
 		BE644B1F183D6D7A007AEE9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -247,7 +265,6 @@
 		BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Veespo-Info.plist"; sourceTree = "<group>"; };
 		BED1679F18991A700083B3B5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		BED167A118991AB60083B3B5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		BED5382E190A649A00790491 /* Lookback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lookback.framework; path = lookback/Safe/Lookback.framework; sourceTree = "<group>"; };
 		BEE64C451859C63000539E8A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		BEE64C461859C63000539E8A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		BEE64C471859C63000539E8A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -343,7 +360,6 @@
 				BEAECBCD18F5A49800F94423 /* MediaPlayer.framework in Frameworks */,
 				BEAECBCB18F5A48A00F94423 /* CoreMedia.framework in Frameworks */,
 				BEAECBC918F5A48300F94423 /* CoreVideo.framework in Frameworks */,
-				BED5382F190A649A00790491 /* Lookback.framework in Frameworks */,
 				BEF345AA191CC6C2000F0356 /* Veespo.framework in Frameworks */,
 				BEAECBC718F5A47900F94423 /* AudioToolbox.framework in Frameworks */,
 				BEAECBC518F5A45900F94423 /* AVFoundation.framework in Frameworks */,
@@ -394,6 +410,23 @@
 			);
 			name = JawboneChartView;
 			path = Library/JawboneChartView;
+			sourceTree = "<group>";
+		};
+		BE635BB019236BF4006FA9D3 /* Lookback-Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BE635BB119236BF4006FA9D3 /* GFSettings.storyboard */,
+				BE635BB219236BF4006FA9D3 /* lookback-logo.png */,
+				BE635BB319236BF4006FA9D3 /* lookback-logo@2x.png */,
+				BE635BB419236BF4006FA9D3 /* lookback-recorder-logo.png */,
+				BE635BB519236BF4006FA9D3 /* lookback-recorder-logo@2x.png */,
+				BE635BB619236BF4006FA9D3 /* lookback-recorder-settings.png */,
+				BE635BB719236BF4006FA9D3 /* lookback-recorder-settings@2x.png */,
+				BE635BB819236BF4006FA9D3 /* lookback-recorder-status.png */,
+				BE635BB919236BF4006FA9D3 /* lookback-recorder-status@2x.png */,
+			);
+			name = "Lookback-Resources";
+			path = "lookback/Lookback-Resources";
 			sourceTree = "<group>";
 		};
 		BE644B18183D5EDA007AEE9F /* PickerView */ = {
@@ -572,8 +605,6 @@
 			isa = PBXGroup;
 			children = (
 				BE01244E18880E7500F015D4 /* NSString+Extra */,
-				BE5DAC79191D142800AF6756 /* TTLocationHandler.h */,
-				BE5DAC7A191D142800AF6756 /* TTLocationHandler.m */,
 				BEF2C33518C9D9E000908963 /* UIAlertView+Blocks */,
 				BEC63F72183CC7BC001C82B6 /* UIControl+VEControl */,
 				BE5B6FEC19000279009EEEA8 /* VEELookBackManager.h */,
@@ -694,6 +725,8 @@
 			isa = PBXGroup;
 			children = (
 				BE5DAC7C191D320900AF6756 /* Test001.gpx */,
+				BE635BAC19236367006FA9D3 /* Test002.gpx */,
+				BE635BAD19236367006FA9D3 /* Test003.gpx */,
 				BEEB671C17EC9A1A00F394E9 /* Veespo */,
 				BEEB673B17EC9A1A00F394E9 /* VeespoTests */,
 				BEEB671517EC9A1A00F394E9 /* Frameworks */,
@@ -713,7 +746,7 @@
 		BEEB671517EC9A1A00F394E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BED5382E190A649A00790491 /* Lookback.framework */,
+				BE635BB019236BF4006FA9D3 /* Lookback-Resources */,
 				BEAECBCE18F5A49E00F94423 /* QuartzCore.framework */,
 				BEAECBCC18F5A49800F94423 /* MediaPlayer.framework */,
 				BEAECBCA18F5A48A00F94423 /* CoreMedia.framework */,
@@ -914,15 +947,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */,
+				BE635BC019236BF4006FA9D3 /* lookback-recorder-settings@2x.png in Resources */,
 				BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */,
+				BE635BBB19236BF4006FA9D3 /* lookback-logo.png in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
+				BE635BBD19236BF4006FA9D3 /* lookback-recorder-logo.png in Resources */,
+				BE635BBC19236BF4006FA9D3 /* lookback-logo@2x.png in Resources */,
+				BE635BBE19236BF4006FA9D3 /* lookback-recorder-logo@2x.png in Resources */,
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
+				BE635BBF19236BF4006FA9D3 /* lookback-recorder-settings.png in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
+				BE635BAE19236367006FA9D3 /* Test002.gpx in Resources */,
 				BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
 				BE951648191A33070073F280 /* Veespo-Keys.plist in Resources */,
 				BE5DAC7D191D320900AF6756 /* Test001.gpx in Resources */,
+				BE635BC119236BF4006FA9D3 /* lookback-recorder-status.png in Resources */,
 				BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */,
 				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
 				BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */,
@@ -930,7 +971,10 @@
 				BEF345A9191CC6C2000F0356 /* Veespo.bundle in Resources */,
 				BE9446EA18AB7740009DFFF7 /* VEEFPropertyList.plist in Resources */,
 				BEC63F6C183CC6BD001C82B6 /* user.png in Resources */,
+				BE635BBA19236BF4006FA9D3 /* GFSettings.storyboard in Resources */,
 				BEC63F68183CC6BD001C82B6 /* pin.png in Resources */,
+				BE635BC219236BF4006FA9D3 /* lookback-recorder-status@2x.png in Resources */,
+				BE635BAF19236367006FA9D3 /* Test003.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -997,7 +1041,6 @@
 				BEC63F62183CC6BD001C82B6 /* WebViewController.m in Sources */,
 				BEC63F59183CC6BD001C82B6 /* VEEspnViewController.m in Sources */,
 				BEC63F5F183CC6BD001C82B6 /* VETargetViewController.m in Sources */,
-				BE5DAC7B191D142800AF6756 /* TTLocationHandler.m in Sources */,
 				BEC63F6D183CC6BD001C82B6 /* VERSSParser.m in Sources */,
 				BEF2C31A18C783A900908963 /* VEFlickrConnection.m in Sources */,
 				BEE64C5D1859C63000539E8A /* AFPropertyListRequestOperation.m in Sources */,
@@ -1168,7 +1211,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/lookback/Safe",
+					lookback/HD,
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos",
 					"$(PROJECT_DIR)/Veespo",
 					"$(PROJECT_DIR)",
@@ -1201,7 +1244,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: giordano scalzo (8H2HF6RX92)";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/lookback/Safe",
+					lookback/Safe,
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos",
 					"$(PROJECT_DIR)/Veespo",
 					"$(PROJECT_DIR)",
