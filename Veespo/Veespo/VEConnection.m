@@ -53,7 +53,7 @@
                               }
                               success(targetList);
                           } failure:^(id error) {
-                              failure(nil);
+                              success(targetList);
                           }];
                           
                       } failure:^(id error) {
