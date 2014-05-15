@@ -85,6 +85,8 @@
 		BEC63F7E183CD27D001C82B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE010A95180AEF0E0012817F /* Main.storyboard */; };
 		BED167A018991A700083B3B5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED1679F18991A700083B3B5 /* CoreTelephony.framework */; };
 		BED167A218991AB60083B3B5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED167A118991AB60083B3B5 /* CoreData.framework */; };
+		BEDB06C91924A70100C0D05C /* Veespo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEDB06C71924A70100C0D05C /* Veespo.bundle */; };
+		BEDB06CA1924A70100C0D05C /* Veespo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEDB06C81924A70100C0D05C /* Veespo.framework */; };
 		BEE64C581859C63000539E8A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C461859C63000539E8A /* AFHTTPClient.m */; };
 		BEE64C591859C63000539E8A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C481859C63000539E8A /* AFHTTPRequestOperation.m */; };
 		BEE64C5A1859C63000539E8A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE64C4A1859C63000539E8A /* AFImageRequestOperation.m */; };
@@ -128,8 +130,6 @@
 		BEF2C33C18C9D9E000908963 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C33718C9D9E000908963 /* RIButtonItem.m */; };
 		BEF2C33D18C9D9E000908963 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C33918C9D9E000908963 /* UIActionSheet+Blocks.m */; };
 		BEF2C33E18C9D9E000908963 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C33B18C9D9E000908963 /* UIAlertView+Blocks.m */; };
-		BEF345A9191CC6C2000F0356 /* Veespo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEF345A7191CC6C2000F0356 /* Veespo.bundle */; };
-		BEF345AA191CC6C2000F0356 /* Veespo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF345A8191CC6C2000F0356 /* Veespo.framework */; };
 		BEF345AD191CC9B7000F0356 /* VEETargetObj.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF345AC191CC9B7000F0356 /* VEETargetObj.m */; };
 		BEF6547318A14CD60074E1A7 /* VERatedVenuesForTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF6547218A14CD60074E1A7 /* VERatedVenuesForTagViewController.m */; };
 /* End PBXBuildFile section */
@@ -265,6 +265,8 @@
 		BEC63F7B183CD0B3001C82B6 /* Veespo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Veespo-Info.plist"; sourceTree = "<group>"; };
 		BED1679F18991A700083B3B5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		BED167A118991AB60083B3B5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BEDB06C71924A70100C0D05C /* Veespo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Veespo.bundle; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.bundle"; sourceTree = "<group>"; };
+		BEDB06C81924A70100C0D05C /* Veespo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Veespo.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.framework"; sourceTree = "<group>"; };
 		BEE64C451859C63000539E8A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		BEE64C461859C63000539E8A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		BEE64C471859C63000539E8A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -342,8 +344,6 @@
 		BEF2C33918C9D9E000908963 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
 		BEF2C33A18C9D9E000908963 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
 		BEF2C33B18C9D9E000908963 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
-		BEF345A7191CC6C2000F0356 /* Veespo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Veespo.bundle; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.bundle"; sourceTree = "<group>"; };
-		BEF345A8191CC6C2000F0356 /* Veespo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Veespo.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.framework"; sourceTree = "<group>"; };
 		BEF345AB191CC9B7000F0356 /* VEETargetObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEETargetObj.h; sourceTree = "<group>"; };
 		BEF345AC191CC9B7000F0356 /* VEETargetObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEETargetObj.m; sourceTree = "<group>"; };
 		BEF6547118A14CD60074E1A7 /* VERatedVenuesForTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VERatedVenuesForTagViewController.h; sourceTree = "<group>"; };
@@ -360,8 +360,8 @@
 				BEAECBCD18F5A49800F94423 /* MediaPlayer.framework in Frameworks */,
 				BEAECBCB18F5A48A00F94423 /* CoreMedia.framework in Frameworks */,
 				BEAECBC918F5A48300F94423 /* CoreVideo.framework in Frameworks */,
-				BEF345AA191CC6C2000F0356 /* Veespo.framework in Frameworks */,
 				BEAECBC718F5A47900F94423 /* AudioToolbox.framework in Frameworks */,
+				BEDB06CA1924A70100C0D05C /* Veespo.framework in Frameworks */,
 				BEAECBC518F5A45900F94423 /* AVFoundation.framework in Frameworks */,
 				BE293D4218D9FFAA0097D42A /* CoreText.framework in Frameworks */,
 				BED167A218991AB60083B3B5 /* CoreData.framework in Frameworks */,
@@ -441,8 +441,8 @@
 		BEA81D5C1907CF6900817412 /* Veespo Framework */ = {
 			isa = PBXGroup;
 			children = (
-				BEF345A7191CC6C2000F0356 /* Veespo.bundle */,
-				BEF345A8191CC6C2000F0356 /* Veespo.framework */,
+				BEDB06C71924A70100C0D05C /* Veespo.bundle */,
+				BEDB06C81924A70100C0D05C /* Veespo.framework */,
 			);
 			name = "Veespo Framework";
 			sourceTree = "<group>";
@@ -951,6 +951,7 @@
 				BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */,
 				BE635BBB19236BF4006FA9D3 /* lookback-logo.png in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
+				BEDB06C91924A70100C0D05C /* Veespo.bundle in Resources */,
 				BE635BBD19236BF4006FA9D3 /* lookback-recorder-logo.png in Resources */,
 				BE635BBC19236BF4006FA9D3 /* lookback-logo@2x.png in Resources */,
 				BE635BBE19236BF4006FA9D3 /* lookback-recorder-logo@2x.png in Resources */,
@@ -968,7 +969,6 @@
 				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
 				BE644B1E183D6D7A007AEE9F /* Localizable.strings in Resources */,
 				BEE64C721859C6D800539E8A /* FSWebLogin.xib in Resources */,
-				BEF345A9191CC6C2000F0356 /* Veespo.bundle in Resources */,
 				BE9446EA18AB7740009DFFF7 /* VEEFPropertyList.plist in Resources */,
 				BEC63F6C183CC6BD001C82B6 /* user.png in Resources */,
 				BE635BBA19236BF4006FA9D3 /* GFSettings.storyboard in Resources */,

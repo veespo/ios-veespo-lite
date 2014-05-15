@@ -76,7 +76,7 @@
         [self.searchBar setBarTintColor:UIColorFromHex(0x231F20)];
         [self.searchBar setTintColor:[UIColor grayColor]];
     }
-    [self.searchBar setShowsCancelButton:YES];
+    
     self.searchBar.placeholder = NSLocalizedString(@"Search", nil);
     
     // scroll the search bar off-screen
@@ -255,7 +255,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 #ifdef VEESPO
-    VEETargetObj *tobj = [self.targetList objectAtIndex:indexPath.row];
+    VEETargetObj *tobj = nil;
+    if (searchResults.count == 0)
+        tobj = [self.targetList objectAtIndex:indexPath.row];
+    else
+        tobj = [searchResults objectAtIndex:indexPath.row];
     
     NSDictionary *p = @{@"question": @{
                                 @"text": NSLocalizedString(@"Veespo Question", nil)
