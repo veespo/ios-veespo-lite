@@ -27,6 +27,19 @@
                           }
                           [targetList setValue:tList forKeyPath:@"targetlist"];
                           
+                          // Creo o aggiorno storico utente
+                          
+                          NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
+                          
+                          if (history == nil) {
+                              history = @{veespoCode: @{veespoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]}};
+                              [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
+                          } else {
+                              NSMutableDictionary *tmp = [[NSMutableDictionary alloc] initWithDictionary:history];
+                              [tmp setObject:@{veespoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]} forKey:veespoCode];
+                              [[NSUserDefaults standardUserDefaults] setObject:tmp forKey:@"history"];
+                          }
+                          
                           // Verifico se ci sono target già votati dall'utente e li ordino alfabeticamente
                           [veespo requestTargetsForUser:userid withCategory:responseData[@"category"] withToken:token success:^(id responseData) {
                               
