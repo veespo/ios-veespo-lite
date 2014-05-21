@@ -12,8 +12,6 @@
 		BE1ECBBB17F19632006CCD56 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECBBA17F19632006CCD56 /* MapKit.framework */; };
 		BE1ECC5E17F22DE9006CCD56 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */; };
 		BE1ECC6017F22DF8006CCD56 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */; };
-		BE2101461924C57700E9FD67 /* Veespo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE2101441924C57700E9FD67 /* Veespo.bundle */; };
-		BE2101471924C57700E9FD67 /* Veespo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2101451924C57700E9FD67 /* Veespo.framework */; };
 		BE293D4218D9FFAA0097D42A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE293D4118D9FFAA0097D42A /* CoreText.framework */; };
 		BE48371818771A2D008EC351 /* VEChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE48371718771A2D008EC351 /* VEChartViewController.m */; };
 		BE48372018771AEB008EC351 /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE48371B18771AEB008EC351 /* JBBarChartView.m */; };
@@ -58,6 +56,8 @@
 		BEC31C8118CA201500DF3954 /* MSNeedleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7818CA201400DF3954 /* MSNeedleView.m */; };
 		BEC31C8218CA201500DF3954 /* MSRangeGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7A18CA201400DF3954 /* MSRangeGauge.m */; };
 		BEC31C8318CA201500DF3954 /* MSSimpleGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7C18CA201500DF3954 /* MSSimpleGauge.m */; };
+		BEC4168819267435006764C3 /* Veespo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEC4168619267435006764C3 /* Veespo.bundle */; };
+		BEC4168919267435006764C3 /* Veespo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC4168719267435006764C3 /* Veespo.framework */; };
 		BEC63F52183CC6BD001C82B6 /* VEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */; };
 		BEC63F53183CC6BD001C82B6 /* RassegnaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1C183CC6BD001C82B6 /* RassegnaCell.m */; };
 		BEC63F54183CC6BD001C82B6 /* VEMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1E183CC6BD001C82B6 /* VEMenuCell.m */; };
@@ -152,8 +152,6 @@
 		BE1ECBBA17F19632006CCD56 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BE1ECC5D17F22DE9006CCD56 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BE1ECC5F17F22DF8006CCD56 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		BE2101441924C57700E9FD67 /* Veespo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Veespo.bundle; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.bundle"; sourceTree = "<group>"; };
-		BE2101451924C57700E9FD67 /* Veespo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Veespo.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.framework"; sourceTree = "<group>"; };
 		BE293D4118D9FFAA0097D42A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		BE48371618771A2D008EC351 /* VEChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEChartViewController.h; sourceTree = "<group>"; };
 		BE48371718771A2D008EC351 /* VEChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEChartViewController.m; sourceTree = "<group>"; };
@@ -220,6 +218,8 @@
 		BEC31C7B18CA201500DF3954 /* MSSimpleGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSimpleGauge.h; sourceTree = "<group>"; };
 		BEC31C7C18CA201500DF3954 /* MSSimpleGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSimpleGauge.m; sourceTree = "<group>"; };
 		BEC31C7D18CA201500DF3954 /* MSSimpleGaugeSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSimpleGaugeSubclass.h; sourceTree = "<group>"; };
+		BEC4168619267435006764C3 /* Veespo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Veespo.bundle; sourceTree = "<group>"; };
+		BEC4168719267435006764C3 /* Veespo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Veespo.framework; sourceTree = "<group>"; };
 		BEC63F18183CC6BD001C82B6 /* VEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEAppDelegate.h; sourceTree = "<group>"; };
 		BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEAppDelegate.m; sourceTree = "<group>"; };
 		BEC63F1B183CC6BD001C82B6 /* RassegnaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RassegnaCell.h; sourceTree = "<group>"; };
@@ -361,7 +361,7 @@
 				BEAECBCB18F5A48A00F94423 /* CoreMedia.framework in Frameworks */,
 				BEAECBC918F5A48300F94423 /* CoreVideo.framework in Frameworks */,
 				BEAECBC718F5A47900F94423 /* AudioToolbox.framework in Frameworks */,
-				BE2101471924C57700E9FD67 /* Veespo.framework in Frameworks */,
+				BEC4168919267435006764C3 /* Veespo.framework in Frameworks */,
 				BEAECBC518F5A45900F94423 /* AVFoundation.framework in Frameworks */,
 				BE293D4218D9FFAA0097D42A /* CoreText.framework in Frameworks */,
 				BED167A218991AB60083B3B5 /* CoreData.framework in Frameworks */,
@@ -441,8 +441,8 @@
 		BEA81D5C1907CF6900817412 /* Veespo Framework */ = {
 			isa = PBXGroup;
 			children = (
-				BE2101441924C57700E9FD67 /* Veespo.bundle */,
-				BE2101451924C57700E9FD67 /* Veespo.framework */,
+				BEC4168619267435006764C3 /* Veespo.bundle */,
+				BEC4168719267435006764C3 /* Veespo.framework */,
 			);
 			name = "Veespo Framework";
 			sourceTree = "<group>";
@@ -951,7 +951,7 @@
 				BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */,
 				BE635BBB19236BF4006FA9D3 /* lookback-logo.png in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
-				BE2101461924C57700E9FD67 /* Veespo.bundle in Resources */,
+				BEC4168819267435006764C3 /* Veespo.bundle in Resources */,
 				BE635BBD19236BF4006FA9D3 /* lookback-recorder-logo.png in Resources */,
 				BE635BBC19236BF4006FA9D3 /* lookback-logo@2x.png in Resources */,
 				BE635BBE19236BF4006FA9D3 /* lookback-recorder-logo@2x.png in Resources */,
@@ -1245,10 +1245,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: giordano scalzo (8H2HF6RX92)";
 				FRAMEWORK_SEARCH_PATHS = (
 					lookback/Safe,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos",
 					"$(PROJECT_DIR)/Veespo",
-					"$(PROJECT_DIR)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Release-iphoneos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
