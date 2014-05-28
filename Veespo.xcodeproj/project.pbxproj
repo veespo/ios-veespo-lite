@@ -20,9 +20,6 @@
 		BE5B6FDD18FEB48D009EEEA8 /* VEEReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B6FDC18FEB48D009EEEA8 /* VEEReachability.m */; };
 		BE5B6FE018FEB6A5009EEEA8 /* VEEReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B6FDF18FEB6A5009EEEA8 /* VEEReachabilityManager.m */; };
 		BE5B6FEE19000279009EEEA8 /* VEELookBackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5B6FED19000279009EEEA8 /* VEELookBackManager.m */; };
-		BE5DAC7D191D320900AF6756 /* Test001.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BE5DAC7C191D320900AF6756 /* Test001.gpx */; };
-		BE635BAE19236367006FA9D3 /* Test002.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BE635BAC19236367006FA9D3 /* Test002.gpx */; };
-		BE635BAF19236367006FA9D3 /* Test003.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BE635BAD19236367006FA9D3 /* Test003.gpx */; };
 		BE635BBA19236BF4006FA9D3 /* GFSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB119236BF4006FA9D3 /* GFSettings.storyboard */; };
 		BE635BBB19236BF4006FA9D3 /* lookback-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB219236BF4006FA9D3 /* lookback-logo.png */; };
 		BE635BBC19236BF4006FA9D3 /* lookback-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE635BB319236BF4006FA9D3 /* lookback-logo@2x.png */; };
@@ -56,8 +53,6 @@
 		BEC31C8118CA201500DF3954 /* MSNeedleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7818CA201400DF3954 /* MSNeedleView.m */; };
 		BEC31C8218CA201500DF3954 /* MSRangeGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7A18CA201400DF3954 /* MSRangeGauge.m */; };
 		BEC31C8318CA201500DF3954 /* MSSimpleGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC31C7C18CA201500DF3954 /* MSSimpleGauge.m */; };
-		BEC4168819267435006764C3 /* Veespo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEC4168619267435006764C3 /* Veespo.bundle */; };
-		BEC4168919267435006764C3 /* Veespo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC4168719267435006764C3 /* Veespo.framework */; };
 		BEC63F52183CC6BD001C82B6 /* VEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */; };
 		BEC63F53183CC6BD001C82B6 /* RassegnaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1C183CC6BD001C82B6 /* RassegnaCell.m */; };
 		BEC63F54183CC6BD001C82B6 /* VEMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC63F1E183CC6BD001C82B6 /* VEMenuCell.m */; };
@@ -168,9 +163,6 @@
 		BE5B6FE918FFD6FF009EEEA8 /* VEEConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEEConstants.h; sourceTree = "<group>"; };
 		BE5B6FEC19000279009EEEA8 /* VEELookBackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEELookBackManager.h; sourceTree = "<group>"; };
 		BE5B6FED19000279009EEEA8 /* VEELookBackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEELookBackManager.m; sourceTree = "<group>"; };
-		BE5DAC7C191D320900AF6756 /* Test001.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test001.gpx; sourceTree = "<group>"; };
-		BE635BAC19236367006FA9D3 /* Test002.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test002.gpx; sourceTree = "<group>"; };
-		BE635BAD19236367006FA9D3 /* Test003.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test003.gpx; sourceTree = "<group>"; };
 		BE635BB119236BF4006FA9D3 /* GFSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GFSettings.storyboard; sourceTree = "<group>"; };
 		BE635BB219236BF4006FA9D3 /* lookback-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lookback-logo.png"; sourceTree = "<group>"; };
 		BE635BB319236BF4006FA9D3 /* lookback-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lookback-logo@2x.png"; sourceTree = "<group>"; };
@@ -218,8 +210,6 @@
 		BEC31C7B18CA201500DF3954 /* MSSimpleGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSimpleGauge.h; sourceTree = "<group>"; };
 		BEC31C7C18CA201500DF3954 /* MSSimpleGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSimpleGauge.m; sourceTree = "<group>"; };
 		BEC31C7D18CA201500DF3954 /* MSSimpleGaugeSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSimpleGaugeSubclass.h; sourceTree = "<group>"; };
-		BEC4168619267435006764C3 /* Veespo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Veespo.bundle; sourceTree = "<group>"; };
-		BEC4168719267435006764C3 /* Veespo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Veespo.framework; sourceTree = "<group>"; };
 		BEC63F18183CC6BD001C82B6 /* VEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEAppDelegate.h; sourceTree = "<group>"; };
 		BEC63F19183CC6BD001C82B6 /* VEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEAppDelegate.m; sourceTree = "<group>"; };
 		BEC63F1B183CC6BD001C82B6 /* RassegnaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RassegnaCell.h; sourceTree = "<group>"; };
@@ -361,7 +351,6 @@
 				BEAECBCB18F5A48A00F94423 /* CoreMedia.framework in Frameworks */,
 				BEAECBC918F5A48300F94423 /* CoreVideo.framework in Frameworks */,
 				BEAECBC718F5A47900F94423 /* AudioToolbox.framework in Frameworks */,
-				BEC4168919267435006764C3 /* Veespo.framework in Frameworks */,
 				BEAECBC518F5A45900F94423 /* AVFoundation.framework in Frameworks */,
 				BE293D4218D9FFAA0097D42A /* CoreText.framework in Frameworks */,
 				BED167A218991AB60083B3B5 /* CoreData.framework in Frameworks */,
@@ -441,8 +430,6 @@
 		BEA81D5C1907CF6900817412 /* Veespo Framework */ = {
 			isa = PBXGroup;
 			children = (
-				BEC4168619267435006764C3 /* Veespo.bundle */,
-				BEC4168719267435006764C3 /* Veespo.framework */,
 			);
 			name = "Veespo Framework";
 			sourceTree = "<group>";
@@ -724,9 +711,6 @@
 		BEEB670A17EC9A1A00F394E9 = {
 			isa = PBXGroup;
 			children = (
-				BE5DAC7C191D320900AF6756 /* Test001.gpx */,
-				BE635BAC19236367006FA9D3 /* Test002.gpx */,
-				BE635BAD19236367006FA9D3 /* Test003.gpx */,
 				BEEB671C17EC9A1A00F394E9 /* Veespo */,
 				BEEB673B17EC9A1A00F394E9 /* VeespoTests */,
 				BEEB671517EC9A1A00F394E9 /* Frameworks */,
@@ -951,7 +935,6 @@
 				BEC63F69183CC6BD001C82B6 /* pin@2x.png in Resources */,
 				BE635BBB19236BF4006FA9D3 /* lookback-logo.png in Resources */,
 				BEEB672F17EC9A1A00F394E9 /* Images.xcassets in Resources */,
-				BEC4168819267435006764C3 /* Veespo.bundle in Resources */,
 				BE635BBD19236BF4006FA9D3 /* lookback-recorder-logo.png in Resources */,
 				BE635BBC19236BF4006FA9D3 /* lookback-logo@2x.png in Resources */,
 				BE635BBE19236BF4006FA9D3 /* lookback-recorder-logo@2x.png in Resources */,
@@ -959,11 +942,9 @@
 				BE635BBF19236BF4006FA9D3 /* lookback-recorder-settings.png in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
-				BE635BAE19236367006FA9D3 /* Test002.gpx in Resources */,
 				BEABDE6818805C8300079EC5 /* VEHomeViewController.xib in Resources */,
 				BEC63F6A183CC6BD001C82B6 /* poweredByFoursquare_gray.png in Resources */,
 				BE951648191A33070073F280 /* Veespo-Keys.plist in Resources */,
-				BE5DAC7D191D320900AF6756 /* Test001.gpx in Resources */,
 				BE635BC119236BF4006FA9D3 /* lookback-recorder-status.png in Resources */,
 				BEC63F63183CC6BD001C82B6 /* WebViewController.xib in Resources */,
 				BEC63F6B183CC6BD001C82B6 /* poweredByFoursquare_gray@2x.png in Resources */,
@@ -974,7 +955,6 @@
 				BE635BBA19236BF4006FA9D3 /* GFSettings.storyboard in Resources */,
 				BEC63F68183CC6BD001C82B6 /* pin.png in Resources */,
 				BE635BC219236BF4006FA9D3 /* lookback-recorder-status@2x.png in Resources */,
-				BE635BAF19236367006FA9D3 /* Test003.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1246,6 +1226,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					lookback/Safe,
 					"$(PROJECT_DIR)/Veespo",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Veespo/Veespo-Prefix.pch";
