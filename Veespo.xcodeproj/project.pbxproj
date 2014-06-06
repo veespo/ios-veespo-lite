@@ -116,6 +116,8 @@
 		BEEB8E4418BF97CE00977E47 /* detail.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB8E4318BF97CE00977E47 /* detail.m */; };
 		BEED2ECA187EA853009D8C18 /* VEDataChart.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED2EC9187EA853009D8C18 /* VEDataChart.m */; };
 		BEED2ECB187EA869009D8C18 /* VEDataChart.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED2EC9187EA853009D8C18 /* VEDataChart.m */; };
+		BEEF79DA19422296001B9171 /* Veespo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BEEF79D819422295001B9171 /* Veespo.bundle */; };
+		BEEF79DB19422296001B9171 /* Veespo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEF79D919422296001B9171 /* Veespo.framework */; };
 		BEF2C31A18C783A900908963 /* VEFlickrConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C31918C783A900908963 /* VEFlickrConnection.m */; };
 		BEF2C31B18C783A900908963 /* VEFlickrConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C31918C783A900908963 /* VEFlickrConnection.m */; };
 		BEF2C31E18C794AF00908963 /* VEFlickrGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF2C31D18C794AF00908963 /* VEFlickrGalleryViewController.m */; };
@@ -318,6 +320,8 @@
 		BEEB8E4318BF97CE00977E47 /* detail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detail.m; sourceTree = "<group>"; };
 		BEED2EC8187EA853009D8C18 /* VEDataChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEDataChart.h; sourceTree = "<group>"; };
 		BEED2EC9187EA853009D8C18 /* VEDataChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VEDataChart.m; sourceTree = "<group>"; };
+		BEEF79D819422295001B9171 /* Veespo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Veespo.bundle; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.bundle"; sourceTree = "<group>"; };
+		BEEF79D919422296001B9171 /* Veespo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Veespo.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Veespo-difjrzjfxabxczcqmthqaatqchnd/Build/Products/Debug-iphoneos/Veespo.framework"; sourceTree = "<group>"; };
 		BEF2C31818C783A900908963 /* VEFlickrConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VEFlickrConnection.h; path = Flickr/VEFlickrConnection.h; sourceTree = "<group>"; };
 		BEF2C31918C783A900908963 /* VEFlickrConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VEFlickrConnection.m; path = Flickr/VEFlickrConnection.m; sourceTree = "<group>"; };
 		BEF2C31C18C794AF00908963 /* VEFlickrGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VEFlickrGalleryViewController.h; sourceTree = "<group>"; };
@@ -351,6 +355,7 @@
 				BEAECBCB18F5A48A00F94423 /* CoreMedia.framework in Frameworks */,
 				BEAECBC918F5A48300F94423 /* CoreVideo.framework in Frameworks */,
 				BEAECBC718F5A47900F94423 /* AudioToolbox.framework in Frameworks */,
+				BEEF79DB19422296001B9171 /* Veespo.framework in Frameworks */,
 				BEAECBC518F5A45900F94423 /* AVFoundation.framework in Frameworks */,
 				BE293D4218D9FFAA0097D42A /* CoreText.framework in Frameworks */,
 				BED167A218991AB60083B3B5 /* CoreData.framework in Frameworks */,
@@ -430,6 +435,8 @@
 		BEA81D5C1907CF6900817412 /* Veespo Framework */ = {
 			isa = PBXGroup;
 			children = (
+				BEEF79D819422295001B9171 /* Veespo.bundle */,
+				BEEF79D919422296001B9171 /* Veespo.framework */,
 			);
 			name = "Veespo Framework";
 			sourceTree = "<group>";
@@ -939,6 +946,7 @@
 				BE635BBC19236BF4006FA9D3 /* lookback-logo@2x.png in Resources */,
 				BE635BBE19236BF4006FA9D3 /* lookback-recorder-logo@2x.png in Resources */,
 				BEEB672117EC9A1A00F394E9 /* InfoPlist.strings in Resources */,
+				BEEF79DA19422296001B9171 /* Veespo.bundle in Resources */,
 				BE635BBF19236BF4006FA9D3 /* lookback-recorder-settings.png in Resources */,
 				BEC63F58183CC6BD001C82B6 /* VEDetailVenue.xib in Resources */,
 				BEC63F70183CC790001C82B6 /* Empty.xib in Resources */,
@@ -1177,7 +1185,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-all_load";
-				PROVISIONING_PROFILE = "C41C6637-6F6B-4741-9AED-C5B722290897";
+				PROVISIONING_PROFILE = "FD55562D-7A39-4E9E-90A1-3FFDA9E44516";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1241,7 +1249,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME) Lite";
-				PROVISIONING_PROFILE = "C41C6637-6F6B-4741-9AED-C5B722290897";
+				PROVISIONING_PROFILE = "FD55562D-7A39-4E9E-90A1-3FFDA9E44516";
 				VALID_ARCHS = "armv7 armv7s armv64";
 				WRAPPER_EXTENSION = app;
 			};
