@@ -70,7 +70,7 @@
                           }];
                           
                       } failure:^(id error) {
-                          failure(nil);
+                          failure(error);
                       }];
 }
 
