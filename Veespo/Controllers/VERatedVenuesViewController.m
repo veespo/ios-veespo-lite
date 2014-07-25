@@ -44,9 +44,14 @@
     
 #ifdef VEESPO
     VEVeespoAPIWrapper *veespoApi = [[VEVeespoAPIWrapper alloc] init];
-    NSString *userId = nil;
     
-    userId = [NSString stringWithFormat:@"VeespoApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"uuid"]];
+    NSString *userId;
+    
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:kVEEUserNameKey]) {
+        userId = [[NSUserDefaults standardUserDefaults] stringForKey:kVEEUserNameKey];
+    } else {
+        userId = [NSString stringWithFormat:@"VeespoLiteApp-%@", [[NSUserDefaults standardUserDefaults] stringForKey:kVEEUserUniqueID]];
+    }
     
     VEAppDelegate *appDelegate = (VEAppDelegate *)[[UIApplication sharedApplication] delegate];
     

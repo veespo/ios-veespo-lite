@@ -10,7 +10,7 @@
 
 @interface VETargetViewController : UITableViewController
 
-@property (nonatomic, strong) NSDictionary *targetList;
+@property (nonatomic, strong) NSMutableArray *targetList;
 @property (nonatomic, strong) NSString *userid;
 @property (nonatomic, strong) NSString *token;
 

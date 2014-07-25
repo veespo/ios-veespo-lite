@@ -9,6 +9,7 @@
 #import "VEHomeViewController.h"
 
 #import "VETargetViewController.h"
+#import "VEConnection.h"
 
 #import "VEEReachabilityManager.h"
 #import "UIControl+VEControl.h"
@@ -263,9 +264,7 @@ static NSString * const kVEDemoCode = @"krbk";
 - (void)getTargetsList:(NSString *)demoCode
 {
 #ifdef VEESPO
-    VEVeespoAPIWrapper *veespo = [[VEVeespoAPIWrapper alloc] init];
-    
-    // clean usern name to create correct Veespo userID
+    // clean user name to create correct Veespo userID
     NSString *veespoUserId;
     
     NSData *asciiEncoded = [self.userNameTf.text dataUsingEncoding:NSASCIIStringEncoding
@@ -292,36 +291,24 @@ static NSString * const kVEDemoCode = @"krbk";
         
         veespoUserId = [veespoUserId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
-        [veespo requestTargetList:[NSDictionary dictionaryWithObjectsAndKeys:demoCode, @"democode", veespoUserId, @"userid", nil]
-                          success:^(id responseData, NSString *token) {
-                              VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
-                              
-                              targetVC.userid = veespoUserId;
-                              targetVC.token = token;
-                              
-                              targetVC.targetList = responseData[@"targets"];
-                              targetVC.title = responseData[@"categoryname"];
-                              
-                              // Creo o aggiorno storico utente
-                              
-                              NSDictionary *history = [[NSUserDefaults standardUserDefaults] objectForKey:@"history"];
-                              
-                              if (history == nil) {
-                                  history = @{demoCode: @{demoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]}};
-                                  [[NSUserDefaults standardUserDefaults] setObject:history forKey:@"history"];
-                              } else {
-                                  NSMutableDictionary *tmp = [[NSMutableDictionary alloc] initWithDictionary:history];
-                                  [tmp setObject:@{demoCode: responseData[@"category"], @"desc1": responseData[@"categoryname"]} forKey:demoCode];
-                                  [[NSUserDefaults standardUserDefaults] setObject:tmp forKey:@"history"];
-                              }
-                              
-                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                              [self.navigationController pushViewController:targetVC animated:YES];
-                          } failure:^(id error) {
-                              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[error objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                              [alert show];
-                          }];
+        VEConnection *connection = [[VEConnection alloc] init];
+        [connection veespoCodeTargetsList:demoCode userIdentify:veespoUserId success:^(id responseData) {
+            VETargetViewController *targetVC = [[VETargetViewController alloc] initWithStyle:UITableViewStylePlain];
+            targetVC.userid = veespoUserId;
+            targetVC.token = responseData[@"token"];
+            targetVC.title = responseData[@"title"];
+            targetVC.targetList = responseData[@"targetlist"];
+            
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
+            [self.navigationController pushViewController:targetVC animated:YES];
+            
+        } failure:^(id error) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[error objectForKey:@"error"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }];
     }
     else {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

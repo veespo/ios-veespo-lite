@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Veespo Ltd. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "PickerView.h"
 
 @interface VEHomeViewController : UIViewController <UITextFieldDelegate, PickerViewDelegate>

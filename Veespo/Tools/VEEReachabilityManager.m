@@ -69,8 +69,6 @@
         self.reachability.reachableBlock = ^(VEEReachability *reach)
         {
             NSLog(@"REACHABLE!");
-            if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground)
-                [[VEELookBackManager sharedManager] startLocation];
         };
         
         self.reachability.unreachableBlock = ^(VEEReachability *reach)

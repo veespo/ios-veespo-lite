@@ -132,6 +132,13 @@ static NSString *const LookbackAudioEnabledSettingsKey = @"com.thirdcog.lookback
 /*! The BOOL NSUserDefaults key LookbackShowPreviewSettingsKey controls whether the user should be shown a preview image of their face at the bottom-right of the screen while recording, to make sure that they are holding their iPhone correctly and are well-framed. */
 static NSString *const LookbackShowPreviewSettingsKey = @"com.thirdcog.lookback.preview.enabled";
 
+/*! The NSTimeInterval/double key LookbackShortestAllowedRecordingSettingsKey controls the shortest allowed
+	length of a recording. Shorter videos are deleted immediately after recording; longer videos are uploaded.
+	This is because very short videos are almost always recorded accidentally and aren't useful to upload.
+	Default is 5.0s.
+*/
+static NSString *const LookbackShortestAllowedRecordingSettingsKey = @"io.lookback.recording.minimumLength";
+
 
 /*! @group Notifications
     These notifications can be observed from [NSNotificationCenter defaultCenter].
